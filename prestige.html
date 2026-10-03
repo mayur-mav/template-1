@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestige Developers | Creation, Not Construction</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-builder="prestige">
+
+    <!-- 1. TOP CONTACT STRIP -->
+    <div class="top-ticker">
+        <div class="top-ticker-left">
+            <span class="rera-badge">RERA CERTIFIED</span>
+            <span>Prestige Developers | Official Direct Booking Portal</span>
+        </div>
+        <div class="top-ticker-right">
+            <a href="tel:+919876543210" class="top-ticker-link">
+                <i class="fa-solid fa-phone-volume"></i> +91 98765 43210
+            </a>
+            <a href="https://wa.me/919876543210" target="_blank" class="top-ticker-link top-whatsapp-link">
+                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- 2. MAIN HEADER -->
+    <header class="main-header">
+        <div class="logo-container" onclick="showCatalogView()">
+            <div class="logo-mark">KP</div>
+            <div class="logo-text">
+                <span class="brand-name">Prestige</span>
+                <span class="brand-tagline">Creation, Not Construction</span>
+            </div>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#" class="nav-link active" onclick="showCatalogView(); return false;">Residences</a></li>
+            <li><a href="#about" class="nav-link" onclick="showCatalogView();">About Kolte-Patil</a></li>
+            <li><a href="#why-us" class="nav-link" onclick="showCatalogView();">Why Choose Us</a></li>
+            <li><a href="#contact" class="nav-link" onclick="showCatalogView();">Contact</a></li>
+        </ul>
+        <button class="btn-header-cta" onclick="openWhatsAppModal()">
+            <i class="fa-regular fa-calendar-check"></i> Schedule Visit
+        </button>
+    </header>
+
+    <!-- MAIN SPA CATALOG CONTAINER -->
+    <main id="catalog-view">
+        <!-- 3. HERO & SIMPLE SEARCH SECTION -->
+        <section class="hero-section">
+            <span class="hero-subtitle">PREMIUM LUXURY LIVING</span>
+            <h1 class="hero-title">Crafting Iconic Landmarks</h1>
+            <p class="hero-description">
+                Discover Kolte-Patil’s finest residential addresses across Pune & Bengaluru. Exceptional architecture, prime connectivity, and timeless elegance.
+            </p>
+
+            <!-- Simple Centered Search Box -->
+            <div class="search-container">
+                <div class="search-box-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search by project name, location (e.g. Hinjewadi, NIBM), or BHK..." oninput="handleSearch()">
+                    <button id="searchClearBtn" class="search-clear-btn" onclick="clearSearch()">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CATEGORY FILTER CHIPS -->
+        <section class="filter-section">
+            <div class="filter-chips">
+                <button class="filter-btn active" onclick="filterCategory('ALL', this)">All Projects</button>
+                <button class="filter-btn" onclick="filterCategory('ONGOING', this)">Ongoing Projects</button>
+                <button class="filter-btn" onclick="filterCategory('READY', this)">Ready to Move</button>
+                <button class="filter-btn" onclick="filterCategory('NEW', this)">New Launch</button>
+            </div>
+        </section>
+
+        <!-- 5. PROPERTY CATALOG GRID -->
+        <section class="catalog-section">
+            <div class="catalog-header">
+                <span class="results-count" id="resultsCount">Showing 4 Exclusive Residences</span>
+            </div>
+            
+            <div class="property-grid" id="propertyGrid">
+                <!-- Dynamic cards render here -->
+            </div>
+        </section>
+
+        <!-- 6. ABOUT KOLTE-PATIL SECTION -->
+        <section class="about-section" id="about">
+            <div class="about-grid">
+                <div>
+                    <span class="about-badge">30+ YEARS OF EXCELLENCE</span>
+                    <h2 class="about-heading serif-font">Creation, Not Construction</h2>
+                    <p class="about-text">
+                        Founded over three decades ago, Kolte-Patil Developers Limited (BSE: 532924, NSE: KOLTEPATIL) is one of Western India's premier real estate development companies. Driven by the philosophy of "Creation, Not Construction," we build self-sustaining ecosystems and timeless architectural benchmarks.
+                    </p>
+                    <p class="about-text">
+                        With an unbroken track record of financial stability and transparent governance, Kolte-Patil has redefined luxury living through its flagship 24K luxury brand and expansive integrated townships.
+                    </p>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-number">25M+</div>
+                            <div class="stat-label">Sq. Ft. Delivered</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">50K+</div>
+                            <div class="stat-label">Happy Families</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">60+</div>
+                            <div class="stat-label">Landmark Projects</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80" alt="Kolte-Patil Landmark Architecture" style="width: 100%; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); border: 1px solid var(--border-gold);">
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. WHY CHOOSE US -->
+        <section class="why-section" id="why-us">
+            <div class="section-header-center">
+                <span class="hero-subtitle">THE KOLTE-PATIL ADVANTAGE</span>
+                <h2 class="serif-font" style="font-size: 2.2rem; margin-top: 10px;">Why Homebuyers Trust Us</h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-crown"></i></div>
+                    <h3 class="why-title serif-font">24K Luxury Standard</h3>
+                    <p class="why-desc">Signature luxury residences with Italian marble, smart home automation, and curated concierge services.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-clock-check"></i></div>
+                    <h3 class="why-title serif-font">On-Time Delivery</h3>
+                    <p class="why-desc">Strict adherence to delivery timelines supported by advanced precast construction engineering.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-leaf"></i></div>
+                    <h3 class="why-title serif-font">Eco-Friendly Living</h3>
+                    <p class="why-desc">IGBC Gold Certified sustainable developments with rainwater harvesting and solar lighting.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                    <h3 class="why-title serif-font">Complete Transparency</h3>
+                    <p class="why-desc">100% RERA compliant documentation, clear titles, and seamless home loan assistance.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. LEAD ENQUIRY FORM SECTION -->
+        <section class="lead-section" id="contact">
+            <div class="lead-container">
+                <div class="lead-grid">
+                    <div>
+                        <span class="hero-subtitle">VIP CONSULTATION</span>
+                        <h2 class="serif-font" style="font-size: 2rem; margin-top: 10px; margin-bottom: 15px;">Book a Direct Site Visit</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 25px;">
+                            Speak directly with Kolte-Patil’s dedicated relationship manager. Get confidential price lists, floor plan customizations, and payment plans.
+                        </p>
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div class="pill-icon"><i class="fa-solid fa-phone"></i></div>
+                                <div><strong>Call Sales Desk:</strong> +91 98765 43210</div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div class="pill-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                                <div><strong>Instant WhatsApp:</strong> +91 98765 43210</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <form onsubmit="handleFormSubmit(event)">
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="Your Full Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-input" placeholder="Mobile Number (+91)" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-input" placeholder="Email Address" required>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-input">
+                                    <option>Select Interested City / Location</option>
+                                    <option>Pune - Baner / Hinjewadi / Bavdhan</option>
+                                    <option>Pune - NIBM / Kondhwa / South Pune</option>
+                                    <option>Bengaluru Developments</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-submit-enquiry">Submit VIP Enquiry</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. FAQ ACCORDION -->
+        <section class="faq-section">
+            <div class="section-header-center">
+                <span class="hero-subtitle">FREQUENTLY ASKED QUESTIONS</span>
+                <h2 class="serif-font" style="font-size: 2rem; margin-top: 10px;">Everything You Need to Know</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Are all Kolte-Patil projects registered under RERA?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, 100% of Kolte-Patil developments are registered under Maharashtra RERA or Karnataka RERA. All official RERA numbers are prominently displayed on every project listing.
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>How can I schedule a cab for a physical site visit?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We offer complimentary pick-and-drop AC cab services across Pune and Bengaluru for site visits. Fill out the enquiry form or click 'Schedule Visit' to request a cab.
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Which banks offer pre-approved home loans for Kolte-Patil projects?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Our projects are pre-approved by leading financial institutions including SBI, HDFC Bank, ICICI Bank, Axis Bank, and Federal Bank, ensuring quick, hassle-free sanctioning.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="main-footer">
+            <div class="footer-grid">
+                <div>
+                    <span class="footer-logo serif-font">KOLTE-PATIL</span>
+                    <p style="margin-bottom: 15px;">Creation, Not Construction. Western India’s benchmark luxury real estate developer.</p>
+                    <p>Corporate Office: 221, Kalyani Nagar, Pune, Maharashtra 411006.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showCatalogView(); return false;">Residences</a></li>
+                        <li><a href="#about" onclick="showCatalogView();">About Us</a></li>
+                        <li><a href="#why-us" onclick="showCatalogView();">Why Us</a></li>
+                        <li><a href="#contact" onclick="showCatalogView();">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Top Locations</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Baner & Pashan</a></li>
+                        <li><a href="#">Hinjewadi Township</a></li>
+                        <li><a href="#">Bavdhan Hills</a></li>
+                        <li><a href="#">NIBM Road</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Direct Sales Contact</h4>
+                    <p style="margin-bottom: 10px;"><i class="fa-solid fa-phone" style="color: var(--brand-gold);"></i> +91 98765 43210</p>
+                    <p style="margin-bottom: 10px;"><i class="fa-solid fa-envelope" style="color: var(--brand-gold);"></i> sales@koltepatil-direct.com</p>
+                    <button class="btn-header-cta" style="margin-top: 10px; width: 100%; justify-content: center;" onclick="openWhatsAppModal()">
+                        <i class="fa-brands fa-whatsapp"></i> Direct WhatsApp
+                    </button>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kolte-Patil Developers Ltd. All Rights Reserved. Disclaimer: This website is for informational purpose only.</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- 10. FULL PROPERTY DETAIL SPA VIEW (#FFFFFF Background) -->
+    <div id="property-detail-view">
+        <!-- Sticky Navigation Header for Details View -->
+        <div class="detail-sticky-bar">
+            <button class="btn-back" onclick="showCatalogView()">
+                <i class="fa-solid fa-arrow-left"></i> Back to Residences
+            </button>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn-header-cta" onclick="openWhatsAppModal()">
+                    <i class="fa-brands fa-whatsapp"></i> Instant Info
+                </button>
+            </div>
+        </div>
+
+        <div class="detail-hero-header">
+            <div class="detail-title-wrap">
+                <div>
+                    <h1 class="detail-title" id="dt-title">24K Altura</h1>
+                    <div class="detail-location-str" id="dt-location">
+                        <i class="fa-solid fa-location-dot"></i> Baner-Pashan Link Road, Pune
+                    </div>
+                </div>
+                <div class="detail-price-tag">
+                    <span class="price-label">Starting Price</span>
+                    <div class="detail-price-amount" id="dt-price">₹ 1.85 Cr*</div>
+                </div>
+            </div>
+
+            <!-- 3 IMAGE SHOWCASE GRID -->
+            <div class="image-gallery-grid">
+                <div class="gallery-item gallery-item-1" onclick="openLightbox(0)">
+                    <img id="dt-img-1" src="" alt="Main Exterior">
+                </div>
+                <div class="gallery-item" onclick="openLightbox(1)">
+                    <img id="dt-img-2" src="" alt="Interior">
+                </div>
+                <div class="gallery-item" onclick="openLightbox(2)">
+                    <img id="dt-img-3" src="" alt="Amenities">
+                    <div class="gallery-overlay-btn"><i class="fa-solid fa-expand"></i> View Fullscreen</div>
+                </div>
+            </div>
+
+            <!-- SPECS PILLS BAR -->
+            <div class="specs-pills-bar">
+                <div class="pill-box">
+                    <div class="pill-icon"><i class="fa-regular fa-building"></i></div>
+                    <div>
+                        <div class="pill-title">Status</div>
+                        <div class="pill-value" id="dt-status">Under Construction</div>
+                    </div>
+                </div>
+                <div class="pill-box">
+                    <div class="pill-icon"><i class="fa-regular fa-calendar-days"></i></div>
+                    <div>
+                        <div class="pill-title">Possession</div>
+                        <div class="pill-value" id="dt-possession">December 2026</div>
+                    </div>
+                </div>
+                <div class="pill-box">
+                    <div class="pill-icon"><i class="fa-solid fa-vector-square"></i></div>
+                    <div>
+                        <div class="pill-title">Land Area</div>
+                        <div class="pill-value" id="dt-area">7.5 Acres</div>
+                    </div>
+                </div>
+                <div class="pill-box">
+                    <div class="pill-icon"><i class="fa-solid fa-bed"></i></div>
+                    <div>
+                        <div class="pill-title">Configurations</div>
+                        <div class="pill-value" id="dt-config">3 & 4 BHK Luxury</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DETAIL BODY LAYOUT WITH STICKY SIDEBAR -->
+        <div class="detail-body-layout">
+            <div class="detail-main-content">
+                <h3 class="section-block-title">Architectural Overview</h3>
+                <p class="overview-text" id="dt-description">
+                    Experience unmatched refinement and grand living standards. Designed with world-class craftsmanship and thoughtful spatial layouts.
+                </p>
+
+                <!-- INTERACTIVE FLOOR PLAN SELECTOR -->
+                <h3 class="section-block-title">Floor Plans & Pricing</h3>
+                <div class="floorplan-container">
+                    <div class="floorplan-tabs" id="fp-tabs">
+                        <!-- Floor plan tab buttons generated dynamically -->
+                    </div>
+                    <div class="floorplan-display" id="fp-display">
+                        <div class="fp-details">
+                            <div class="fp-data-row">
+                                <span style="color: var(--text-muted);">Typology</span>
+                                <strong id="fp-type">3 BHK Luxury</strong>
+                            </div>
+                            <div class="fp-data-row">
+                                <span style="color: var(--text-muted);">Carpet Area</span>
+                                <strong id="fp-sqft">1,250 Sq. Ft.</strong>
+                            </div>
+                            <div class="fp-data-row">
+                                <span style="color: var(--text-muted);">Starting Price</span>
+                                <strong id="fp-price" style="color: var(--brand-bronze);">₹ 1.85 Cr*</strong>
+                            </div>
+                        </div>
+                        <div class="fp-img-placeholder">
+                            <i class="fa-solid fa-map" style="font-size: 2.5rem; margin-bottom: 8px;"></i>
+                            <span>Master Floor Layout Blueprint</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AMENITIES GRID -->
+                <h3 class="section-block-title">World-Class Amenities</h3>
+                <div class="amenities-grid" id="dt-amenities">
+                    <!-- Dynamic Amenities -->
+                </div>
+
+                <!-- LOCATION MATRIX -->
+                <h3 class="section-block-title">Strategic Connectivity</h3>
+                <div class="location-matrix">
+                    <div class="loc-item">
+                        <i class="fa-solid fa-train-subway"></i>
+                        <div><strong>Metro Station:</strong> 5 Mins Drive</div>
+                    </div>
+                    <div class="loc-item">
+                        <i class="fa-solid fa-laptop-code"></i>
+                        <div><strong>IT Park / Business Hub:</strong> 10 Mins</div>
+                    </div>
+                    <div class="loc-item">
+                        <i class="fa-solid fa-plane"></i>
+                        <div><strong>International Airport:</strong> 35 Mins</div>
+                    </div>
+                    <div class="loc-item">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <div><strong>Top Schools & Colleges:</strong> 2 Km Radius</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STICKY SIDEBAR ENQUIRY FORM -->
+            <div class="detail-sidebar">
+                <div class="enquiry-card">
+                    <h4 class="enquiry-title serif-font">Schedule a Site Visit</h4>
+                    <p class="enquiry-subtitle">Get private tour & official pricing breakdown</p>
+                    
+                    <form onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Your Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-input" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-input">
+                                <option>Select Preferred BHK</option>
+                                <option>2 BHK</option>
+                                <option>3 BHK</option>
+                                <option>4 BHK</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-submit-enquiry">Request Instant Callback</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. QUICK VIEW MODAL OVERLAY -->
+    <div class="modal-overlay" id="quickViewModal">
+        <div class="modal-box">
+            <button class="modal-close-btn" onclick="closeModal('quickViewModal')">&times;</button>
+            <div class="qv-header">
+                <img id="qv-img" src="" alt="" class="qv-img">
+                <div>
+                    <h3 class="qv-title" id="qv-title">Property Title</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);" id="qv-location"></p>
+                    <div class="qv-price" id="qv-price">Starting ₹ --</div>
+                </div>
+            </div>
+            <div style="margin-bottom: 20px; font-size: 0.9rem; color: var(--text-secondary);">
+                <p id="qv-desc"></p>
+                <br>
+                <div style="background: var(--bg-champagne); padding: 12px; border-radius: 6px; font-size: 0.82rem;">
+                    <strong>RERA Registration:</strong> <span id="qv-rera"></span>
+                </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <button class="btn-quick-view" onclick="closeModal('quickViewModal')">Close</button>
+                <button class="btn-view-details" id="qv-go-details">Visit Full Details Page</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 12. TIMED WHATSAPP POPUP MODAL (Triggers after 3.5 seconds) -->
+    <div class="modal-overlay" id="waPopModal">
+        <div class="modal-box wa-popup-box">
+            <button class="modal-close-btn" onclick="closeModal('waPopModal')">&times;</button>
+            <div class="wa-popup-icon">
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <h3 class="serif-font" style="font-size: 1.5rem; margin-bottom: 8px;">Get Instant E-Brochure</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px;">
+                Receive instant floor plans, pricing sheets, and payment schedules directly on your WhatsApp.
+            </p>
+            <div class="form-group">
+                <input type="tel" id="waPhoneInput" class="form-input" placeholder="Enter Your WhatsApp Number">
+            </div>
+            <button class="wa-btn" onclick="sendWhatsAppLead()">
+                <i class="fa-brands fa-whatsapp"></i> Get Info on WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="#" class="floating-wa-btn" onclick="openWhatsAppModal(); return false;">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- FULLSCREEN LIGHTBOX MODAL -->
+    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+        <img id="lightboxImg" src="" alt="Full View" class="lightbox-img">
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

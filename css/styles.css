@@ -205,12 +205,17 @@ button {
     list-style: none;
 }
 
+.nav-visit-item {
+    list-style: none;
+}
+
 .nav-link {
     font-size: 0.95rem;
     font-weight: 500;
     color: var(--text-secondary);
     position: relative;
     padding: 4px 0;
+    white-space: nowrap;
 }
 
 .nav-link:hover, .nav-link.active {
@@ -264,6 +269,38 @@ button {
     font-size: 1.5rem;
     color: var(--text-primary);
     padding: 5px;
+}
+
+@media (max-width: 1150px) {
+    .main-header {
+        position: sticky;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        margin-left: auto;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 18px 5%;
+        background: var(--bg-white);
+        border-bottom: 1px solid var(--border-light);
+        box-shadow: var(--shadow-md);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
 }
 
 /* ---------------- HERO & SEARCH SECTION ---------------- */
@@ -372,26 +409,27 @@ button {
 }
 
 .filter-chips {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
     background: var(--bg-white);
     padding: 8px;
     border-radius: 40px;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-light);
+    width: min(100%, 900px);
     max-width: 100%;
 }
 
 .filter-btn {
-    padding: 10px 24px;
+    padding: 10px 12px;
     border-radius: 30px;
     background: transparent;
     color: var(--text-secondary);
     font-weight: 500;
     font-size: 0.92rem;
     white-space: nowrap;
+    width: 100%;
 }
 
 .filter-btn:hover {
@@ -1761,6 +1799,12 @@ button {
         gap: 10px;
     }
 
+    .filter-chips {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        border-radius: 16px;
+        width: 100%;
+    }
+
     .main-header {
         padding: 12px 16px;
     }
@@ -1897,6 +1941,35 @@ button {
 
 /* Extra Small Mobile Devices (max-width: 480px) */
 @media (max-width: 480px) {
+    .brand-name {
+        font-size: 1.05rem;
+    }
+
+    .brand-tagline {
+        display: none;
+    }
+
+    .btn-header-cta {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        justify-content: center;
+        gap: 0;
+        font-size: 0;
+    }
+
+    .btn-header-cta i {
+        font-size: 1rem;
+    }
+
+    .nav-menu .btn-header-cta {
+        width: auto;
+        height: auto;
+        padding: 8px 14px;
+        gap: 8px;
+        font-size: 0.82rem;
+    }
+
     .property-grid {
         gap: 16px;
     }

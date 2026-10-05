@@ -216,6 +216,17 @@ function showCatalogView() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+function toggleMobileMenu() {
+    const menu = document.getElementById('primaryNavigation');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    if (!menu || !toggle) return;
+
+    const isOpen = menu.classList.toggle('active');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    toggle.innerHTML = `<i class="fa-solid fa-${isOpen ? 'xmark' : 'bars'}" aria-hidden="true"></i>`;
+}
+
 function switchFloorplan(fp, btn) {
     document.querySelectorAll('.fp-tab-btn').forEach(b => b.classList.remove('active'));
     if(btn) btn.classList.add('active');
@@ -273,6 +284,7 @@ Object.assign(window, {
     openQuickView,
     openPropertyDetails,
     showCatalogView,
+    toggleMobileMenu,
     switchFloorplan,
     toggleFaq,
     closeModal,

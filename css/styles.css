@@ -37,7 +37,7 @@
 html, body {
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 html {
@@ -426,10 +426,75 @@ button {
 }
 
 .property-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
+    display: flex;
+    gap: 20px;
     width: 100%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+}
+
+.property-carousel {
+    position: relative;
+    width: 100%;
+}
+
+.property-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.property-grid > .property-card {
+    flex: 0 0 max(280px, calc((100% - 40px) / 3));
+    scroll-snap-align: start;
+}
+
+.carousel-controls {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.carousel-controls[hidden] {
+    display: none;
+}
+
+.carousel-arrow {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(11, 19, 32, 0.68);
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    pointer-events: auto;
+}
+
+.carousel-arrow:first-child {
+    transform: translateX(-100%);
+}
+
+.carousel-arrow:last-child {
+    transform: translateX(100%);
+}
+
+.carousel-arrow:hover:not(:disabled) {
+    background: var(--brand-bronze);
+}
+
+.carousel-arrow:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.property-grid > .no-results {
+    flex: 0 0 100%;
 }
 
 /* Property Card Design */
@@ -572,7 +637,7 @@ button {
 /* Card Action Buttons */
 .card-actions {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 10px;
 }
 
@@ -1667,8 +1732,8 @@ button {
         gap: 30px;
     }
 
-    .property-grid {
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    .property-grid > .property-card {
+        flex-basis: max(280px, calc((100% - 30px) / 2));
     }
 
     .detail-title {
@@ -1758,6 +1823,44 @@ button {
         font-size: 1.6rem;
     }
 
+    .property-grid {
+        gap: 16px;
+        align-items: flex-start;
+    }
+
+    .property-grid > .property-card {
+        flex-basis: 100%;
+        height: auto;
+    }
+
+    .property-grid .card-content {
+        flex-grow: 0;
+    }
+
+    .property-grid .card-footer-price {
+        margin-top: 12px;
+        margin-bottom: 16px;
+    }
+
+    .property-carousel {
+        width: 100%;
+        margin-inline: 0;
+    }
+
+    .carousel-controls {
+        inset: 0;
+    }
+
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+    }
+
+    .carousel-arrow:first-child,
+    .carousel-arrow:last-child {
+        transform: none;
+    }
+
     .floorplan-display {
         grid-template-columns: 1fr;
     }
@@ -1795,7 +1898,11 @@ button {
 /* Extra Small Mobile Devices (max-width: 480px) */
 @media (max-width: 480px) {
     .property-grid {
-        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .property-grid > .property-card {
+        flex-basis: 100%;
     }
 
     .footer-grid {

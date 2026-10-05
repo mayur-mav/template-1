@@ -87,9 +87,15 @@
             <div class="catalog-header">
                 <span class="results-count" id="resultsCount">Showing 4 Exclusive Residences</span>
             </div>
-            
-            <div class="property-grid" id="propertyGrid">
-                <!-- Dynamic cards render here -->
+
+            <div class="property-carousel">
+                <div class="property-grid" id="propertyGrid">
+                    <!-- Dynamic cards render here -->
+                </div>
+                <div class="carousel-controls" aria-label="Project carousel controls">
+                    <button class="carousel-arrow" type="button" aria-label="Previous projects" onclick="movePropertyCarousel(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="carousel-arrow" type="button" aria-label="Next projects" onclick="movePropertyCarousel(1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
             </div>
         </section>
 
@@ -452,7 +458,7 @@
     </div>
 
     <!-- 11. QUICK VIEW MODAL OVERLAY -->
-    <div class="modal-overlay" id="quickViewModal">
+    <!-- <div class="modal-overlay" id="quickViewModal">
         <div class="modal-box">
             <button class="modal-close-btn" onclick="closeModal('quickViewModal')">&times;</button>
             <div class="qv-header">
@@ -475,7 +481,7 @@
                 <button class="btn-view-details" id="qv-go-details">Visit Full Details Page</button>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- 12. TIMED WHATSAPP POPUP MODAL (Triggers after 3.5 seconds) -->
     <div class="modal-overlay" id="waPopModal">

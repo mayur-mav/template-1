@@ -4,6 +4,10 @@ let activeProperty = null;
 
 // INITIALIZATION
 document.addEventListener('DOMContentLoaded', async () => {
+    const propertyGrid = document.getElementById('propertyGrid');
+    propertyGrid?.addEventListener('scroll', updatePropertyCarouselControls, { passive: true });
+    window.addEventListener('resize', updatePropertyCarouselControls);
+
     const builder = document.body.getAttribute('data-builder');
 
     if (!builder) {
@@ -37,6 +41,7 @@ function renderPropertyCards(data) {
     const grid = document.getElementById('propertyGrid');
     const countEl = document.getElementById('resultsCount');
     grid.innerHTML = '';
+    grid.scrollTo({ left: 0, behavior: 'auto' });
 
     countEl.textContent = `Showing ${data.length} Exclusive ${data.length === 1 ? 'Residence' : 'Residences'}`;
 
@@ -48,6 +53,7 @@ function renderPropertyCards(data) {
                 <p style="color: var(--text-muted); margin-top: 5px;">Try tweaking your search keywords or clear filters.</p>
             </div>
         `;
+        updatePropertyCarouselControls();
         return;
     }
 
@@ -73,13 +79,34 @@ function renderPropertyCards(data) {
                     </div>
                 </div>
                 <div class="card-actions">
-                    <button class="btn-quick-view" onclick="openQuickView('${item.id}')">Quick View</button>
                     <button class="btn-view-details" onclick="openPropertyDetails('${item.id}')">View Details</button>
                 </div>
             </div>
         `;
         grid.appendChild(card);
     });
+    updatePropertyCarouselControls();
+}
+
+function updatePropertyCarouselControls() {
+    const grid = document.getElementById('propertyGrid');
+    const controls = document.querySelector('.carousel-controls');
+    if (!grid || !controls) return;
+
+    const arrows = controls.querySelectorAll('.carousel-arrow');
+    const hasOverflow = grid.scrollWidth > grid.clientWidth + 1;
+    controls.hidden = !hasOverflow;
+    arrows[0].disabled = grid.scrollLeft <= 1;
+    arrows[1].disabled = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 1;
+}
+
+function movePropertyCarousel(direction) {
+    const grid = document.getElementById('propertyGrid');
+    const card = grid?.querySelector('.property-card');
+    if (!grid || !card) return;
+
+    const gap = parseFloat(getComputedStyle(grid).columnGap) || 0;
+    grid.scrollBy({ left: direction * (card.getBoundingClientRect().width + gap), behavior: 'smooth' });
 }
 
 // CATEGORY FILTERING
@@ -239,6 +266,7 @@ function closeLightbox() {
 
 // EXPOSE FUNCTIONS TO GLOBAL SCOPE FOR HTML INLINE ONCLICK HANDLERS
 Object.assign(window, {
+    movePropertyCarousel,
     filterCategory,
     handleSearch,
     clearSearch,

@@ -87,9 +87,15 @@
             <div class="catalog-header">
                 <span class="results-count" id="resultsCount">Showing 4 Exclusive Residences</span>
             </div>
-            
-            <div class="property-grid" id="propertyGrid">
-                <!-- Dynamic cards render here -->
+
+            <div class="property-carousel">
+                <div class="property-grid" id="propertyGrid">
+                    <!-- Dynamic cards render here -->
+                </div>
+                <div class="carousel-controls" aria-label="Project carousel controls">
+                    <button class="carousel-arrow" type="button" aria-label="Previous projects" onclick="movePropertyCarousel(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="carousel-arrow" type="button" aria-label="Next projects" onclick="movePropertyCarousel(1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
             </div>
         </section>
 

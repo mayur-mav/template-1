@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const module = await import(`../data/${builder}.js`);
         propertiesData = module.propertiesData;
         activeProperty = propertiesData[0];
+        renderDeveloperHero(module.developerInfo?.hero);
 
         renderPropertyCards(propertiesData);
     } catch (err) {
@@ -35,6 +36,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }, 3500);
 });
+
+function renderDeveloperHero(hero) {
+    if (!hero) return;
+
+    const subtitle = document.getElementById('developer-hero-subtitle');
+    const title = document.getElementById('developer-hero-title');
+    const description = document.getElementById('developer-hero-description');
+    const image = document.getElementById('developer-hero-image');
+
+    if (subtitle) subtitle.textContent = hero.subtitle || '';
+    if (title) title.textContent = hero.title || '';
+    if (description) description.textContent = hero.description || '';
+    if (image && hero.image) image.src = hero.image;
+}
 
 // RENDER PROPERTY CARDS
 function renderPropertyCards(data) {
@@ -64,6 +79,7 @@ function renderPropertyCards(data) {
             <div class="card-image-wrap">
                 <img src="${item.images[0]}" alt="${item.name}" class="card-img">
                 <span class="card-badge ${item.badgeClass}">${item.statusText}</span>
+                ${item.rera?.trim() ? '<span class="rera-verified-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> RERA Verified</span>' : ''}
             </div>
             <div class="card-content">
                 <div class="card-location"><i class="fa-solid fa-location-dot"></i> ${item.location}</div>
@@ -180,6 +196,12 @@ function openPropertyDetails(id) {
     activeProperty = item;
 
     document.getElementById('dt-title').textContent = item.name;
+    const reraDetails = document.getElementById('dt-rera-details');
+    const reraValue = document.getElementById('dt-rera-value');
+    const hasRera = Boolean(item.rera?.trim());
+    reraDetails.hidden = !hasRera;
+    reraDetails.open = false;
+    reraValue.textContent = hasRera ? `RERA No: ${item.rera}` : '';
     document.getElementById('dt-location').innerHTML = `<i class="fa-solid fa-location-dot"></i> ${item.location}`;
     document.getElementById('dt-price').textContent = item.price;
     document.getElementById('dt-status').textContent = item.statusText;
@@ -245,6 +267,31 @@ function showCatalogView() {
     document.getElementById('property-detail-view').style.display = 'none';
     document.getElementById('catalog-view').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goToSiteVisitForm() {
+    const detailView = document.getElementById('property-detail-view');
+    if (detailView && detailView.style.display !== 'none') {
+        detailView.style.display = 'none';
+        document.getElementById('catalog-view').style.display = 'block';
+    }
+
+    const menu = document.getElementById('primaryNavigation');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    if (menu?.classList.contains('active')) {
+        menu.classList.remove('active');
+        toggle?.setAttribute('aria-expanded', 'false');
+        toggle?.setAttribute('aria-label', 'Open navigation menu');
+        if (toggle) toggle.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+    }
+
+    requestAnimationFrame(() => {
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+}
+
+function goToDetailEnquiry() {
+    document.getElementById('detail-site-visit')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 function toggleMobileMenu() {
@@ -315,6 +362,8 @@ Object.assign(window, {
     openQuickView,
     openPropertyDetails,
     showCatalogView,
+    goToSiteVisitForm,
+    goToDetailEnquiry,
     toggleMobileMenu,
     switchFloorplan,
     toggleFaq,

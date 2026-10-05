@@ -42,10 +42,10 @@
         <ul class="nav-menu" id="primaryNavigation">
             <li><a href="#" class="nav-link active" onclick="showCatalogView(); return false;">Residences</a></li>
             <li><a href="#about" class="nav-link" onclick="showCatalogView();">About Kolte-Patil</a></li>
-            <li><a href="#why-us" class="nav-link" onclick="showCatalogView();">Why Choose Us</a></li>
+            <li><a href="#faq" class="nav-link" onclick="showCatalogView();">FAQ</a></li>
             <li><a href="#contact" class="nav-link" onclick="showCatalogView();">Contact</a></li>
             <li class="nav-visit-item">
-                <button class="btn-header-cta" onclick="openWhatsAppModal()">
+                <button class="btn-header-cta" onclick="goToSiteVisitForm()">
                     <i class="fa-regular fa-calendar-check"></i> Schedule Visit
                 </button>
             </li>
@@ -58,10 +58,12 @@
     <!-- MAIN SPA CATALOG CONTAINER -->
     <main id="catalog-view">
         <!-- 3. HERO & SIMPLE SEARCH SECTION -->
-        <section class="hero-section">
-            <span class="hero-subtitle">PREMIUM LUXURY LIVING</span>
-            <h1 class="hero-title">Crafting Iconic Landmarks</h1>
-            <p class="hero-description">
+        <section class="hero-section" id="developer-hero">
+            <img class="hero-banner-image" id="developer-hero-image" alt="" aria-hidden="true">
+            <div class="hero-content">
+            <span class="hero-subtitle" id="developer-hero-subtitle">PREMIUM LUXURY LIVING</span>
+            <h1 class="hero-title" id="developer-hero-title">Crafting Iconic Landmarks</h1>
+            <p class="hero-description" id="developer-hero-description">
                 Discover Kolte-Patil’s finest residential addresses across Pune & Bengaluru. Exceptional architecture, prime connectivity, and timeless elegance.
             </p>
 
@@ -74,6 +76,7 @@
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
+            </div>
             </div>
         </section>
 
@@ -131,39 +134,6 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80" alt="Kolte-Patil Landmark Architecture" style="width: 100%; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); border: 1px solid var(--border-gold);">
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. WHY CHOOSE US -->
-        <section class="why-section" id="why-us">
-            <div class="section-header-center">
-                <span class="hero-subtitle">THE KOLTE-PATIL ADVANTAGE</span>
-                <h2 class="serif-font" style="font-size: 2.2rem; margin-top: 10px;">Why Homebuyers Trust Us</h2>
-            </div>
-            <div class="why-grid">
-                <div class="why-card">
-                    <div class="why-icon"><i class="fa-solid fa-crown"></i></div>
-                    <h3 class="why-title serif-font">24K Luxury Standard</h3>
-                    <p class="why-desc">Signature luxury residences with Italian marble, smart home automation, and curated concierge services.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon"><i class="fa-solid fa-clock-check"></i></div>
-                    <h3 class="why-title serif-font">On-Time Delivery</h3>
-                    <p class="why-desc">Strict adherence to delivery timelines supported by advanced precast construction engineering.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon"><i class="fa-solid fa-leaf"></i></div>
-                    <h3 class="why-title serif-font">Eco-Friendly Living</h3>
-                    <p class="why-desc">IGBC Gold Certified sustainable developments with rainwater harvesting and solar lighting.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon"><i class="fa-solid fa-handshake-angle"></i></div>
-                    <h3 class="why-title serif-font">Complete Transparency</h3>
-                    <p class="why-desc">100% RERA compliant documentation, clear titles, and seamless home loan assistance.</p>
-                </div>
             </div>
         </section>
 
@@ -215,7 +185,7 @@
         </section>
 
         <!-- 9. FAQ ACCORDION -->
-        <section class="faq-section">
+        <section class="faq-section" id="faq">
             <div class="section-header-center">
                 <span class="hero-subtitle">FREQUENTLY ASKED QUESTIONS</span>
                 <h2 class="serif-font" style="font-size: 2rem; margin-top: 10px;">Everything You Need to Know</h2>
@@ -264,7 +234,7 @@
                     <ul class="footer-links">
                         <li><a href="#" onclick="showCatalogView(); return false;">Residences</a></li>
                         <li><a href="#about" onclick="showCatalogView();">About Us</a></li>
-                        <li><a href="#why-us" onclick="showCatalogView();">Why Us</a></li>
+                        <li><a href="#faq" onclick="showCatalogView();">FAQ</a></li>
                         <li><a href="#contact" onclick="showCatalogView();">Contact Us</a></li>
                     </ul>
                 </div>
@@ -299,15 +269,21 @@
             <button class="btn-back" onclick="showCatalogView()">
                 <i class="fa-solid fa-arrow-left"></i> Back to Residences
             </button>
-            <button class="btn-header-cta" onclick="openWhatsAppModal()">
-                <i class="fa-brands fa-whatsapp"></i> Instant Info
+            <button class="btn-header-cta" onclick="goToDetailEnquiry()">
+                <i class="fa-regular fa-calendar-check"></i> Enquire Now
             </button>
         </div>
 
         <div class="detail-hero-header">
             <div class="detail-title-wrap">
                 <div>
-                    <h1 class="detail-title" id="dt-title">24K Altura</h1>
+                    <div class="detail-name-line">
+                        <h1 class="detail-title" id="dt-title">24K Altura</h1>
+                    <details class="rera-details" id="dt-rera-details" hidden>
+                        <summary><i class="fa-solid fa-circle-check" aria-hidden="true"></i> RERA Verified</summary>
+                        <div class="rera-number" id="dt-rera-value"></div>
+                    </details>
+                    </div>
                     <div class="detail-location-str" id="dt-location">
                         <i class="fa-solid fa-location-dot"></i> Baner-Pashan Link Road, Pune
                     </div>
@@ -416,7 +392,7 @@
 
             <!-- STICKY SIDEBAR ENQUIRY FORM -->
             <div class="detail-sidebar">
-                <div class="enquiry-card">
+                <div class="enquiry-card" id="detail-site-visit">
                     <h4 class="enquiry-title serif-font">Schedule a Site Visit</h4>
                     <p class="enquiry-subtitle">Get private tour & official pricing breakdown</p>
                     

@@ -1,3 +1,12 @@
+export const developerInfo = {
+    hero: {
+        subtitle: 'Prestige Group | Bengaluru',
+        title: 'A Better Way to Come Home',
+        description: 'Explore thoughtfully designed Prestige residences, with distinctive spaces and connected communities across Bengaluru.',
+        image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85'
+    }
+};
+
 export const propertiesData = [
     {
         id: 'prestige-parklane',

@@ -26,7 +26,8 @@ export const propertiesData = [
             { name: 'Infinity Pool', icon: 'fa-solid fa-water-ladder' },
             { name: 'Modern Gym', icon: 'fa-solid fa-dumbbell' },
             { name: 'Squash Court', icon: 'fa-solid fa-table-tennis-paddle-ball' }
-        ]
+        ],
+        connectivity: []
     },
     {
         id: 'life-republic',
@@ -55,7 +56,8 @@ export const propertiesData = [
             { name: 'Clubhouse', icon: 'fa-solid fa-building-user' },
             { name: 'Sports Complex', icon: 'fa-solid fa-volleyball' },
             { name: 'School in Campus', icon: 'fa-solid fa-school' }
-        ]
+        ],
+        connectivity: []
     },
     {
         id: 'stargaze',
@@ -84,7 +86,8 @@ export const propertiesData = [
             { name: 'Tennis Court', icon: 'fa-solid fa-baseball' },
             { name: 'Swimming Pool', icon: 'fa-solid fa-person-swimming' },
             { name: 'Spa & Sauna', icon: 'fa-solid fa-hot-tub-person' }
-        ]
+        ],
+        connectivity: []
     },
     {
         id: 'tuscan-park',
@@ -113,6 +116,67 @@ export const propertiesData = [
             { name: 'Clubhouse', icon: 'fa-solid fa-place-of-worship' },
             { name: 'Jogging Track', icon: 'fa-solid fa-person-running' },
             { name: 'Kids Play Zone', icon: 'fa-solid fa-child-reaching' }
-        ]
+        ],
+        connectivity: []
+    },
+        {
+        id: 'tuscan-park',
+        name: 'Tuscan Park',
+        location: 'NIBM Road, Pune',
+        category: 'NEW',
+        statusText: 'New Launch',
+        badgeClass: 'badge-new',
+        price: '₹ 98 Lakhs*',
+        bhk: '2 & 3 BHK Italian Living',
+        area: '5 Acres',
+        possession: 'March 2027',
+        rera: 'P52100051203',
+        description: 'Italian Tuscan architecture recreated on NIBM Road. Elegant stone facades, arched pathways, and serene landscaped courtyards.',
+        images: [
+            'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80'
+        ],
+        floorPlans: [
+            { bhk: '2 BHK', sqft: '850 Sq. Ft.', price: '₹ 98 Lakhs*' },
+            { bhk: '3 BHK', sqft: '1,180 Sq. Ft.', price: '₹ 1.35 Cr*' }
+        ],
+        amenities: [
+            { name: 'Tuscan Plaza', icon: 'fa-solid fa-monument' },
+            { name: 'Clubhouse', icon: 'fa-solid fa-place-of-worship' },
+            { name: 'Jogging Track', icon: 'fa-solid fa-person-running' },
+            { name: 'Kids Play Zone', icon: 'fa-solid fa-child-reaching' }
+        ],
+        connectivity: []
+    },
+        {
+        id: 'tuscan-park',
+        name: 'Tuscan Park',
+        location: 'NIBM Road, Pune',
+        category: 'NEW',
+        statusText: 'New Launch',
+        badgeClass: 'badge-new',
+        price: '₹ 98 Lakhs*',
+        bhk: '2 & 3 BHK Italian Living',
+        area: '5 Acres',
+        possession: 'March 2027',
+        rera: 'P52100051203',
+        description: 'Italian Tuscan architecture recreated on NIBM Road. Elegant stone facades, arched pathways, and serene landscaped courtyards.',
+        images: [
+            'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80'
+        ],
+        floorPlans: [
+            { bhk: '2 BHK', sqft: '850 Sq. Ft.', price: '₹ 98 Lakhs*' },
+            { bhk: '3 BHK', sqft: '1,180 Sq. Ft.', price: '₹ 1.35 Cr*' }
+        ],
+        amenities: [
+            { name: 'Tuscan Plaza', icon: 'fa-solid fa-monument' },
+            { name: 'Clubhouse', icon: 'fa-solid fa-place-of-worship' },
+            { name: 'Jogging Track', icon: 'fa-solid fa-person-running' },
+            { name: 'Kids Play Zone', icon: 'fa-solid fa-child-reaching' }
+        ],
+        connectivity: []
     }
 ];

@@ -70,7 +70,7 @@ function renderPropertyCards(data) {
                 <h3 class="card-title">${item.name}</h3>
                 <div class="card-specs-row">
                     <div class="spec-item"><i class="fa-solid fa-bed"></i> ${item.bhk}</div>
-                    <div class="spec-item"><i class="fa-solid fa-vector-square"></i> ${item.area}</div>
+                    <div class="spec-item spec-item-area"><i class="fa-solid fa-vector-square"></i> ${item.area}</div>
                 </div>
                 <div class="card-footer-price">
                     <div>
@@ -83,6 +83,13 @@ function renderPropertyCards(data) {
                 </div>
             </div>
         `;
+
+        const cardImage = card.querySelector('.card-img');
+        cardImage.addEventListener('error', () => {
+            const imageWrap = cardImage.closest('.card-image-wrap');
+            imageWrap?.classList.add('image-unavailable');
+        }, { once: true });
+
         grid.appendChild(card);
     });
     updatePropertyCarouselControls();
@@ -204,6 +211,30 @@ function openPropertyDetails(id) {
         box.innerHTML = `<i class="${a.icon}"></i><span>${a.name}</span>`;
         amenGrid.appendChild(box);
     });
+
+    const connectivitySection = document.getElementById('dt-connectivity-section');
+    const connectivityGrid = document.getElementById('dt-connectivity');
+    const nearbyPlaces = item.connectivity || [];
+    connectivityGrid.innerHTML = '';
+    nearbyPlaces.forEach(place => {
+        const row = document.createElement('div');
+        row.className = 'loc-item';
+
+        if (place.icon) {
+            const icon = document.createElement('i');
+            icon.className = place.icon;
+            icon.setAttribute('aria-hidden', 'true');
+            row.appendChild(icon);
+        }
+
+        const text = document.createElement('div');
+        const label = document.createElement('strong');
+        label.textContent = `${place.label}:`;
+        text.append(label, document.createTextNode(` ${place.distance}`));
+        row.appendChild(text);
+        connectivityGrid.appendChild(row);
+    });
+    connectivitySection.hidden = nearbyPlaces.length === 0;
 
     document.getElementById('catalog-view').style.display = 'none';
     document.getElementById('property-detail-view').style.display = 'block';

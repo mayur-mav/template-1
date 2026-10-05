@@ -4,6 +4,15 @@ let activeProperty = null;
 
 // INITIALIZATION
 document.addEventListener('DOMContentLoaded', async () => {
+    document.getElementById('primaryNavigation')?.addEventListener('click', event => {
+        const clickedLink = event.target.closest('.nav-link');
+        if (!clickedLink) return;
+
+        document.querySelectorAll('#primaryNavigation .nav-link').forEach(link => {
+            link.classList.toggle('active', link === clickedLink);
+        });
+    });
+
     const propertyGrid = document.getElementById('propertyGrid');
     propertyGrid?.addEventListener('scroll', updatePropertyCarouselControls, { passive: true });
     window.addEventListener('resize', updatePropertyCarouselControls);
@@ -154,6 +163,14 @@ function clearSearch() {
     applyFilters();
 }
 
+function submitSearch() {
+    handleSearch();
+    document.querySelectorAll('#primaryNavigation .nav-link').forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#residences');
+    });
+    goToResidences();
+}
+
 function applyFilters() {
     const query = document.getElementById('searchInput').value.toLowerCase().trim();
     
@@ -269,6 +286,35 @@ function showCatalogView() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+function navigateToCatalogSection(sectionId) {
+    const detailView = document.getElementById('property-detail-view');
+    if (detailView && detailView.style.display !== 'none') {
+        detailView.style.display = 'none';
+        document.getElementById('catalog-view').style.display = 'block';
+    }
+
+    const menu = document.getElementById('primaryNavigation');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    if (menu?.classList.contains('active')) {
+        menu.classList.remove('active');
+        toggle?.setAttribute('aria-expanded', 'false');
+        toggle?.setAttribute('aria-label', 'Open navigation menu');
+        if (toggle) toggle.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+    }
+
+    requestAnimationFrame(() => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+}
+
+function goToOverview() {
+    navigateToCatalogSection('developer-hero');
+}
+
+function goToResidences() {
+    navigateToCatalogSection('residences');
+}
+
 function goToSiteVisitForm() {
     const detailView = document.getElementById('property-detail-view');
     if (detailView && detailView.style.display !== 'none') {
@@ -359,9 +405,12 @@ Object.assign(window, {
     filterCategory,
     handleSearch,
     clearSearch,
+    submitSearch,
     openQuickView,
     openPropertyDetails,
     showCatalogView,
+    goToOverview,
+    goToResidences,
     goToSiteVisitForm,
     goToDetailEnquiry,
     toggleMobileMenu,

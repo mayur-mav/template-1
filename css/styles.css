@@ -311,6 +311,7 @@ button {
     position: relative;
     border-bottom: 1px solid var(--border-light);
     width: 100%;
+    scroll-margin-top: 90px;
     min-height: 560px;
     display: flex;
     align-items: center;
@@ -479,6 +480,7 @@ button {
 .catalog-section {
     padding: 30px 5% 70px 5%;
     width: 100%;
+    scroll-margin-top: 90px;
     background: var(--bg-accent);
 }
 

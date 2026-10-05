@@ -61,7 +61,7 @@ export const propertiesData = [
     {
         id: 'prestige-evergreen',
         name: 'Prestige evergreen',
-        location: 'SH 35, Whitefield Main Road, Varthur, Bengaluru Pincode 560087',
+        location: 'SH 35, Whitefield Main Road, Varthur, Bengaluru, Karnataka 560087',
         category: 'NEW',
         statusText: 'New Launch',
         badgeClass: 'badge-new',
@@ -127,7 +127,7 @@ export const propertiesData = [
     {
         id: 'prestige-glenbrook',
         name: 'Prestige Glenbrook',
-        location: 'Nallurhalli, Borewell Road, Whitefield, Bengaluru Pincode 560066',
+        location: 'Nallurhalli, Borewell Road, Whitefield, Bengaluru, Karnataka 560066',
         category: 'NEW',
         statusText: 'New Launch',
         badgeClass: 'badge-new',

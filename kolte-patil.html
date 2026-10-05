@@ -40,7 +40,8 @@
             </div>
         </div>
         <ul class="nav-menu" id="primaryNavigation">
-            <li><a href="#" class="nav-link active" onclick="showCatalogView(); return false;">Residences</a></li>
+            <li><a href="#developer-hero" class="nav-link active" onclick="goToOverview(); return false;">Overview</a></li>
+            <li><a href="#residences" class="nav-link" onclick="goToResidences(); return false;">Residences</a></li>
             <li><a href="#about" class="nav-link" onclick="showCatalogView();">About Kolte-Patil</a></li>
             <li><a href="#faq" class="nav-link" onclick="showCatalogView();">FAQ</a></li>
             <li><a href="#contact" class="nav-link" onclick="showCatalogView();">Contact</a></li>
@@ -71,7 +72,7 @@
             <div class="search-container">
                 <div class="search-box-wrapper">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" id="searchInput" class="search-input" placeholder="Search by project name, location (e.g. Hinjewadi, NIBM), or BHK..." oninput="handleSearch()">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search by project name, location (e.g. Hinjewadi, NIBM), or BHK..." oninput="handleSearch()" onkeydown="if (event.key === 'Enter') { event.preventDefault(); submitSearch(); }">
                     <button id="searchClearBtn" class="search-clear-btn" onclick="clearSearch()">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
@@ -91,7 +92,7 @@
         </section>
 
         <!-- 5. PROPERTY CATALOG GRID -->
-        <section class="catalog-section">
+        <section class="catalog-section" id="residences">
             <div class="catalog-header">
                 <span class="results-count" id="resultsCount">Showing 4 Exclusive Residences</span>
             </div>

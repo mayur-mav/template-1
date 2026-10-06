@@ -1101,8 +1101,107 @@ button {
 .footer-bottom {
     border-top: 1px solid rgba(255,255,255,0.1);
     padding-top: 25px;
-    text-align: center;
     font-size: 0.82rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    text-align: left;
+}
+
+.footer-feature-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(32px, 8vw, 110px);
+    margin-bottom: 36px;
+    align-items: center;
+}
+
+.footer-brand-block,
+.footer-partner-block {
+    min-width: 0;
+}
+
+.footer-partner-block {
+    justify-self: end;
+    width: 100%;
+    max-width: 540px;
+}
+
+.footer-brand-block,
+.footer-project-block,
+.footer-project-item {
+    min-width: 0;
+}
+
+.footer-brand-block > p,
+.footer-partner-copy {
+    color: #94A3B8;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.footer-builder-location {
+    display: block;
+    margin: -5px 0 24px;
+    color: #94A3B8;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    line-height: 1.6;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+}
+
+.footer-brand-summary {
+    margin: 0;
+    color: #94A3B8;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.footer-partner-copy {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.footer-partner-copy strong {
+    color: #fff;
+}
+
+.footer-policy-link {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.footer-policy-link:hover {
+    color: var(--brand-gold);
+}
+
+.footer-disclaimer {
+    padding: 24px 0;
+    margin: 0 0 2px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #94A3B8;
+    line-height: 1.75;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+    .footer-feature-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+    }
+
+    .footer-partner-block {
+        justify-self: stretch;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+    }
 }
 
 /* ---------------- FULL PROPERTY DETAIL SPA VIEW ---------------- */

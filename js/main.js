@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderDeveloperHero(module.developerInfo?.hero);
         renderBuilderFaqs(module.faqData || []);
         populateHomeProjectDropdown(propertiesData);
+        renderBuilderFooter(module.developerInfo?.hero, propertiesData);
 
         renderPropertyCards(propertiesData);
     } catch (err) {
@@ -64,6 +65,22 @@ function renderDeveloperHero(hero) {
     if (title) title.textContent = hero.title || '';
     if (description) description.textContent = hero.description || '';
     if (image && hero.image) image.src = hero.image;
+}
+
+function renderBuilderFooter(hero, properties) {
+    const builder = hero?.subtitle?.split('|')[0].trim() || 'Property Developer';
+    const builderName = document.getElementById('footer-builder-name');
+    const location = document.getElementById('footer-builder-location');
+    const summary = document.getElementById('footer-brand-summary');
+    const attribution = document.getElementById('footer-builder-attribution');
+    if (!builderName || !location || !summary || !attribution) return;
+
+    builderName.textContent = builder;
+    location.textContent = hero?.subtitle?.split('|').slice(1).join('|').trim() || 'Residential Developments';
+    const propertyCount = properties.length;
+    summary.textContent = `Explore ${propertyCount} ${propertyCount === 1 ? 'property' : 'properties'} by ${builder} featured on this page.`;
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    attribution.textContent = `Residential properties by ${builder}`;
 }
 
 function populateHomeProjectDropdown(projects) {

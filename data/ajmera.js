@@ -7,6 +7,21 @@ export const developerInfo = {
     }
 };
 
+export const faqData = [
+    {
+        question: 'where are Ajmera Group projects located in Bengaluru?',
+        answer: 'Ajmera Group offers residential developments in well-connected Bengaluru neighbourhoods. The Ajmera Iris project featured here is located in Electronic City Phase 2.'
+    },
+    {
+        question: 'What configurations are available at Ajmera Iris?',
+        answer: 'Ajmera Iris offers 2 BHK and 3 BHK residences. Contact our team for current availability, plans, and pricing.'
+    },
+    {
+        question: 'How can I arrange a site visit for an Ajmera home?',
+        answer: 'Use the enquiry form on this page or contact our sales team to request a site visit and confirm a convenient time.'
+    }
+];
+
 export const propertiesData = [
     {
         id: 'ajmera-iris',

@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         propertiesData = module.propertiesData;
         activeProperty = propertiesData[0];
         renderDeveloperHero(module.developerInfo?.hero);
+        renderBuilderFaqs(module.faqData || []);
 
         renderPropertyCards(propertiesData);
     } catch (err) {
@@ -58,6 +59,32 @@ function renderDeveloperHero(hero) {
     if (title) title.textContent = hero.title || '';
     if (description) description.textContent = hero.description || '';
     if (image && hero.image) image.src = hero.image;
+}
+
+function renderBuilderFaqs(faqs) {
+    const container = document.querySelector('#faq .faq-container');
+    if (!container) return;
+
+    container.replaceChildren();
+    faqs.forEach(({ question, answer }) => {
+        const item = document.createElement('div');
+        item.className = 'faq-item';
+        item.addEventListener('click', () => toggleFaq(item));
+
+        const questionRow = document.createElement('div');
+        questionRow.className = 'faq-question';
+        const questionText = document.createElement('span');
+        questionText.textContent = question;
+        const icon = document.createElement('i');
+        icon.className = 'fa-solid fa-chevron-down';
+        questionRow.append(questionText, icon);
+
+        const answerText = document.createElement('div');
+        answerText.className = 'faq-answer';
+        answerText.textContent = answer;
+        item.append(questionRow, answerText);
+        container.appendChild(item);
+    });
 }
 
 // RENDER PROPERTY CARDS

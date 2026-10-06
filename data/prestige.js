@@ -7,6 +7,21 @@ export const developerInfo = {
     }
 };
 
+export const faqData = [
+    {
+        question: 'Where are Prestige Group projects located in Bengaluru?',
+        answer: 'Prestige Group has residential developments across Bengaluru. Each listing on this page includes its location and project details.'
+    },
+    {
+        question: 'How can I check availability and pricing for a Prestige home?',
+        answer: 'Choose a project and submit an enquiry to receive the latest availability, configuration, and pricing information.'
+    },
+    {
+        question: 'How can I arrange a site visit for a Prestige project?',
+        answer: 'Use the enquiry form on this page or contact our sales team to request a site visit and confirm a convenient time.'
+    }
+];
+
 export const propertiesData = [
     {
         id: 'prestige-parklane',

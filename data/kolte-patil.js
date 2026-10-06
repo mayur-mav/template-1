@@ -7,6 +7,21 @@ export const developerInfo = {
     }
 };
 
+export const faqData = [
+    {
+        question: 'Where are Kolte-Patil projects located?',
+        answer: 'Kolte-Patil develops residential communities in multiple cities. Refer to the project listings on this page for their locations and details.'
+    },
+    {
+        question: 'How can I check availability and pricing for a Kolte-Patil home?',
+        answer: 'Choose a project and submit an enquiry to receive the latest availability, configuration, and pricing information.'
+    },
+    {
+        question: 'How can I arrange a site visit for a Kolte-Patil project?',
+        answer: 'Use the enquiry form on this page or contact our sales team to request a site visit and confirm a convenient time.'
+    }
+];
+
 export const propertiesData = [
     {
         id: '24k-altura',

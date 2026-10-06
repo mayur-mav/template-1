@@ -170,6 +170,13 @@
                             <div class="form-group">
                                 <input type="email" class="form-input" placeholder="Email Address" required>
                             </div>
+                            <div class="form-group">
+                                <div class="project-select" id="homeProjectSelect">
+                                    <button type="button" class="form-input project-select-trigger" aria-haspopup="listbox" aria-expanded="false"><span>Select a Project</span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                                    <div class="project-select-options" role="listbox" aria-label="Project" hidden></div>
+                                    <input type="hidden" name="project" value="">
+                                </div>
+                            </div>
                             <button type="submit" class="btn-submit-enquiry">Submit VIP Enquiry</button>
                         </form>
                     </div>
@@ -372,12 +379,13 @@
                             <input type="email" class="form-input" placeholder="Email Address" required>
                         </div>
                         <div class="form-group">
-                            <select class="form-input">
-                                <option>Select Preferred BHK</option>
-                                <option>2 BHK</option>
-                                <option>3 BHK</option>
-                                <option>4 BHK</option>
-                            </select>
+                            <div class="bhk-select" id="preferredBhkSelect">
+                                <button type="button" class="form-input bhk-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                                    <span>Select Preferred BHK</span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                                </button>
+                                <div class="bhk-select-options" role="listbox" aria-label="Preferred BHK" hidden></div>
+                                <input type="hidden" name="preferredBhk" id="preferredBhkValue" value="">
+                            </div>
                         </div>
                         <button type="submit" class="btn-submit-enquiry">Request Instant Callback</button>
                     </form>

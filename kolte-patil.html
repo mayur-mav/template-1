@@ -171,12 +171,22 @@
                                 <input type="email" class="form-input" placeholder="Email Address" required>
                             </div>
                             <div class="form-group">
-                                <select class="form-input">
-                                    <option>Select Interested City / Location</option>
-                                    <option>Pune - Baner / Hinjewadi / Bavdhan</option>
-                                    <option>Pune - NIBM / Kondhwa / South Pune</option>
-                                    <option>Bengaluru Developments</option>
-                                </select>
+                                <div class="project-select" id="homeProjectSelect">
+                                    <button type="button" class="form-input project-select-trigger" aria-haspopup="listbox" aria-expanded="false"><span>Select a Project</span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                                    <div class="project-select-options" role="listbox" aria-label="Project" hidden></div>
+                                    <input type="hidden" name="project" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="project-select" id="homeLocationSelect">
+                                    <button type="button" class="form-input project-select-trigger" aria-haspopup="listbox" aria-expanded="false"><span>Select Interested City / Location</span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                                    <div class="project-select-options" role="listbox" aria-label="Interested City or Location" hidden>
+                                        <button type="button" class="project-select-option" role="option" aria-selected="false" data-value="Pune - Baner / Hinjewadi / Bavdhan">Pune - Baner / Hinjewadi / Bavdhan</button>
+                                        <button type="button" class="project-select-option" role="option" aria-selected="false" data-value="Pune - NIBM / Kondhwa / South Pune">Pune - NIBM / Kondhwa / South Pune</button>
+                                        <button type="button" class="project-select-option" role="option" aria-selected="false" data-value="Bengaluru Developments">Bengaluru Developments</button>
+                                    </div>
+                                    <input type="hidden" name="location" value="">
+                                </div>
                             </div>
                             <button type="submit" class="btn-submit-enquiry">Submit VIP Enquiry</button>
                         </form>
@@ -380,12 +390,13 @@
                             <input type="email" class="form-input" placeholder="Email Address" required>
                         </div>
                         <div class="form-group">
-                            <select class="form-input">
-                                <option>Select Preferred BHK</option>
-                                <option>2 BHK</option>
-                                <option>3 BHK</option>
-                                <option>4 BHK</option>
-                            </select>
+                            <div class="bhk-select" id="preferredBhkSelect">
+                                <button type="button" class="form-input bhk-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                                    <span>Select Preferred BHK</span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                                </button>
+                                <div class="bhk-select-options" role="listbox" aria-label="Preferred BHK" hidden></div>
+                                <input type="hidden" name="preferredBhk" id="preferredBhkValue" value="">
+                            </div>
                         </div>
                         <button type="submit" class="btn-submit-enquiry">Request Instant Callback</button>
                     </form>

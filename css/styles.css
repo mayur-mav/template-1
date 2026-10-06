@@ -586,6 +586,15 @@ button {
     max-width: 100%;
 }
 
+.property-card {
+    cursor: pointer;
+}
+
+.property-card:focus-visible {
+    outline: 3px solid var(--accent-color, #b08d57);
+    outline-offset: 3px;
+}
+
 .property-card:hover {
     transform: translateY(-6px);
     box-shadow: var(--shadow-lg);
@@ -1659,6 +1668,141 @@ button {
 .form-input:focus {
     border-color: var(--brand-gold);
     box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
+}
+
+.bhk-select {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+}
+
+.project-select {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+}
+
+.bhk-select-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    text-align: left;
+    background: #fff;
+    cursor: pointer;
+}
+
+.project-select-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    text-align: left;
+    background: #fff;
+    cursor: pointer;
+}
+
+.project-select-trigger span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.project-select-trigger i {
+    flex: 0 0 auto;
+    font-size: 0.8em;
+}
+
+.bhk-select-trigger span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.bhk-select-trigger i {
+    flex: 0 0 auto;
+    font-size: 0.8em;
+}
+
+.bhk-select-options {
+    position: absolute;
+    z-index: 20;
+    inset-inline: 0;
+    top: calc(100% + 6px);
+    width: 100%;
+    max-height: min(40vh, 240px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 6px;
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+}
+
+.project-select-options {
+    position: absolute;
+    z-index: 20;
+    inset-inline: 0;
+    top: calc(100% + 6px);
+    width: 100%;
+    max-height: min(40vh, 240px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 6px;
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+}
+
+.project-select-options[hidden] { display: none; }
+.project-select-options.opens-up { top: auto; bottom: calc(100% + 6px); }
+
+.project-select-option {
+    display: block;
+    width: 100%;
+    padding: 11px 12px;
+    border: 0;
+    border-radius: 6px;
+    background: #fff;
+    color: var(--text-primary);
+    text-align: left;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+}
+
+.project-select-option:hover,
+.project-select-option:focus-visible,
+.project-select-option[aria-selected="true"] {
+    background: var(--bg-champagne);
+    outline: none;
+}
+
+.bhk-select-options[hidden] {
+    display: none;
+}
+
+.bhk-select-options.opens-up {
+    top: auto;
+    bottom: calc(100% + 6px);
+}
+
+.bhk-select-option {
+    display: block;
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 6px;
+    background: #fff;
+    color: var(--text-primary);
+    text-align: left;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+}
+
+.bhk-select-option:hover,
+.bhk-select-option:focus-visible,
+.bhk-select-option[aria-selected="true"] {
+    background: var(--bg-champagne);
+    outline: none;
 }
 
 .btn-submit-enquiry {

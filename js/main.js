@@ -4,6 +4,10 @@ let activeProperty = null;
 
 // INITIALIZATION
 document.addEventListener('DOMContentLoaded', async () => {
+    document.addEventListener('click', handleBhkDropdownClick);
+    document.addEventListener('click', handleProjectDropdownClick);
+    document.addEventListener('keydown', handleBhkDropdownKeydown);
+    document.addEventListener('keydown', handleProjectDropdownKeydown);
     document.getElementById('primaryNavigation')?.addEventListener('click', event => {
         const clickedLink = event.target.closest('.nav-link');
         if (!clickedLink) return;
@@ -31,6 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         activeProperty = propertiesData[0];
         renderDeveloperHero(module.developerInfo?.hero);
         renderBuilderFaqs(module.faqData || []);
+        populateHomeProjectDropdown(propertiesData);
 
         renderPropertyCards(propertiesData);
     } catch (err) {
@@ -59,6 +64,80 @@ function renderDeveloperHero(hero) {
     if (title) title.textContent = hero.title || '';
     if (description) description.textContent = hero.description || '';
     if (image && hero.image) image.src = hero.image;
+}
+
+function populateHomeProjectDropdown(projects) {
+    const select = document.getElementById('homeProjectSelect');
+    if (!select) return;
+    const listbox = select.querySelector('.project-select-options');
+    listbox.replaceChildren();
+
+    projects.forEach(project => {
+        const option = document.createElement('button');
+        option.type = 'button';
+        option.className = 'project-select-option';
+        option.setAttribute('role', 'option');
+        option.setAttribute('aria-selected', 'false');
+        option.dataset.value = project.name;
+        option.textContent = project.name;
+        listbox.appendChild(option);
+    });
+    select.hidden = projects.length === 0;
+}
+
+function handleProjectDropdownClick(event) {
+    const select = event.target.closest('.project-select');
+    const trigger = event.target.closest('.project-select-trigger');
+
+    if (trigger && select?.contains(trigger)) {
+        const listbox = select.querySelector('.project-select-options');
+        const open = trigger.getAttribute('aria-expanded') === 'true';
+        listbox.hidden = open;
+        trigger.setAttribute('aria-expanded', String(!open));
+        if (!open) {
+            const rect = trigger.getBoundingClientRect();
+            const menuHeight = Math.min(listbox.children.length * 44 + 14, window.innerHeight * 0.4, 240);
+            listbox.classList.toggle('opens-up', window.innerHeight - rect.bottom < menuHeight && rect.top > window.innerHeight - rect.bottom);
+            listbox.querySelector('.project-select-option')?.focus();
+        }
+        return;
+    }
+
+    const option = event.target.closest('.project-select-option');
+    if (option && select?.contains(option)) {
+        const listbox = select.querySelector('.project-select-options');
+        select.querySelector('.project-select-trigger span').textContent = option.dataset.value;
+        select.querySelector('input[type="hidden"]').value = option.dataset.value;
+        listbox.querySelectorAll('.project-select-option').forEach(candidate => {
+            candidate.setAttribute('aria-selected', String(candidate === option));
+        });
+        listbox.hidden = true;
+        select.querySelector('.project-select-trigger').setAttribute('aria-expanded', 'false');
+        select.querySelector('.project-select-trigger').focus();
+        return;
+    }
+
+    document.querySelectorAll('.project-select').forEach(dropdown => {
+        dropdown.querySelector('.project-select-options').hidden = true;
+        dropdown.querySelector('.project-select-options').classList.remove('opens-up');
+        dropdown.querySelector('.project-select-trigger').setAttribute('aria-expanded', 'false');
+    });
+}
+
+function handleProjectDropdownKeydown(event) {
+    const select = event.target.closest('.project-select');
+    if (!select) return;
+    const trigger = select.querySelector('.project-select-trigger');
+    if (event.target === trigger && ['ArrowDown', 'Enter', ' '].includes(event.key) && trigger.getAttribute('aria-expanded') !== 'true') {
+        event.preventDefault();
+        trigger.click();
+        return;
+    }
+    if (event.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+        select.querySelector('.project-select-options').hidden = true;
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.focus();
+    }
 }
 
 function renderBuilderFaqs(faqs) {
@@ -111,6 +190,20 @@ function renderPropertyCards(data) {
     data.forEach(item => {
         const card = document.createElement('div');
         card.className = 'property-card';
+        card.tabIndex = 0;
+        card.setAttribute('role', 'link');
+        card.setAttribute('aria-label', `View details for ${item.name}`);
+        card.addEventListener('click', event => {
+            if (event.target.closest('button')) return;
+            openPropertyDetails(item.id);
+        });
+        card.addEventListener('keydown', event => {
+            if (event.target !== card) return;
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openPropertyDetails(item.id);
+            }
+        });
         card.innerHTML = `
             <div class="card-image-wrap">
                 <img src="${item.images[0]}" alt="${item.name}" class="card-img">
@@ -267,6 +360,7 @@ function openPropertyDetails(id) {
         btn.onclick = () => switchFloorplan(fp, btn);
         fpTabs.appendChild(btn);
     });
+    populatePreferredBhk(item.floorPlans || []);
     switchFloorplan(item.floorPlans[0], fpTabs.firstChild);
 
     const amenGrid = document.getElementById('dt-amenities');
@@ -305,6 +399,91 @@ function openPropertyDetails(id) {
     document.getElementById('catalog-view').style.display = 'none';
     document.getElementById('property-detail-view').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function populatePreferredBhk(floorPlans) {
+    const select = document.getElementById('preferredBhkSelect');
+    if (!select) return;
+
+    const listbox = select.querySelector('.bhk-select-options');
+    const trigger = select.querySelector('.bhk-select-trigger');
+    const valueInput = select.querySelector('input[name="preferredBhk"]');
+    const label = trigger.querySelector('span');
+    listbox.replaceChildren();
+    valueInput.value = floorPlans[0]?.bhk || '';
+    label.textContent = valueInput.value || 'Select Preferred BHK';
+
+    floorPlans.forEach((floorPlan, index) => {
+        const option = document.createElement('button');
+        option.type = 'button';
+        option.className = 'bhk-select-option';
+        option.setAttribute('role', 'option');
+        option.setAttribute('aria-selected', String(index === 0));
+        option.classList.toggle('active', index === 0);
+        option.dataset.value = floorPlan.bhk;
+        option.textContent = floorPlan.bhk;
+        option.id = `preferred-bhk-option-${index}`;
+        listbox.appendChild(option);
+    });
+    select.hidden = floorPlans.length === 0;
+}
+
+function handleBhkDropdownClick(event) {
+    const select = document.getElementById('preferredBhkSelect');
+    if (!select) return;
+
+    const trigger = event.target.closest('.bhk-select-trigger');
+    if (trigger && select.contains(trigger)) {
+        const listbox = select.querySelector('.bhk-select-options');
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+        listbox.hidden = isOpen;
+        trigger.setAttribute('aria-expanded', String(!isOpen));
+        if (!isOpen) {
+            const rect = trigger.getBoundingClientRect();
+            const estimatedHeight = Math.min(listbox.children.length * 44 + 14, window.innerHeight * 0.4, 240);
+            const spaceBelow = window.innerHeight - rect.bottom;
+            const spaceAbove = rect.top;
+            listbox.classList.toggle('opens-up', spaceBelow < estimatedHeight && spaceAbove > spaceBelow);
+            select.querySelector('.bhk-select-option')?.focus();
+        }
+        return;
+    }
+
+    const option = event.target.closest('.bhk-select-option');
+    if (option && select.contains(option)) {
+        const floorPlanIndex = activeProperty?.floorPlans?.findIndex(plan => plan.bhk === option.dataset.value) ?? -1;
+        const floorPlanTab = document.querySelectorAll('#fp-tabs .fp-tab-btn')[floorPlanIndex];
+        if (floorPlanIndex >= 0 && floorPlanTab) {
+            switchFloorplan(activeProperty.floorPlans[floorPlanIndex], floorPlanTab);
+        } else {
+            setPreferredBhk(option.dataset.value);
+        }
+        select.querySelector('.bhk-select-options').hidden = true;
+        select.querySelector('.bhk-select-trigger').setAttribute('aria-expanded', 'false');
+        select.querySelector('.bhk-select-trigger').focus();
+        return;
+    }
+
+    select.querySelector('.bhk-select-options').hidden = true;
+    select.querySelector('.bhk-select-trigger').setAttribute('aria-expanded', 'false');
+}
+
+function handleBhkDropdownKeydown(event) {
+    const select = document.getElementById('preferredBhkSelect');
+    if (!select) return;
+    const trigger = select.querySelector('.bhk-select-trigger');
+    if (event.target === trigger && (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ')) {
+        if (trigger.getAttribute('aria-expanded') !== 'true') {
+            event.preventDefault();
+            trigger.click();
+        }
+        return;
+    }
+    if (event.key !== 'Escape' || trigger.getAttribute('aria-expanded') !== 'true') return;
+    select.querySelector('.bhk-select-options').hidden = true;
+    select.querySelector('.bhk-select-options').classList.remove('opens-up');
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.focus();
 }
 
 function showCatalogView() {
@@ -384,6 +563,24 @@ function switchFloorplan(fp, btn) {
     document.getElementById('fp-type').textContent = `${fp.bhk} Layout`;
     document.getElementById('fp-sqft').textContent = fp.sqft;
     document.getElementById('fp-price').textContent = fp.price;
+    setPreferredBhk(fp.bhk);
+}
+
+function setPreferredBhk(bhk) {
+    const select = document.getElementById('preferredBhkSelect');
+    if (!select) return;
+
+    const option = [...select.querySelectorAll('.bhk-select-option')]
+        .find(candidate => candidate.dataset.value === bhk);
+    if (!option) return;
+
+    select.querySelector('.bhk-select-trigger span').textContent = bhk;
+    select.querySelector('input[name="preferredBhk"]').value = bhk;
+    select.querySelectorAll('.bhk-select-option').forEach(candidate => {
+        const isSelected = candidate === option;
+        candidate.setAttribute('aria-selected', String(isSelected));
+        candidate.classList.toggle('active', isSelected);
+    });
 }
 
 // FAQ TOGGLE ACCORDION

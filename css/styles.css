@@ -1012,6 +1012,26 @@ button {
     width: 100%;
 }
 
+@media (min-width: 993px) {
+    .faq-container.has-two-columns {
+        display: flex;
+        gap: 12px;
+        max-width: 1200px;
+    }
+
+    .faq-container.has-two-columns .faq-column {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 0;
+        min-width: 0;
+        gap: 12px;
+    }
+
+    .faq-container.has-two-columns .faq-column .faq-item {
+        margin-bottom: 0;
+    }
+}
+
 .faq-item {
     background: var(--bg-white);
     border: 1px solid var(--border-light);

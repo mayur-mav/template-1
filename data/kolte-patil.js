@@ -19,6 +19,18 @@ export const faqData = [
     {
         question: 'How can I arrange a site visit for a Kolte-Patil project?',
         answer: 'Use the enquiry form on this page or contact our sales team to request a site visit and confirm a convenient time.'
+    },
+    {
+        question: 'How can I arrange a site visit for a Kolte-Patil project?',
+        answer: 'Use the enquiry form on this page or contact our sales team to request a site visit and confirm a convenient time.'
+    },
+    {
+        question: 'How can I arrange a site visit for a Kolte-Patil project?',
+        answer: 'Use the enquiry form on this page or contact our sales team to request a site visit and confirm a convenient time.'
+    },
+    {
+        question: 'How can I arrange a site visit for a Kolte-Patil project?',
+        answer: 'Use the enquiry form on this page or contact our sales team to request a site visit and confirm a convenient time.'
     }
 ];
 

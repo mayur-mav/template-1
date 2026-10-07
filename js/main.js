@@ -161,8 +161,15 @@ function renderBuilderFaqs(faqs) {
     const container = document.querySelector('#faq .faq-container');
     if (!container) return;
 
+    container.classList.toggle('has-two-columns', faqs.length > 5);
     container.replaceChildren();
-    faqs.forEach(({ question, answer }) => {
+    const columns = faqs.length > 5 ? [document.createElement('div'), document.createElement('div')] : [container];
+    if (faqs.length > 5) {
+        columns.forEach(column => column.className = 'faq-column');
+        container.append(...columns);
+    }
+
+    faqs.forEach(({ question, answer }, index) => {
         const item = document.createElement('div');
         item.className = 'faq-item';
         item.addEventListener('click', () => toggleFaq(item));
@@ -179,7 +186,7 @@ function renderBuilderFaqs(faqs) {
         answerText.className = 'faq-answer';
         answerText.textContent = answer;
         item.append(questionRow, answerText);
-        container.appendChild(item);
+        columns[index % columns.length].appendChild(item);
     });
 }
 

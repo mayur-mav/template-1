@@ -1,7 +1,7 @@
 export const developerInfo = {
     hero: {
         subtitle: 'Prestige Group | Bengaluru',
-        title: 'A Better Way to Come Home',
+        title: 'Add Prestige to Your Life',
         description: 'Explore thoughtfully designed Prestige residences, with distinctive spaces and connected communities across Bengaluru.',
         image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85'
     }
@@ -9,16 +9,148 @@ export const developerInfo = {
 
 export const faqData = [
     {
-        question: 'Where are Prestige Group projects located in Bengaluru?',
-        answer: 'Prestige Group has residential developments across Bengaluru. Each listing on this page includes its location and project details.'
+        question: 'Do you provide assistance with rental and resale?',
+        answer: 'We have a dedicated team who can assist you in finding a suitable tenant/buyer for your Prestige property.'
     },
     {
-        question: 'How can I check availability and pricing for a Prestige home?',
-        answer: 'Choose a project and submit an enquiry to receive the latest availability, configuration, and pricing information.'
+        question: 'How do you measure carpet area?',
+        answer: 'Carpet area is calculated by measuring the inner dimensions of a unit, excluding the thickness of walls. It excludes common areas like lobbies, external amenities, staircase, etc. This measurement provides the actual living space available to occupants, aiding in accurate property assessments.'
     },
     {
-        question: 'How can I arrange a site visit for a Prestige project?',
-        answer: 'Use the enquiry form on this page or contact our sales team to request a site visit and confirm a convenient time.'
+        question: 'What is a built-up area?',
+        answer: 'The built-up area encompasses the carpet area, which represents the actual usable living space within the walls, and adds to it the areas covered by walls, balconies, and common spaces. The inclusion of these elements provides a holistic view of the entire constructed area of the property, helping potential buyers or occupants understand the overall scale of the living space.'
+    },
+    {
+        question: 'What is carpet area as per RERA?',
+        answer: "As per RERA (Real Estate Regulatory Authority), carpet area is defined as the net usable floor area within the walls of an apartment, excluding the area covered by the walls. It includes the net usable area of the kitchen and toilets, while common areas like lobbies and passages are not considered. RERA regulations aim to standardize the measurement of carpet area, providing transparency to homebuyers and ensuring a fair representation of the actual living space. Understanding RERA's definition of carpet area is crucial for both developers and buyers, as it establishes a uniform method for measuring and disclosing the usable space within residential units."
+    },
+    {
+        question: 'What is carpet area, super built-up area and built-up area?',
+        answer: 'Carpet Area: Carpet area refers to the actual usable living space within the walls of a property. It includes the net floor area of the apartment, excluding the thickness of inner walls. It represents the space where one can lay a carpet. Super Built-up Area: Super built-up area is the total constructed area, which includes the carpet area along with common areas like lobbies, staircases, and other shared spaces. It encompasses the entire area, including the carpet area, outer walls, balconies, and common spaces. It represents the total area that contributes to the overall construction of the property. Built-up Area: Built-up area includes the carpet area and adds the thickness of outer walls to it. It comprises the carpet area, the thickness of the walls, and sometimes balconies. It represents the total area covered by the constructed structure.'
+    },
+    {
+        question: 'What is gross area and net area?',
+        answer: 'Gross area provides a comprehensive overview of the total building space, and Net area narrows down to the practical, occupiable space, excluding non-functional areas. Both metrics serve distinct purposes in evaluating real estate and construction efficiency.'
+    },
+    {
+        question: 'What is gross building area?',
+        answer: "Gross Building Area (GBA) is the total area of a building, including all floors, walls, staircases, and other structural elements. It's measured from the outside of the building's walls and includes any interior common areas, such as hallways and stairways."
+    },
+    {
+        question: 'What is the difference between carpet area and saleable area?',
+        answer: 'Carpet area is the actual usable living space within the walls, excluding common areas and wall thickness. Saleable area, on the other hand, includes the carpet area along with common areas like lobbies, balconies, and thickness of outer walls. It represents the total area that can be sold to a buyer. While carpet area focuses on practical living space, saleable area provides a broader view, incorporating all spaces that contribute to the property\'s value. Understanding both metrics is crucial for buyers to assess the true living space and overall value of a property accurately.'
+    },
+    {
+        question: 'Is the title of the property clear?',
+        answer: 'For all Prestige properties, legal due diligence is carried out. We ensure that the land is freehold, marketable, and free from all encumbrances.'
+    },
+    {
+        question: 'What happens if I cancel my unit?',
+        answer: 'If you cancel your unit after booking, 2% of the sale value will be forfeited before the sale agreement is generated and 10% of the sale value will be forfeited after the agreements are generated, as a cancellation fee. The balance will be returned (subject to statutory deductions) without interest. Cancellation will attract GST as applicable.'
+    },
+    {
+        question: 'Can I make a booking without RERA approval?',
+        answer: 'No, a customer can book only after the project has been approved by RERA.'
+    },
+    {
+        question: 'Are modifications permitted?',
+        answer: 'The specifications and designs have been carefully worked out. Keeping the adherence to delivery timelines and uniform quality and specifications, customization will not be possible in the collective interest of the purchasers.'
+    },
+    {
+        question: 'Are your projects pet-friendly?',
+        answer: 'Yes. However, to ensure harmony for all residents in the community, the purchaser shall keep all the pets confined within the scheduled property and shall ensure that pets do not create any nuisance/disturbance to the other owners/ occupants of the property.'
+    },
+    {
+        question: 'What is the purchaser’s responsibility in Home Loan process/ disbursement?',
+        answer: 'It is the purchaser’s responsibility to ensure timely disbursement of installments from HFIs and no demand will be made by the Developer to the HFIs for the same. To facilitate smooth payments, customers are required to agree to a pre-determined payment schedule & issue a mandate to the HFI to disburse payments as per the agreed payment schedule. This will be done via a ‘Mandatory Disbursement Form’ at the time of signing the Sale Agreement.'
+    },
+    {
+        question: 'Does your projects have necessary approvals from Banks/ Home loan institutions/ NBFCs?',
+        answer: 'Yes, all our projects are approved by leading financial institutions/ banks.'
+    },
+    {
+        question: 'Do you offer home loan services?',
+        answer: 'Yes, we have major financial institutions who will extend home loans to the customers based on their eligibility criteria. Our team can facilitate the home loan process for customers by connecting you to the appropriate financial institution.'
+    },
+    {
+        question: 'How are instalments to be paid - is it time bound?',
+        answer: 'Yes, we at Prestige follow a time-linked payment plan.'
+    },
+    {
+        question: 'When do I get a confirmed allotment?',
+        answer: 'You will receive a formal allotment letter, upon receipt of the 10% booking amount and post-dated cheques for the balance.'
+    },
+    {
+        question: 'Who maintains the property and what are the charges?',
+        answer: 'The maintenance will be taken care of by a facility management appointed by Prestige during the first year or further till the association for the community is formed. You can be rest assured our projects will be cared for by professionals. The charges are project specific collected as the advance maintenance fee for the first year and will be collected at the time of closing of your account. From the second year onwards, maintenance charges will be levied as decided by the Association/Appointed Facility Management Agency. All future payments are to be made favouring the property management company. An additional amount, (project-specific) corresponding to the super built-up area will be collected as a sinking fund. This amount will be deposited in a separate account and the accruals will be used for any major expenditure to be incurred on the renovation/ upkeep of the society.'
+    },
+    {
+        question: 'What if Prestige delays the construction of the project & possession?',
+        answer: 'We endeavour to complete and handover the project as per committed timelines. However, for reasons beyond our control, if the project is delayed, Prestige will follow the terms laid out in the agreement and as per the relevant RERA guidelines.'
+    },
+    {
+        question: 'Does a home loan include GST and registration amount?',
+        answer: "A home loan typically includes the financing of the property's agreement value, but the coverage of additional expenses such as Goods and Services Tax (GST) and registration amount varies. In most cases, GST is not incorporated into the home loan and needs to be paid separately by the buyer. Similarly, registration charges, associated with the transfer of property ownership, may not be fully covered by the loan and often require separate payment. It's essential for borrowers to thoroughly examine the terms of their home loan agreement and communicate with the lending institution to clarify which costs are included in the loan and which ones need to be settled independently. Local regulations and practices can influence these considerations, emphasizing the importance of informed financial planning during the property purchase process."
+    },
+    {
+        question: 'Do I need sale agreement for property registration?',
+        answer: "A sale agreement is a crucial document for home registration, serving as a legal contract between the buyer and seller. Also known as a sale deed or purchase agreement, it outlines essential transaction details such as property description, sale price, payment terms, and possession date. This agreement forms the foundation for transferring ownership during the property registration process. Typically registered with the local sub-registrar office, this step is often mandatory in many jurisdictions to ensure the legality of the transaction. It's advisable to consult legal professionals or local authorities to ensure compliance with specific documentation requirements and procedural steps for property registration in your area."
+    },
+    {
+        question: 'What is the process of transfer of agreement/assignment?',
+        answer: 'Assignment can be done only after the terms of Sale Agreement pertaining to the property are adhered to and also the new party complying with the terms and conditions of the Sale agreement. Transfer fee and GST as applicable, will be required to be paid. If you have availed a loan, then you will be required to retrieve and handover all letters and documents issued by Prestige to the bank/housing finance institution along with their NOC. Please note that transfer will be processed only when all the dues and interest for delayed payments, if applicable, has been cleared to Prestige as on the intended date of transfer.'
+    },
+    {
+        question: 'Do I need to have PAN card for property registration?',
+        answer: "In India, a Permanent Account Number (PAN) is typically required for certain financial transactions, including property registration. The PAN card serves as a unique identifier in these transactions, aiding in the verification process and ensuring compliance with tax regulations. During property registration, authorities often request PAN details to validate the transaction. It's recommended to verify the current requirements and procedures for property registration by checking with relevant authorities or seeking guidance from legal professionals. Rules and regulations may evolve, so staying informed about the latest guidelines is crucial to ensure a smooth and compliant property registration process."
+    },
+    {
+        question: 'Does a home loan include stamp duty & registration charges in India?',
+        answer: "In India, home loans typically encompass the principal amount for property acquisition, including the builder's cost, but they usually do not cover expenses such as stamp duty and registration charges. Stamp duty and registration charges are separate costs imposed by state governments for legal property recognition. Homebuyers are generally responsible for paying these charges directly to the government authorities, and they are not typically integrated into the home loan amount. It is imperative for individuals to thoroughly scrutinize the terms and conditions of their specific home loan agreement, engaging in discussions with the lending institution to ascertain which costs are included in the loan and which ones necessitate separate payments. Local regulations and practices can also influence these considerations, emphasizing the importance of clear understanding and financial planning during the property purchase process."
+    },
+    {
+        question: 'How to calculate home registration charges?',
+        answer: 'In India, usually registration charges vary between 5% to 8% of the property value. This depends on the city and state where the property is being registered and sometimes also on the category/gender of the applicant(s) registering the property.'
+    },
+    {
+        question: 'When can I register my property?',
+        answer: 'Registration will be done only on completion of the development and on payment of the entire sale consideration including the additional charges. Registration will be facilitated through an advocate appointed by Prestige.'
+    },
+    {
+        question: 'What is stamp duty?',
+        answer: 'Stamp duty is a tax imposed on the sale of property /property ownership by the state government. It is payable under Section 3 of Indian Stamp Act, 1899. The duration of stamp duty at the time of registration shall be based on the value of house/ property at the time of registration.'
+    },
+    {
+        question: 'What are the documents involved in the purchase process?',
+        answer: 'At the time of booking, the customer needs to fill in the application form and provide necessary KYC documents. Further, he will be required to execute the Sale Agreement, followed by a Sale Deed upon completion of the development.'
+    },
+    {
+        question: 'Can I add co-applicant\'s name on home registration form?',
+        answer: "The inclusion of a co-applicant's name on a home registration form depends on the regulations and requirements of the jurisdiction where the property is located. Generally, it is permissible, especially in cases of joint ownership or when spouses are involved. Seeking advice from a legal professional specializing in real estate transactions can also provide valuable insights tailored to the specific regulations of the area where the property is situated."
+    },
+    {
+        question: 'What is franking of agreement and what are the charges applicable?',
+        answer: 'The process of stamping sale agreement of the property is called franking, and the charges will be 0.5% of sale value.'
+    },
+    {
+        question: 'What is the stamp duty value of a property?',
+        answer: 'The stamp duty value of a property is the government-determined valuation used for calculating stamp duty and registration charges during property transactions. This value is crucial as it directly impacts the fees and taxes payable by the buyer to formalize the property transfer. Determined by factors like location, size, and amenities, the stamp duty value is a key consideration as stamp duty and registration charges are typically a percentage of this valuation. Buyers must pay these charges to the government at the time of property registration. It is essential for individuals involved in property transactions to understand the stamp duty value, ensuring accurate financial planning and compliance with legal and tax regulations. Note that calculation methods and rates may vary between different states and regions.'
+    },
+    {
+        question: 'Can stamp duty be refunded?',
+        answer: "Typically, stamp duty is non-refundable once paid, as it constitutes a government tax essential for legally recognizing property transfers. This levy is imposed on property transactions and serves as a crucial component in completing the ownership transfer process. While refunding stamp duty is not a standard practice, there might be exceptional cases where it could be considered. For instance, if an error occurs in the calculation of stamp duty or if the property transaction falls through due to legal reasons, there may be grounds for a refund. To explore the potential for a stamp duty refund, individuals should seek advice from legal professionals and consult with relevant government authorities. It's important to note that rules and regulations regarding stamp duty and potential refunds can vary between different regions and states, necessitating a clear understanding of local provisions."
+    },
+    {
+        question: 'What is the procedure for purchasing car parking space?',
+        answer: 'We provide a default number of car parking spaces along with the apartment at the time of booking, which varies from project to project. Additional car parking request will be taken up towards project completion subject to availability.'
+    },
+    {
+        question: 'What are the additional charges when buying a Prestige property?',
+        answer: 'When buying a Prestige property, these are the additional charges to be borne by the customer- Electricity and Water Provision Access Charges, GST, Generator charges, Assessment & bifurcation charges, Registration charges, Sinking fund, Advance maintenance charges and any other statutory charges/ duties as applicable. GST will be collected along with the booking amount and installments spread till possession.'
+    },
+    {
+        question: 'Can I take home loan after registration?',
+        answer: 'Yes, you can get a home loan within six months of registration. The registration process implies that the property can be sold.'
     }
 ];
 

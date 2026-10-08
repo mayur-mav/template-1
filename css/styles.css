@@ -1023,11 +1023,18 @@ button {
         display: flex;
         flex-direction: column;
         flex: 1 1 0;
+        width: 0;
         min-width: 0;
         gap: 12px;
+        align-items: stretch;
     }
 
     .faq-container.has-two-columns .faq-column .faq-item {
+        box-sizing: border-box;
+        flex: 0 0 auto;
+        align-self: stretch;
+        width: 100%;
+        min-height: 88px;
         margin-bottom: 0;
     }
 }
@@ -1043,6 +1050,8 @@ button {
 
 .faq-question {
     padding: 18px 24px;
+    min-height: 86px;
+    box-sizing: border-box;
     font-weight: 600;
     font-size: 1.05rem;
     display: flex;
@@ -1051,6 +1060,11 @@ button {
     cursor: pointer;
     color: var(--text-primary);
     gap: 15px;
+}
+
+.faq-question > span {
+    flex: 1;
+    text-align: left;
 }
 
 .faq-question i {

@@ -195,17 +195,15 @@ function renderBuilderFaqs(faqs) {
     const container = document.querySelector('#faq .faq-container');
     if (!container) return;
 
+    container.parentElement.querySelector('.faq-view-more')?.remove();
     container.classList.toggle('has-two-columns', faqs.length > 5);
     container.replaceChildren();
-    const columns = faqs.length > 5 ? [document.createElement('div'), document.createElement('div')] : [container];
-    if (faqs.length > 5) {
-        columns.forEach(column => column.className = 'faq-column');
-        container.append(...columns);
-    }
 
     faqs.forEach(({ question, answer }, index) => {
         const item = document.createElement('div');
         item.className = 'faq-item';
+        item.dataset.faqIndex = String(index);
+        item.hidden = faqs.length > 10 && index >= 10;
         item.addEventListener('click', () => toggleFaq(item));
 
         const questionRow = document.createElement('div');
@@ -220,8 +218,26 @@ function renderBuilderFaqs(faqs) {
         answerText.className = 'faq-answer';
         answerText.textContent = answer;
         item.append(questionRow, answerText);
-        columns[index % columns.length].appendChild(item);
+        container.appendChild(item);
     });
+
+    if (faqs.length > 10) {
+        const viewMoreButton = document.createElement('button');
+        viewMoreButton.type = 'button';
+        viewMoreButton.className = 'faq-view-more';
+        viewMoreButton.textContent = 'View more';
+        viewMoreButton.setAttribute('aria-expanded', 'false');
+        viewMoreButton.addEventListener('click', () => {
+            const expanded = viewMoreButton.getAttribute('aria-expanded') === 'true';
+            container.classList.toggle('has-two-columns', faqs.length > 5);
+            container.querySelectorAll('.faq-item').forEach(item => {
+                item.hidden = !expanded && Number(item.dataset.faqIndex) >= 10;
+            });
+            viewMoreButton.setAttribute('aria-expanded', String(!expanded));
+            viewMoreButton.textContent = expanded ? 'View less' : 'View more';
+        });
+        container.after(viewMoreButton);
+    }
 }
 
 // RENDER PROPERTY CARDS

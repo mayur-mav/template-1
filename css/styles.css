@@ -1014,25 +1014,14 @@ button {
 
 @media (min-width: 993px) {
     .faq-container.has-two-columns {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
         max-width: 1200px;
     }
 
-    .faq-container.has-two-columns .faq-column {
-        display: flex;
-        flex-direction: column;
-        flex: 1 1 0;
-        width: 0;
-        min-width: 0;
-        gap: 12px;
-        align-items: stretch;
-    }
-
-    .faq-container.has-two-columns .faq-column .faq-item {
+    .faq-container.has-two-columns .faq-item {
         box-sizing: border-box;
-        flex: 0 0 auto;
-        align-self: stretch;
         width: 100%;
         min-height: 88px;
         margin-bottom: 0;
@@ -1046,6 +1035,28 @@ button {
     margin-bottom: 12px;
     overflow: hidden;
     width: 100%;
+}
+
+.faq-item[hidden] {
+    display: none;
+}
+
+.faq-view-more {
+    display: block;
+    margin: 20px auto 0;
+    padding: 11px 24px;
+    border: 1px solid var(--border-gold);
+    border-radius: 24px;
+    background: var(--bg-white);
+    color: var(--brand-bronze);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.faq-view-more:hover {
+    background: var(--bg-champagne);
 }
 
 .faq-question {

@@ -3,7 +3,7 @@ export const developerInfo = {
         subtitle: 'Prestige Group | Bengaluru',
         title: 'Add Prestige to Your Life',
         description: 'Explore thoughtfully designed Prestige residences, with distinctive spaces and connected communities across Bengaluru.',
-        image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85'
+        image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=70'
     }
 };
 

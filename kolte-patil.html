@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kolte-Patil Developers | Creation, Not Construction</title>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1000&amp;q=70" fetchpriority="high">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body data-builder="kolte-patil">
@@ -259,13 +263,13 @@
             <!-- 3 IMAGE SHOWCASE GRID -->
             <div class="image-gallery-grid">
                 <div class="gallery-item gallery-item-1" onclick="openLightbox(0)">
-                    <img id="dt-img-1" src="" alt="Main Exterior">
+                    <img id="dt-img-1" src="" alt="Main Exterior" loading="lazy" decoding="async">
                 </div>
                 <div class="gallery-item" onclick="openLightbox(1)">
-                    <img id="dt-img-2" src="" alt="Interior">
+                    <img id="dt-img-2" src="" alt="Interior" loading="lazy" decoding="async">
                 </div>
                 <div class="gallery-item" onclick="openLightbox(2)">
-                    <img id="dt-img-3" src="" alt="Amenities">
+                    <img id="dt-img-3" src="" alt="Amenities" loading="lazy" decoding="async">
                     <div class="gallery-overlay-btn"><i class="fa-solid fa-expand"></i> View Fullscreen</div>
                 </div>
             </div>
@@ -389,7 +393,7 @@
         <div class="modal-box">
             <button class="modal-close-btn" onclick="closeModal('quickViewModal')">&times;</button>
             <div class="qv-header">
-                <img id="qv-img" src="" alt="" class="qv-img">
+                <img id="qv-img" src="" alt="" class="qv-img" loading="lazy" decoding="async">
                 <div>
                     <h3 class="qv-title" id="qv-title">Property Title</h3>
                     <p style="font-size: 0.85rem; color: var(--text-secondary);" id="qv-location"></p>
@@ -437,7 +441,7 @@
 
     <!-- FULLSCREEN LIGHTBOX MODAL -->
     <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
-        <img id="lightboxImg" src="" alt="Full View" class="lightbox-img">
+        <img id="lightboxImg" src="" alt="Full View" class="lightbox-img" loading="lazy" decoding="async">
     </div>
 
     <script type="module" src="js/main.js"></script>

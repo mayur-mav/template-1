@@ -3,7 +3,7 @@ export const developerInfo = {
         subtitle: 'Kolte-Patil | Pune & Bengaluru',
         title: 'Creation, Not Construction',
         description: 'Discover landmark residences by Kolte-Patil, bringing considered design and vibrant communities to Pune and Bengaluru.',
-        image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85'
+        image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=70'
     }
 };
 

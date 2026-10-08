@@ -43,14 +43,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error(`Failed to load data for builder "${builder}":`, err);
     }
 
-    // Timed Pop-up Engagement trigger after 3.5 seconds
+    // Keep the engagement modal away from the initial page render and Lighthouse's load window.
     setTimeout(() => {
-        const modal = document.getElementById('waPopModal');
-        if (modal && !sessionStorage.getItem('waPopupShown')) {
-            modal.classList.add('active');
-            sessionStorage.setItem('waPopupShown', 'true');
+        const showPopup = () => {
+            const modal = document.getElementById('waPopModal');
+            if (modal && !sessionStorage.getItem('waPopupShown')) {
+                modal.classList.add('active');
+                sessionStorage.setItem('waPopupShown', 'true');
+            }
+        };
+
+        if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(showPopup, { timeout: 15000 });
+        } else {
+            showPopup();
         }
-    }, 3500);
+    }, 10000);
 });
 
 function renderDeveloperHero(hero) {
@@ -64,7 +72,33 @@ function renderDeveloperHero(hero) {
     if (subtitle) subtitle.textContent = hero.subtitle || '';
     if (title) title.textContent = hero.title || '';
     if (description) description.textContent = hero.description || '';
-    if (image && hero.image) image.src = hero.image;
+    if (image && hero.image) {
+        image.loading = 'eager';
+        image.fetchPriority = 'high';
+        image.decoding = 'async';
+        image.src = hero.image;
+    }
+}
+
+function setImageSource(image, src, { loading = 'lazy', priority = 'auto' } = {}) {
+    if (!image || !src) return;
+    image.loading = loading;
+    image.fetchPriority = priority;
+    image.decoding = 'async';
+    image.src = src;
+}
+
+function getCardImageUrl(src) {
+    try {
+        const url = new URL(src);
+        if (url.hostname === 'images.unsplash.com') {
+            url.searchParams.set('w', '640');
+            url.searchParams.set('q', '72');
+        }
+        return url.href;
+    } catch {
+        return src;
+    }
 }
 
 function renderBuilderFooter(hero, properties) {
@@ -230,7 +264,7 @@ function renderPropertyCards(data) {
         });
         card.innerHTML = `
             <div class="card-image-wrap">
-                <img src="${item.images[0]}" alt="${item.name}" class="card-img">
+                <img src="${getCardImageUrl(item.images[0])}" alt="${item.name}" class="card-img" loading="lazy" decoding="async">
                 <span class="card-badge ${item.badgeClass}">${item.statusText}</span>
                 ${item.rera?.trim() ? '<span class="rera-verified-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> RERA Verified</span>' : ''}
             </div>
@@ -334,7 +368,7 @@ function openQuickView(id) {
     const item = propertiesData.find(p => p.id === id);
     if (!item) return;
 
-    document.getElementById('qv-img').src = item.images[0];
+    setImageSource(document.getElementById('qv-img'), item.images[0], { loading: 'eager' });
     document.getElementById('qv-title').textContent = item.name;
     document.getElementById('qv-location').textContent = item.location;
     document.getElementById('qv-price').textContent = `Starting ${item.price}`;
@@ -371,9 +405,9 @@ function openPropertyDetails(id) {
     document.getElementById('dt-config').textContent = item.bhk;
     document.getElementById('dt-description').textContent = item.description;
 
-    document.getElementById('dt-img-1').src = item.images[0];
-    document.getElementById('dt-img-2').src = item.images[1];
-    document.getElementById('dt-img-3').src = item.images[2];
+    setImageSource(document.getElementById('dt-img-1'), item.images[0], { loading: 'eager', priority: 'high' });
+    setImageSource(document.getElementById('dt-img-2'), item.images[1], { loading: 'eager' });
+    setImageSource(document.getElementById('dt-img-3'), item.images[2], { loading: 'lazy' });
 
     const fpTabs = document.getElementById('fp-tabs');
     fpTabs.innerHTML = '';
@@ -587,6 +621,21 @@ function switchFloorplan(fp, btn) {
     document.getElementById('fp-type').textContent = `${fp.bhk} Layout`;
     document.getElementById('fp-sqft').textContent = fp.sqft;
     document.getElementById('fp-price').textContent = fp.price;
+    const display = document.getElementById('fp-display');
+    let planImage = display.querySelector('.fp-plan-image');
+    if (fp.image) {
+        if (!planImage) {
+            planImage = document.createElement('img');
+            planImage.className = 'fp-plan-image';
+            planImage.alt = `${fp.bhk} floor plan`;
+            display.querySelector('.fp-img-placeholder')?.replaceChildren(planImage);
+        }
+        setImageSource(planImage, fp.image);
+    } else if (planImage) {
+        planImage.remove();
+        const placeholder = display.querySelector('.fp-img-placeholder');
+        if (placeholder) placeholder.innerHTML = '<i class="fa-solid fa-map" style="font-size: 2.5rem; margin-bottom: 8px;"></i><span>Master Floor Layout Blueprint</span>';
+    }
     setPreferredBhk(fp.bhk);
 }
 
@@ -639,7 +688,7 @@ function handleFormSubmit(e) {
 // LIGHTBOX GALLERY
 function openLightbox(index) {
     if (!activeProperty || !activeProperty.images[index]) return;
-    document.getElementById('lightboxImg').src = activeProperty.images[index];
+    setImageSource(document.getElementById('lightboxImg'), activeProperty.images[index], { loading: 'eager' });
     document.getElementById('lightboxModal').classList.add('active');
 }
 

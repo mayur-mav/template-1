@@ -9,28 +9,24 @@ export const developerInfo = {
 
 export const faqData = [
     {
-        question: 'Where are Kolte-Patil projects located?',
-        answer: 'Kolte-Patil develops residential communities in multiple cities. Refer to the project listings on this page for their locations and details.'
+        question: "Who is the owner of Kolte Patil?",
+        answer: "Rajesh Patil is the Chairman and Managing Director of Kolte-Patil Developers Limited, serving as the key leader of the company founded by his late father, Aniruddha Patil."
     },
     {
-        question: 'How can I check availability and pricing for a Kolte-Patil home?',
-        answer: 'Choose a project and submit an enquiry to receive the latest availability, configuration, and pricing information.'
+        question: "How long has the Kolte Patil been operating?",
+        answer: "Incorporated in 1991, Kolte-Patil has been operating for over 35 years in the Indian real estate market, transitioning from a family business in Jalgaon to a publicly traded corporation."
     },
     {
-        question: 'How can I arrange a site visit for a Kolte-Patil project?',
-        answer: 'Use the enquiry form on this page or contact our sales team to request a site visit and confirm a convenient time.'
+        question: "Are Kolte-Patil projects RERA registered?",
+        answer: "Yes, all ongoing residential and commercial developments across Pune, Bengaluru, and Mumbai are strictly registered under their respective state RERA authorities."
     },
     {
-        question: 'How can I arrange a site visit for a Kolte-Patil project?',
-        answer: 'Use the enquiry form on this page or contact our sales team to request a site visit and confirm a convenient time.'
+        question: "Can Non-Resident Indians (NRIs) buy their properties Kolte Patil ?",
+        answer: "Yes. Under Reserve Bank of India (RBI) guidelines, NRIs can own residential and commercial property. A declaration must be filed using Form IPI 7 with the RBI within 90 days of final payment."
     },
     {
-        question: 'How can I arrange a site visit for a Kolte-Patil project?',
-        answer: 'Use the enquiry form on this page or contact our sales team to request a site visit and confirm a convenient time.'
-    },
-    {
-        question: 'How can I arrange a site visit for a Kolte-Patil project?',
-        answer: 'Use the enquiry form on this page or contact our sales team to request a site visit and confirm a convenient time.'
+        question: "What are their specific projects in Mumbai?",
+        answer: "Kolte-Patil expands heavily via society redevelopments here. Active projects include Vivere, Serenova (Andheri West), Alora (Santacruz East), and Vaayu."
     }
 ];
 

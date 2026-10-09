@@ -2440,3 +2440,16 @@ button {
         height: 140px;
     }
 }
+
+/* Expandable amenities and connectivity lists */
+.feature-list-collapsed.amenities-grid > :nth-child(n+7),
+.feature-list-collapsed.location-matrix > :nth-child(n+5) { display: none; }
+.feature-expansion-link { display: inline-block; margin-top: .75rem; border: 0; background: transparent; padding: 0; color: var(--text-primary); font-family: var(--font-heading, Georgia, serif); font-size: .9rem; font-weight: 700; cursor: pointer; transition: color .2s; }
+.feature-expansion-link:hover { color: var(--brand-gold); }
+/* Keep feature links close to their card grids */
+#dt-amenities, #dt-connectivity { margin-bottom: 0.5rem; }
+.feature-expansion-link { margin-top: .35rem; margin-bottom: 3rem; }
+
+/* Hide the browser scrollbar while keeping page scrolling enabled */
+html, body { -ms-overflow-style: none; scrollbar-width: none; }
+html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }

@@ -445,6 +445,7 @@ function openPropertyDetails(id) {
         box.innerHTML = `<i class="${a.icon}"></i><span>${a.name}</span>`;
         amenGrid.appendChild(box);
     });
+    addFeatureExpansion(amenGrid, 6, 'amenities');
 
     const connectivitySection = document.getElementById('dt-connectivity-section');
     const connectivityGrid = document.getElementById('dt-connectivity');
@@ -468,6 +469,7 @@ function openPropertyDetails(id) {
         row.appendChild(text);
         connectivityGrid.appendChild(row);
     });
+    addFeatureExpansion(connectivityGrid, 4, 'connectivity');
     connectivitySection.hidden = nearbyPlaces.length === 0;
 
     document.getElementById('catalog-view').style.display = 'none';
@@ -475,6 +477,26 @@ function openPropertyDetails(id) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+function addFeatureExpansion(list, limit, label) {
+    list.classList.toggle('feature-list-collapsed', list.children.length > limit);
+    const oldLink = list.nextElementSibling;
+    if (oldLink?.classList.contains('feature-expansion-link')) oldLink.remove();
+    if (list.children.length <= limit) return;
+    const link = document.createElement('button');
+    link.type = 'button';
+    link.className = 'feature-expansion-link';
+    link.setAttribute('aria-expanded', 'false');
+    const expandedLabel = label === 'amenities' ? 'View all amenities \u2192' : 'Explore connectivity details \u2192';
+    const collapsedLabel = label === 'amenities' ? 'Show fewer amenities \u2192' : 'Show fewer connectivity details \u2192';
+    link.textContent = expandedLabel;
+    link.addEventListener('click', () => {
+        const expanded = link.getAttribute('aria-expanded') === 'true';
+        link.setAttribute('aria-expanded', String(!expanded));
+        list.classList.toggle('feature-list-collapsed', expanded);
+        link.textContent = expanded ? expandedLabel : collapsedLabel;
+    });
+    list.insertAdjacentElement('afterend', link);
+}
 function populatePreferredBhk(floorPlans) {
     const select = document.getElementById('preferredBhkSelect');
     if (!select) return;

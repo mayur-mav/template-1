@@ -198,6 +198,11 @@ function renderBuilderFaqs(faqs) {
     container.parentElement.querySelector('.faq-view-more')?.remove();
     container.classList.toggle('has-two-columns', faqs.length > 5);
     container.replaceChildren();
+    const columns = faqs.length > 5 ? [document.createElement('div'), document.createElement('div')] : [container];
+    if (faqs.length > 5) {
+        columns.forEach(column => column.className = 'faq-column');
+        container.append(...columns);
+    }
 
     faqs.forEach(({ question, answer }, index) => {
         const item = document.createElement('div');
@@ -218,7 +223,7 @@ function renderBuilderFaqs(faqs) {
         answerText.className = 'faq-answer';
         answerText.textContent = answer;
         item.append(questionRow, answerText);
-        container.appendChild(item);
+        columns[index % columns.length].appendChild(item);
     });
 
     if (faqs.length > 10) {

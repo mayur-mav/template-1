@@ -1014,14 +1014,22 @@ button {
 
 @media (min-width: 993px) {
     .faq-container.has-two-columns {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        display: flex;
         gap: 12px;
         max-width: 1200px;
     }
 
-    .faq-container.has-two-columns .faq-item {
+    .faq-container.has-two-columns .faq-column {
+        display: flex;
+        flex: 1 1 0;
+        flex-direction: column;
+        min-width: 0;
+        gap: 12px;
+    }
+
+    .faq-container.has-two-columns .faq-column .faq-item {
         box-sizing: border-box;
+        flex: 0 0 auto;
         width: 100%;
         min-height: 88px;
         margin-bottom: 0;

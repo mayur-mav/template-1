@@ -72,8 +72,8 @@ export const propertiesData = [
             'https://drive.google.com/drive/folders/1Docf1mku-r-alCDEXOVeR1ESVNChM7um?usp=drive_link'
         ],
         floorPlans: [
-            { bhk: '3 BHK 2T', sqft: '1,650 sq. ft.', price: '' },
-            { bhk: '3 BHK 3T', sqft: '1,760 sq. ft.', price: '' }
+            { bhk: '3 BHK 2T', sqft: '1,650 sq. ft.', price: '₹1.48 Cr Onwards' },
+            { bhk: '3 BHK 3T', sqft: '1,760 sq. ft.', price: '₹1.48 Cr Onwards' }
         ],
         amenities: [
             { name: 'Hammock Garden', icon: 'fa-solid fa-tree' },
@@ -126,11 +126,10 @@ export const propertiesData = [
             'https://drive.google.com/drive/folders/1Docf1mku-r-alCDEXOVeR1ESVNChM7um?usp=drive_link'
         ],
         floorPlans: [
-            { bhk: '3- BED RESIDENCES', sqft: '2,375 sq. ft. onwards', price: '' },
-            { bhk: '4- BED RESIDENCES', sqft: '2,755 sq. ft. onwards', price: '' },
-            { bhk: 'TOWNHOUSE RESIDENCES', sqft: '3,690 sq. ft. onwards', price: '' },
-            { bhk: 'IMPERIAL RESIDENCES', sqft: '4,780 sq. ft. onwards', price: '' },
-            { bhk: 'CELESTIAL PENTHOUSES', sqft: '4,780 sq. ft. onwards', price: '' }
+            { bhk: '3- BED RESIDENCES', sqft: '2,375 sq. ft. onwards', price: '₹6.65 Cr Onwards' },
+            { bhk: 'TOWNHOUSE RESIDENCES', sqft: '3,830 sq. ft. onwards', price: '₹10 Cr Onwards' },
+            { bhk: 'IMPERIAL RESIDENCES', sqft: '4,780 sq. ft. onwards', price: '₹12 Cr Onwards' },
+            { bhk: 'CELESTIAL PENTHOUSES', sqft: '4,780 sq. ft. onwards', price: '₹18.5 Cr Onwards' }
         ],
         amenities: [
             { name: 'Clubhouse', icon: 'fa-solid fa-hotel' },
@@ -170,8 +169,8 @@ export const propertiesData = [
 
         ],
         floorPlans: [
-            { bhk: '3-BED RESIDENCES', sqft: '2,850 - 3,125 sq. ft.', price: '' },
-            { bhk: '4-BED RESIDENCES', sqft: '4,235 sq. ft.', price: '' }
+            { bhk: '3-BED RESIDENCES', sqft: '2,850 - 3,125 sq. ft.', price: 'On Request' },
+            { bhk: '4-BED RESIDENCES', sqft: '4,235 sq. ft.', price: 'On Request' }
         ],
         amenities: [
             { name: 'Luxury Clubhouse', icon: 'fa-solid fa-hotel' },
@@ -210,8 +209,8 @@ export const propertiesData = [
 
         ],
         floorPlans: [
-            { bhk: '3-BED RESIDENCES', sqft: '2,793 - 3,324 sq. ft.', price: '' },
-            { bhk: '4-BED RESIDENCES', sqft: '5,338 sq. ft.', price: '' }
+            { bhk: '3-BED RESIDENCES', sqft: '2,793 - 3,324 sq. ft.', price: '₹7.54 Cr Onwards' },
+            { bhk: '4-BED RESIDENCES', sqft: '5,338 sq. ft.', price: '₹11.79 Cr Onwards' }
         ],
         amenities: [
             { name: '800 sq. ft. Triple-Height Grand Entrance Lounge', icon: 'fa-solid fa-hotel' },
@@ -249,8 +248,8 @@ export const propertiesData = [
 
         ],
         floorPlans: [
-            { bhk: '3-BED RESIDENCES', sqft: '2,175 - 2,565 sq. ft.', price: '' },
-            { bhk: '3.5-BED RESIDENCES', sqft: '3,020 sq. ft.', price: '' }
+            { bhk: '3-BED RESIDENCES', sqft: '2,175 - 2,565 sq. ft.', price: '₹3.85 Cr Onwards' },
+            { bhk: '3.5-BED RESIDENCES', sqft: '3,020 sq. ft.', price: '₹5.34 Cr Onwards' }
         ],
         amenities: [
             { name: '~40,000 sq. ft. Grand Clubhouse', icon: 'fa-solid fa-hotel' },
@@ -288,8 +287,8 @@ export const propertiesData = [
 
         ],
         floorPlans: [
-            { bhk: '2-BED RESIDENCES', sqft: '723 sq. ft.', price: '' },
-            { bhk: '3-BED RESIDENCES', sqft: '931 sq. ft.', price: '' }
+            { bhk: '2-BED RESIDENCES', sqft: '723 sq. ft.', price: '₹1.18 Cr Onwards' },
+            { bhk: '3-BED RESIDENCES', sqft: '931 sq. ft.', price: '₹1.80 Cr Onwards' }
         ],
         amenities: [
             { name: 'Badminton Court', icon: 'fa-solid fa-table-tennis-paddle-ball' },
@@ -334,9 +333,9 @@ export const propertiesData = [
 
         ],
         floorPlans: [
-            { bhk: '2-BED RESIDENCES', sqft: '1,235 sq. ft.', price: '' },
-            { bhk: '2.5-BED RESIDENCES', sqft: '1,490 sq. ft.', price: '' },
-            { bhk: '3-BED RESIDENCES', sqft: '1,835 sq. ft.', price: '' }
+            { bhk: '2-BED RESIDENCES', sqft: '1,235 sq. ft.', price: '₹99 Lakh Onwards' },
+            { bhk: '2.5-BED RESIDENCES', sqft: '1,490 sq. ft.', price: '₹1.06 Cr Onwards' },
+            { bhk: '3-BED RESIDENCES', sqft: '1,835 sq. ft.', price: '₹1.30 Cr Onwards' }
         ],
         amenities: [
             { name: '26,000+ sq. ft. Multi-Level Clubhouse', icon: 'fa-solid fa-hotel' },
@@ -375,8 +374,8 @@ export const propertiesData = [
 
         ],
         floorPlans: [
-            { bhk: '3-BED RESIDENCES', sqft: '1810 sq. ft.', price: '' },
-            { bhk: '4-BED RESIDENCES', sqft: '3115 sq. ft.', price: '' }
+            { bhk: '3-BED RESIDENCES', sqft: '1810 sq. ft.', price: '₹3.12 Cr Onwards' },
+            { bhk: '4-BED RESIDENCES', sqft: '3115 sq. ft.', price: 'On Request' }
         ],
         amenities: [
             { name: '~35,000 sq. ft. Grand Clubhouse', icon: 'fa-solid fa-hotel' },

@@ -157,15 +157,15 @@ export const faqData = [
 export const propertiesData = [
     {
         id: 'prestige-parklane',
-        name: 'Prestige parklane',
-        location: 'Muddenahalli Village, Hitech Deffence and Aerospace park Phase 2 Chanarayapattana Hobli, Devanahalli, Bangalore, Karnataka 562135',
+        name: 'Prestige Parklane',
+        location: 'KIADB Hi-Tech, Defence and Aerospace Park Phase 2, Devanahalli, North Bengaluru, Karnataka 562129',
         category: 'NEW',
         statusText: 'New Launch',
         badgeClass: 'badge-new',
-        price: '65 Lakhs Onwards',
+        price: '₹65 Lakhs Onwards',
         bhk: '1 BHK, 2BHK, 2BHK large, 3BHK 2T, 3BHK 3T, 3BHK 3T Large',
-        area: '11.76',
-        possession: '2028',
+        area: '11.76 Acres',
+        possession: 'December 2030',
         rera: 'PRM/KA/RERA/1251/309/PR/150926/008941.',
         description: 'Prestige Parklane is a premium residential development by Prestige Group, located in Muddenahalli Village, within the Hitech Defence and Aerospace Park Phase 2, Chanarayapatna Hobli, Devanahalli, Bengaluru, Karnataka – 562135. Spread across 11.76 acres, the project comprises 1,788 residential units across 9 towers, each designed with 3 basements + Ground + 24 floors.',
         images: [
@@ -174,10 +174,10 @@ export const propertiesData = [
         floorPlans: [
             { bhk: '1 BHK', sqft: '567 - 571 sq. ft.', price: '65 Lakhs Onwards' },
             { bhk: '2 BHK', sqft: '828 - 880 sq.ft.', price: '90 Lakhs Onwards' },
-            { bhk: '2BHK large', sqft: '1087 - 1103 sq.ft.', price: '1.15 Crore Onwards' },
-            { bhk: '3 BHK 2T', sqft: '1445 - 1469 sq.ft.', price: '1.50 Crore Onwards' },
-            { bhk: '3 BHK 3T', sqft: '1597 - 1662 sq.ft.', price: '1.69 Crore Onwards' },
-            { bhk: '3 BHK 3T Large', sqft: '1757 - 1801 sq.ft.', price: '1.89 Crore Onwards' }
+            { bhk: '2BHK large', sqft: '1,087 - 1,103 sq.ft.', price: '1.15 Crore Onwards' },
+            { bhk: '3 BHK 2T', sqft: '1,445 - 1,469 sq.ft.', price: '1.50 Crore Onwards' },
+            { bhk: '3 BHK 3T', sqft: '1,597 - 1,662 sq.ft.', price: '1.69 Crore Onwards' },
+            { bhk: '3 BHK 3T Large', sqft: '1,757 - 1,801 sq.ft.', price: '1.89 Crore Onwards' }
         ],
         amenities: [
             { name: 'Gym', icon: 'fa-solid fa-dumbbell' },
@@ -207,13 +207,13 @@ export const propertiesData = [
     },
     {
         id: 'prestige-evergreen',
-        name: 'Prestige evergreen',
+        name: 'Prestige Evergreen',
         location: 'SH 35, Whitefield Main Road, Varthur, Bengaluru, Karnataka 560087',
-        category: 'NEW',
-        statusText: 'New Launch',
-        badgeClass: 'badge-new',
-        price: '1.90 Cr*',
-        bhk: '2 BHK, 3 BHK+2T, 3 BHK + 3T, 3.5BHK',
+        category: 'ONGOING',
+        statusText: 'Ongoing',
+        badgeClass: 'badge-ongoing',
+        price: '₹1.90 Cr Onwards',
+        bhk: '2 BHK, 3 BHK 2T, 3 BHK 3T, 3.5 BHK',
         area: '24 Acres',
         possession: 'June 2030',
         rera: 'PRM/KA/RERA/1251/446/PR/010126/008374',
@@ -223,8 +223,8 @@ export const propertiesData = [
         ],
         floorPlans: [
             { bhk: '2 BHK', sqft: '1,174 – 1,194 Sq.Ft.', price: '₹ 1.90 Cr*' },
-            { bhk: '3 BHK + 2T', sqft: '1,486 Sq.Ft.', price: '₹ 2.30 Cr*' },
-            { bhk: '3 BHK + 3T', sqft: '1,825 Sq.Ft.', price: '₹ 2.60 Cr*' },
+            { bhk: '3 BHK 2T', sqft: '1,486 Sq.Ft.', price: '₹ 2.30 Cr*' },
+            { bhk: '3 BHK 3T', sqft: '1,825 Sq.Ft.', price: '₹ 2.60 Cr*' },
             { bhk: '3.5 BHK', sqft: '2,037 Sq.Ft.', price: '₹ 3.30 Cr*' }
         ],
         amenities: [
@@ -275,20 +275,20 @@ export const propertiesData = [
         id: 'prestige-glenbrook',
         name: 'Prestige Glenbrook',
         location: 'Nallurhalli, Borewell Road, Whitefield, Bengaluru, Karnataka 560066',
-        category: 'NEW',
-        statusText: 'New Launch',
-        badgeClass: 'badge-new',
-        price: '3.82 Cr*',
+        category: 'ONGOING',
+        statusText: 'Ongoing',
+        badgeClass: 'badge-ongoing',
+        price: '₹3.82 Cr Onwards',
         bhk: '4 BHK',
         area: '4.5 Acres',
-        possession: '',
+        possession: 'June 2027',
         rera: 'PRM/KA/RERA/1251/446/PR/081123/006382',
         description: 'Prestige Glenbrook is a residential project by Prestige Group, located in Nallurahalli, Borewell Road, Bangalore – 560066. The project is spread across 4.5 acres and consists of 285 residential units, planned across 2 towers with 16 floors each. It offers spacious 4 BHK apartments, with prices starting from ₹3.82 crore onwards. The project is designed to provide a comfortable lifestyle with 10+ amenities for residents. Its location in Nallurahalli offers good connectivity to Whitefield and other important areas of East Bangalore, making it convenient for both families and working professionals. Residents can also benefit from easy access to nearby IT hubs, schools, hospitals, shopping areas, and major roads. Prestige Glenbrook is registered under RERA with the registration number PRM/KA/RERA/1251/446/PR/081123/006382. Overall, the project combines spacious homes, a well-connected location, modern amenities, and the experience of Prestige Group.',
         images: [
             'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
         ],
         floorPlans: [
-            { bhk: '4 BHK', sqft: '', price: '₹ 3.82 Cr*' }
+            { bhk: '4 BHK', sqft: '2,928 sq. ft.', price: '₹ 3.82 Cr*' }
         ],
         amenities: [
             { name: 'Basketball Court', icon: 'fa-solid fa-basketball' },
@@ -314,6 +314,486 @@ export const propertiesData = [
             { label: 'Schools & Colleges', distance: '450 m to 2.3 km (Narayana eTechno / Deens Academy)', icon: 'fa-solid fa-graduation-cap' },
             { label: 'Hospitals', distance: '1.4 km to 2.3 km (Svastha / Vydehi Hospital)', icon: 'fa-solid fa-hospital' },
             { label: 'Shopping & Malls', distance: '2.2 km (Nexus Whitefield Mall / Virginia Mall)', icon: 'fa-solid fa-cart-shopping' }
+        ]
+    },
+    {
+        id: 'prestige-garden-breeze',
+        name: 'Prestige Garden Breeze',
+        location: 'Ittangur Road, off Sarjapur Main Road (SH 35), Yamare Village, Sarjapur, Bengaluru, Karnataka 562125',
+        category: 'NEW',
+        statusText: 'New Launch',
+        badgeClass: 'badge-new',
+        price: '₹1.2 Cr Onwards',
+        bhk: '2 BHK 2T, 3 BHK 2T, 3 BHK 3T, 4 BHK Penthouse ',
+        area: '10 Acres',
+        possession: 'December 2030',
+        rera: 'PRM/KA/RERA/1251/308/PR/080926/008919',
+        description: 'Garden Breeze is the final residential phase (Phase 7) of the landmark 10-acre integrated township, The Prestige City, located on Sarjapur Road. Designed with 80% landscaped open spaces across 4 high-rise towers (featuring 655 ultra-luxury homes), the enclave offers a grand G+2 clubhouse, forest trails, and seamless connectivity to major tech corridors.',
+        images: [
+            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+        ],
+        floorPlans: [
+            { bhk: '2 BHK 2T', sqft: '1,080 sq. ft.', price: '₹ 1.2 Cr*' },
+            { bhk: '3 BHK 2T', sqft: '1,470 sq. ft.', price: '₹ 1.62 Cr*' },
+            { bhk: '3 BHK 3T', sqft: '1,720 sq. ft.', price: '₹ 1.89 Cr*' },
+            { bhk: '4 BHK Penthouse', sqft: '2,779 sq. ft.', price: '₹ 3.56 Cr*' },
+        ],
+        amenities: [
+            { name: 'Grand G+2 Clubhouse', icon: 'fa-solid fa-hotel' },
+            { name: 'Swimming Pool & Kids Splash Pool', icon: 'fa-solid fa-person-swimming' },
+            { name: 'Fully Equipped Modern Gymnasium', icon: 'fa-solid fa-dumbbell' },
+            { name: 'Yoga & Meditation Seating Pavilion', icon: 'fa-solid fa-mattress-pillow' },
+            { name: 'Forest Trail & Zen Gardens', icon: 'fa-solid fa-tree' },
+            { name: 'Outdoor Sports & Event Lawn', icon: 'fa-solid fa-champagne-glasses' },
+            { name: 'Children\'s Dedicated Play Area', icon: 'fa-solid fa-child-reaching' },
+            { name: '24/7 Manned Security & Surveillance', icon: 'fa-solid fa-shield-halved' }
+        ],
+        connectivity: [
+            { label: 'Upcoming Forum Retail Mall', distance: '0.1 km (Township premises)', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Sarjapur Main Road (SH 35)', distance: '0.5 km', icon: 'fa-solid fa-road' },
+            { label: 'Wipro SEZ Sarjapur', distance: '9.0 km', icon: 'fa-solid fa-industry' },
+            { label: 'RGA Tech Park', distance: '10.0 km', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Carmelaram Railway Station', distance: '7.5 km', icon: 'fa-solid fa-train' },
+            { label: 'Outer Ring Road (ORR)', distance: '11.0 km', icon: 'fa-solid fa-road' },
+            { label: 'Electronic City', distance: '16.0 km', icon: 'fa-solid fa-microchip' }
+        ]
+    },
+    {
+        id: 'prestige-city-eaton-park',
+        name: 'Prestige City Eaton Park',
+        location: 'Off Sarjapur - Marathahalli Main Road (SH 35), Yamare Village, Sarjapur, Bengaluru, Karnataka 562125',
+        category: 'NEW',
+        statusText: 'New Launch',
+        badgeClass: 'badge-new',
+        price: '₹2.21 Cr Onwards',
+        bhk: '3 BHK 3T, 4 BHK 4T',
+        area: '7 Acres',
+        possession: 'June 2030',
+        rera: 'PRM/KA/RERA/1251/308/PR/180326/008537',
+        description: 'Eaton Park is a high-rise residential phase within the 180-acre integrated township, The Prestige City, on Sarjapur Road. Spread across 7 acres with ~90% open space, the enclave comprises 4 high-rise towers (G+28 to G+37 floors) offering 366 large-format 3 & 4 BHK residences, supported by the dedicated 17,770 sq. ft. Club Eaton lakeside clubhouse and seamless access to on-site retail hubs.',
+        images: [
+            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+        ],
+        floorPlans: [
+            { bhk: '3 BHK 3T', sqft: '1,903 sq. ft.', price: '₹ 2.21 Cr*' },
+            { bhk: '4 BHK 4T', sqft: '2,492 sq. ft.', price: '₹ 2.98 Cr*' },
+        ],
+        amenities: [
+            { name: '17,770 sq. ft. Club Eaton Lakeside Clubhouse', icon: 'fa-solid fa-hotel' },
+            { name: 'Rooftop Infinity Swimming Pool & Kids Pool', icon: 'fa-solid fa-person-swimming' },
+            { name: 'Fully Equipped Modern Gymnasium & Fitness Studio', icon: 'fa-solid fa-dumbbell' },
+            { name: 'Yoga & Meditation Pavilion', icon: 'fa-solid fa-mattress-pillow' },
+            { name: 'Multipurpose Sports Courts & Tennis Court', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+            { name: 'Jogging & Cycling Tracks', icon: 'fa-solid fa-person-running' },
+            { name: 'Pet Park & Dedicated Dog Run Area', icon: 'fa-solid fa-paw' },
+            { name: 'Children\'s Play Area', icon: 'fa-solid fa-child-reaching' },
+            { name: 'Spa & Wellness Rooms', icon: 'fa-solid fa-hot-tub-person' },
+            { name: 'Mini Theatre & Games Room', icon: 'fa-solid fa-film' }
+        ],
+        connectivity: [
+            { label: 'Wipro SEZ Sarjapur', distance: '3.0 km', icon: 'fa-solid fa-industry' },
+            { label: 'Carmelaram Railway Station', distance: '3.0 km', icon: 'fa-solid fa-train' },
+            { label: 'Harvest International School', distance: '4.5 km', icon: 'fa-solid fa-school' },
+            { label: 'RGA Tech Park', distance: '8.2 km', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Embassy TechVillage (ORR)', distance: '9.5 km', icon: 'fa-solid fa-building' },
+            { label: 'Electronic City Phase 1', distance: '15.0 km', icon: 'fa-solid fa-microchip' },
+            { label: 'Kempegowda International Airport', distance: '51.0 km', icon: 'fa-solid fa-plane' }
+        ]
+    },
+    {
+        id: 'prestige-marigold',
+        name: 'Prestige Marigold Phase 2',
+        location: 'Chapparkallu Road, Bettenahalli, off Bellary Road (NH 44), North Bengaluru, Karnataka 562110',
+        category: 'NEW',
+        statusText: 'New Launch',
+        badgeClass: 'badge-new',
+        price: '₹1.02 Cr Onwards',
+        bhk: '30x40 Plot, 30x50 Plot, 40x60 Plot, 50x80 Plot',
+        area: '55.14 Acres',
+        possession: 'November 2027',
+        rera: 'PRM/KA/RERA/1250/303/PR/171225/008346',
+        description: 'Prestige Marigold Phase 2 is an infrastructure-ready plotted development by Prestige Group located off Bellary Road (NH 44) on Chapparkallu Road, Bettenahalli. Encompassing ~49 acres with 716 residential plots, the master-planned layout features wide asphalted internal roads, underground power & fiber-optic networks, landscaped gardens, and a G+2 multi-level clubhouse with 35+ lifestyle amenities.',
+        images: [
+            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+        ],
+        floorPlans: [
+            { bhk: '30 x 40 PLOT', sqft: '1,200 sq. ft.', price: '₹1.02 Cr Onwards' },
+            { bhk: '30 x 50 PLOT', sqft: '1,500 sq. ft.', price: '₹1.27 Cr Onwards' },
+            { bhk: '40 x 60 PLOT', sqft: '2,400 sq. ft.', price: '₹2.05 Cr Onwards' },
+            { bhk: '50 x 80 PLOT', sqft: '4,000 sq. ft.', price: '₹3.20 Cr Onwards' }
+        ],
+        amenities: [
+            { name: 'G+2 Multi-Level Clubhouse', icon: 'fa-solid fa-hotel' },
+            { name: 'Swimming Pool & Kids Pool', icon: 'fa-solid fa-person-swimming' },
+            { name: 'Fully Equipped Gymnasium', icon: 'fa-solid fa-dumbbell' },
+            { name: 'Tennis & Badminton Courts', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+            { name: 'Cricket Practice Pitch', icon: 'fa-solid fa-baseball-bat-ball' },
+            { name: 'Skating Rink & Jogging Track', icon: 'fa-solid fa-person-skating' },
+            { name: 'Yoga & Meditation Pavilion', icon: 'fa-solid fa-mattress-pillow' },
+            { name: 'Underground Electrical & Fiber Optic Lines', icon: 'fa-solid fa-plug' },
+            { name: 'Underground STP & Dual Water Network', icon: 'fa-solid fa-faucet-drip' },
+            { name: 'Children\'s Play Area', icon: 'fa-solid fa-child-reaching' }
+        ],
+        connectivity: [
+            { label: 'Bellary Road (NH 44)', distance: '3.5 km', icon: 'fa-solid fa-road' },
+            { label: 'Yelahanka Junction Railway Station', distance: '10.0 km', icon: 'fa-solid fa-train' },
+            { label: 'RMZ Galleria Mall', distance: '12.0 km', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Devanahalli Business Park', distance: '15.0 km', icon: 'fa-solid fa-building' },
+            { label: 'Kempegowda International Airport', distance: '16.6 km', icon: 'fa-solid fa-plane' },
+            { label: 'KIADB Aerospace Park', distance: '18.0 km', icon: 'fa-solid fa-industry' },
+            { label: 'Manyata Tech Park', distance: '22.0 km', icon: 'fa-solid fa-laptop-code' }
+        ]
+    },
+    {
+        id: 'prestige-city-fernvale',
+        name: 'Prestige City Fernvale',
+        location: 'Kalahalli, Off Sarjapur Main Road, Yamare Village, Sarjapur, Bengaluru, Karnataka 562125',
+        category: 'ONGOING',
+        statusText: 'Ongoing',
+        badgeClass: 'badge-ongoing',
+        price: '₹1.29 Cr Onwards',
+        bhk: '2 BHK 2T, 3 BHK 2T, 3 BHK 3T, 3 BHK 3T + Home Office',
+        area: '4.38 Acres',
+        possession: 'March 2030',
+        rera: 'PRM/KA/RERA/1251/308/PR/110326/008519',
+        description: 'Fernvale is Phase 6 of the landmark 180-acre integrated township, The Prestige City, located off Sarjapur Main Road. Spread across 3 acres with 2 high-rise towers comprising 387 premium residences, the project provides full access to the township ecosystem, resort-style amenities, and well-designed 2 and 3 BHK apartment layouts.',
+        images: [
+            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+        ],
+        floorPlans: [
+            { bhk: '2 BHK 2T', sqft: '1,113 sq. ft.', price: '₹ 1.34 Cr*' },
+            { bhk: '3 BHK 2T', sqft: '1,513 sq. ft.', price: '₹ 1.80 Cr*' },
+            { bhk: '3 BHK 3T', sqft: '1,808 sq. ft.', price: '₹ 2.17 Cr*' },
+            { bhk: '3 BHK 3T + Home Office', sqft: '1,996 sq. ft.', price: '₹ 2.39 Cr*' },
+        ],
+        amenities: [
+            { name: 'Exclusive Clubhouse Access', icon: 'fa-solid fa-hotel' },
+            { name: 'Swimming Pool & Kids Splash Pool', icon: 'fa-solid fa-person-swimming' },
+            { name: 'Fully Equipped Modern Gymnasium', icon: 'fa-solid fa-dumbbell' },
+            { name: 'Yoga & Meditation Zone', icon: 'fa-solid fa-mattress-pillow' },
+            { name: 'Multi-Purpose Sports Court', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+            { name: 'Jogging & Walking Tracks', icon: 'fa-solid fa-person-running' },
+            { name: 'Landscaped Central Gardens', icon: 'fa-solid fa-tree' },
+            { name: 'Children\'s Play Area', icon: 'fa-solid fa-child-reaching' }
+        ],
+        connectivity: [
+            { label: 'Sarjapur Main Road (SH 35)', distance: '0.5 km', icon: 'fa-solid fa-road' },
+            { label: 'Wipro SEZ Sarjapur', distance: '3.0 km', icon: 'fa-solid fa-industry' },
+            { label: 'Carmelaram Railway Station', distance: '8.0 km', icon: 'fa-solid fa-train' },
+            { label: 'RGA Tech Park', distance: '8.5 km', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Hopefarm Metro Station', distance: '12.0 km', icon: 'fa-solid fa-train-subway' },
+            { label: 'Outer Ring Road (ORR)', distance: '10.5 km', icon: 'fa-solid fa-road' }
+        ]
+    },
+    {
+        id: 'prestige-crystal-lawns',
+        name: 'Prestige Crystal Lawns',
+        location: 'IVC Road, Near Singarahalli, Kundana Hobli, Devanahalli, North Bengaluru, Karnataka 562110',
+        category: 'ONGOING',
+        statusText: 'Ongoing',
+        badgeClass: 'badge-ongoing',
+        price: '₹1.38 Cr Onwards',
+        bhk: '30x50 Plot, 40x60 Plot, 50x80 Plot',
+        area: '24.3 Acres',
+        possession: 'March 2027',
+        rera: 'PRM/KA/RERA/1250/303/PR/300925/008132',
+        description: 'Prestige Crystal Lawns is a premier planned plotted development by Prestige Group located on IVC Road, Devanahalli. Spanning 24.3 acres with 235 premium residential plots, the project centers around a massive landscaped central park and features a 30m wide grand entrance road, 12m wide internal asphalted roads, underground utilities, and a modern clubhouse with rich recreational facilities.',
+        images: [
+            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+        ],
+        floorPlans: [
+            { bhk: '30x50 Plot', sqft: '1,500 sq. ft.', price: '₹ 1.38 Cr*' },
+            { bhk: '40x60 Plot', sqft: '2,400 sq. ft.', price: 'On Request' },
+            { bhk: '50x80 Plot', sqft: '4,000 sq. ft.', price: 'On Request' },
+        ],
+        amenities: [
+            { name: 'Modern Clubhouse', icon: 'fa-solid fa-hotel' },
+            { name: 'Central Park & Amphitheatre', icon: 'fa-solid fa-tree' },
+            { name: 'Swimming Pool & Kids Pool', icon: 'fa-solid fa-person-swimming' },
+            { name: 'Fully Equipped Gymnasium', icon: 'fa-solid fa-dumbbell' },
+            { name: 'Badminton & Pickleball Courts', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+            { name: 'Snooker & Table Tennis Room', icon: 'fa-solid fa-gamepad' },
+            { name: 'Yoga Lawn & Meditation Deck', icon: 'fa-solid fa-mattress-pillow' },
+            { name: 'Underground Power & Fiber Optic Lines', icon: 'fa-solid fa-plug' },
+            { name: 'Underground STP & Dual Water Network', icon: 'fa-solid fa-faucet-drip' },
+            { name: 'Children\'s Play Area & Gazebos', icon: 'fa-solid fa-child-reaching' }
+        ],
+        connectivity: [
+            { label: 'Bellary Road (NH 44)', distance: '3.0 km', icon: 'fa-solid fa-road' },
+            { label: 'Kempegowda International Airport', distance: '9.8 km', icon: 'fa-solid fa-plane' },
+            { label: 'Yelahanka Junction Railway Station', distance: '12.0 km', icon: 'fa-solid fa-train' },
+            { label: 'KIADB Aerospace Park', distance: '14.5 km', icon: 'fa-solid fa-industry' },
+            { label: 'Manyata Tech Park', distance: '20.0 km', icon: 'fa-solid fa-laptop-code' },
+            { label: 'K.R. Puram Railway Station', distance: '26.2 km', icon: 'fa-solid fa-train' }
+        ]
+    },
+    {
+        id: 'prestige-greenbrook',
+        name: 'Prestige Greenbrook',
+        location: 'IVC Road, Off Bellary Road (NH 44), Devanahalli, North Bengaluru, Karnataka 562110',
+        category: 'ONGOING',
+        statusText: 'Ongoing',
+        badgeClass: 'badge-ongoing',
+        price: '₹1.35 Cr Onwards',
+        bhk: '30x50 Plot, 30x60 Plot, 40x50 Plot, 40x60 Plot',
+        area: '33 Acres',
+        possession: 'March 2027',
+        rera: 'PRM/KA/RERA/1250/303/PR/260925/008123',
+        description: 'Prestige Greenbrook is a premium residential plotted development by Prestige Group located along IVC Road in Devanahalli, North Bengaluru. Spanning 33.29 acres with just 325 villa plots (~10 units per acre), the low-density master-planned community features asphalted internal roads, underground electrical & fiber optic cabling, dedicated rainwater harvesting, and a fully equipped lifestyle clubhouse.',
+        images: [
+            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+        ],
+        floorPlans: [
+            { bhk: '30 x 50 PLOT', sqft: '1,500 sq. ft.', price: '₹1.35 Cr Onwards' },
+            { bhk: '30 x 60 PLOT', sqft: '1,800 sq. ft.', price: '₹1.61 Cr Onwards' },
+            { bhk: '40 x 50 PLOT', sqft: '2,000 sq. ft.', price: '₹1.79 Cr Onwards' },
+            { bhk: '40 x 60 PLOT', sqft: '2,400 sq. ft.', price: '₹2.15 Cr Onwards' }
+        ],
+        amenities: [
+            { name: 'Multipurpose Clubhouse & Foyer', icon: 'fa-solid fa-hotel' },
+            { name: 'Swimming Pool & Kids Splash Pool', icon: 'fa-solid fa-person-swimming' },
+            { name: 'Fully Equipped Gymnasium', icon: 'fa-solid fa-dumbbell' },
+            { name: 'Yoga & Meditation Pavilion', icon: 'fa-solid fa-mattress-pillow' },
+            { name: 'Tennis & Basketball Courts', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+            { name: 'Badminton Courts & Indoor Games', icon: 'fa-solid fa-gamepad' },
+            { name: 'Mini Theatre & Multipurpose Hall', icon: 'fa-solid fa-film' },
+            { name: 'Jogging & Cycling Track', icon: 'fa-solid fa-person-running' },
+            { name: 'Underground Utilities & Fiber Cable Network', icon: 'fa-solid fa-plug' },
+            { name: 'Children\'s Play Zone & Senior Citizen Seating', icon: 'fa-solid fa-child-reaching' }
+        ],
+        connectivity: [
+            { label: 'Bellary Road (NH 44)', distance: '3.2 km', icon: 'fa-solid fa-road' },
+            { label: 'Satellite Town Ring Road (STRR)', distance: '8.0 km', icon: 'fa-solid fa-road' },
+            { label: 'Yelahanka Satellite Town', distance: '11.5 km', icon: 'fa-solid fa-city' },
+            { label: 'RMZ Galleria Mall', distance: '13.0 km', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Kempegowda International Airport', distance: '16.5 km', icon: 'fa-solid fa-plane' },
+            { label: 'KIADB Aerospace Park', distance: '17.5 km', icon: 'fa-solid fa-industry' },
+            { label: 'Foxconn Manufacturing Hub', distance: '18.0 km', icon: 'fa-solid fa-microchip' }
+        ]
+    },
+    {
+        id: 'prestige-autumn-leaves',
+        name: 'Prestige Autumn Leaves',
+        location: 'Chapparkallu Road, Hegganahalli, Kundana Hobli, Devanahalli, North Bengaluru, Karnataka 562110',
+        category: 'ONGOING',
+        statusText: 'Ongoing',
+        badgeClass: 'badge-ongoing',
+        price: '₹1.32 Cr Onwards',
+        bhk: '30x45 Plot, 40x60 Plot, 50x60 Plot, 60x60 Plot, 60x80 Plot',
+        area: '27 Acres',
+        possession: 'August 2028',
+        rera: 'PRM/KA/RERA/1250/303/PR/240925/008116',
+        description: 'Prestige Autumn Leaves is a premium 27-acre plotted development by Prestige Group located on Chapparkallu Road off IVC Road, Devanahalli. Designed with dual block layouts and 240 boutique villa plots, the master community features an 18m wide entry boulevard, 12m wide internal asphalted roads, underground dual water & fiber-optic networks, and a central linear park.',
+        images: [
+            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+        ],
+        floorPlans: [
+            { bhk: '30 x 45 PLOT', sqft: '1,350 sq. ft.', price: '₹1.32 Cr Onwards' },
+            { bhk: '40 x 60 PLOT', sqft: '2,400 sq. ft.', price: '₹2.36 Cr Onwards' },
+            { bhk: '50 x 60 PLOT', sqft: '3,000 sq. ft.', price: '₹2.95 Cr Onwards' },
+            { bhk: '60 x 60 PLOT', sqft: '3,600 sq. ft.', price: '₹3.53 Cr Onwards' },
+            { bhk: '50 x 80 PLOT', sqft: '4,000 sq. ft.', price: '₹3.93 Cr Onwards' }
+        ],
+        amenities: [
+            { name: 'Grand Clubhouse & Reception Hall', icon: 'fa-solid fa-hotel' },
+            { name: 'Swimming Pool & Kids Splash Pool', icon: 'fa-solid fa-person-swimming' },
+            { name: 'Fully Equipped Gymnasium', icon: 'fa-solid fa-dumbbell' },
+            { name: 'Multipurpose Court & Cricket Pitch', icon: 'fa-solid fa-baseball-bat-ball' },
+            { name: 'Skating Rink & Jogging Pathways', icon: 'fa-solid fa-person-skating' },
+            { name: 'Yoga Lawn & Open-Air Amphitheatre', icon: 'fa-solid fa-mattress-pillow' },
+            { name: 'Underground Electrical & Fiber Optic Lines', icon: 'fa-solid fa-plug' },
+            { name: 'Central STP & Dual UPVC Water Network', icon: 'fa-solid fa-faucet-drip' },
+            { name: 'Linear Green Central Park', icon: 'fa-solid fa-tree' },
+            { name: 'RFID Boom Barrier Security & 24/7 CCTV', icon: 'fa-solid fa-shield-halved' }
+        ],
+        connectivity: [
+            { label: 'Vidyashilp University', distance: '1.2 km', icon: 'fa-solid fa-graduation-cap' },
+            { label: 'Bellary Road (NH 44)', distance: '3.5 km', icon: 'fa-solid fa-road' },
+            { label: 'Devanahalli Town', distance: '5.0 km', icon: 'fa-solid fa-city' },
+            { label: 'Doddajala Railway Station', distance: '7.8 km', icon: 'fa-solid fa-train' },
+            { label: 'Satellite Town Ring Road (STRR)', distance: '8.2 km', icon: 'fa-solid fa-road' },
+            { label: 'Kempegowda International Airport', distance: '12.5 km', icon: 'fa-solid fa-plane' },
+            { label: 'KIADB Aerospace SEZ', distance: '15.0 km', icon: 'fa-solid fa-industry' }
+        ]
+    },
+    {
+        id: 'prestige-southern-star',
+        name: 'Prestige Southern Star',
+        location: 'Begur - DLF Newtown Road, Akshayanagar, Off Bannerghatta Road, Bengaluru, Karnataka 560068',
+        category: 'ONGOING',
+        statusText: 'Ongoing',
+        badgeClass: 'badge-ongoing',
+        price: '₹83.7 Lakh Onwards',
+        bhk: '1 BHK, 2 BHK, 3 BHK, 4 BHK',
+        area: '32.5 Acres',
+        possession: 'September 2027',
+        rera: 'PRM/KA/RERA/1251/310/PR/210325/007603',
+        description: 'Prestige Southern Star is a premier 34-acre high-rise residential township by Prestige Group located off Bannerghatta Road in Akshayanagar. Featuring 14 high-rise towers (G+26 to G+27 floors) with over 75% open spaces and views of Begur Lake, the development accommodates 2,130 luxury residences anchored by a 70,000 sq. ft. multi-level clubhouse and an expansive 1-acre fitness arena.',
+        images: [
+            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+        ],
+        floorPlans: [
+            { bhk: '1 BHK', sqft: '695 sq. ft.', price: '₹83.7 L Onwards' },
+            { bhk: '2 BHK (Optima)', sqft: '1,138 - 1,599 sq. ft.', price: '₹1.29 Cr Onwards' },
+            { bhk: '3 BHK (Aspire)', sqft: '1,463 - 1,524 sq. ft.', price: '₹1.68 Cr Onwards' },
+            { bhk: '3 BHK (Premia)', sqft: '1,812 - 1,883 sq. ft.', price: '₹2.02 Cr Onwards' },
+            { bhk: '3 BHK + HOME OFFICE (Ultima)', sqft: '2,083 - 2,553 sq. ft.', price: '₹2.36 Cr Onwards' },
+            { bhk: '4 BHK + HOME OFFICE (Magnus)', sqft: '2,690 - 2,774 sq. ft.', price: '₹3.29 Cr Onwards' }
+        ],
+        amenities: [
+            { name: '70,000 sq. ft. Grand Clubhouse', icon: 'fa-solid fa-hotel' },
+            { name: 'Olympic-Size Swimming Pool & Glass-Floor Kids Pool', icon: 'fa-solid fa-person-swimming' },
+            { name: '1-Acre Fitness Arena & Modern Gymnasium', icon: 'fa-solid fa-dumbbell' },
+            { name: 'Badminton & Tennis Courts', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+            { name: 'Skating Rink & Squash Court', icon: 'fa-solid fa-person-skating' },
+            { name: 'Yoga, Meditation & Health Club/Spa', icon: 'fa-solid fa-mattress-pillow' },
+            { name: 'Mini Theatre & Multipurpose Party Hall', icon: 'fa-solid fa-film' },
+            { name: 'Outdoor Jogging & Cycling Track', icon: 'fa-solid fa-person-running' },
+            { name: 'Begur Lake View Deck & Landscaped Parks', icon: 'fa-solid fa-tree' },
+            { name: 'Children\'s Play Area & Indoor Games Room', icon: 'fa-solid fa-child-reaching' }
+        ],
+        connectivity: [
+            { label: 'Singasandra Metro Station (Yellow Line)', distance: '3.8 km', icon: 'fa-solid fa-train-subway' },
+            { label: 'NICE Ring Road Junction', distance: '4.5 km', icon: 'fa-solid fa-road' },
+            { label: 'Bannerghatta Main Road', distance: '4.8 km', icon: 'fa-solid fa-road' },
+            { label: 'Vega City Mall', distance: '6.5 km', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Electronic City Phase 1', distance: '8.0 km', icon: 'fa-solid fa-microchip' },
+            { label: 'Jayadeva Flyover / Hospital', distance: '8.5 km', icon: 'fa-solid fa-hospital' },
+            { label: 'Outer Ring Road (ORR) Silk Board', distance: '9.2 km', icon: 'fa-solid fa-road' }
+        ]
+    },
+    {
+        id: 'prestige-pine-forest',
+        name: 'Prestige Pine Forest',
+        location: 'ECC Road, Pattandur Agrahara, Whitefield, Bengaluru, Karnataka 560066',
+        category: 'ONGOING',
+        statusText: 'Ongoing',
+        badgeClass: 'badge-ongoing',
+        price: '₹3.75 Cr Onwards',
+        bhk: '3 BHK, 4 BHK',
+        area: '9 Acres',
+        possession: 'December 2028',
+        rera: 'PRM/KA/RERA/1251/446/PR/190924/007048',
+        description: 'Prestige Pine Forest is a high-end forest-themed residential enclave by Prestige Group located on ECC Road in Pattandur Agrahara, Whitefield. Spread across 9 acres with over 80% open green spaces, the community features 4 high-rise towers (2B+G+14 floors) offering 316 large-format 3 & 4 BHK luxury residences with home office options and access to a 35,000+ sq. ft. clubhouse.',
+        images: [
+            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+        ],
+        floorPlans: [
+            { bhk: '3 BHK', sqft: '3,121 sq. ft.', price: '₹4.16 Cr Onwards' },
+            { bhk: '3 BHK + HOME OFFICE', sqft: '2,757 - 2,796 sq. ft.', price: '₹3.75 Cr Onwards' },
+            { bhk: '3 BHK + HOME OFFICE + STUDIO', sqft: '3,160 - 3,235 sq. ft.', price: '₹4.25 Cr Onwards' },
+            { bhk: '4 BHK + HOME OFFICE', sqft: '3,540 - 3,556 sq. ft.', price: '₹4.77 Cr Onwards' }
+        ],
+        amenities: [
+            { name: '35,000+ sq. ft. Multi-Level Clubhouse', icon: 'fa-solid fa-hotel' },
+            { name: 'Swimming Pool & Kids Splash Pool', icon: 'fa-solid fa-person-swimming' },
+            { name: 'Fully Equipped Modern Gymnasium', icon: 'fa-solid fa-dumbbell' },
+            { name: 'Yoga & Meditation Pavilion', icon: 'fa-solid fa-mattress-pillow' },
+            { name: 'Badminton & Tennis Courts', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+            { name: 'Squash Court & Indoor Games Room', icon: 'fa-solid fa-gamepad' },
+            { name: 'Mini Theatre & Multipurpose Party Hall', icon: 'fa-solid fa-film' },
+            { name: 'Forest Trail & Jogging Track', icon: 'fa-solid fa-person-running' },
+            { name: 'Landscaped Central Park & Tree Canopy', icon: 'fa-solid fa-tree' },
+            { name: 'Children\'s Play Area & Pet Park', icon: 'fa-solid fa-child-reaching' }
+        ],
+        connectivity: [
+            { label: 'Kadugodi Tree Park Metro Station', distance: '1.5 km', icon: 'fa-solid fa-train-subway' },
+            { label: 'ITPL (International Tech Park Bangalore)', distance: '1.5 km', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Whitefield Main Road', distance: '2.0 km', icon: 'fa-solid fa-road' },
+            { label: 'EPIP Zone', distance: '3.5 km', icon: 'fa-solid fa-building' },
+            { label: 'Nexus Whitefield Mall', distance: '4.8 km', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Old Madras Road', distance: '7.0 km', icon: 'fa-solid fa-road' },
+            { label: 'K.R. Puram Railway Station', distance: '7.8 km', icon: 'fa-solid fa-train' }
+        ]
+    },
+    {
+        id: 'prestige-raintree-park',
+        name: 'Prestige Raintree Park',
+        location: 'SH 35, Whitefield - Varthur Main Road, Opp. Varthur Lake, Whitefield, Bengaluru, Karnataka 560087',
+        category: 'ONGOING',
+        statusText: 'Ongoing',
+        badgeClass: 'badge-ongoing',
+        price: '₹2.93 Cr Onwards',
+        bhk: '3 BHK, 4 BHK, 5 BHK',
+        area: '21 Acres',
+        possession: 'December 2028',
+        rera: 'PRM/KA/RERA/1251/446/PR/270824/006981',
+        description: 'Prestige Raintree Park is a high-end residential township by Prestige Group located on the Whitefield-Varthur Main Road opposite Varthur Lake. Spread across 21 acres in Phase 1 (as part of a grand 107-acre mixed-use development comprising residential, commercial, and retail zones), the enclave features 18 high-rise towers (3B+G+19 floors) offering 1,520 large-format luxury apartments, an expansive 100,000+ sq. ft. clubhouse, and over 80% open spaces.',
+        images: [
+            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+        ],
+        floorPlans: [
+            { bhk: '3 BHK', sqft: '2,005 sq. ft.', price: '₹2.93 Cr Onwards' },
+            { bhk: '3 BHK + Home Office', sqft: '2,187 sq. ft.', price: '₹3.40 Cr Onwards' },
+            { bhk: '4 BHK + Home Office', sqft: '2,451 sq. ft.', price: '₹3.65 Cr Onwards' },
+            { bhk: '4 BHK 4T + Home Office', sqft: '2,924 sq. ft.', price: '₹4.30 Cr Onwards' },
+            { bhk: '5 BHK', sqft: '3,503 sq. ft.', price: '₹5.12 Cr Onwards' }
+        ],
+        amenities: [
+            { name: '100,000+ sq. ft. Multi-Level Clubhouse', icon: 'fa-solid fa-hotel' },
+            { name: '3 Temperature-Controlled Swimming Pools & Kids Pool', icon: 'fa-solid fa-person-swimming' },
+            { name: 'Fully Equipped Fitness Studio & Gym', icon: 'fa-solid fa-dumbbell' },
+            { name: 'Badminton Courts, Tennis Courts & Squash Court', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+            { name: 'Indoor Games Room & Bowling Alley', icon: 'fa-solid fa-bowling-ball' },
+            { name: 'Yoga & Meditation Deck', icon: 'fa-solid fa-mattress-pillow' },
+            { name: 'Mini Theatre & Multipurpose Community Hall', icon: 'fa-solid fa-film' },
+            { name: 'Lakeside Jogging & Cycling Tracks', icon: 'fa-solid fa-person-running' },
+            { name: 'Central Landscaped Courtyard & Tree Canopies', icon: 'fa-solid fa-tree' },
+            { name: 'Children\'s Play Area & Dedicated Pet Park', icon: 'fa-solid fa-child-reaching' }
+        ],
+        connectivity: [
+            { label: 'ITPL (International Tech Park Bengaluru)', distance: '3.9 km', icon: 'fa-solid fa-laptop-code' },
+            { label: 'EPIP Zone Whitefield', distance: '4.5 km', icon: 'fa-solid fa-building' },
+            { label: 'Kadugodi / Whitefield Metro Station (Purple Line)', distance: '8.5 km', icon: 'fa-solid fa-train-subway' },
+            { label: 'Marathahalli ORR Junction', distance: '8.7 km', icon: 'fa-solid fa-road' },
+            { label: 'K.R. Puram Railway Station', distance: '9.2 km', icon: 'fa-solid fa-train' },
+            { label: 'Electronic City Phase 1', distance: '14.1 km', icon: 'fa-solid fa-microchip' },
+            { label: 'Kempegowda International Airport', distance: '53.0 km', icon: 'fa-solid fa-plane' }
+        ]
+    },
+    {
+        id: 'prestige-kings-county',
+        name: 'Prestige Kings County',
+        location: 'Rajapura, Jigani-Bommasandra Main Road, Off Electronic City, South Bengaluru, Karnataka 560105',
+        category: 'ONGOING',
+        statusText: 'Ongoing',
+        badgeClass: 'badge-ongoing',
+        price: '₹1.02 Cr Onwards',
+        bhk: '30x40 Plot, 30x50 Plot, 30x60 Plot, 40x50 Plot, 40x60 Plot',
+        area: '73 Acres',
+        possession: 'December 2026',
+        rera: 'PRM/KA/RERA/1251/308/PR/290624/006936',
+        description: 'Prestige Kings County is a premier 73-acre lakeside plotted township by Prestige Group located in Rajapura, off Electronic City on Jigani-Bommasandra Main Road. Adjacent to Hennagara Lake, the master community features 875 residential villa plots with wide internal asphalted roads, underground electrical & fiber-optic networks, dual water supply, and a dedicated multi-level clubhouse with over 40 active lifestyle amenities.',
+        images: [
+            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+        ],
+        floorPlans: [
+            { bhk: '30 x 40 PLOT', sqft: '1,200 sq. ft.', price: '₹1.02 Cr Onwards' },
+            { bhk: '30 x 50 PLOT', sqft: '1,500 sq. ft.', price: '₹1.27 Cr Onwards' },
+            { bhk: '40 x 50 PLOT', sqft: '1,800 sq. ft.', price: '₹1.53 Cr Onwards' },
+            { bhk: '30 x 60 PLOT', sqft: '2,000 sq. ft.', price: '₹1.70 Cr Onwards' },
+            { bhk: '40 x 60 PLOT', sqft: '2,400 sq. ft.', price: '₹2.04 Cr Onwards' }
+        ],
+        amenities: [
+            { name: 'Multi-Level Grand Clubhouse', icon: 'fa-solid fa-hotel' },
+            { name: 'Swimming Pool & Kids Pool', icon: 'fa-solid fa-person-swimming' },
+            { name: 'Fully Equipped Gymnasium & Outdoor Gym', icon: 'fa-solid fa-dumbbell' },
+            { name: 'Tennis, Basketball & Badminton Courts', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+            { name: 'Skating Rink & Climbing Wall', icon: 'fa-solid fa-person-skating' },
+            { name: 'Yoga Lawn & Meditation Pavilion', icon: 'fa-solid fa-mattress-pillow' },
+            { name: 'Multipurpose Community Hall & Mini Theatre', icon: 'fa-solid fa-film' },
+            { name: 'Lakeside Jogging & Cycling Tracks', icon: 'fa-solid fa-person-running' },
+            { name: 'Underground Electrical & Fiber Optic Cabling', icon: 'fa-solid fa-plug' },
+            { name: 'Children\'s Play Area & Dedicated Pet Park', icon: 'fa-solid fa-child-reaching' }
+        ],
+        connectivity: [
+            { label: 'Treamis World School', distance: '3.7 km', icon: 'fa-solid fa-school' },
+            { label: 'Mazumdar Shaw Medical Center', distance: '4.7 km', icon: 'fa-solid fa-hospital' },
+            { label: 'Bommasandra Metro Station (Yellow Line)', distance: '5.2 km', icon: 'fa-solid fa-train-subway' },
+            { label: 'NICE Ring Road Junction', distance: '8.0 km', icon: 'fa-solid fa-road' },
+            { label: 'Heelalige Railway Station', distance: '9.0 km', icon: 'fa-solid fa-train' },
+            { label: 'Electronic City Phase 1', distance: '11.3 km', icon: 'fa-solid fa-microchip' },
+            { label: 'Kempegowda International Airport', distance: '61.4 km', icon: 'fa-solid fa-plane' }
         ]
     }
 ];

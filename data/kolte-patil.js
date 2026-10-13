@@ -31,184 +31,194 @@ export const faqData = [
 ];
 
 export const propertiesData = [
+    // {
+    //     id: '24k-altura',
+    //     name: 'Kolte-Patil 24K Altura',
+    //     location: 'Baner-Pashan Link Road, Pune',
+    //     category: 'NEW',
+    //     statusText: 'New Launch',
+    //     badgeClass: 'badge-new',
+    //     price: '₹ 1.85 Cr*',
+    //     bhk: '3 & 4 BHK Luxury',
+    //     area: '7.5 Acres',
+    //     possession: 'December 2026',
+    //     rera: 'P52100048291',
+    //     description: '24K Altura presents elevated boutique living crafted for the elite. Complete with sky lounge, private decks, and sustainable luxury design.',
+    //     images: [
+    //         'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80',
+    //         'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+    //         'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80'
+    //     ],
+    //     floorPlans: [
+    //         { bhk: '3 BHK', sqft: '1,250 Sq. Ft.', price: '₹ 1.85 Cr*' },
+    //         { bhk: '4 BHK', sqft: '1,680 Sq. Ft.', price: '₹ 2.45 Cr*' }
+    //     ],
+    //     amenities: [
+    //         { name: 'Sky Club', icon: 'fa-solid fa-cloud' },
+    //         { name: 'Infinity Pool', icon: 'fa-solid fa-water-ladder' },
+    //         { name: 'Modern Gym', icon: 'fa-solid fa-dumbbell' },
+    //         { name: 'Squash Court', icon: 'fa-solid fa-table-tennis-paddle-ball' }
+    //     ],
+    //     connectivity: []
+    // },
     {
-        id: '24k-altura',
-        name: 'Kolte-Patil 24K Altura',
-        location: 'Baner-Pashan Link Road, Pune',
-        category: 'NEW',
-        statusText: 'New Launch',
-        badgeClass: 'badge-new',
-        price: '₹ 1.85 Cr*',
-        bhk: '3 & 4 BHK Luxury',
-        area: '7.5 Acres',
-        possession: 'December 2026',
-        rera: 'P52100048291',
-        description: '24K Altura presents elevated boutique living crafted for the elite. Complete with sky lounge, private decks, and sustainable luxury design.',
-        images: [
-            'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80'
-        ],
-        floorPlans: [
-            { bhk: '3 BHK', sqft: '1,250 Sq. Ft.', price: '₹ 1.85 Cr*' },
-            { bhk: '4 BHK', sqft: '1,680 Sq. Ft.', price: '₹ 2.45 Cr*' }
-        ],
-        amenities: [
-            { name: 'Sky Club', icon: 'fa-solid fa-cloud' },
-            { name: 'Infinity Pool', icon: 'fa-solid fa-water-ladder' },
-            { name: 'Modern Gym', icon: 'fa-solid fa-dumbbell' },
-            { name: 'Squash Court', icon: 'fa-solid fa-table-tennis-paddle-ball' }
-        ],
-        connectivity: []
-    },
-    {
-        id: 'life-republic',
-        name: 'Life Republic (R1 Sector)',
-        location: 'Hinjewadi, Pune',
-        category: 'ONGOING',
-        statusText: 'Ongoing',
-        badgeClass: 'badge-ongoing',
-        price: '₹ 68 Lakhs*',
-        bhk: '2 & 3 BHK Smart Homes',
-        area: '400+ Acres Township',
-        possession: 'June 2025',
-        rera: 'P52100002646',
-        description: 'A grand integrated township spread over 400 acres in Hinjewadi. Designed to offer a balanced ecosystem with multi-tier security and sports arenas.',
-        images: [
-            'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80'
-        ],
-        floorPlans: [
-            { bhk: '2 BHK', sqft: '780 Sq. Ft.', price: '₹ 68 Lakhs*' },
-            { bhk: '3 BHK', sqft: '1,050 Sq. Ft.', price: '₹ 92 Lakhs*' }
-        ],
-        amenities: [
-            { name: 'Township Park', icon: 'fa-solid fa-tree' },
-            { name: 'Clubhouse', icon: 'fa-solid fa-building-user' },
-            { name: 'Sports Complex', icon: 'fa-solid fa-volleyball' },
-            { name: 'School in Campus', icon: 'fa-solid fa-school' }
-        ],
-        connectivity: []
-    },
-    {
-        id: 'stargaze',
-        name: 'Kolte-Patil Stargaze',
-        location: 'Bavdhan, Pune',
+        id: 'kolte-patil-raaga',
+        name: 'Kolte Patil Raaga',
+        location: 'Kannuru, Off Hennur Main Road, North Bengaluru, Karnataka 560077',
         category: 'READY',
         statusText: 'Ready to Move',
         badgeClass: 'badge-ready',
-        price: '₹ 1.20 Cr*',
-        bhk: '3 & 4 BHK Residences',
-        area: '12 Acres',
-        possession: 'Ready Possession',
-        rera: 'P52100001842',
-        description: 'Nestled amidst lush green hills of Bavdhan, Stargaze offers breathtaking panoramic valley views combined with fast access to Kothrud.',
+        price: '₹90.25 Lakh Onwards',
+        bhk: '2 & 3 Bed Homes',
+        area: '6 Acres',
+        possession: 'Ready to Move',
+        rera: 'PRM/KA/RERA/1251/446/PR/171014/000856',
+        description: 'Kolte Patil Raaga by Kolte Patil Developers is a thoughtfully designed residential community located off Hennur Main Road in North Bengaluru. Spread across 7 acres with ample green open spaces, the development features 12 residential towers housing 590 well-ventilated 2 and 3-bed apartments with no common walls, complemented by a fully equipped clubhouse and modern lifestyle amenities.',
         images: [
-            'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80'
+
         ],
         floorPlans: [
-            { bhk: '3 BHK', sqft: '1,120 Sq. Ft.', price: '₹ 1.20 Cr*' },
-            { bhk: '4 BHK', sqft: '1,500 Sq. Ft.', price: '₹ 1.75 Cr*' }
+            { bhk: '2-BED RESIDENCES', sqft: '938 - 1,078 sq. ft.', price: '₹90 Lakh Onwards' },
+            { bhk: '3-BED RESIDENCES', sqft: '1,111 sq. ft.', price: '₹1.2 Crore Onwards' }
         ],
         amenities: [
-            { name: 'Valley View Deck', icon: 'fa-solid fa-mountain' },
-            { name: 'Tennis Court', icon: 'fa-solid fa-baseball' },
-            { name: 'Swimming Pool', icon: 'fa-solid fa-person-swimming' },
-            { name: 'Spa & Sauna', icon: 'fa-solid fa-hot-tub-person' }
+            { name: 'Full-Fledged Clubhouse', icon: 'fa-solid fa-hotel' },
+            { name: 'Swimming Pool with Deck', icon: 'fa-solid fa-person-swimming' },
+            { name: 'Health Club & Gymnasium', icon: 'fa-solid fa-dumbbell' },
+            { name: 'Indoor Games Room (Billiards, Table Tennis, Chess)', icon: 'fa-solid fa-gamepad' },
+            { name: 'Badminton & Basketball Courts', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+            { name: 'Children\'s Play Area', icon: 'fa-solid fa-child-reaching' },
+            { name: 'Convenience Retail / Supermarket Space', icon: 'fa-solid fa-cart-shopping' },
+            { name: 'Landscaped Courtyards & Seating Decks', icon: 'fa-solid fa-tree' }
         ],
-        connectivity: []
+        connectivity: [
+            { label: 'Outer Ring Road (ORR)', distance: '10 mins', icon: 'fa-solid fa-road' },
+            { label: 'Manyata Tech Park', distance: '15 mins', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Elements Mall', distance: '15 mins', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Yelahanka Railway Station', distance: '20 mins', icon: 'fa-solid fa-train' },
+            { label: 'Hebbal Flyover', distance: '25 mins', icon: 'fa-solid fa-road' },
+            { label: 'Kempegowda International Airport', distance: '35 mins', icon: 'fa-solid fa-plane' }
+        ]
     },
     {
-        id: 'tuscan-park',
-        name: 'Tuscan Park',
-        location: 'NIBM Road, Pune',
-        category: 'NEW',
-        statusText: 'New Launch',
-        badgeClass: 'badge-new',
-        price: '₹ 98 Lakhs*',
-        bhk: '2 & 3 BHK Italian Living',
-        area: '5 Acres',
-        possession: 'March 2027',
-        rera: 'P52100051203',
-        description: 'Italian Tuscan architecture recreated on NIBM Road. Elegant stone facades, arched pathways, and serene landscaped courtyards.',
+        id: 'itowers-exente',
+        name: 'I-Towers Exente',
+        location: 'Kamadhenu Layout, Konappana Agrahara, Hosur Road, Electronic City Phase 1, Bengaluru, Karnataka 560100',
+        category: 'READY',
+        statusText: 'Ready to Move',
+        badgeClass: 'badge-ready',
+        price: '₹1.37 Crore Onwards',
+        bhk: '2 & 3 Bed High-Rise Residences',
+        area: '4.4 Acres',
+        possession: 'Ready to Move',
+        rera: 'PRM/KA/RERA/1251/310/PR/171026/000862',
+        description: 'I-Towers Exente by Kolte Patil Developers is a premier high-rise residential project located at the entry point of Electronic City Phase 1. Spread across 4.04 acres, the development features 5 high-rise towers (G+22/23 floors) housing 438 thoughtfully designed residences with 3-side open city views, over 70% open spaces, an Aristotle digital library, and a rooftop swimming pool clubhouse.',
         images: [
-            'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80'
+
         ],
         floorPlans: [
-            { bhk: '2 BHK', sqft: '850 Sq. Ft.', price: '₹ 98 Lakhs*' },
-            { bhk: '3 BHK', sqft: '1,180 Sq. Ft.', price: '₹ 1.35 Cr*' }
+            { bhk: '2-BED RESIDENCES', sqft: '1,200 - 1,240 sq. ft.', price: '₹1.53 Cr Onwards' },
+            { bhk: '3-BED RESIDENCES', sqft: '1,686 - 1,705 sq. ft.', price: '₹2.10 Cr Onwards' }
         ],
         amenities: [
-            { name: 'Tuscan Plaza', icon: 'fa-solid fa-monument' },
-            { name: 'Clubhouse', icon: 'fa-solid fa-place-of-worship' },
-            { name: 'Jogging Track', icon: 'fa-solid fa-person-running' },
-            { name: 'Kids Play Zone', icon: 'fa-solid fa-child-reaching' }
+            { name: 'Grand Clubhouse with Rooftop Pool', icon: 'fa-solid fa-hotel' },
+            { name: 'Aristotle Digital Library & Study Zone', icon: 'fa-solid fa-book-open' },
+            { name: 'Fully Equipped Modern Gymnasium', icon: 'fa-solid fa-dumbbell' },
+            { name: 'Yoga Deck & Fitness Pavilion', icon: 'fa-solid fa-mattress-pillow' },
+            { name: 'Squash & Badminton Courts', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+            { name: 'Indoor Games Room & Table Tennis', icon: 'fa-solid fa-gamepad' },
+            { name: '4 Themed Landscaped Gardens', icon: 'fa-solid fa-tree' },
+            { name: 'Children\'s Play Area & Creche', icon: 'fa-solid fa-child-reaching' }
         ],
-        connectivity: []
+        connectivity: [
+            { label: 'Infosys Main Campus', distance: '750 Meters', icon: 'fa-solid fa-building' },
+            { label: 'D-Mart Electronic City', distance: '850 Meters', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Elevated Expressway / Hosur Road', distance: '2 mins', icon: 'fa-solid fa-road' },
+            { label: 'IIIT Bangalore', distance: '2.9 Kms', icon: 'fa-solid fa-school' },
+            { label: 'Vimalalaya Hospital', distance: '3.9 Kms', icon: 'fa-solid fa-hospital' },
+            { label: 'Electronic City Metro Station', distance: '5 mins', icon: 'fa-solid fa-train-subway' },
+            { label: 'Cantonment Railway Station', distance: '18.9 Kms', icon: 'fa-solid fa-train' }
+        ]
     },
-        {
-        id: 'tuscan-park',
-        name: 'Tuscan Park',
-        location: 'NIBM Road, Pune',
-        category: 'NEW',
-        statusText: 'New Launch',
-        badgeClass: 'badge-new',
-        price: '₹ 98 Lakhs*',
-        bhk: '2 & 3 BHK Italian Living',
-        area: '5 Acres',
-        possession: 'March 2027',
-        rera: 'P52100051203',
-        description: 'Italian Tuscan architecture recreated on NIBM Road. Elegant stone facades, arched pathways, and serene landscaped courtyards.',
+    {
+        id: 'kolte-patil-mirabilis',
+        name: 'Kolte Patil Mirabilis',
+        location: 'Survey No. 71, Horamavu Agara Village, K R Puram Hobli, Horamavu, Bengaluru, Karnataka 560113',
+        category: 'READY',
+        statusText: 'Ready to Move',
+        badgeClass: 'badge-ready',
+        price: '₹27.75 Lakh Onwards',
+        bhk: '1, 2, 2.5 , 3 & 4 Bed Homes',
+        area: '7 Acres',
+        possession: 'October 2021',
+        rera: 'PRM/KA/RERA/1251/446/PR/170922/000838',
+        description: 'Kolte Patil Mirabilis by Kolte Patil Developers is a well-planned residential community located in Horamavu, North-East Bengaluru. Spread over 7 acres with landscaped open areas, the project features 7 high-rise towers comprising 640 contemporary 1, 2, 2.5, and 3-bed residences. Designed for optimum ventilation and natural light, the project offers quick access to Manyata Tech Park, Outer Ring Road, and Hebbal.',
         images: [
-            'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80'
+
         ],
         floorPlans: [
-            { bhk: '2 BHK', sqft: '850 Sq. Ft.', price: '₹ 98 Lakhs*' },
-            { bhk: '3 BHK', sqft: '1,180 Sq. Ft.', price: '₹ 1.35 Cr*' }
+            { bhk: '3-BED RESIDENCES', sqft: '1,599 sq. ft.', price: '₹2.19 Cr Onwards' }
         ],
         amenities: [
-            { name: 'Tuscan Plaza', icon: 'fa-solid fa-monument' },
-            { name: 'Clubhouse', icon: 'fa-solid fa-place-of-worship' },
-            { name: 'Jogging Track', icon: 'fa-solid fa-person-running' },
-            { name: 'Kids Play Zone', icon: 'fa-solid fa-child-reaching' }
+            { name: 'Full-Fledged Clubhouse & Party Lawn', icon: 'fa-solid fa-hotel' },
+            { name: 'Swimming Pool & Kids Splash Pool', icon: 'fa-solid fa-person-swimming' },
+            { name: 'Fully Equipped Gymnasium', icon: 'fa-solid fa-dumbbell' },
+            { name: 'Full Basketball & Volleyball Courts', icon: 'fa-solid fa-basketball' },
+            { name: 'Cricket Practice Pitch & Skating Rink', icon: 'fa-solid fa-baseball-bat-ball' },
+            { name: 'Indoor Games & Squash Court', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+            { name: 'Outdoor Amphitheatre', icon: 'fa-solid fa-masks-theater' },
+            { name: '4-Storey High Indoor Tree Atriums & Gardens', icon: 'fa-solid fa-tree' }
         ],
-        connectivity: []
+        connectivity: [
+            { label: 'Outer Ring Road (ORR)', distance: '1.5 Kms', icon: 'fa-solid fa-road' },
+            { label: 'Bangalore International School', distance: '4.1 Kms', icon: 'fa-solid fa-school' },
+            { label: 'Manyata Tech Park', distance: '5.1 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'K.R. Puram Railway Station', distance: '5.7 Kms', icon: 'fa-solid fa-train' },
+            { label: 'Gopalan Signature Mall', distance: '6.1 Kms', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Kempegowda International Airport', distance: '29 Kms', icon: 'fa-solid fa-plane' }
+        ]
     },
-        {
-        id: 'tuscan-park',
-        name: 'Tuscan Park',
-        location: 'NIBM Road, Pune',
+    {
+        id: 'kolte-patil-lakeside-24',
+        name: 'Kolte Patil Lakeside 24',
+        location: 'Sy No. 33 (Part), Kannuru, Off Hennur - Thanisandra Main Road, North Bengaluru, Karnataka 562149',
         category: 'NEW',
         statusText: 'New Launch',
         badgeClass: 'badge-new',
-        price: '₹ 98 Lakhs*',
-        bhk: '2 & 3 BHK Italian Living',
-        area: '5 Acres',
-        possession: 'March 2027',
-        rera: 'P52100051203',
-        description: 'Italian Tuscan architecture recreated on NIBM Road. Elegant stone facades, arched pathways, and serene landscaped courtyards.',
+        price: '₹1.12 Crore Onwards',
+        bhk: '2, 2.5, 3 & 4 Bed Residences',
+        area: '1.86 Acres',
+        possession: 'October 2028',
+        rera: 'PRM/KA/RERA/1251/446/PR/060324/006667',
+        description: 'Kolte Patil Lakeside 24 by Kolte Patil Developers is an exclusive boutique residential community located off Hennur - Thanisandra Main Road in Kannuru. Spread across 1.86 acres with over 80% open spaces, the project features a single high-rise tower with 131 low-density luxury homes. Positioned along a natural lake, it offers picturesque views, a rooftop swimming pool, wellness decks, and close proximity to Manyata Tech Park and airport corridors.',
         images: [
-            'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80'
+
         ],
         floorPlans: [
-            { bhk: '2 BHK', sqft: '850 Sq. Ft.', price: '₹ 98 Lakhs*' },
-            { bhk: '3 BHK', sqft: '1,180 Sq. Ft.', price: '₹ 1.35 Cr*' }
+            { bhk: '2-BED RESIDENCES', sqft: '763 - 773 sq. ft.', price: '₹1.12 Cr Onwards' },
+            { bhk: '2.5-BED RESIDENCES', sqft: '801 - 848 sq. ft.', price: '₹1.23 Cr Onwards' },
+            { bhk: '3-BED RESIDENCES', sqft: '940 - 1,470 sq. ft.', price: '₹1.44 Cr Onwards' },
+            { bhk: '3.5-BED RESIDENCES', sqft: '1,132 sq. ft.', price: '₹1.75 Cr Onwards' },
+            { bhk: '4-BED DUPLEX / LARGE RESIDENCES', sqft: '1,422 - 1,659 sq. ft.', price: '₹2.07 Cr Onwards' }
         ],
         amenities: [
-            { name: 'Tuscan Plaza', icon: 'fa-solid fa-monument' },
-            { name: 'Clubhouse', icon: 'fa-solid fa-place-of-worship' },
-            { name: 'Jogging Track', icon: 'fa-solid fa-person-running' },
-            { name: 'Kids Play Zone', icon: 'fa-solid fa-child-reaching' }
+            { name: 'Rooftop Swimming Pool & Sun Deck', icon: 'fa-solid fa-person-swimming' },
+            { name: 'State-of-the-Art Clubhouse', icon: 'fa-solid fa-hotel' },
+            { name: 'Fully Equipped Gymnasium', icon: 'fa-solid fa-dumbbell' },
+            { name: 'Yoga Lawn & Reflexology Park', icon: 'fa-solid fa-mattress-pillow' },
+            { name: 'Multi-Sport Court & Indoor Games Room', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+            { name: 'Dedicated Pet Park', icon: 'fa-solid fa-dog' },
+            { name: 'Lakeside Viewing Deck & Tree-Lined Walkway', icon: 'fa-solid fa-tree' },
+            { name: 'Children\'s Play Area', icon: 'fa-solid fa-child-reaching' }
         ],
-        connectivity: []
+        connectivity: [
+            { label: 'Kannuru Main Road', distance: '2 mins', icon: 'fa-solid fa-road' },
+            { label: 'Decathlon Thanisandra', distance: '8 mins', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Elements Mall', distance: '12 mins', icon: 'fa-solid fa-bag-shopping' },
+            { label: 'Manyata Tech Park', distance: '15 mins', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Upcoming Kogilu Metro Station', distance: '15 mins', icon: 'fa-solid fa-train-subway' },
+            { label: 'Hebbal Flyover', distance: '20 mins', icon: 'fa-solid fa-road' },
+            { label: 'Kempegowda International Airport', distance: '30 mins', icon: 'fa-solid fa-plane' }
+        ]
     }
 ];

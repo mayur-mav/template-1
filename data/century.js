@@ -69,7 +69,7 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1251/309/PR/130924/007015',
         description: 'Century Liva is a luxury residential development by Century Real Estate located on Doddaballapur Main Road, Yelahanka. Spread across 3 acres with 80% open green space, the project features 247 exclusive apartments with modern lifestyle amenities and seamless connectivity to Kempegowda International Airport.',
         images: [
-            'https://drive.google.com/drive/folders/1Docf1mku-r-alCDEXOVeR1ESVNChM7um?usp=drive_link'
+            
         ],
         floorPlans: [
             { bhk: '3 BHK 2T', sqft: '1,650 sq. ft.', price: '₹1.48 Cr Onwards' },
@@ -123,7 +123,7 @@ export const propertiesData = [
         rera: 'Phase 1: PRM/KA/RERA/1251/446/PR/170524/006883 | Phase 2: PRM/KA/RERA/1251/446/PR/150325/007586',
         description: 'Century Regalia by Century Real Estate is an ultra-luxury residential enclave situated off HAL Old Airport Road, adjacent to the 125-acre Karnataka Golf Association (KGA) course in Indiranagar. Developed across two phases on an 8.5-acre land parcel with 80% open space, it features low-density towers, a massive 64,000 sq. ft. clubhouse, and exquisite luxury configurations.',
         images: [
-            'https://drive.google.com/drive/folders/1Docf1mku-r-alCDEXOVeR1ESVNChM7um?usp=drive_link'
+            
         ],
         floorPlans: [
             { bhk: '3- BED RESIDENCES', sqft: '2,375 sq. ft. onwards', price: '₹6.65 Cr Onwards' },

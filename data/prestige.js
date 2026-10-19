@@ -169,7 +169,7 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1251/309/PR/150926/008941.',
         description: 'Prestige Parklane is a premium residential development by Prestige Group, located in Muddenahalli Village, within the Hitech Defence and Aerospace Park Phase 2, Chanarayapatna Hobli, Devanahalli, Bengaluru, Karnataka – 562135. Spread across 11.76 acres, the project comprises 1,788 residential units across 9 towers, each designed with 3 basements + Ground + 24 floors.',
         images: [
-            'https://drive.google.com/drive/folders/1Hq2xk-vI99jH6kE7kzYuSWFYxBYGeVpr?usp=drive_link'
+            
         ],
         floorPlans: [
             { bhk: '1 BHK', sqft: '567 - 571 sq. ft.', price: '65 Lakhs Onwards' },
@@ -219,7 +219,7 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1251/446/PR/010126/008374',
         description: 'Evergreen at Prestige Raintree Park is a premium Phase 2 residential development by Prestige Estates Projects Limited, sprawling over approximately 24 acres on State Highway 35 ,Whitefield Main Road, Varthur, Bengaluru 560087. Designed with 70% to 80% open landscaped spaces, the project comprises roughly 2,000 apartments distributed across 14 high-rise towers (2B + G + 19 floors), offering 2 BHK to 3.5 BHK configurations with unit sizes ranging from 659 to 2,513 sq. ft. Officially registered under Karnataka RERA (PRM/KA/RERA/1251/446/PR/010126/008374) with a target possession date of June 2030, the township integrates over 45 world class indoor and outdoor amenities alongside an adjacent 2.5 million sq. ft. commercial IT park (Prestige Tech Forest)',
         images: [
-            'https://drive.google.com/drive/folders/1H89y4Q0XPPbVAdUDoSKiAlv8M2unuFmp?usp=drive_link'
+            
         ],
         floorPlans: [
             { bhk: '2 BHK', sqft: '1,174 – 1,194 Sq.Ft.', price: '₹ 1.90 Cr*' },
@@ -285,7 +285,7 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1251/446/PR/081123/006382',
         description: 'Prestige Glenbrook is a residential project by Prestige Group, located in Nallurahalli, Borewell Road, Bangalore – 560066. The project is spread across 4.5 acres and consists of 285 residential units, planned across 2 towers with 16 floors each. It offers spacious 4 BHK apartments, with prices starting from ₹3.82 crore onwards. The project is designed to provide a comfortable lifestyle with 10+ amenities for residents. Its location in Nallurahalli offers good connectivity to Whitefield and other important areas of East Bangalore, making it convenient for both families and working professionals. Residents can also benefit from easy access to nearby IT hubs, schools, hospitals, shopping areas, and major roads. Prestige Glenbrook is registered under RERA with the registration number PRM/KA/RERA/1251/446/PR/081123/006382. Overall, the project combines spacious homes, a well-connected location, modern amenities, and the experience of Prestige Group.',
         images: [
-            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+            
         ],
         floorPlans: [
             { bhk: '4 BHK', sqft: '2,928 sq. ft.', price: '₹ 3.82 Cr*' }
@@ -330,7 +330,7 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1251/308/PR/080926/008919',
         description: 'Garden Breeze is the final residential phase (Phase 7) of the landmark 10-acre integrated township, The Prestige City, located on Sarjapur Road. Designed with 80% landscaped open spaces across 4 high-rise towers (featuring 655 ultra-luxury homes), the enclave offers a grand G+2 clubhouse, forest trails, and seamless connectivity to major tech corridors.',
         images: [
-            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+            
         ],
         floorPlans: [
             { bhk: '2 BHK 2T', sqft: '1,080 sq. ft.', price: '₹ 1.2 Cr*' },
@@ -372,7 +372,7 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1251/308/PR/180326/008537',
         description: 'Eaton Park is a high-rise residential phase within the 180-acre integrated township, The Prestige City, on Sarjapur Road. Spread across 7 acres with ~90% open space, the enclave comprises 4 high-rise towers (G+28 to G+37 floors) offering 366 large-format 3 & 4 BHK residences, supported by the dedicated 17,770 sq. ft. Club Eaton lakeside clubhouse and seamless access to on-site retail hubs.',
         images: [
-            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+            
         ],
         floorPlans: [
             { bhk: '3 BHK 3T', sqft: '1,903 sq. ft.', price: '₹ 2.21 Cr*' },
@@ -414,7 +414,7 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1250/303/PR/171225/008346',
         description: 'Prestige Marigold Phase 2 is an infrastructure-ready plotted development by Prestige Group located off Bellary Road (NH 44) on Chapparkallu Road, Bettenahalli. Encompassing ~49 acres with 716 residential plots, the master-planned layout features wide asphalted internal roads, underground power & fiber-optic networks, landscaped gardens, and a G+2 multi-level clubhouse with 35+ lifestyle amenities.',
         images: [
-            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+            
         ],
         floorPlans: [
             { bhk: '30 x 40 PLOT', sqft: '1,200 sq. ft.', price: '₹1.02 Cr Onwards' },
@@ -458,7 +458,7 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1251/308/PR/110326/008519',
         description: 'Fernvale is Phase 6 of the landmark 180-acre integrated township, The Prestige City, located off Sarjapur Main Road. Spread across 3 acres with 2 high-rise towers comprising 387 premium residences, the project provides full access to the township ecosystem, resort-style amenities, and well-designed 2 and 3 BHK apartment layouts.',
         images: [
-            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+            
         ],
         floorPlans: [
             { bhk: '2 BHK 2T', sqft: '1,113 sq. ft.', price: '₹ 1.34 Cr*' },
@@ -499,7 +499,7 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1250/303/PR/300925/008132',
         description: 'Prestige Crystal Lawns is a premier planned plotted development by Prestige Group located on IVC Road, Devanahalli. Spanning 24.3 acres with 235 premium residential plots, the project centers around a massive landscaped central park and features a 30m wide grand entrance road, 12m wide internal asphalted roads, underground utilities, and a modern clubhouse with rich recreational facilities.',
         images: [
-            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+            
         ],
         floorPlans: [
             { bhk: '30x50 Plot', sqft: '1,500 sq. ft.', price: '₹ 1.38 Cr*' },
@@ -541,7 +541,7 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1250/303/PR/260925/008123',
         description: 'Prestige Greenbrook is a premium residential plotted development by Prestige Group located along IVC Road in Devanahalli, North Bengaluru. Spanning 33.29 acres with just 325 villa plots (~10 units per acre), the low-density master-planned community features asphalted internal roads, underground electrical & fiber optic cabling, dedicated rainwater harvesting, and a fully equipped lifestyle clubhouse.',
         images: [
-            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+            
         ],
         floorPlans: [
             { bhk: '30 x 50 PLOT', sqft: '1,500 sq. ft.', price: '₹1.35 Cr Onwards' },
@@ -585,7 +585,7 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1250/303/PR/240925/008116',
         description: 'Prestige Autumn Leaves is a premium 27-acre plotted development by Prestige Group located on Chapparkallu Road off IVC Road, Devanahalli. Designed with dual block layouts and 240 boutique villa plots, the master community features an 18m wide entry boulevard, 12m wide internal asphalted roads, underground dual water & fiber-optic networks, and a central linear park.',
         images: [
-            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+            
         ],
         floorPlans: [
             { bhk: '30 x 45 PLOT', sqft: '1,350 sq. ft.', price: '₹1.32 Cr Onwards' },
@@ -630,7 +630,7 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1251/310/PR/210325/007603',
         description: 'Prestige Southern Star is a premier 34-acre high-rise residential township by Prestige Group located off Bannerghatta Road in Akshayanagar. Featuring 14 high-rise towers (G+26 to G+27 floors) with over 75% open spaces and views of Begur Lake, the development accommodates 2,130 luxury residences anchored by a 70,000 sq. ft. multi-level clubhouse and an expansive 1-acre fitness arena.',
         images: [
-            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+            
         ],
         floorPlans: [
             { bhk: '1 BHK', sqft: '695 sq. ft.', price: '₹83.7 L Onwards' },
@@ -676,7 +676,7 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1251/446/PR/190924/007048',
         description: 'Prestige Pine Forest is a high-end forest-themed residential enclave by Prestige Group located on ECC Road in Pattandur Agrahara, Whitefield. Spread across 9 acres with over 80% open green spaces, the community features 4 high-rise towers (2B+G+14 floors) offering 316 large-format 3 & 4 BHK luxury residences with home office options and access to a 35,000+ sq. ft. clubhouse.',
         images: [
-            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+            
         ],
         floorPlans: [
             { bhk: '3 BHK', sqft: '3,121 sq. ft.', price: '₹4.16 Cr Onwards' },
@@ -720,7 +720,7 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1251/446/PR/270824/006981',
         description: 'Prestige Raintree Park is a high-end residential township by Prestige Group located on the Whitefield-Varthur Main Road opposite Varthur Lake. Spread across 21 acres in Phase 1 (as part of a grand 107-acre mixed-use development comprising residential, commercial, and retail zones), the enclave features 18 high-rise towers (3B+G+19 floors) offering 1,520 large-format luxury apartments, an expansive 100,000+ sq. ft. clubhouse, and over 80% open spaces.',
         images: [
-            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+
         ],
         floorPlans: [
             { bhk: '3 BHK', sqft: '2,005 sq. ft.', price: '₹2.93 Cr Onwards' },
@@ -765,7 +765,7 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1251/308/PR/290624/006936',
         description: 'Prestige Kings County is a premier 73-acre lakeside plotted township by Prestige Group located in Rajapura, off Electronic City on Jigani-Bommasandra Main Road. Adjacent to Hennagara Lake, the master community features 875 residential villa plots with wide internal asphalted roads, underground electrical & fiber-optic networks, dual water supply, and a dedicated multi-level clubhouse with over 40 active lifestyle amenities.',
         images: [
-            'https://drive.google.com/drive/folders/1OXi AjxPwmX1ThQQEIy_UWxa8VeN37t_?usp=drive_link'
+
         ],
         floorPlans: [
             { bhk: '30 x 40 PLOT', sqft: '1,200 sq. ft.', price: '₹1.02 Cr Onwards' },

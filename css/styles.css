@@ -6,11 +6,11 @@
     
     --text-primary: #0B1320;
     --text-secondary: #475569;
-    --text-muted: #94A3B8;
+    --text-muted: #596579;
     
     --brand-gold: #C5A059;
     --brand-gold-hover: #B08C46;
-    --brand-bronze: #9A7B3E;
+    --brand-bronze: #765A28;
     --brand-gold-light: #F9F5EC;
     
     --border-light: #E2E8F0;
@@ -244,7 +244,7 @@ button {
 }
 
 .btn-header-cta {
-    background: linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-bronze) 100%);
+    background: var(--brand-bronze);
     color: var(--bg-white);
     padding: 10px 22px;
     border-radius: 30px;
@@ -659,7 +659,7 @@ button {
 
 .badge-ready {
     background: #10B981;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .card-content {

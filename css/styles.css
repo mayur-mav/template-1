@@ -493,6 +493,11 @@ button {
     gap: 10px;
 }
 
+.catalog-title {
+    margin: 0;
+    font-size: clamp(1.35rem, 2vw, 1.75rem);
+}
+
 .results-count {
     color: var(--text-secondary);
     font-size: 0.95rem;

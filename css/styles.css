@@ -658,8 +658,9 @@ button {
 }
 
 .badge-ready {
-    background: #10B981;
-    color: var(--text-primary);
+    background: var(--brand-bronze);
+    color: var(--bg-white);
+    border: 1px solid var(--brand-bronze);
 }
 
 .card-content {

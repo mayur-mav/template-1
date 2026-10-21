@@ -1,30 +1,45 @@
 :root {
-    --bg-body: #FAF8F5;
-    --bg-white: #FFFFFF;
-    --bg-accent: #F4F0EA;
-    --bg-champagne: #FDFBF7;
-    
-    --text-primary: #0B1320;
-    --text-secondary: #475569;
-    --text-muted: #596579;
-    
-    --brand-gold: #C5A059;
-    --brand-gold-hover: #B08C46;
-    --brand-bronze: #765A28;
-    --brand-gold-light: #F9F5EC;
-    
-    --border-light: #E2E8F0;
-    --border-gold: #E6D5B8;
-    
-    --shadow-sm: 0 2px 8px rgba(11, 19, 32, 0.04);
-    --shadow-md: 0 10px 25px -5px rgba(11, 19, 32, 0.08);
-    --shadow-lg: 0 20px 35px -10px rgba(11, 19, 32, 0.12);
-    --shadow-gold: 0 10px 25px rgba(197, 160, 89, 0.15);
-    
-    --radius-sm: 6px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    
+    /* THEME CONTROLS: edit this block to change this builder's visual identity. */
+    --theme-primary: #50666A;
+    --theme-primary-light: #6A8182;
+    --theme-primary-soft: #405456;
+    --theme-accent: #C18565;
+    --theme-accent-hover: #A96D50;
+    --theme-page: #F7F4EF;
+    --theme-surface: #FFFFFF;
+    --theme-surface-muted: #EEEAE4;
+    --theme-text: #303B3D;
+    --theme-text-secondary: #5D6867;
+    --theme-text-muted: #7D8784;
+    --theme-border: #DED9D1;
+    --theme-accent-soft: #F4E9E1;
+    --theme-shadow-sm: 0 4px 18px rgba(48, 59, 61, .07);
+    --theme-shadow-md: 0 12px 30px rgba(48, 59, 61, .1);
+    --theme-shadow-lg: 0 22px 48px rgba(48, 59, 61, .14);
+    --theme-radius: 20px;
+
+    /* Shared component tokens reference the controls above. */
+    --bg-body: var(--theme-page);
+    --bg-white: var(--theme-surface);
+    --bg-accent: var(--theme-surface-muted);
+    --bg-champagne: var(--theme-page);
+    --brand-primary: var(--theme-primary);
+    --brand-gold: var(--theme-accent);
+    --brand-gold-hover: var(--theme-accent-hover);
+    --brand-bronze: var(--theme-primary);
+    --brand-gold-light: var(--theme-accent-soft);
+    --text-primary: var(--theme-text);
+    --text-secondary: var(--theme-text-secondary);
+    --text-muted: var(--theme-text-muted);
+    --border-light: var(--theme-border);
+    --border-gold: var(--theme-border);
+    --shadow-sm: var(--theme-shadow-sm);
+    --shadow-md: var(--theme-shadow-md);
+    --shadow-lg: var(--theme-shadow-lg);
+    --shadow-gold: var(--theme-shadow-md);
+    --radius-sm: var(--theme-radius);
+    --radius-md: var(--theme-radius);
+    --radius-lg: var(--theme-radius);
     --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1266,7 +1281,7 @@ button {
 /* ---------------- FULL PROPERTY DETAIL SPA VIEW ---------------- */
 #property-detail-view {
     display: none;
-    background: #FFFFFF !important;
+    background: var(--bg-white) !important;
     min-height: 100vh;
     padding-bottom: 80px;
     width: 100%;
@@ -1275,7 +1290,7 @@ button {
 .detail-sticky-bar {
     position: sticky;
     top: 70px;
-    background: #FFFFFF;
+    background: var(--bg-white);
     border-bottom: 1px solid var(--border-light);
     padding: 14px 5%;
     z-index: 90;
@@ -1307,7 +1322,7 @@ button {
 
 .detail-hero-header {
     padding: 40px 5% 20px 5%;
-    background: #FFFFFF;
+    background: var(--bg-white);
     width: 100%;
 }
 
@@ -1489,7 +1504,7 @@ button {
 /* INTERACTIVE FLOOR PLAN SELECTOR */
 /* .floorplan-container {
     margin-bottom: 40px;
-    background: #FFFFFF;
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-md);
     padding: 25px;
@@ -1561,7 +1576,7 @@ button {
 /* ---------------- FIXED FLOOR PLAN SECTION ---------------- */
 .floorplan-container {
     margin-bottom: 40px;
-    background: #FFFFFF;
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-md);
     padding: 25px;
@@ -1775,7 +1790,7 @@ button {
 }
 
 .enquiry-card {
-    background: #FFFFFF;
+    background: var(--bg-white);
     border: 1px solid var(--border-gold);
     border-radius: var(--radius-md);
     padding: 30px 24px;
@@ -1846,7 +1861,7 @@ button {
     justify-content: space-between;
     gap: 12px;
     text-align: left;
-    background: #fff;
+    background: var(--bg-white);
     cursor: pointer;
 }
 
@@ -1856,7 +1871,7 @@ button {
     justify-content: space-between;
     gap: 12px;
     text-align: left;
-    background: #fff;
+    background: var(--bg-white);
     cursor: pointer;
 }
 
@@ -1890,7 +1905,7 @@ button {
     overflow-y: auto;
     overscroll-behavior: contain;
     padding: 6px;
-    background: #fff;
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-md);
@@ -1906,7 +1921,7 @@ button {
     overflow-y: auto;
     overscroll-behavior: contain;
     padding: 6px;
-    background: #fff;
+    background: var(--bg-white);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-md);
@@ -1921,7 +1936,7 @@ button {
     padding: 11px 12px;
     border: 0;
     border-radius: 6px;
-    background: #fff;
+    background: var(--bg-white);
     color: var(--text-primary);
     text-align: left;
     overflow-wrap: anywhere;
@@ -1949,7 +1964,7 @@ button {
     width: 100%;
     padding: 11px 12px;
     border-radius: 6px;
-    background: #fff;
+    background: var(--bg-white);
     color: var(--text-primary);
     text-align: left;
     overflow-wrap: anywhere;
@@ -2001,7 +2016,7 @@ button {
 }
 
 .modal-box {
-    background: #FFFFFF;
+    background: var(--bg-white);
     border-radius: var(--radius-md);
     max-width: 550px;
     width: 100%;
@@ -2467,3 +2482,34 @@ button {
 /* Hide the browser scrollbar while keeping page scrolling enabled */
 html, body { -ms-overflow-style: none; scrollbar-width: none; }
 html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
+
+/* Builder-specific styling driven by the theme controls above. */
+.top-ticker,
+.main-footer { background: var(--theme-primary); }
+.logo-mark { background: linear-gradient(135deg, var(--theme-primary), var(--theme-primary-light)); }
+.btn-header-cta,
+.property-card,
+.why-card,
+.amenity-card,
+.enquiry-card { border-radius: var(--theme-radius); }
+.property-card,
+.why-card,
+.amenity-card,
+.enquiry-card {
+    border-color: var(--theme-border);
+    box-shadow: var(--theme-shadow-md);
+}
+.property-card:hover,
+.why-card:hover,
+.amenity-card:hover,
+.btn-header-cta:hover { box-shadow: var(--theme-shadow-lg); }
+.nav-link::after,
+.why-icon,
+.amenity-card i { color: var(--theme-accent); }
+.nav-link::after { background: var(--theme-accent); }
+/* Earthy Organic: soft fills and generous organic corners. */
+.property-card, .why-card, .amenity-card, .enquiry-card {
+    border: 0;
+    background: var(--theme-surface);
+    box-shadow: var(--theme-shadow-md);
+}

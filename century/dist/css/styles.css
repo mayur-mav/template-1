@@ -1,30 +1,60 @@
 :root {
-    --bg-body: #FAF8F5;
-    --bg-white: #FFFFFF;
-    --bg-accent: #F4F0EA;
-    --bg-champagne: #FDFBF7;
-    
-    --text-primary: #0B1320;
-    --text-secondary: #475569;
-    --text-muted: #596579;
-    
-    --brand-gold: #C5A059;
-    --brand-gold-hover: #B08C46;
-    --brand-bronze: #765A28;
-    --brand-gold-light: #F9F5EC;
-    
-    --border-light: #E2E8F0;
-    --border-gold: #E6D5B8;
-    
-    --shadow-sm: 0 2px 8px rgba(11, 19, 32, 0.04);
-    --shadow-md: 0 10px 25px -5px rgba(11, 19, 32, 0.08);
-    --shadow-lg: 0 20px 35px -10px rgba(11, 19, 32, 0.12);
-    --shadow-gold: 0 10px 25px rgba(197, 160, 89, 0.15);
-    
-    --radius-sm: 6px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    
+    /* THEME CONTROLS: Century keeps the shared template's original navy and gold palette. */
+    --theme-primary: #0B1320;
+    --theme-primary-light: #1E293B;
+    --theme-primary-soft: #334155;
+    --theme-accent: #C5A059;
+    --theme-accent-hover: #B08C46;
+    --theme-secondary-accent: #765A28;
+    --theme-page: #FAF8F5;
+    --theme-surface: #FFFFFF;
+    --theme-surface-muted: #F4F0EA;
+    --theme-text: #0B1320;
+    --theme-text-secondary: #475569;
+    --theme-text-muted: #596579;
+    --theme-on-primary: #E2E8F0;
+    --theme-on-primary-muted: #CBD5E1;
+    --theme-footer-muted: #94A3B8;
+    --theme-border: #E2E8F0;
+    --theme-accent-border: #E6D5B8;
+    --theme-accent-soft: #F9F5EC;
+    --theme-overlay-card: rgba(11, 19, 32, 0.68);
+    --theme-overlay-strong: rgba(11, 19, 32, 0.8);
+    --theme-overlay-soft: rgba(11, 19, 32, 0.6);
+    --theme-accent-wash: rgba(197, 160, 89, 0.15);
+    --theme-accent-border-wash: rgba(197, 160, 89, 0.3);
+    --theme-on-primary-border: rgba(255, 255, 255, 0.1);
+    --theme-shadow-sm: 0 2px 8px rgba(11, 19, 32, 0.04);
+    --theme-shadow-md: 0 10px 25px -5px rgba(11, 19, 32, 0.08);
+    --theme-shadow-lg: 0 20px 35px -10px rgba(11, 19, 32, 0.12);
+    --theme-shadow-accent: 0 10px 25px rgba(197, 160, 89, 0.15);
+    --theme-radius-sm: 6px;
+    --theme-radius-md: 12px;
+    --theme-radius-lg: 20px;
+
+    /* Existing component tokens point to the theme controls above. */
+    --bg-body: var(--theme-page);
+    --bg-white: var(--theme-surface);
+    --bg-accent: var(--theme-surface-muted);
+    --bg-champagne: var(--theme-page);
+    --brand-primary: var(--theme-primary);
+    --brand-gold: var(--theme-accent);
+    --brand-gold-hover: var(--theme-accent-hover);
+    --brand-bronze: var(--theme-secondary-accent);
+    --brand-gold-light: var(--theme-accent-soft);
+    --text-primary: var(--theme-text);
+    --text-secondary: var(--theme-text-secondary);
+    --text-muted: var(--theme-text-muted);
+    --border-light: var(--theme-border);
+    --border-gold: var(--theme-accent-border);
+    --shadow-sm: var(--theme-shadow-sm);
+    --shadow-md: var(--theme-shadow-md);
+    --shadow-lg: var(--theme-shadow-lg);
+    --shadow-gold: var(--theme-shadow-accent);
+    --radius-sm: var(--theme-radius-sm);
+    --radius-md: var(--theme-radius-md);
+    --radius-lg: var(--theme-radius-lg);
+
     --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -79,14 +109,14 @@ button {
 
 /* ---------------- TOP CONTACT STRIP ---------------- */
 .top-ticker {
-    background-color: #0B1320;
-    color: #E2E8F0;
+    background-color: var(--brand-primary);
+    color: var(--theme-on-primary);
     font-size: 0.82rem;
     padding: 8px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+    border-bottom: 1px solid var(--theme-accent-border-wash);
     z-index: 1000;
     position: relative;
     flex-wrap: wrap;
@@ -103,13 +133,13 @@ button {
 }
 
 .rera-badge {
-    background: rgba(197, 160, 89, 0.15);
+    background: var(--theme-accent-wash);
     color: var(--brand-gold);
     padding: 2px 8px;
     border-radius: 4px;
     font-size: 0.75rem;
     font-weight: 600;
-    border: 1px solid rgba(197, 160, 89, 0.3);
+    border: 1px solid var(--theme-accent-border-wash);
     white-space: nowrap;
 }
 
@@ -121,7 +151,7 @@ button {
 }
 
 .top-ticker-link {
-    color: #CBD5E1;
+    color: var(--theme-on-primary-muted);
     display: flex;
     align-items: center;
     gap: 6px;
@@ -163,7 +193,7 @@ button {
 .logo-mark {
     width: 42px;
     height: 42px;
-    background: linear-gradient(135deg, #0B1320 0%, #1E293B 100%);
+    background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-light) 100%);
     border: 2px solid var(--brand-gold);
     border-radius: 8px;
     display: flex;
@@ -259,7 +289,7 @@ button {
 
 .btn-header-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(197, 160, 89, 0.3);
+    box-shadow: 0 12px 28px var(--theme-accent-wash);
 }
 
 /* Mobile Nav Toggle */
@@ -305,7 +335,7 @@ button {
 
 /* ---------------- HERO & SEARCH SECTION ---------------- */
 .hero-section {
-    background: linear-gradient(135deg, #172033, #334155);
+    background: linear-gradient(135deg, var(--theme-primary), var(--theme-primary-soft));
     padding: 72px 5%;
     text-align: center;
     position: relative;
@@ -549,7 +579,7 @@ button {
     height: 48px;
     border: 0;
     border-radius: 50%;
-    background: rgba(11, 19, 32, 0.68);
+    background: var(--theme-overlay-card);
     color: #FFFFFF;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
     pointer-events: auto;
@@ -596,7 +626,7 @@ button {
 }
 
 .property-card:focus-visible {
-    outline: 3px solid var(--accent-color, #b08d57);
+    outline: 3px solid var(--accent-color, var(--theme-accent));
     outline-offset: 3px;
 }
 
@@ -647,14 +677,14 @@ button {
 }
 
 .badge-new {
-    background: #0B1320;
+    background: var(--brand-primary);
     color: var(--brand-gold);
     border: 1px solid var(--brand-gold);
 }
 
 .badge-ongoing {
     background: var(--brand-gold);
-    color: #0B1320;
+    color: var(--brand-primary);
 }
 
 .badge-ready {
@@ -710,12 +740,12 @@ button {
     bottom: 12px;
     z-index: 2;
     margin: 0;
-    box-shadow: 0 2px 8px rgba(11, 19, 32, 0.16);
+    box-shadow: var(--theme-shadow-md);
 }
 
 .rera-verified-badge i,
 .rera-details summary i {
-    color: #22865A;
+    color: var(--brand-gold);
 }
 
 .rera-details {
@@ -1116,8 +1146,8 @@ button {
 
 /* ---------------- FOOTER ---------------- */
 .main-footer {
-    background: #0B1320;
-    color: #94A3B8;
+    background: var(--brand-primary);
+    color: var(--theme-footer-muted);
     padding: 60px 5% 30px 5%;
     font-size: 0.9rem;
     width: 100%;
@@ -1158,7 +1188,7 @@ button {
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid var(--theme-on-primary-border);
     padding-top: 25px;
     font-size: 0.82rem;
     display: flex;
@@ -1195,7 +1225,7 @@ button {
 
 .footer-brand-block > p,
 .footer-partner-copy {
-    color: #94A3B8;
+    color: var(--theme-footer-muted);
     line-height: 1.7;
     overflow-wrap: anywhere;
 }
@@ -1203,7 +1233,7 @@ button {
 .footer-builder-location {
     display: block;
     margin: -5px 0 24px;
-    color: #94A3B8;
+    color: var(--theme-footer-muted);
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.2em;
@@ -1214,7 +1244,7 @@ button {
 
 .footer-brand-summary {
     margin: 0;
-    color: #94A3B8;
+    color: var(--theme-footer-muted);
     line-height: 1.7;
     overflow-wrap: anywhere;
 }
@@ -1241,8 +1271,8 @@ button {
 .footer-disclaimer {
     padding: 24px 0;
     margin: 0 0 2px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    color: #94A3B8;
+    border-top: 1px solid var(--theme-on-primary-border);
+    color: var(--theme-footer-muted);
     line-height: 1.75;
     overflow-wrap: anywhere;
 }
@@ -1393,7 +1423,7 @@ button {
     position: absolute;
     bottom: 15px;
     right: 15px;
-    background: rgba(11, 19, 32, 0.8);
+    background: var(--theme-overlay-strong);
     color: #FFFFFF;
     padding: 6px 14px;
     border-radius: 20px;
@@ -1825,7 +1855,7 @@ button {
 
 .form-input:focus {
     border-color: var(--brand-gold);
-    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
+    box-shadow: 0 0 0 3px var(--theme-accent-wash);
 }
 
 .bhk-select {
@@ -1965,7 +1995,7 @@ button {
 
 .btn-submit-enquiry {
     width: 100%;
-    background: #0B1320;
+    background: var(--brand-primary);
     color: var(--bg-white);
     padding: 14px;
     border-radius: var(--radius-sm);
@@ -1977,7 +2007,7 @@ button {
 
 .btn-submit-enquiry:hover {
     background: var(--brand-gold);
-    color: #0B1320;
+    color: var(--brand-primary);
 }
 
 /* ---------------- MODALS & POP-UPS ---------------- */
@@ -1987,7 +2017,7 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(11, 19, 32, 0.6);
+    background: var(--theme-overlay-soft);
     backdrop-filter: blur(5px);
     z-index: 2000;
     display: none;

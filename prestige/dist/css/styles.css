@@ -1,30 +1,45 @@
 :root {
-    --bg-body: #FAF8F5;
-    --bg-white: #FFFFFF;
-    --bg-accent: #F4F0EA;
-    --bg-champagne: #FDFBF7;
-    
-    --text-primary: #0B1320;
-    --text-secondary: #475569;
-    --text-muted: #596579;
-    
-    --brand-gold: #C5A059;
-    --brand-gold-hover: #B08C46;
-    --brand-bronze: #765A28;
-    --brand-gold-light: #F9F5EC;
-    
-    --border-light: #E2E8F0;
-    --border-gold: #E6D5B8;
-    
-    --shadow-sm: 0 2px 8px rgba(11, 19, 32, 0.04);
-    --shadow-md: 0 10px 25px -5px rgba(11, 19, 32, 0.08);
-    --shadow-lg: 0 20px 35px -10px rgba(11, 19, 32, 0.12);
-    --shadow-gold: 0 10px 25px rgba(197, 160, 89, 0.15);
-    
-    --radius-sm: 6px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    
+    /* THEME CONTROLS: edit this block to change this builder's visual identity. */
+    --theme-primary: #0B1B3D;
+    --theme-primary-light: #1D3158;
+    --theme-primary-soft: #253D68;
+    --theme-accent: #E6C687;
+    --theme-accent-hover: #D1AD68;
+    --theme-page: #F8FAFC;
+    --theme-surface: #FFFFFF;
+    --theme-surface-muted: #F1F4F8;
+    --theme-text: #172033;
+    --theme-text-secondary: #4B5870;
+    --theme-text-muted: #707B8D;
+    --theme-border: #DCE3ED;
+    --theme-accent-soft: #FBF4E7;
+    --theme-shadow-sm: 0 3px 12px rgba(11, 27, 61, .07);
+    --theme-shadow-md: 0 12px 30px rgba(11, 27, 61, .12);
+    --theme-shadow-lg: 0 22px 44px rgba(11, 27, 61, .16);
+    --theme-radius: 10px;
+
+    /* Shared component tokens reference the controls above. */
+    --bg-body: var(--theme-page);
+    --bg-white: var(--theme-surface);
+    --bg-accent: var(--theme-surface-muted);
+    --bg-champagne: var(--theme-page);
+    --brand-primary: var(--theme-primary);
+    --brand-gold: var(--theme-accent);
+    --brand-gold-hover: var(--theme-accent-hover);
+    --brand-bronze: var(--theme-primary);
+    --brand-gold-light: var(--theme-accent-soft);
+    --text-primary: var(--theme-text);
+    --text-secondary: var(--theme-text-secondary);
+    --text-muted: var(--theme-text-muted);
+    --border-light: var(--theme-border);
+    --border-gold: var(--theme-border);
+    --shadow-sm: var(--theme-shadow-sm);
+    --shadow-md: var(--theme-shadow-md);
+    --shadow-lg: var(--theme-shadow-lg);
+    --shadow-gold: var(--theme-shadow-md);
+    --radius-sm: var(--theme-radius);
+    --radius-md: var(--theme-radius);
+    --radius-lg: var(--theme-radius);
     --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -2467,3 +2482,34 @@ button {
 /* Hide the browser scrollbar while keeping page scrolling enabled */
 html, body { -ms-overflow-style: none; scrollbar-width: none; }
 html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
+
+/* Builder-specific styling driven by the theme controls above. */
+.top-ticker,
+.main-footer { background: var(--theme-primary); }
+.logo-mark { background: linear-gradient(135deg, var(--theme-primary), var(--theme-primary-light)); }
+.btn-header-cta,
+.property-card,
+.why-card,
+.amenity-card,
+.enquiry-card { border-radius: var(--theme-radius); }
+.property-card,
+.why-card,
+.amenity-card,
+.enquiry-card {
+    border-color: var(--theme-border);
+    box-shadow: var(--theme-shadow-md);
+}
+.property-card:hover,
+.why-card:hover,
+.amenity-card:hover,
+.btn-header-cta:hover { box-shadow: var(--theme-shadow-lg); }
+.nav-link::after,
+.why-icon,
+.amenity-card i { color: var(--theme-accent); }
+.nav-link::after { background: var(--theme-accent); }
+/* Royal Premium: translucent navigation and elevated cards. */
+.main-header {
+    background: rgba(248, 250, 252, 0.84);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+}

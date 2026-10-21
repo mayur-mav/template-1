@@ -1,22 +1,28 @@
 :root {
     /* THEME CONTROLS: edit this block to change this builder's visual identity. */
-    --theme-primary: #50666A;
-    --theme-primary-light: #6A8182;
-    --theme-primary-soft: #405456;
-    --theme-accent: #C18565;
-    --theme-accent-hover: #A96D50;
-    --theme-page: #F7F4EF;
+    --theme-primary: #1B382B;
+    --theme-primary-light: #315746;
+    --theme-primary-soft: #12281D;
+    --theme-accent: #C85A32;
+    --theme-accent-hover: #AD4725;
+    --theme-page: #FAF8F5;
     --theme-surface: #FFFFFF;
-    --theme-surface-muted: #EEEAE4;
-    --theme-text: #303B3D;
-    --theme-text-secondary: #5D6867;
-    --theme-text-muted: #7D8784;
-    --theme-border: #DED9D1;
-    --theme-accent-soft: #F4E9E1;
-    --theme-shadow-sm: 0 4px 18px rgba(48, 59, 61, .07);
-    --theme-shadow-md: 0 12px 30px rgba(48, 59, 61, .1);
-    --theme-shadow-lg: 0 22px 48px rgba(48, 59, 61, .14);
-    --theme-radius: 20px;
+    --theme-surface-muted: #F4EFE6;
+    --theme-text: #211A17;
+    --theme-text-secondary: #5D564F;
+    --theme-text-muted: #837A70;
+    --theme-border: rgba(200, 109, 81, 0.2);
+    --theme-accent-soft: #F4EFE6;
+    --theme-action-text: #FFFFFF;
+    --theme-hero-title: #211A17;
+    --theme-hero-shadow: 0 1px 0 rgba(250, 248, 245, .95), 0 0 16px rgba(250, 248, 245, .82), 0 3px 14px rgba(0, 0, 0, .55);
+    --theme-badge-bg: #F4EFE6;
+    --theme-badge-text: #1B382B;
+    --theme-badge-border: rgba(27, 56, 43, .16);
+    --theme-shadow-sm: 0 4px 18px rgba(27, 56, 43, .07);
+    --theme-shadow-md: 0 12px 30px rgba(27, 56, 43, .1);
+    --theme-shadow-lg: 0 22px 48px rgba(27, 56, 43, .14);
+    --theme-radius: 16px;
 
     /* Shared component tokens reference the controls above. */
     --bg-body: var(--theme-page);
@@ -2513,3 +2519,46 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
     background: var(--theme-surface);
     box-shadow: var(--theme-shadow-md);
 }
+
+/* Earthy Natural Light: high-contrast forest header, timber hero text, and terracotta actions. */
+.top-ticker {
+    background: var(--theme-primary);
+    color: var(--theme-action-text);
+}
+.top-ticker-link { color: var(--theme-action-text); }
+.top-ticker-link:hover { color: #DCEBDD; }
+.rera-badge,
+.hero-subtitle {
+    color: var(--theme-badge-text);
+    background: var(--theme-badge-bg);
+    border-color: var(--theme-badge-border);
+}
+.hero-title {
+    color: #211A17;
+    -webkit-text-stroke: 0 transparent;
+    text-shadow: var(--theme-hero-shadow);
+}
+.hero-description {
+    color: var(--theme-action-text);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .95), 0 0 10px rgba(0, 0, 0, .9), 0 2px 16px rgba(0, 0, 0, .72);
+}
+.btn-header-cta,
+.btn-view-details,
+.btn-submit-enquiry,
+.filter-btn.active {
+    color: var(--theme-action-text);
+    background: var(--theme-accent);
+    border-color: var(--theme-accent);
+}
+.btn-header-cta:hover,
+.btn-view-details:hover,
+.btn-submit-enquiry:hover,
+.filter-btn.active:hover {
+    color: var(--theme-action-text);
+    background: var(--theme-accent-hover);
+    border-color: var(--theme-accent-hover);
+}
+.property-card,
+.why-card,
+.amenity-card,
+.enquiry-card { border-radius: 16px; }

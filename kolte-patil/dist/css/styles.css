@@ -2511,3 +2511,8 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
 .btn-header-cta, .btn-view-details, .btn-submit-enquiry {
     background: linear-gradient(135deg, var(--theme-primary), var(--theme-primary-light));
 }
+
+/* Prevent the catalog and footer flashing before a direct property route is ready. */
+body[data-property-route-loading="true"] #catalog-view {
+  display: none !important;
+}

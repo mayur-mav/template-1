@@ -2513,3 +2513,8 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
 }
+
+/* Prevent the catalog and footer flashing before a direct property route is ready. */
+body[data-property-route-loading="true"] #catalog-view {
+  display: none !important;
+}

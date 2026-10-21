@@ -485,6 +485,7 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
 
     document.getElementById('catalog-view').style.display = 'none';
     document.getElementById('property-detail-view').style.display = 'block';
+    document.body.removeAttribute('data-property-route-loading');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 

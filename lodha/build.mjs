@@ -21,6 +21,7 @@ const apacheRouteRules = [
 
 function createRoutedHtml(route = '') {
   let html = sourceHtml.replace('<head>', `<head>\n    <base href="${basePath}">`);
+  if (propertyIds.includes(route)) html = html.replace('<body ', '<body data-property-route-loading="true" ');
   html = html.replace(/<link rel="canonical" href="https:\/\/yourdomain\.com\/lodha\.html">\s*/i, '');
   if (siteOrigin) {
     const canonicalUrl = `${siteOrigin}${basePath}${route ? `${route}/` : ''}`;

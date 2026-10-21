@@ -1,0 +1,14 @@
+Options -MultiViews
+RewriteEngine On
+RewriteRule ^residences/?$ residences/index.html [L]
+RewriteRule ^about/?$ about/index.html [L]
+RewriteRule ^faq/?$ faq/index.html [L]
+RewriteRule ^contact/?$ contact/index.html [L]
+RewriteRule ^century-liva/?$ century-liva/index.html [L]
+RewriteRule ^century-regalia/?$ century-regalia/index.html [L]
+RewriteRule ^century-ethos/?$ century-ethos/index.html [L]
+RewriteRule ^century-renata/?$ century-renata/index.html [L]
+RewriteRule ^century-astoria/?$ century-astoria/index.html [L]
+RewriteRule ^century-kindle/?$ century-kindle/index.html [L]
+RewriteRule ^century-bliss/?$ century-bliss/index.html [L]
+RewriteRule ^century-mirai/?$ century-mirai/index.html [L]

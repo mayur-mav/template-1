@@ -1,0 +1,11 @@
+Options -MultiViews
+RewriteEngine On
+RewriteRule ^residences/?$ residences/index.html [L]
+RewriteRule ^about/?$ about/index.html [L]
+RewriteRule ^faq/?$ faq/index.html [L]
+RewriteRule ^contact/?$ contact/index.html [L]
+RewriteRule ^lodha-mirabelle/?$ lodha-mirabelle/index.html [L]
+RewriteRule ^lodha-haven/?$ lodha-haven/index.html [L]
+RewriteRule ^lodha-azur/?$ lodha-azur/index.html [L]
+RewriteRule ^lodha-elanza/?$ lodha-elanza/index.html [L]
+RewriteRule ^lodha-beaumont-estate/?$ lodha-beaumont-estate/index.html [L]

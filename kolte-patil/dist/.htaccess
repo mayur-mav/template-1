@@ -1,0 +1,10 @@
+Options -MultiViews
+RewriteEngine On
+RewriteRule ^residences/?$ residences/index.html [L]
+RewriteRule ^about/?$ about/index.html [L]
+RewriteRule ^faq/?$ faq/index.html [L]
+RewriteRule ^contact/?$ contact/index.html [L]
+RewriteRule ^kolte-patil-raaga/?$ kolte-patil-raaga/index.html [L]
+RewriteRule ^itowers-exente/?$ itowers-exente/index.html [L]
+RewriteRule ^kolte-patil-mirabilis/?$ kolte-patil-mirabilis/index.html [L]
+RewriteRule ^kolte-patil-lakeside-24/?$ kolte-patil-lakeside-24/index.html [L]

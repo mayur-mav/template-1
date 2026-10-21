@@ -14,9 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const clickedLink = event.target.closest('.nav-link');
         if (!clickedLink) return;
 
-        document.querySelectorAll('#primaryNavigation .nav-link').forEach(link => {
-            link.classList.toggle('active', link === clickedLink);
-        });
+        setActiveNavigation(clickedLink.getAttribute('href'));
     });
 
     const propertyGrid = document.getElementById('propertyGrid');
@@ -370,7 +368,7 @@ function clearSearch() {
 function submitSearch() {
     handleSearch();
     document.querySelectorAll('#primaryNavigation .nav-link').forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === '#residences');
+        link.classList.toggle('active', link.getAttribute('href') === '/residences');
     });
     goToResidences();
 }
@@ -416,6 +414,7 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
 
     if (updateUrl) setPropertyRoute(item);
     activeProperty = item;
+    setActiveNavigation(item.id);
     document.title = `${item.name} | ${document.body.dataset.builder}`;
 
     document.getElementById('dt-title').textContent = item.name;
@@ -630,6 +629,7 @@ function restorePropertyRoute(event) {
     const item = propertiesData.find(property => property.id === route);
 
     if (item) {
+        setActiveNavigation(item.id);
         openPropertyDetails(item.id, { updateUrl: false });
         return;
     }
@@ -641,6 +641,7 @@ function restorePropertyRoute(event) {
         contact: 'contact'
     };
     if (sectionTargets[route]) {
+        setActiveNavigation(route);
         document.getElementById('property-detail-view').style.display = 'none';
         document.getElementById('catalog-view').style.display = 'block';
         document.title = initialDocumentTitle;
@@ -651,7 +652,17 @@ function restorePropertyRoute(event) {
     }
 
     if (route) setPropertyRoute(null, { replace: true });
+    setActiveNavigation('');
     showCatalogView({ updateUrl: false });
+}
+
+function setActiveNavigation(route) {
+    const basePath = getSiteBasePath();
+    const targetPath = route?.startsWith('/') ? new URL(route, window.location.href).pathname : route ? `${basePath}${route}` : basePath;
+    document.querySelectorAll('#primaryNavigation .nav-link').forEach(link => {
+        const linkPath = new URL(link.getAttribute('href'), window.location.href).pathname;
+        link.classList.toggle('active', linkPath.replace(/\/$/, '') === targetPath.replace(/\/$/, ''));
+    });
 }
 
 function getPropertyIdFromPath() {
@@ -695,6 +706,7 @@ function navigateToCatalogSection(sectionId, route = sectionId, { scrollToTop = 
 
     const basePath = getSiteBasePath();
     const targetPath = route ? `${basePath}${route}` : basePath;
+    setActiveNavigation(route || '');
     if (window.location.pathname !== targetPath || window.location.search || window.location.hash) {
         window.history.pushState({ section: route || 'home' }, '', targetPath);
     }

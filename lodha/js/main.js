@@ -1,6 +1,7 @@
 let propertiesData = [];
 let currentActiveCategory = 'ALL';
 let activeProperty = null;
+let initialDocumentTitle = document.title;
 
 // INITIALIZATION
 document.addEventListener('DOMContentLoaded', async () => {
@@ -8,13 +9,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.addEventListener('click', handleProjectDropdownClick);
     document.addEventListener('keydown', handleBhkDropdownKeydown);
     document.addEventListener('keydown', handleProjectDropdownKeydown);
+    window.addEventListener('popstate', restorePropertyRoute);
     document.getElementById('primaryNavigation')?.addEventListener('click', event => {
         const clickedLink = event.target.closest('.nav-link');
         if (!clickedLink) return;
 
-        document.querySelectorAll('#primaryNavigation .nav-link').forEach(link => {
-            link.classList.toggle('active', link === clickedLink);
-        });
+        setActiveNavigation(clickedLink.getAttribute('href'));
     });
 
     const propertyGrid = document.getElementById('propertyGrid');
@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderBuilderFooter(module.developerInfo?.hero, propertiesData);
 
         renderPropertyCards(propertiesData);
+        restorePropertyRoute();
     } catch (err) {
         console.error(`Failed to load data for builder "${builder}":`, err);
     }
@@ -367,7 +368,7 @@ function clearSearch() {
 function submitSearch() {
     handleSearch();
     document.querySelectorAll('#primaryNavigation .nav-link').forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === '#residences');
+        link.classList.toggle('active', link.getAttribute('href') === '/residences');
     });
     goToResidences();
 }
@@ -407,11 +408,14 @@ function openQuickView(id) {
 }
 
 // FULL SPA PROPERTY DETAILS VIEW SWITCHING
-function openPropertyDetails(id) {
+function openPropertyDetails(id, { updateUrl = true } = {}) {
     const item = propertiesData.find(p => p.id === id);
     if (!item) return;
 
+    if (updateUrl) setPropertyRoute(item);
     activeProperty = item;
+    setActiveNavigation(item.id);
+    document.title = `${item.name} | ${document.body.dataset.builder}`;
 
     document.getElementById('dt-title').textContent = item.name;
     const reraDetails = document.getElementById('dt-rera-details');
@@ -589,15 +593,104 @@ function handleBhkDropdownKeydown(event) {
     trigger.focus();
 }
 
-function showCatalogView() {
+function showCatalogView({ updateUrl = true } = {}) {
+    if (updateUrl && getPropertyIdFromPath()) {
+        if (window.history.state?.propertyId === activeProperty?.id) {
+            window.history.back();
+            return;
+        }
+        setPropertyRoute(null, { replace: true });
+    }
     document.getElementById('property-detail-view').style.display = 'none';
     document.getElementById('catalog-view').style.display = 'block';
+    document.title = initialDocumentTitle;
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function navigateToCatalogSection(sectionId) {
+function setPropertyRoute(item, { replace = false } = {}) {
+    const url = new URL(window.location.href);
+    const basePath = getSiteBasePath();
+    url.pathname = item ? `${basePath}${encodeURIComponent(item.id)}` : basePath;
+    if (item) {
+        url.search = '';
+        url.hash = '';
+    } else {
+        url.searchParams.delete('property');
+    }
+
+    const state = { ...window.history.state, propertyId: item?.id || null };
+    const method = replace ? 'replaceState' : 'pushState';
+    window.history[method](state, '', `${url.pathname}${url.search}${url.hash}`);
+}
+
+function restorePropertyRoute(event) {
+    if (!propertiesData.length) return;
+    const route = getPropertyIdFromPath();
+    const item = propertiesData.find(property => property.id === route);
+
+    if (item) {
+        setActiveNavigation(item.id);
+        openPropertyDetails(item.id, { updateUrl: false });
+        return;
+    }
+
+    const sectionTargets = {
+        residences: 'residences',
+        about: 'about',
+        faq: 'faq',
+        contact: 'contact'
+    };
+    if (sectionTargets[route]) {
+        setActiveNavigation(route);
+        document.getElementById('property-detail-view').style.display = 'none';
+        document.getElementById('catalog-view').style.display = 'block';
+        document.title = initialDocumentTitle;
+        requestAnimationFrame(() => {
+            document.getElementById(sectionTargets[route])?.scrollIntoView({ block: 'start' });
+        });
+        return;
+    }
+
+    if (route) setPropertyRoute(null, { replace: true });
+    setActiveNavigation('');
+    showCatalogView({ updateUrl: false });
+}
+
+function setActiveNavigation(route) {
+    const basePath = getSiteBasePath();
+    const targetPath = route?.startsWith('/') ? new URL(route, window.location.href).pathname : route ? `${basePath}${route}` : basePath;
+    document.querySelectorAll('#primaryNavigation .nav-link').forEach(link => {
+        const linkPath = new URL(link.getAttribute('href'), window.location.href).pathname;
+        link.classList.toggle('active', linkPath.replace(/\/$/, '') === targetPath.replace(/\/$/, ''));
+    });
+}
+
+function getPropertyIdFromPath() {
+    const basePath = getSiteBasePath();
+    const relativePath = window.location.pathname.startsWith(basePath)
+        ? window.location.pathname.slice(basePath.length).replace(/\/$/, '')
+        : '';
+    if (!relativePath || relativePath === 'index.html') return '';
+    return decodeURIComponent(relativePath.split('/').filter(Boolean).at(-1) || '');
+}
+
+function getSiteBasePath() {
+    const configuredBase = document.querySelector('base')?.href || window.location.origin + '/';
+    const basePath = new URL(configuredBase, window.location.href).pathname;
+    return basePath.endsWith('/') ? basePath : `${basePath}/`;
+}
+
+function clearPropertyRoute() {
+    if (getPropertyIdFromPath()) {
+        setPropertyRoute(null, { replace: true });
+    }
+    document.title = initialDocumentTitle;
+}
+
+function navigateToCatalogSection(sectionId, route = sectionId, { scrollToTop = false } = {}) {
     const detailView = document.getElementById('property-detail-view');
     if (detailView && detailView.style.display !== 'none') {
+        clearPropertyRoute();
         detailView.style.display = 'none';
         document.getElementById('catalog-view').style.display = 'block';
     }
@@ -611,38 +704,44 @@ function navigateToCatalogSection(sectionId) {
         if (toggle) toggle.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
     }
 
+    const basePath = getSiteBasePath();
+    const targetPath = route ? `${basePath}${route}` : basePath;
+    setActiveNavigation(route || '');
+    if (window.location.pathname !== targetPath || window.location.search || window.location.hash) {
+        window.history.pushState({ section: route || 'home' }, '', targetPath);
+    }
+
     requestAnimationFrame(() => {
-        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (scrollToTop) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     });
 }
 
 function goToOverview() {
-    navigateToCatalogSection('developer-hero');
+    navigateToCatalogSection('developer-hero', '', { scrollToTop: true });
 }
 
 function goToResidences() {
     navigateToCatalogSection('residences');
 }
 
+function goToAbout() {
+    navigateToCatalogSection('about');
+}
+
+function goToFaq() {
+    navigateToCatalogSection('faq');
+}
+
+function goToContact() {
+    navigateToCatalogSection('contact');
+}
+
 function goToSiteVisitForm() {
-    const detailView = document.getElementById('property-detail-view');
-    if (detailView && detailView.style.display !== 'none') {
-        detailView.style.display = 'none';
-        document.getElementById('catalog-view').style.display = 'block';
-    }
-
-    const menu = document.getElementById('primaryNavigation');
-    const toggle = document.querySelector('.mobile-menu-toggle');
-    if (menu?.classList.contains('active')) {
-        menu.classList.remove('active');
-        toggle?.setAttribute('aria-expanded', 'false');
-        toggle?.setAttribute('aria-label', 'Open navigation menu');
-        if (toggle) toggle.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
-    }
-
-    requestAnimationFrame(() => {
-        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+    navigateToCatalogSection('contact');
 }
 
 function goToDetailEnquiry() {
@@ -753,6 +852,9 @@ Object.assign(window, {
     showCatalogView,
     goToOverview,
     goToResidences,
+    goToAbout,
+    goToFaq,
+    goToContact,
     goToSiteVisitForm,
     goToDetailEnquiry,
     toggleMobileMenu,

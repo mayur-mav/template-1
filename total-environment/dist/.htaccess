@@ -1,0 +1,13 @@
+Options -MultiViews
+RewriteEngine On
+RewriteRule ^residences/?$ residences/index.html [L]
+RewriteRule ^about/?$ about/index.html [L]
+RewriteRule ^faq/?$ faq/index.html [L]
+RewriteRule ^contact/?$ contact/index.html [L]
+RewriteRule ^total-environment-down-by-the-water/?$ total-environment-down-by-the-water/index.html [L]
+RewriteRule ^total-environment-after-the-rain/?$ total-environment-after-the-rain/index.html [L]
+RewriteRule ^total-environment-pursuit-of-a-radical-rhapsody/?$ total-environment-pursuit-of-a-radical-rhapsody/index.html [L]
+RewriteRule ^total-environment-in-that-quiet-earth/?$ total-environment-in-that-quiet-earth/index.html [L]
+RewriteRule ^total-environment-over-the-rainbow/?$ total-environment-over-the-rainbow/index.html [L]
+RewriteRule ^total-environment-tangled-up-in-green/?$ total-environment-tangled-up-in-green/index.html [L]
+RewriteRule ^total-environment-the-magic-faraway-tree/?$ total-environment-the-magic-faraway-tree/index.html [L]

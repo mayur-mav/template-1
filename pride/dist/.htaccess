@@ -1,0 +1,12 @@
+Options -MultiViews
+RewriteEngine On
+RewriteRule ^residences/?$ residences/index.html [L]
+RewriteRule ^about/?$ about/index.html [L]
+RewriteRule ^faq/?$ faq/index.html [L]
+RewriteRule ^contact/?$ contact/index.html [L]
+RewriteRule ^pride-green-avenue/?$ pride-green-avenue/index.html [L]
+RewriteRule ^pride-euphora/?$ pride-euphora/index.html [L]
+RewriteRule ^pride-crosswinds-villas/?$ pride-crosswinds-villas/index.html [L]
+RewriteRule ^pride-vatika-phase-2/?$ pride-vatika-phase-2/index.html [L]
+RewriteRule ^pride-crosswinds-villa-plots-phase-2/?$ pride-crosswinds-villa-plots-phase-2/index.html [L]
+RewriteRule ^pride-altius/?$ pride-altius/index.html [L]

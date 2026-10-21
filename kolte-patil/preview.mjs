@@ -32,7 +32,8 @@ createServer((request, response) => {
   }
 
   const relativePath = normalize(pathname).replace(/^([/\\])+/, '');
-  let filePath = resolve(distDir, relativePath || 'index.html');
+  const requestPath = relativePath.replace(/\/$/, '');
+  let filePath = resolve(distDir, requestPath === 'privacy-policy' ? 'privacy-policy.html' : (relativePath || 'index.html'));
   if (filePath !== distDir && !filePath.startsWith(`${distDir}${sep}`)) {
     response.writeHead(403).end('Forbidden');
     return;

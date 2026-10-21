@@ -15,6 +15,7 @@ const siteOrigin = process.env.SITE_ORIGIN?.replace(/\/$/, '');
 const apacheRouteRules = [
   'Options -MultiViews',
   'RewriteEngine On',
+  'RewriteRule ^privacy-policy/?$ privacy-policy.html [L]',
   ...allRoutes.map((route) => `RewriteRule ^${route}/?$ ${route}/index.html [L]`)
 ].join('\n');
 

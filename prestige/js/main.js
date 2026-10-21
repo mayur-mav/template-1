@@ -117,7 +117,7 @@ function renderBuilderFooter(hero, properties) {
     document.getElementById('footer-year').textContent = new Date().getFullYear();
     attribution.textContent = `Residential properties by ${builder}`;
     const policyLink = document.querySelector('.footer-policy-link');
-    if (policyLink) policyLink.href = `privacy-policy.html?builder=${encodeURIComponent(document.body.dataset.builder)}`;
+    if (policyLink) policyLink.href = '/privacy-policy';
 }
 
 function populateHomeProjectDropdown(projects) {

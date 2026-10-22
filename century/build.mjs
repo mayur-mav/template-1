@@ -1,6 +1,7 @@
 import { cpSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { developerInfo } from './data/century.js';
 
 const projectDir = dirname(fileURLToPath(import.meta.url));
 const outputDir = join(projectDir, 'dist');
@@ -21,6 +22,11 @@ const apacheRouteRules = [
 
 function createRoutedHtml(route = '') {
   let html = sourceHtml.replace('<head>', `<head>\n    <base href="${basePath}">`);
+  const preloadImageUrl = developerInfo.hero.image.replace(/&/g, '&amp;');
+  html = html.replace(
+    '</head>',
+    `    <link rel="preload" as="image" href="${preloadImageUrl}" fetchpriority="high">\n</head>`
+  );
   if (propertyIds.includes(route)) html = html.replace('<body ', '<body data-property-route-loading="true" ');
   html = html.replace(/<link rel="canonical" href="https:\/\/yourdomain\.com\/century\.html">\s*/i, '');
   if (siteOrigin) {

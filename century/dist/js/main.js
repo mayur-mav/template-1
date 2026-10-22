@@ -5,6 +5,12 @@ let initialDocumentTitle = document.title;
 
 // INITIALIZATION
 document.addEventListener('DOMContentLoaded', async () => {
+    document.addEventListener('contextmenu', event => {
+        if (event.target.closest('img')) event.preventDefault();
+    });
+    document.addEventListener('dragstart', event => {
+        if (event.target.closest('img')) event.preventDefault();
+    });
     document.addEventListener('click', handleBhkDropdownClick);
     document.addEventListener('click', handleProjectDropdownClick);
     document.addEventListener('keydown', handleBhkDropdownKeydown);
@@ -288,7 +294,7 @@ function renderPropertyCards(data) {
         });
         card.innerHTML = `
             <div class="card-image-wrap">
-                <img src="${getCardImageUrl(item.images[0])}" alt="${item.name}" class="card-img" loading="lazy" decoding="async">
+                <img src="${getCardImageUrl(item.thumbnail || item.images[0])}" alt="${item.name}" class="card-img" loading="lazy" decoding="async">
                 <span class="card-badge ${item.badgeClass}">${item.statusText}</span>
                 ${item.rera?.trim() ? '<span class="rera-verified-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> RERA Verified</span>' : ''}
             </div>

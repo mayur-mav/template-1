@@ -1,9 +1,12 @@
+const imageCdnPrefix = 'https://media.justflip.in/builder-brand-pages/';
+const centuryImage = suffix => `${imageCdnPrefix}${suffix.replace(/^\/+/, '')}`;
+
 export const developerInfo = {
     hero: {
         subtitle: 'Century Real Estate | Bengaluru',
         title: 'Thinking Ahead',
         description: 'Built on over five decades of expertise and land craftsmanship, Century Real Estate creates thoughtful living spaces that combine strategic connectivity, modern architecture, and enduring quality.',
-        image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=70'
+        image: centuryImage('century/banner.webp')
     }
 };
 
@@ -54,6 +57,7 @@ export const faqData = [
   }
 ];
 
+// Add uploaded gallery paths in each `images` array with centuryImage('century/project-name/image.webp').
 export const propertiesData = [
     {
         id: 'century-liva',
@@ -68,12 +72,15 @@ export const propertiesData = [
         possession: 'December 2028',
         rera: 'PRM/KA/RERA/1251/309/PR/130924/007015',
         description: 'Century Liva is a luxury residential development by Century Real Estate located on Doddaballapur Main Road, Yelahanka. Spread across 3 acres with 80% open green space, the project features 247 exclusive apartments with modern lifestyle amenities and seamless connectivity to Kempegowda International Airport.',
+        thumbnail: centuryImage('century/century-liva/thumbnail.webp'),
         images: [
-            
+            centuryImage('century/century-liva/gallery/exterior-view.webp'),
+            centuryImage('century/century-liva/gallery/interior-view.webp'),
+            centuryImage('century/century-liva/gallery/amenities-1.webp'),
         ],
         floorPlans: [
-            { bhk: '3 BHK 2T', sqft: '1,650 sq. ft.', price: '₹1.48 Cr Onwards' },
-            { bhk: '3 BHK 3T', sqft: '1,760 sq. ft.', price: '₹1.48 Cr Onwards' }
+            { bhk: '3 BHK 2T', sqft: '1,650 sq. ft.', price: '₹1.48 Cr Onwards', image: centuryImage('century/century-liva/floor-plans/3bhk-floor-plan-1.webp') },
+            { bhk: '3 BHK 3T', sqft: '1,760 sq. ft.', price: '₹1.48 Cr Onwards', image: centuryImage('century/century-liva/floor-plans/floor-plan-1.webp') }
         ],
         amenities: [
             { name: 'Hammock Garden', icon: 'fa-solid fa-tree' },
@@ -122,11 +129,14 @@ export const propertiesData = [
         possession: 'Phase 1: April 2029 | Phase 2: December 2030',
         rera: 'Phase 1: PRM/KA/RERA/1251/446/PR/170524/006883 | Phase 2: PRM/KA/RERA/1251/446/PR/150325/007586',
         description: 'Century Regalia by Century Real Estate is an ultra-luxury residential enclave situated off HAL Old Airport Road, adjacent to the 125-acre Karnataka Golf Association (KGA) course in Indiranagar. Developed across two phases on an 8.5-acre land parcel with 80% open space, it features low-density towers, a massive 64,000 sq. ft. clubhouse, and exquisite luxury configurations.',
+        thumbnail: centuryImage('century/century-regalia/thumbnail.webp'),
         images: [
-            
+            centuryImage('century/century-regalia/gallery/interior-view.webp'),
+            centuryImage('century/century-regalia/gallery/amenities-1.webp'),
+            centuryImage('century/century-regalia/gallery/amenities-2.webp')
         ],
         floorPlans: [
-            { bhk: '3- BED RESIDENCES', sqft: '2,375 sq. ft. onwards', price: '₹6.65 Cr Onwards' },
+            { bhk: '3- BED RESIDENCES', sqft: '2,375 sq. ft. onwards', price: '₹6.65 Cr Onwards', image: centuryImage('century/century-regalia/floor-plans/3bhk-floor-plan-1.webp') },
             { bhk: 'TOWNHOUSE RESIDENCES', sqft: '3,830 sq. ft. onwards', price: '₹10 Cr Onwards' },
             { bhk: 'IMPERIAL RESIDENCES', sqft: '4,780 sq. ft. onwards', price: '₹12 Cr Onwards' },
             { bhk: 'CELESTIAL PENTHOUSES', sqft: '4,780 sq. ft. onwards', price: '₹18.5 Cr Onwards' }
@@ -165,12 +175,15 @@ export const propertiesData = [
         possession: 'Ready Possession',
         rera: 'PRM/KA/RERA/1251/309/PR/171014/000283',
         description: 'Century Ethos is an iconic ultra-luxury residential enclave by Century Real Estate located on Bellary Road, Hebbal. Spread across 7.3 acres with 80% open spaces, the project features 4 low-density towers, a massive 50,000 sq. ft. clubhouse, zero common walls for maximum privacy, and grand uber-sized residences.',
+        thumbnail: centuryImage('century/century-ethos/thumbnail.webp'),
         images: [
-
+            centuryImage('century/century-ethos/gallery/exterior-view.webp'),
+            centuryImage('century/century-ethos/gallery/interior-view.webp'),
+            centuryImage('century/century-ethos/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '3-BED RESIDENCES', sqft: '2,850 - 3,125 sq. ft.', price: 'On Request' },
-            { bhk: '4-BED RESIDENCES', sqft: '4,235 sq. ft.', price: 'On Request' }
+            { bhk: '3-BED RESIDENCES', sqft: '2,850 - 3,125 sq. ft.', price: 'On Request', image: centuryImage('century/century-ethos/floor-plans/3bhk-floor-plan-1.webp') },
+            { bhk: '4-BED RESIDENCES', sqft: '4,235 sq. ft.', price: 'On Request', image: centuryImage('century/century-ethos/floor-plans/4bhk-floor-plan-1.webp') }
         ],
         amenities: [
             { name: 'Luxury Clubhouse', icon: 'fa-solid fa-hotel' },
@@ -205,12 +218,15 @@ export const propertiesData = [
         possession: 'Ready Possession',
         rera: 'PRM/KA/RERA/1251/446/PR/170918/000782',
         description: 'Century Renata is an ultra-luxury boutique residential enclave located on Richmond Road in Central Bengaluru. Spread across 1.14 acres, the low-density property features a single tower comprising just 36 bespoke residences (3 and 4 BHK layouts, including select options with private gardens and wrap-around decks) designed for complete privacy and elegance.',
+        thumbnail: centuryImage('century/century-renata/thumbnail.webp'),
         images: [
-
+            centuryImage('century/century-renata/gallery/exterior-view.webp'),
+            centuryImage('century/century-renata/gallery/interior-view.webp'),
+            centuryImage('century/century-renata/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '3-BED RESIDENCES', sqft: '2,793 - 3,324 sq. ft.', price: '₹7.54 Cr Onwards' },
-            { bhk: '4-BED RESIDENCES', sqft: '5,338 sq. ft.', price: '₹11.79 Cr Onwards' }
+            { bhk: '3-BED RESIDENCES', sqft: '2,793 - 3,324 sq. ft.', price: '₹7.54 Cr Onwards', image: centuryImage('century/century-renata/floor-plans/floor-plan-1.webp') },
+            { bhk: '4-BED RESIDENCES', sqft: '5,338 sq. ft.', price: '₹11.79 Cr Onwards', image: centuryImage('century/century-renata/floor-plans/floor-plan-2.webp') }
         ],
         amenities: [
             { name: '800 sq. ft. Triple-Height Grand Entrance Lounge', icon: 'fa-solid fa-hotel' },
@@ -244,12 +260,15 @@ export const propertiesData = [
         possession: 'February 2031',
         rera: 'PRM/KA/RERA/1251/309/PR/160526/008662',
         description: 'The Astoria is a premium residential enclave comprising 334 Neo Luxe residences across 5 low-density towers, situated within Century Immencity—a landmark 50+ acre mixed-use destination on International Airport Road, Jakkur. Developed by Century Real Estate, the enclave features approximately 75% to 70% open spaces, a ~40,000 sq. ft. clubhouse, and a landscape-led amenity ecosystem integrating retail, commercial, and residential luxury.',
+        thumbnail: centuryImage('century/century-immencity/thumbnail.webp'),
         images: [
-
+            centuryImage('century/century-immencity/gallery/interior-view.webp'),
+            centuryImage('century/century-immencity/gallery/amenities-1.webp'),
+            centuryImage('century/century-immencity/gallery/amenities-2.webp')
         ],
         floorPlans: [
-            { bhk: '3-BED RESIDENCES', sqft: '2,175 - 2,565 sq. ft.', price: '₹3.85 Cr Onwards' },
-            { bhk: '3.5-BED RESIDENCES', sqft: '3,020 sq. ft.', price: '₹5.34 Cr Onwards' }
+            { bhk: '3-BED RESIDENCES', sqft: '2,175 - 2,565 sq. ft.', price: '₹3.85 Cr Onwards', image: centuryImage('century/century-immencity/floor-plans/floor-plan-1.webp') },
+            { bhk: '3.5-BED RESIDENCES', sqft: '3,020 sq. ft.', price: '₹5.34 Cr Onwards', image: centuryImage('century/century-immencity/floor-plans/floor-plan-2.webp') }
         ],
         amenities: [
             { name: '~40,000 sq. ft. Grand Clubhouse', icon: 'fa-solid fa-hotel' },
@@ -283,12 +302,15 @@ export const propertiesData = [
         possession: 'March 2031',
         rera: 'PRM/KA/RERA/1251/309/PR/200326/008542',
         description: 'Century Kindle by Century Real Estate is a premium residential enclave located in Attur Village, Yelahanka New Town. Spread across 4.6 acres with well-planned towers (2B + G + 19 floors), the project features 458 modern residences emphasizing large balconies, cross-ventilation, and extensive lifestyle amenities in a rapidly developing North Bengaluru corridor.',
+        thumbnail: centuryImage('century/century-kindle/thumbnail.webp'),
         images: [
-
+            centuryImage('century/century-kindle/gallery/interior-view.webp'),
+            centuryImage('century/century-kindle/gallery/amenities-1.webp'),
+            centuryImage('century/century-kindle/gallery/amenities-2.webp')
         ],
         floorPlans: [
-            { bhk: '2-BED RESIDENCES', sqft: '723 sq. ft.', price: '₹1.18 Cr Onwards' },
-            { bhk: '3-BED RESIDENCES', sqft: '931 sq. ft.', price: '₹1.80 Cr Onwards' }
+            { bhk: '2-BED RESIDENCES', sqft: '723 sq. ft.', price: '₹1.18 Cr Onwards', image: centuryImage('century/century-kindle/floor-plans/floor-plan-1.webp') },
+            { bhk: '3-BED RESIDENCES', sqft: '931 sq. ft.', price: '₹1.80 Cr Onwards', image: centuryImage('century/century-kindle/floor-plans/3bhk-floor-plan-1.webp') }
         ],
         amenities: [
             { name: 'Badminton Court', icon: 'fa-solid fa-table-tennis-paddle-ball' },
@@ -329,12 +351,15 @@ export const propertiesData = [
         possession: 'April 2031',
         rera: 'PRM/KA/RERA/1250/301/PR/210426/008595',
         description: 'Century Bliss by Century Real Estate is a thoughtfully planned residential community located on the Yelahanka-Doddaballapura Main Road. Spread across 4.25 acres with 75% landscaped open spaces, the development features 2 residential towers with 194 thoughtfully designed 2, 2.5, and 3-bed homes, complemented by a 26,000+ sq. ft. multi-level clubhouse and an attached commercial hub.',
+        thumbnail: centuryImage('century/century-bliss/thumbnail.webp'),
         images: [
-
+            centuryImage('century/century-bliss/gallery/exterior-view.webp'),
+            centuryImage('century/century-bliss/gallery/interior-view.webp'),
+            centuryImage('century/century-bliss/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '2-BED RESIDENCES', sqft: '1,235 sq. ft.', price: '₹99 Lakh Onwards' },
-            { bhk: '2.5-BED RESIDENCES', sqft: '1,490 sq. ft.', price: '₹1.06 Cr Onwards' },
+            { bhk: '2-BED RESIDENCES', sqft: '1,235 sq. ft.', price: '₹99 Lakh Onwards', image: centuryImage('century/century-bliss/floor-plans/floor-plan-1.webp') },
+            { bhk: '2.5-BED RESIDENCES', sqft: '1,490 sq. ft.', price: '₹1.06 Cr Onwards', image: centuryImage('century/century-bliss/floor-plans/2.5bhk-floor-plan.webp') },
             { bhk: '3-BED RESIDENCES', sqft: '1,835 sq. ft.', price: '₹1.30 Cr Onwards' }
         ],
         amenities: [
@@ -370,12 +395,15 @@ export const propertiesData = [
         possession: 'October 2030',
         rera: 'PRM/KA/RERA/1251/446/PR/181025/008182',
         description: 'Century Mirai by Century Real Estate is a major landmark residential enclave situated in Silver Springs Layout, Marathahalli. Spread across over 14 acres of prime land in East Bengaluru, the project features low-density high-rise towers, expansive open green spaces, a massive ~35,000 sq. ft. clubhouse, and meticulously planned modern residences tailored for tech-corridor professionals.',
+        thumbnail: centuryImage('century/century-mirai/thumbnail.webp'),
         images: [
-
+            centuryImage('century/century-mirai/gallery/exterior-view.webp'),
+            centuryImage('century/century-mirai/gallery/interior-view.webp'),
+            centuryImage('century/century-mirai/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '3-BED RESIDENCES', sqft: '1810 sq. ft.', price: '₹3.12 Cr Onwards' },
-            { bhk: '4-BED RESIDENCES', sqft: '3115 sq. ft.', price: 'On Request' }
+            { bhk: '3-BED RESIDENCES', sqft: '1810 sq. ft.', price: '₹3.12 Cr Onwards', image: centuryImage('century/century-mirai/floor-plans/3bhk-floor-plan-1.webp') },
+            { bhk: '4-BED RESIDENCES', sqft: '3115 sq. ft.', price: 'On Request', image: centuryImage('century/century-mirai/floor-plans/4bhk-floor-plan-1.webp') }
         ],
         amenities: [
             { name: '~35,000 sq. ft. Grand Clubhouse', icon: 'fa-solid fa-hotel' },

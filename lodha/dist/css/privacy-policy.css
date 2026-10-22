@@ -39,7 +39,7 @@
     place-items: center;
     border: 2px solid var(--brand-gold);
     border-radius: 8px;
-    background: linear-gradient(135deg, #0B1320 0%, #1E293B 100%);
+    background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-light) 100%);
     color: var(--brand-gold);
     font-family: 'Playfair Display', serif;
     font-size: 1.4rem;
@@ -67,7 +67,7 @@
     flex: 0 0 auto;
     padding: 10px 22px;
     border-radius: 30px;
-    background: linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-bronze) 100%);
+    background: var(--brand-bronze);
     color: var(--bg-white);
     font-size: .9rem;
     font-weight: 600;
@@ -75,7 +75,7 @@
     text-decoration: none;
 }
 
-.privacy-back:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(197, 160, 89, .3); }
+.privacy-back:hover { transform: translateY(-2px); box-shadow: 0 12px 28px var(--theme-accent-wash); }
 
 .privacy-content {
     width: min(1104px, calc(100% - 48px));

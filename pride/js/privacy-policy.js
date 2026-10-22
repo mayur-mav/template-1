@@ -1,4 +1,5 @@
 const builderSlug = document.body.dataset.builder;
+const builderLogoMarks = { century: 'C', 'kolte-patil': 'KP', lodha: 'LD', prestige: 'P', pride: 'PG', 'total-environment': 'TE' };
 
 try {
     const { developerInfo } = await import(`../data/${builderSlug}.js`);
@@ -8,7 +9,7 @@ try {
 
     document.title = `Privacy Policy | ${builder}`;
     document.getElementById('policy-builder').textContent = builder;
-    document.getElementById('policy-mark').textContent = builder.trim().charAt(0).toUpperCase();
+    document.getElementById('policy-mark').textContent = builderLogoMarks[builderSlug] || builder.trim().charAt(0).toUpperCase();
     document.getElementById('policy-location').textContent = location;
     document.getElementById('policy-attribution').textContent = `${builder.toUpperCase()} PROPERTY ENQUIRY PAGE \u00b7 PUBLISHED BY M&A VENTURES, AUTHORISED CHANNEL PARTNER`;
     document.getElementById('policy-back').href = '/';

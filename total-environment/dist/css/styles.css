@@ -5,12 +5,14 @@
     --theme-primary-soft: #12281D;
     --theme-accent: #C85A32;
     --theme-accent-hover: #AD4725;
+    --theme-accent-text: #A33B1D;
+    --theme-on-accent: #0B0B0B;
     --theme-page: #FAF8F5;
     --theme-surface: #FFFFFF;
     --theme-surface-muted: #F4EFE6;
     --theme-text: #211A17;
     --theme-text-secondary: #5D564F;
-    --theme-text-muted: #837A70;
+    --theme-text-muted: #6B625A;
     --theme-border: rgba(200, 109, 81, 0.2);
     --theme-accent-soft: #F4EFE6;
     --theme-action-text: #FFFFFF;
@@ -2567,4 +2569,43 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
 /* Prevent the catalog and footer flashing before a direct property route is ready. */
 body[data-property-route-loading="true"] #catalog-view {
   display: none !important;
+}
+
+
+/* Keep small accent icons and labels readable on light surfaces. */
+.search-icon,
+.rera-verified-badge i,
+.rera-details summary i,
+.spec-item i,
+.no-results i,
+.why-icon,
+.faq-question i,
+.pill-icon,
+.amenity-card i,
+.loc-item i,
+.feature-expansion-link:hover {
+    color: var(--theme-accent-text);
+}
+
+/* Use a high-contrast foreground on accent-filled controls. */
+.badge-ongoing,
+.btn-view-details:hover,
+.fp-tab-btn.active,
+.btn-submit-enquiry:hover {
+    color: var(--theme-on-accent);
+}
+
+
+/* Keep hero copy legible over both bright and dark photography. */
+.hero-section::before {
+    background: linear-gradient(90deg, rgba(7, 13, 24, .72), rgba(7, 13, 24, .68));
+}
+
+.hero-title,
+.hero-description {
+    color: #FFFFFF;
+}
+
+.hero-title {
+    -webkit-text-stroke: 0;
 }

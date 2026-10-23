@@ -1,7 +1,8 @@
 let propertiesData = [];
 let currentActiveCategory = 'ALL';
 let activeProperty = null;
-let initialDocumentTitle = document.title;
+let initialDocumentTitle = document.body.dataset.homeTitle || document.title;
+let initialMetaDescription = document.body.dataset.homeDescription || document.querySelector('meta[name="description"]')?.content || '';
 
 // INITIALIZATION
 document.addEventListener('DOMContentLoaded', async () => {
@@ -106,6 +107,32 @@ function getCardImageUrl(src) {
     } catch {
         return src;
     }
+}
+
+function updatePageMetadata(title, description) {
+    document.title = title;
+    const descriptionTag = document.querySelector('meta[name="description"]');
+    if (descriptionTag) descriptionTag.content = description;
+    const openGraphTitle = document.querySelector('meta[property="og:title"]');
+    if (openGraphTitle) openGraphTitle.content = title;
+    const openGraphDescription = document.querySelector('meta[property="og:description"]');
+    if (openGraphDescription) openGraphDescription.content = description;
+
+    const canonicalUrl = new URL(window.location.pathname, window.location.origin);
+    canonicalUrl.pathname = canonicalUrl.pathname.replace(/\/$/, '') || '/';
+    let canonicalTag = document.querySelector('link[rel="canonical"]');
+    if (!canonicalTag) {
+        canonicalTag = document.createElement('link');
+        canonicalTag.rel = 'canonical';
+        document.head.appendChild(canonicalTag);
+    }
+    canonicalTag.href = canonicalUrl.href;
+    const openGraphUrl = document.querySelector('meta[property="og:url"]');
+    if (openGraphUrl) openGraphUrl.content = canonicalUrl.href;
+}
+
+function getPropertyMetaDescription(item) {
+    return `Explore ${item.name} by Century Real Estate in Bengaluru. ${item.bhk}. View prices, floor plans, amenities, and possession details.`;
 }
 
 function renderBuilderFooter(hero, properties) {
@@ -421,7 +448,7 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
     if (updateUrl) setPropertyRoute(item);
     activeProperty = item;
     setActiveNavigation(item.id);
-    document.title = `${item.name} | ${document.body.dataset.builder}`;
+    updatePageMetadata(`${item.name} in Bengaluru | Century Real Estate`, getPropertyMetaDescription(item));
 
     document.getElementById('dt-title').textContent = item.name;
     const reraDetails = document.getElementById('dt-rera-details');
@@ -610,7 +637,7 @@ function showCatalogView({ updateUrl = true } = {}) {
     }
     document.getElementById('property-detail-view').style.display = 'none';
     document.getElementById('catalog-view').style.display = 'block';
-    document.title = initialDocumentTitle;
+    updatePageMetadata(initialDocumentTitle, initialMetaDescription);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -691,7 +718,7 @@ function clearPropertyRoute() {
     if (getPropertyIdFromPath()) {
         setPropertyRoute(null, { replace: true });
     }
-    document.title = initialDocumentTitle;
+    updatePageMetadata(initialDocumentTitle, initialMetaDescription);
 }
 
 function navigateToCatalogSection(sectionId, route = sectionId, { scrollToTop = false } = {}) {

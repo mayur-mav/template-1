@@ -4,8 +4,8 @@ const centuryImage = suffix => `${imageCdnPrefix}${suffix.replace(/^\/+/, '')}`;
 export const developerInfo = {
     hero: {
         subtitle: 'Century Real Estate | Bengaluru',
-        title: 'Thinking Ahead',
-        description: 'Built on over five decades of expertise and land craftsmanship, Century Real Estate creates thoughtful living spaces that combine strategic connectivity, modern architecture, and enduring quality.',
+        title: 'Century Real Estate Projects in Bengaluru',
+        description: 'Explore Century Real Estate apartments and homes in Bengaluru. Compare ongoing and ready-to-move projects, locations, floor plans, prices, and amenities.',
         image: centuryImage('century/banner.webp')
     }
 };

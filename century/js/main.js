@@ -119,7 +119,9 @@ function updatePageMetadata(title, description) {
     if (openGraphDescription) openGraphDescription.content = description;
 
     const canonicalUrl = new URL(window.location.pathname, window.location.origin);
-    canonicalUrl.pathname = canonicalUrl.pathname.replace(/\/$/, '') || '/';
+    const homePath = document.querySelector('base')?.pathname || '/';
+    const currentPath = title === initialDocumentTitle ? homePath : window.location.pathname;
+    canonicalUrl.pathname = currentPath.replace(/\/$/, '') || '/';
     let canonicalTag = document.querySelector('link[rel="canonical"]');
     if (!canonicalTag) {
         canonicalTag = document.createElement('link');

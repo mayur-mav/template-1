@@ -1,8 +1,8 @@
 export const developerInfo = {
     hero: {
         subtitle: 'Total Environment | Bengaluru',
-        title: 'Homes shaped around how you live',
-        description: 'Driven by a passion for design and attention to detail, we create homes that blend seamlessly with nature, crafted from natural materials that age gracefully over time.',
+        title: 'Total Environment Homes & Projects in Bangalore',
+        description: 'Explore Total Environment Group homes and projects in Bangalore, including apartments, villas, and plotted developments across Bengaluru and nearby locations.',
         image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=70'
     }
 };

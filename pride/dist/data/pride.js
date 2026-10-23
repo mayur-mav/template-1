@@ -1,8 +1,8 @@
 export const developerInfo = {
     hero: {
         subtitle: 'Pride Group | Bengaluru',
-        title: 'Building Tomorrow Today',
-        description: 'Shaping modern cityscapes with state-of-the-art residential communities and commercial spaces engineered to deliver elevated living standards and long-term value.',
+        title: 'Pride Developers & Projects in Bangalore',
+        description: 'Explore Pride Group residential construction projects in Bangalore, including plots, villa plots, villas, and apartments. Compare locations, configurations, and prices.',
         image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=70'
     }
 };

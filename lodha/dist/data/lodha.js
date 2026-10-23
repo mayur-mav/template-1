@@ -1,8 +1,8 @@
 export const developerInfo = {
     hero: {
         subtitle: 'Lodha Developers | Bengaluru',
-        title: 'Building a Better Life',
-        description: 'Driven by the passion for excellence, Lodha delivers world-class residential and commercial landmarks designed with international craftsmanship and timeless architecture.',
+        title: 'Lodha Group Projects in Bangalore',
+        description: 'Explore Lodha Group projects in Bangalore, including new launches and ongoing projects in Thanisandra, HSR Extension, Bannerghatta Road, Sarjapur, and Devanahalli.',
         image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=70'
     }
 };

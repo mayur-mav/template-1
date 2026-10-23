@@ -1,7 +1,40 @@
 let propertiesData = [];
 let currentActiveCategory = 'ALL';
 let activeProperty = null;
-let initialDocumentTitle = document.title;
+let initialDocumentTitle = document.body.dataset.homeTitle || document.title;
+let initialMetaDescription = document.body.dataset.homeDescription || document.querySelector('meta[name="description"]')?.content || '';
+
+
+function updatePageMetadata(title, description) {
+    document.title = title;
+    const descriptionTag = document.querySelector('meta[name="description"]');
+    if (descriptionTag) descriptionTag.content = description;
+
+    const openGraphTitle = document.querySelector('meta[property="og:title"]');
+    if (openGraphTitle) openGraphTitle.content = title;
+    const openGraphDescription = document.querySelector('meta[property="og:description"]');
+    if (openGraphDescription) openGraphDescription.content = description;
+
+    const canonicalUrl = new URL(window.location.pathname, window.location.origin);
+    const homePath = document.querySelector('base')?.pathname || '/';
+    const currentPath = title === initialDocumentTitle ? homePath : window.location.pathname;
+    canonicalUrl.pathname = currentPath.replace(/\/$/, '') || '/';
+    let canonicalTag = document.querySelector('link[rel="canonical"]');
+    if (!canonicalTag) {
+        canonicalTag = document.createElement('link');
+        canonicalTag.rel = 'canonical';
+        document.head.appendChild(canonicalTag);
+    }
+    canonicalTag.href = canonicalUrl.href;
+
+    const openGraphUrl = document.querySelector('meta[property="og:url"]');
+    if (openGraphUrl) openGraphUrl.content = canonicalUrl.href;
+}
+
+function getPropertyMetaDescription(item) {
+    const builder = document.body.dataset.homeBuilder || document.body.dataset.builder;
+    return `Explore ${item.name} by ${builder}. View location, configurations, price, floor plans, and amenities.`;
+}
 
 // INITIALIZATION
 document.addEventListener('DOMContentLoaded', async () => {
@@ -415,7 +448,9 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
     if (updateUrl) setPropertyRoute(item);
     activeProperty = item;
     setActiveNavigation(item.id);
-    document.title = `${item.name} | ${document.body.dataset.builder}`;
+    const builderName = document.body.dataset.homeBuilder || document.body.dataset.builder;
+    const projectRegion = item.location.includes('Bengaluru') ? 'Bengaluru' : 'Karnataka';
+    updatePageMetadata(`${item.name} | ${builderName} ${projectRegion}`, getPropertyMetaDescription(item));
 
     document.getElementById('dt-title').textContent = item.name;
     const reraDetails = document.getElementById('dt-rera-details');
@@ -604,7 +639,7 @@ function showCatalogView({ updateUrl = true } = {}) {
     }
     document.getElementById('property-detail-view').style.display = 'none';
     document.getElementById('catalog-view').style.display = 'block';
-    document.title = initialDocumentTitle;
+    updatePageMetadata(initialDocumentTitle, initialMetaDescription);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -645,7 +680,7 @@ function restorePropertyRoute(event) {
         setActiveNavigation(route);
         document.getElementById('property-detail-view').style.display = 'none';
         document.getElementById('catalog-view').style.display = 'block';
-        document.title = initialDocumentTitle;
+        updatePageMetadata(initialDocumentTitle, initialMetaDescription);
         requestAnimationFrame(() => {
             document.getElementById(sectionTargets[route])?.scrollIntoView({ block: 'start' });
         });
@@ -685,7 +720,7 @@ function clearPropertyRoute() {
     if (getPropertyIdFromPath()) {
         setPropertyRoute(null, { replace: true });
     }
-    document.title = initialDocumentTitle;
+    updatePageMetadata(initialDocumentTitle, initialMetaDescription);
 }
 
 function navigateToCatalogSection(sectionId, route = sectionId, { scrollToTop = false } = {}) {

@@ -1,8 +1,8 @@
 export const developerInfo = {
     hero: {
         subtitle: 'Kolte-Patil | Pune & Bengaluru',
-        title: 'Creation, Not Construction',
-        description: 'Discover landmark residences by Kolte-Patil, bringing considered design and vibrant communities to Pune and Bengaluru.',
+        title: 'Kolte Patil Builders & Developers in Bangalore',
+        description: 'Explore Kolte Patil projects in Bangalore, including apartments in Electronic City and North Bengaluru. Compare locations, configurations, prices, and floor plans.',
         image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=70'
     }
 };

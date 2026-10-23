@@ -1,8 +1,8 @@
 export const developerInfo = {
     hero: {
         subtitle: 'Prestige Group | Bengaluru',
-        title: 'Add Prestige to Your Life',
-        description: 'Explore thoughtfully designed Prestige residences, with distinctive spaces and connected communities across Bengaluru.',
+        title: 'Prestige Builders & Group Projects in Bangalore',
+        description: 'Explore Prestige Group apartments and plotted developments in Bangalore. Compare new launches and ongoing projects by location, configuration, price, and plans.',
         image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=70'
     }
 };

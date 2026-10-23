@@ -1,9 +1,12 @@
+const imageCdnPrefix = 'https://media.justflip.in/builder-brand-pages/';
+const builderImage = suffix => `${imageCdnPrefix}${suffix.replace(/^\/+/, '')}`;
+
 export const developerInfo = {
     hero: {
         subtitle: 'Kolte-Patil | Pune & Bengaluru',
         title: 'Kolte Patil Builders & Developers in Bangalore',
         description: 'Explore Kolte Patil projects in Bangalore, including apartments in Electronic City and North Bengaluru. Compare locations, configurations, prices, and floor plans.',
-        image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=70'
+        image: builderImage('kolte-patil/banner.webp')
     }
 };
 
@@ -31,36 +34,6 @@ export const faqData = [
 ];
 
 export const propertiesData = [
-    // {
-    //     id: '24k-altura',
-    //     name: 'Kolte-Patil 24K Altura',
-    //     location: 'Baner-Pashan Link Road, Pune',
-    //     category: 'NEW',
-    //     statusText: 'New Launch',
-    //     badgeClass: 'badge-new',
-    //     price: '₹ 1.85 Cr*',
-    //     bhk: '3 & 4 BHK Luxury',
-    //     area: '7.5 Acres',
-    //     possession: 'December 2026',
-    //     rera: 'P52100048291',
-    //     description: '24K Altura presents elevated boutique living crafted for the elite. Complete with sky lounge, private decks, and sustainable luxury design.',
-    //     images: [
-    //         'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80',
-    //         'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-    //         'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80'
-    //     ],
-    //     floorPlans: [
-    //         { bhk: '3 BHK', sqft: '1,250 Sq. Ft.', price: '₹ 1.85 Cr*' },
-    //         { bhk: '4 BHK', sqft: '1,680 Sq. Ft.', price: '₹ 2.45 Cr*' }
-    //     ],
-    //     amenities: [
-    //         { name: 'Sky Club', icon: 'fa-solid fa-cloud' },
-    //         { name: 'Infinity Pool', icon: 'fa-solid fa-water-ladder' },
-    //         { name: 'Modern Gym', icon: 'fa-solid fa-dumbbell' },
-    //         { name: 'Squash Court', icon: 'fa-solid fa-table-tennis-paddle-ball' }
-    //     ],
-    //     connectivity: []
-    // },
     {
         id: 'kolte-patil-raaga',
         name: 'Kolte Patil Raaga',
@@ -74,12 +47,15 @@ export const propertiesData = [
         possession: 'Ready to Move',
         rera: 'PRM/KA/RERA/1251/446/PR/171014/000856',
         description: 'Kolte Patil Raaga by Kolte Patil Developers is a thoughtfully designed residential community located off Hennur Main Road in North Bengaluru. Spread across 7 acres with ample green open spaces, the development features 12 residential towers housing 590 well-ventilated 2 and 3-bed apartments with no common walls, complemented by a fully equipped clubhouse and modern lifestyle amenities.',
+        thumbnail: builderImage('kolte-patil/kolte-patil-raaga/thumbnail.webp'),
         images: [
-
+            builderImage('kolte-patil/kolte-patil-raaga/gallery/exterior-view.webp'),
+            builderImage('kolte-patil/kolte-patil-raaga/gallery/interior-view.webp'),
+            builderImage('kolte-patil/kolte-patil-raaga/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '2-BED RESIDENCES', sqft: '938 - 1,078 sq. ft.', price: '₹90 Lakh Onwards' },
-            { bhk: '3-BED RESIDENCES', sqft: '1,111 sq. ft.', price: '₹1.2 Crore Onwards' }
+            { bhk: '2-BED RESIDENCES', sqft: '938 - 1,078 sq. ft.', price: '₹90 Lakh Onwards', image: builderImage('kolte-patil/kolte-patil-raaga/floor-plans/2bhk-floor-plan.webp') },
+            { bhk: '3-BED RESIDENCES', sqft: '1,111 sq. ft.', price: '₹1.2 Crore Onwards', image: builderImage('kolte-patil/kolte-patil-raaga/floor-plans/3bhk-floor-plan.webp') }
         ],
         amenities: [
             { name: 'Full-Fledged Clubhouse', icon: 'fa-solid fa-hotel' },
@@ -113,12 +89,15 @@ export const propertiesData = [
         possession: 'Ready to Move',
         rera: 'PRM/KA/RERA/1251/310/PR/171026/000862',
         description: 'I-Towers Exente by Kolte Patil Developers is a premier high-rise residential project located at the entry point of Electronic City Phase 1. Spread across 4.04 acres, the development features 5 high-rise towers (G+22/23 floors) housing 438 thoughtfully designed residences with 3-side open city views, over 70% open spaces, an Aristotle digital library, and a rooftop swimming pool clubhouse.',
+        thumbnail: builderImage('kolte-patil/kolte-patil-i-towers-exente/thumbnail.webp'),
         images: [
-
+            builderImage('kolte-patil/kolte-patil-i-towers-exente/gallery/exterior-view.webp'),
+            builderImage('kolte-patil/kolte-patil-i-towers-exente/gallery/interior-view.webp'),
+            builderImage('kolte-patil/kolte-patil-i-towers-exente/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '2-BED RESIDENCES', sqft: '1,200 - 1,240 sq. ft.', price: '₹1.53 Cr Onwards' },
-            { bhk: '3-BED RESIDENCES', sqft: '1,686 - 1,705 sq. ft.', price: '₹2.10 Cr Onwards' }
+            { bhk: '2-BED RESIDENCES', sqft: '1,200 - 1,240 sq. ft.', price: '₹1.53 Cr Onwards', image: builderImage('kolte-patil/kolte-patil-i-towers-exente/floor-plans/2bhk-floor-plan.webp') },
+            { bhk: '3-BED RESIDENCES', sqft: '1,686 - 1,705 sq. ft.', price: '₹2.10 Cr Onwards', image: builderImage('kolte-patil/kolte-patil-i-towers-exente/floor-plans/3bhk-floor-plan.webp') }
         ],
         amenities: [
             { name: 'Grand Clubhouse with Rooftop Pool', icon: 'fa-solid fa-hotel' },
@@ -153,11 +132,14 @@ export const propertiesData = [
         possession: 'October 2021',
         rera: 'PRM/KA/RERA/1251/446/PR/170922/000838',
         description: 'Kolte Patil Mirabilis by Kolte Patil Developers is a well-planned residential community located in Horamavu, North-East Bengaluru. Spread over 7 acres with landscaped open areas, the project features 7 high-rise towers comprising 640 contemporary 1, 2, 2.5, and 3-bed residences. Designed for optimum ventilation and natural light, the project offers quick access to Manyata Tech Park, Outer Ring Road, and Hebbal.',
+        thumbnail: builderImage('kolte-patil/kolte-patil-mirabilis/thumbnail.webp'),
         images: [
-
+            builderImage('kolte-patil/kolte-patil-mirabilis/gallery/exterior-view.webp'),
+            builderImage('kolte-patil/kolte-patil-mirabilis/gallery/interior-view.webp'),
+            builderImage('kolte-patil/kolte-patil-mirabilis/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '3-BED RESIDENCES', sqft: '1,599 sq. ft.', price: '₹2.19 Cr Onwards' }
+            { bhk: '3-BED RESIDENCES', sqft: '1,599 sq. ft.', price: '₹2.19 Cr Onwards', image: builderImage('kolte-patil/kolte-patil-mirabilis/floor-plans/3bhk-floor-plan.webp') }
         ],
         amenities: [
             { name: 'Full-Fledged Clubhouse & Party Lawn', icon: 'fa-solid fa-hotel' },
@@ -191,15 +173,18 @@ export const propertiesData = [
         possession: 'October 2028',
         rera: 'PRM/KA/RERA/1251/446/PR/060324/006667',
         description: 'Kolte Patil Lakeside 24 by Kolte Patil Developers is an exclusive boutique residential community located off Hennur - Thanisandra Main Road in Kannuru. Spread across 1.86 acres with over 80% open spaces, the project features a single high-rise tower with 131 low-density luxury homes. Positioned along a natural lake, it offers picturesque views, a rooftop swimming pool, wellness decks, and close proximity to Manyata Tech Park and airport corridors.',
+        thumbnail: builderImage('kolte-patil/kolte-patil-lakeside-24/thumbnail.webp'),
         images: [
-
+            builderImage('kolte-patil/kolte-patil-lakeside-24/gallery/exterior-view.webp'),
+            builderImage('kolte-patil/kolte-patil-lakeside-24/gallery/interior-view.webp'),
+            builderImage('kolte-patil/kolte-patil-lakeside-24/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '2-BED RESIDENCES', sqft: '763 - 773 sq. ft.', price: '₹1.12 Cr Onwards' },
-            { bhk: '2.5-BED RESIDENCES', sqft: '801 - 848 sq. ft.', price: '₹1.23 Cr Onwards' },
-            { bhk: '3-BED RESIDENCES', sqft: '940 - 1,470 sq. ft.', price: '₹1.44 Cr Onwards' },
-            { bhk: '3.5-BED RESIDENCES', sqft: '1,132 sq. ft.', price: '₹1.75 Cr Onwards' },
-            { bhk: '4-BED DUPLEX / LARGE RESIDENCES', sqft: '1,422 - 1,659 sq. ft.', price: '₹2.07 Cr Onwards' }
+            { bhk: '2-BED RESIDENCES', sqft: '763 - 773 sq. ft.', price: '₹1.12 Cr Onwards', image: builderImage('kolte-patil/kolte-patil-lakeside-24/floor-plans/2bhk-floor-plan.webp') },
+            { bhk: '2.5-BED RESIDENCES', sqft: '801 - 848 sq. ft.', price: '₹1.23 Cr Onwards', image: builderImage('kolte-patil/kolte-patil-lakeside-24/floor-plans/2.5bhk-floor-plan.webp') },
+            { bhk: '3-BED RESIDENCES', sqft: '940 - 1,470 sq. ft.', price: '₹1.44 Cr Onwards', image: builderImage('kolte-patil/kolte-patil-lakeside-24/floor-plans/3bhk-floor-plan.webp') },
+            { bhk: '3.5-BED RESIDENCES', sqft: '1,132 sq. ft.', price: '₹1.75 Cr Onwards', image: builderImage('kolte-patil/kolte-patil-lakeside-24/floor-plans/3.5bhk-floor-plan.webp') },
+            { bhk: '4-BED DUPLEX / LARGE RESIDENCES', sqft: '1,422 - 1,659 sq. ft.', price: '₹2.07 Cr Onwards', image: builderImage('kolte-patil/kolte-patil-lakeside-24/floor-plans/4bhk-duplex-floor-plan.webp') }
         ],
         amenities: [
             { name: 'Rooftop Swimming Pool & Sun Deck', icon: 'fa-solid fa-person-swimming' },

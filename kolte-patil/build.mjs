@@ -74,6 +74,7 @@ function createRoutedHtml(route = '') {
   html = html.replace('</head>', `    <meta property="og:title" content="${escapeHtml(title)}">\n    <meta property="og:description" content="${escapeHtml(description)}">\n    <meta property="og:type" content="website">\n</head>`);
 
   const preloadImageUrl = developerInfo.hero.image.replace(/&/g, '&amp;');
+  html = html.replace(/<link\s+rel="preload"\s+as="image"[^>]*fetchpriority="high"[^>]*>\s*/i, '');
   html = html.replace(
     '</head>',
     `    <link rel="preload" as="image" href="${preloadImageUrl}" fetchpriority="high">\n</head>`

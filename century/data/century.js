@@ -360,7 +360,7 @@ export const propertiesData = [
         floorPlans: [
             { bhk: '2-BED RESIDENCES', sqft: '1,235 sq. ft.', price: '₹99 Lakh Onwards', image: centuryImage('century/century-bliss/floor-plans/floor-plan-1.webp') },
             { bhk: '2.5-BED RESIDENCES', sqft: '1,490 sq. ft.', price: '₹1.06 Cr Onwards', image: centuryImage('century/century-bliss/floor-plans/2.5bhk-floor-plan.webp') },
-            { bhk: '3-BED RESIDENCES', sqft: '1,835 sq. ft.', price: '₹1.30 Cr Onwards' }
+            { bhk: '3-BED RESIDENCES', sqft: '1,835 sq. ft.', price: '₹1.30 Cr Onwards', image: centuryImage('century/century-bliss/floor-plans/3bhk-floor-plan-1.webp') }
         ],
         amenities: [
             { name: '26,000+ sq. ft. Multi-Level Clubhouse', icon: 'fa-solid fa-hotel' },

@@ -302,6 +302,7 @@ function renderPropertyCards(data) {
         return;
     }
 
+    const cards = document.createDocumentFragment();
     data.forEach(item => {
         const card = document.createElement('div');
         card.className = 'property-card';
@@ -350,11 +351,11 @@ function renderPropertyCards(data) {
             imageWrap?.classList.add('image-unavailable');
         }, { once: true });
 
-        grid.appendChild(card);
+        cards.appendChild(card);
     });
+    grid.appendChild(cards);
     updatePropertyCarouselControls();
 }
-
 function updatePropertyCarouselControls() {
     const grid = document.getElementById('propertyGrid');
     const controls = document.querySelector('.carousel-controls');

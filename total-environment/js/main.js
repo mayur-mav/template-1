@@ -38,6 +38,12 @@ function getPropertyMetaDescription(item) {
 
 // INITIALIZATION
 document.addEventListener('DOMContentLoaded', async () => {
+    document.addEventListener('contextmenu', event => {
+        if (event.target.closest('img')) event.preventDefault();
+    });
+    document.addEventListener('dragstart', event => {
+        if (event.target.closest('img')) event.preventDefault();
+    });
     document.addEventListener('click', handleBhkDropdownClick);
     document.addEventListener('click', handleProjectDropdownClick);
     document.addEventListener('keydown', handleBhkDropdownKeydown);

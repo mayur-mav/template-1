@@ -773,6 +773,8 @@ function switchFloorplan(fp, btn) {
     document.getElementById('fp-sqft').textContent = fp.sqft;
     document.getElementById('fp-price').textContent = fp.price;
     const display = document.getElementById('fp-display');
+    const imageBox = display.querySelector('.fp-img-placeholder');
+    imageBox?.classList.toggle('has-plan-image', Boolean(fp.image));
     let planImage = display.querySelector('.fp-plan-image');
     if (fp.image) {
         if (!planImage) {

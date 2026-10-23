@@ -1674,6 +1674,22 @@ button {
     object-fit: contain;
 }
 
+.fp-img-placeholder.has-plan-image {
+    aspect-ratio: 16 / 9;
+    height: auto;
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.fp-img-placeholder.has-plan-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+}
+
 .fp-data-row > * {
     min-width: 0;
 }

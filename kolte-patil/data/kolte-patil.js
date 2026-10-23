@@ -3,7 +3,7 @@ const builderImage = suffix => `${imageCdnPrefix}${suffix.replace(/^\/+/, '')}`;
 
 export const developerInfo = {
     hero: {
-        subtitle: 'Kolte-Patil | Pune & Bengaluru',
+        subtitle: 'Kolte-Patil | Bengaluru',
         title: 'Kolte Patil Builders & Developers in Bangalore',
         description: 'Explore Kolte Patil projects in Bangalore, including apartments in Electronic City and North Bengaluru. Compare locations, configurations, prices, and floor plans.',
         image: builderImage('kolte-patil/banner.webp')

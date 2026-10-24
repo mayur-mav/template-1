@@ -1,9 +1,12 @@
+const imageCdnPrefix = 'https://media.justflip.in/builder-brand-pages/';
+const prestigeImage = suffix => `${imageCdnPrefix}${suffix.replace(/^\/+/, '')}`;
+
 export const developerInfo = {
     hero: {
         subtitle: 'Prestige Group | Bengaluru',
         title: 'Prestige Builders & Group Projects in Bangalore',
         description: 'Explore Prestige Group apartments and plotted developments in Bangalore. Compare new launches and ongoing projects by location, configuration, price, and plans.',
-        image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=70'
+        image: prestigeImage('prestige/banner.webp')
     }
 };
 
@@ -169,16 +172,19 @@ export const propertiesData = [
         possession: 'December 2030',
         rera: 'PRM/KA/RERA/1251/309/PR/150926/008941.',
         description: 'Prestige Parklane is a premium residential development by Prestige Group, located in Muddenahalli Village, within the Hitech Defence and Aerospace Park Phase 2, Chanarayapatna Hobli, Devanahalli, Bengaluru, Karnataka – 562135. Spread across 11.76 acres, the project comprises 1,788 residential units across 9 towers, each designed with 3 basements + Ground + 24 floors.',
+        thumbnail: prestigeImage('prestige/prestige-parklane/thumbnail.webp'),
         images: [
-            
+            prestigeImage('prestige/prestige-parklane/gallery/exterior-view.webp'),
+            prestigeImage('prestige/prestige-parklane/gallery/interior-view.webp'),
+            prestigeImage('prestige/prestige-parklane/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '1 BHK', sqft: '567 - 571 sq. ft.', price: '65 Lakhs Onwards' },
-            { bhk: '2 BHK', sqft: '828 - 880 sq.ft.', price: '90 Lakhs Onwards' },
-            { bhk: '2BHK large', sqft: '1,087 - 1,103 sq.ft.', price: '1.15 Crore Onwards' },
-            { bhk: '3 BHK 2T', sqft: '1,445 - 1,469 sq.ft.', price: '1.50 Crore Onwards' },
-            { bhk: '3 BHK 3T', sqft: '1,597 - 1,662 sq.ft.', price: '1.69 Crore Onwards' },
-            { bhk: '3 BHK 3T Large', sqft: '1,757 - 1,801 sq.ft.', price: '1.89 Crore Onwards' }
+            { bhk: '1 BHK', sqft: '567 - 571 sq. ft.', price: '65 Lakhs Onwards', image: prestigeImage('prestige/prestige-parklane/floor-plans/1bhk-floor-plan.webp')},
+            { bhk: '2 BHK', sqft: '828 - 880 sq.ft.', price: '90 Lakhs Onwards', image: prestigeImage('prestige/prestige-parklane/floor-plans/2bhk-floor-plan.webp') },
+            { bhk: '2BHK large', sqft: '1,087 - 1,103 sq.ft.', price: '1.15 Crore Onwards', image: prestigeImage('prestige/prestige-parklane/floor-plans/2bhk-large-floor-plan.webp') },
+            { bhk: '3 BHK 2T', sqft: '1,445 - 1,469 sq.ft.', price: '1.50 Crore Onwards', image: prestigeImage('prestige/prestige-parklane/floor-plans/3bhk(2T)-floor-plan.webp') },
+            { bhk: '3 BHK 3T', sqft: '1,597 - 1,662 sq.ft.', price: '1.69 Crore Onwards', image: prestigeImage('prestige/prestige-parklane/floor-plans/3bhk(3T)-floor-plan.webp') },
+            { bhk: '3 BHK 3T Large', sqft: '1,757 - 1,801 sq.ft.', price: '1.89 Crore Onwards', image: prestigeImage('prestige/prestige-parklane/floor-plans/3bhk(3TL)-floor-plan.webp') }
         ],
         amenities: [
             { name: 'Gym', icon: 'fa-solid fa-dumbbell' },
@@ -220,14 +226,17 @@ export const propertiesData = [
         possession: 'June 2030',
         rera: 'PRM/KA/RERA/1251/446/PR/010126/008374',
         description: 'Evergreen at Prestige Raintree Park is a premium Phase 2 residential development by Prestige Estates Projects Limited, sprawling over approximately 24 acres on State Highway 35 ,Whitefield Main Road, Varthur, Bengaluru 560087. Designed with 70% to 80% open landscaped spaces, the project comprises roughly 2,000 apartments distributed across 14 high-rise towers (2B + G + 19 floors), offering 2 BHK to 3.5 BHK configurations with unit sizes ranging from 659 to 2,513 sq. ft. Officially registered under Karnataka RERA (PRM/KA/RERA/1251/446/PR/010126/008374) with a target possession date of June 2030, the township integrates over 45 world class indoor and outdoor amenities alongside an adjacent 2.5 million sq. ft. commercial IT park (Prestige Tech Forest)',
+        thumbnail: prestigeImage('prestige/prestige-evergreen/thumbnail.webp'),
         images: [
-            
+            prestigeImage('prestige/prestige-evergreen/gallery/exterior-view.webp'),
+            prestigeImage('prestige/prestige-evergreen/gallery/interior-view.webp'),
+            prestigeImage('prestige/prestige-evergreen/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '2 BHK', sqft: '1,174 – 1,194 Sq.Ft.', price: '₹ 1.90 Cr*' },
-            { bhk: '3 BHK 2T', sqft: '1,486 Sq.Ft.', price: '₹ 2.30 Cr*' },
-            { bhk: '3 BHK 3T', sqft: '1,825 Sq.Ft.', price: '₹ 2.60 Cr*' },
-            { bhk: '3.5 BHK', sqft: '2,037 Sq.Ft.', price: '₹ 3.30 Cr*' }
+            { bhk: '2 BHK', sqft: '1,174 – 1,194 Sq.Ft.', price: '₹ 1.90 Cr*', image: prestigeImage('prestige/prestige-evergreen/floor-plans/2bhk-floor-plan.webp') },
+            { bhk: '3 BHK 2T', sqft: '1,486 Sq.Ft.', price: '₹ 2.30 Cr*', image: prestigeImage('prestige/prestige-evergreen/floor-plans/3bhk(2T)-floor-plan.webp')},
+            { bhk: '3 BHK 3T', sqft: '1,825 Sq.Ft.', price: '₹ 2.60 Cr*', image: prestigeImage('prestige/prestige-evergreen/floor-plans/3bhk(3T)-floor-plan.webp') },
+            { bhk: '3.5 BHK', sqft: '2,037 Sq.Ft.', price: '₹ 3.30 Cr*', image: prestigeImage('prestige/prestige-evergreen/floor-plans/3.5bhk-floor-plan.webp') }
         ],
         amenities: [
             { name: 'Indoor family pool', icon: 'fa-solid fa-person-swimming' },
@@ -287,11 +296,14 @@ export const propertiesData = [
         possession: 'June 2027',
         rera: 'PRM/KA/RERA/1251/446/PR/081123/006382',
         description: 'Prestige Glenbrook is a residential project by Prestige Group, located in Nallurahalli, Borewell Road, Bangalore – 560066. The project is spread across 4.5 acres and consists of 285 residential units, planned across 2 towers with 16 floors each. It offers spacious 4 BHK apartments, with prices starting from ₹3.82 crore onwards. The project is designed to provide a comfortable lifestyle with 10+ amenities for residents. Its location in Nallurahalli offers good connectivity to Whitefield and other important areas of East Bangalore, making it convenient for both families and working professionals. Residents can also benefit from easy access to nearby IT hubs, schools, hospitals, shopping areas, and major roads. Prestige Glenbrook is registered under RERA with the registration number PRM/KA/RERA/1251/446/PR/081123/006382. Overall, the project combines spacious homes, a well-connected location, modern amenities, and the experience of Prestige Group.',
+        thumbnail: prestigeImage('prestige/prestige-glenbrook/thumbnail.webp'),
         images: [
-            
+            prestigeImage('prestige/prestige-glenbrook/gallery/exterior-view.webp'),
+            prestigeImage('prestige/prestige-glenbrook/gallery/interior-view.webp'),
+            prestigeImage('prestige/prestige-glenbrook/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '4 BHK', sqft: '2,928 sq. ft.', price: '₹ 3.82 Cr*' }
+            { bhk: '4 BHK', sqft: '2,928 sq. ft.', price: '₹ 3.82 Cr*', image: prestigeImage('prestige/prestige-glenbrook/floor-plans/4bhk-floor-plan.webp') }
         ],
         amenities: [
             { name: 'Basketball Court', icon: 'fa-solid fa-basketball' },
@@ -333,14 +345,17 @@ export const propertiesData = [
         possession: 'December 2030',
         rera: 'PRM/KA/RERA/1251/308/PR/080926/008919',
         description: 'Garden Breeze is the final residential phase (Phase 7) of the landmark 10-acre integrated township, The Prestige City, located on Sarjapur Road. Designed with 80% landscaped open spaces across 4 high-rise towers (featuring 655 ultra-luxury homes), the enclave offers a grand G+2 clubhouse, forest trails, and seamless connectivity to major tech corridors.',
+        thumbnail: prestigeImage('prestige/prestige-garden-breeze/thumbnail.webp'),
         images: [
-            
+            prestigeImage('prestige/prestige-garden-breeze/gallery/exterior-view.webp'),
+            prestigeImage('prestige/prestige-garden-breeze/gallery/interior-view.webp'),
+            prestigeImage('prestige/prestige-garden-breeze/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '2 BHK 2T', sqft: '1,080 sq. ft.', price: '₹ 1.2 Cr*' },
-            { bhk: '3 BHK 2T', sqft: '1,470 sq. ft.', price: '₹ 1.62 Cr*' },
-            { bhk: '3 BHK 3T', sqft: '1,720 sq. ft.', price: '₹ 1.89 Cr*' },
-            { bhk: '4 BHK Penthouse', sqft: '2,779 sq. ft.', price: '₹ 3.56 Cr*' },
+            { bhk: '2 BHK 2T', sqft: '1,080 sq. ft.', price: '₹ 1.2 Cr*', image: prestigeImage('prestige/prestige-garden-breeze/floor-plans/2bhk(2T)-floor-plan.webp') },
+            { bhk: '3 BHK 2T', sqft: '1,470 sq. ft.', price: '₹ 1.62 Cr*', image: prestigeImage('prestige/prestige-garden-breeze/floor-plans/3bhk(2t)-floor-plan.webp') },
+            { bhk: '3 BHK 3T', sqft: '1,720 sq. ft.', price: '₹ 1.89 Cr*', image: prestigeImage('prestige/prestige-garden-breeze/floor-plans/3bhk(3t)-floor-plan.webp') },
+            { bhk: '4 BHK Penthouse', sqft: '2,779 sq. ft.', price: '₹ 3.56 Cr*', image: prestigeImage('prestige/prestige-garden-breeze/floor-plans/4bhk-penthouse-floor-plan.webp') },
         ],
         amenities: [
             { name: 'Grand G+2 Clubhouse', icon: 'fa-solid fa-hotel' },
@@ -376,12 +391,15 @@ export const propertiesData = [
         possession: 'June 2030',
         rera: 'PRM/KA/RERA/1251/308/PR/180326/008537',
         description: 'Eaton Park is a high-rise residential phase within the 180-acre integrated township, The Prestige City, on Sarjapur Road. Spread across 7 acres with ~90% open space, the enclave comprises 4 high-rise towers (G+28 to G+37 floors) offering 366 large-format 3 & 4 BHK residences, supported by the dedicated 17,770 sq. ft. Club Eaton lakeside clubhouse and seamless access to on-site retail hubs.',
+        thumbnail: prestigeImage('prestige/prestige-city-at-eaton-park/thumbnail.webp'),
         images: [
-            
+            prestigeImage('prestige/prestige-city-at-eaton-park/gallery/exterior-view.webp'),
+            prestigeImage('prestige/prestige-city-at-eaton-park/gallery/interior-view.webp'),
+            prestigeImage('prestige/prestige-city-at-eaton-park/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '3 BHK 3T', sqft: '1,903 sq. ft.', price: '₹ 2.21 Cr*' },
-            { bhk: '4 BHK 4T', sqft: '2,492 sq. ft.', price: '₹ 2.98 Cr*' },
+            { bhk: '3 BHK 3T', sqft: '1,903 sq. ft.', price: '₹ 2.21 Cr*', image: prestigeImage('prestige/prestige-city-at-eaton-park/floor-plans/3bhk-floor-plan.webp') },
+            { bhk: '4 BHK 4T', sqft: '2,492 sq. ft.', price: '₹ 2.98 Cr*', image: prestigeImage('prestige/prestige-city-at-eaton-park/floor-plans/4bhk-floor-plan.webp') },
         ],
         amenities: [
             { name: '17,770 sq. ft. Club Eaton Lakeside Clubhouse', icon: 'fa-solid fa-hotel' },
@@ -419,14 +437,17 @@ export const propertiesData = [
         possession: 'November 2027',
         rera: 'PRM/KA/RERA/1250/303/PR/171225/008346',
         description: 'Prestige Marigold Phase 2 is an infrastructure-ready plotted development by Prestige Group located off Bellary Road (NH 44) on Chapparkallu Road, Bettenahalli. Encompassing ~49 acres with 716 residential plots, the master-planned layout features wide asphalted internal roads, underground power & fiber-optic networks, landscaped gardens, and a G+2 multi-level clubhouse with 35+ lifestyle amenities.',
+        thumbnail: prestigeImage('prestige/prestige-marigold-phase-two/thumbnail.webp'),
         images: [
-            
+            prestigeImage('prestige/prestige-marigold-phase-two/gallery/exterior-view.webp'),
+            prestigeImage('prestige/prestige-marigold-phase-two/gallery/interior-view.webp'),
+            prestigeImage('prestige/prestige-marigold-phase-two/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '30 x 40 PLOT', sqft: '1,200 sq. ft.', price: '₹1.02 Cr Onwards' },
-            { bhk: '30 x 50 PLOT', sqft: '1,500 sq. ft.', price: '₹1.27 Cr Onwards' },
-            { bhk: '40 x 60 PLOT', sqft: '2,400 sq. ft.', price: '₹2.05 Cr Onwards' },
-            { bhk: '50 x 80 PLOT', sqft: '4,000 sq. ft.', price: '₹3.20 Cr Onwards' }
+            { bhk: '30 x 40 PLOT', sqft: '1,200 sq. ft.', price: '₹1.02 Cr Onwards', image: prestigeImage('prestige/prestige-marigold-phase-two/floor-plans/30x40-plot-layout.webp') },
+            { bhk: '30 x 50 PLOT', sqft: '1,500 sq. ft.', price: '₹1.27 Cr Onwards', image: prestigeImage('prestige/prestige-marigold-phase-two/floor-plans/30x50-plot-layout.webp') },
+            { bhk: '40 x 60 PLOT', sqft: '2,400 sq. ft.', price: '₹2.05 Cr Onwards', image: prestigeImage('prestige/prestige-marigold-phase-two/floor-plans/40x60-plot-layout.webp') },
+            { bhk: '50 x 80 PLOT', sqft: '4,000 sq. ft.', price: '₹3.20 Cr Onwards', image: prestigeImage('prestige/prestige-marigold-phase-two/floor-plans/50x80-plot-layout.webp') }
         ],
         amenities: [
             { name: 'G+2 Multi-Level Clubhouse', icon: 'fa-solid fa-hotel' },
@@ -464,14 +485,17 @@ export const propertiesData = [
         possession: 'March 2030',
         rera: 'PRM/KA/RERA/1251/308/PR/110326/008519',
         description: 'Fernvale is Phase 6 of the landmark 180-acre integrated township, The Prestige City, located off Sarjapur Main Road. Spread across 3 acres with 2 high-rise towers comprising 387 premium residences, the project provides full access to the township ecosystem, resort-style amenities, and well-designed 2 and 3 BHK apartment layouts.',
+        thumbnail: prestigeImage('prestige/prestige-city-fernvale/thumbnail.webp'),
         images: [
-            
+            prestigeImage('prestige/prestige-city-fernvale/gallery/exterior-view.webp'),
+            prestigeImage('prestige/prestige-city-fernvale/gallery/interior-view.webp'),
+            prestigeImage('prestige/prestige-city-fernvale/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '2 BHK 2T', sqft: '1,113 sq. ft.', price: '₹ 1.34 Cr*' },
-            { bhk: '3 BHK 2T', sqft: '1,513 sq. ft.', price: '₹ 1.80 Cr*' },
-            { bhk: '3 BHK 3T', sqft: '1,808 sq. ft.', price: '₹ 2.17 Cr*' },
-            { bhk: '3 BHK 3T + Home Office', sqft: '1,996 sq. ft.', price: '₹ 2.39 Cr*' },
+            { bhk: '2 BHK 2T', sqft: '1,113 sq. ft.', price: '₹ 1.34 Cr*', image: prestigeImage('prestige/prestige-city-fernvale/floor-plans/2bhk-floor-plan.webp') },
+            { bhk: '3 BHK 2T', sqft: '1,513 sq. ft.', price: '₹ 1.80 Cr*', image: prestigeImage('prestige/prestige-city-fernvale/floor-plans/3bhk(2T)-floor-plan.webp') },
+            { bhk: '3 BHK 3T', sqft: '1,808 sq. ft.', price: '₹ 2.17 Cr*', image: prestigeImage('prestige/prestige-city-fernvale/floor-plans/3bhk(3T)-floor-plan.webp') },
+            { bhk: '3 BHK 3T + Home Office', sqft: '1,996 sq. ft.', price: '₹ 2.39 Cr*', image: prestigeImage('prestige/prestige-city-fernvale/floor-plans/3bhk(3T-HO)-floor-plan.webp') },
         ],
         amenities: [
             { name: 'Exclusive Clubhouse Access', icon: 'fa-solid fa-hotel' },
@@ -506,13 +530,16 @@ export const propertiesData = [
         possession: 'March 2027',
         rera: 'PRM/KA/RERA/1250/303/PR/300925/008132',
         description: 'Prestige Crystal Lawns is a premier planned plotted development by Prestige Group located on IVC Road, Devanahalli. Spanning 24.3 acres with 235 premium residential plots, the project centers around a massive landscaped central park and features a 30m wide grand entrance road, 12m wide internal asphalted roads, underground utilities, and a modern clubhouse with rich recreational facilities.',
+        thumbnail: prestigeImage('prestige/prestige-crystal-lawns/thumbnail.webp'),
         images: [
-            
+            prestigeImage('prestige/prestige-crystal-lawns/gallery/exterior-view.webp'),
+            prestigeImage('prestige/prestige-crystal-lawns/gallery/interior-view.webp'),
+            prestigeImage('prestige/prestige-crystal-lawns/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '30x50 Plot', sqft: '1,500 sq. ft.', price: '₹ 1.38 Cr*' },
-            { bhk: '40x60 Plot', sqft: '2,400 sq. ft.', price: 'On Request' },
-            { bhk: '50x80 Plot', sqft: '4,000 sq. ft.', price: 'On Request' },
+            { bhk: '30x50 Plot', sqft: '1,500 sq. ft.', price: '₹ 1.38 Cr*', image: prestigeImage('prestige/prestige-crystal-lawns/floor-plans/30x50-plot-layout.webp') },
+            { bhk: '40x60 Plot', sqft: '2,400 sq. ft.', price: 'On Request', image: prestigeImage('prestige/prestige-crystal-lawns/floor-plans/40x60-plot-layout.webp') },
+            { bhk: '50x80 Plot', sqft: '4,000 sq. ft.', price: 'On Request', image: prestigeImage('prestige/prestige-crystal-lawns/floor-plans/50x80-plot-layout.webp') },
         ],
         amenities: [
             { name: 'Modern Clubhouse', icon: 'fa-solid fa-hotel' },
@@ -549,14 +576,17 @@ export const propertiesData = [
         possession: 'March 2027',
         rera: 'PRM/KA/RERA/1250/303/PR/260925/008123',
         description: 'Prestige Greenbrook is a premium residential plotted development by Prestige Group located along IVC Road in Devanahalli, North Bengaluru. Spanning 33.29 acres with just 325 villa plots (~10 units per acre), the low-density master-planned community features asphalted internal roads, underground electrical & fiber optic cabling, dedicated rainwater harvesting, and a fully equipped lifestyle clubhouse.',
+        thumbnail: prestigeImage('prestige/prestige-green-brook/thumbnail.webp'),
         images: [
-            
+            prestigeImage('prestige/prestige-green-brook/gallery/exterior-view.webp'),
+            prestigeImage('prestige/prestige-green-brook/gallery/interior-view.webp'),
+            prestigeImage('prestige/prestige-green-brook/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '30 x 50 PLOT', sqft: '1,500 sq. ft.', price: '₹1.35 Cr Onwards' },
-            { bhk: '30 x 60 PLOT', sqft: '1,800 sq. ft.', price: '₹1.61 Cr Onwards' },
-            { bhk: '40 x 50 PLOT', sqft: '2,000 sq. ft.', price: '₹1.79 Cr Onwards' },
-            { bhk: '40 x 60 PLOT', sqft: '2,400 sq. ft.', price: '₹2.15 Cr Onwards' }
+            { bhk: '30 x 50 PLOT', sqft: '1,500 sq. ft.', price: '₹1.35 Cr Onwards', image: prestigeImage('prestige/prestige-green-brook/floor-plans/30x50-plot-layout.webp') },
+            { bhk: '30 x 60 PLOT', sqft: '1,800 sq. ft.', price: '₹1.61 Cr Onwards', image: prestigeImage('prestige/prestige-green-brook/floor-plans/30x60-plot-layout.webp') },
+            { bhk: '40 x 50 PLOT', sqft: '2,000 sq. ft.', price: '₹1.79 Cr Onwards', image: prestigeImage('prestige/prestige-green-brook/floor-plans/40x50-plot-layout.webp') },
+            { bhk: '40 x 60 PLOT', sqft: '2,400 sq. ft.', price: '₹2.15 Cr Onwards', image: prestigeImage('prestige/prestige-green-brook/floor-plans/40x60-plot-layout.webp') }
         ],
         amenities: [
             { name: 'Multipurpose Clubhouse & Foyer', icon: 'fa-solid fa-hotel' },
@@ -594,15 +624,18 @@ export const propertiesData = [
         possession: 'August 2028',
         rera: 'PRM/KA/RERA/1250/303/PR/240925/008116',
         description: 'Prestige Autumn Leaves is a premium 27-acre plotted development by Prestige Group located on Chapparkallu Road off IVC Road, Devanahalli. Designed with dual block layouts and 240 boutique villa plots, the master community features an 18m wide entry boulevard, 12m wide internal asphalted roads, underground dual water & fiber-optic networks, and a central linear park.',
+        thumbnail: prestigeImage('prestige/prestige-autumn-leaves/thumbnail.webp'),
         images: [
-            
+            prestigeImage('prestige/prestige-autumn-leaves/gallery/exterior-view.webp'),
+            prestigeImage('prestige/prestige-autumn-leaves/gallery/interior-view.webp'),
+            prestigeImage('prestige/prestige-autumn-leaves/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '30 x 45 PLOT', sqft: '1,350 sq. ft.', price: '₹1.32 Cr Onwards' },
-            { bhk: '40 x 60 PLOT', sqft: '2,400 sq. ft.', price: '₹2.36 Cr Onwards' },
-            { bhk: '50 x 60 PLOT', sqft: '3,000 sq. ft.', price: '₹2.95 Cr Onwards' },
-            { bhk: '60 x 60 PLOT', sqft: '3,600 sq. ft.', price: '₹3.53 Cr Onwards' },
-            { bhk: '50 x 80 PLOT', sqft: '4,000 sq. ft.', price: '₹3.93 Cr Onwards' }
+            { bhk: '30 x 45 PLOT', sqft: '1,350 sq. ft.', price: '₹1.32 Cr Onwards', image: prestigeImage('prestige/prestige-autumn-leaves/floor-plans/30x45-plot-layout.webp') },
+            { bhk: '40 x 60 PLOT', sqft: '2,400 sq. ft.', price: '₹2.36 Cr Onwards', image: prestigeImage('prestige/prestige-autumn-leaves/floor-plans/40x60-plot-layout.webp') },
+            { bhk: '50 x 60 PLOT', sqft: '3,000 sq. ft.', price: '₹2.95 Cr Onwards', image: prestigeImage('prestige/prestige-autumn-leaves/floor-plans/50x60-plot-layout.webp') },
+            { bhk: '60 x 60 PLOT', sqft: '3,600 sq. ft.', price: '₹3.53 Cr Onwards', image: prestigeImage('prestige/prestige-autumn-leaves/floor-plans/60x60-plot-layout.webp') },
+            { bhk: '50 x 80 PLOT', sqft: '4,000 sq. ft.', price: '₹3.93 Cr Onwards', image: prestigeImage('prestige/prestige-autumn-leaves/floor-plans/50x80-plot-layout.webp') }
         ],
         amenities: [
             { name: 'Grand Clubhouse & Reception Hall', icon: 'fa-solid fa-hotel' },
@@ -640,16 +673,19 @@ export const propertiesData = [
         possession: 'September 2027',
         rera: 'PRM/KA/RERA/1251/310/PR/210325/007603',
         description: 'Prestige Southern Star is a premier 34-acre high-rise residential township by Prestige Group located off Bannerghatta Road in Akshayanagar. Featuring 14 high-rise towers (G+26 to G+27 floors) with over 75% open spaces and views of Begur Lake, the development accommodates 2,130 luxury residences anchored by a 70,000 sq. ft. multi-level clubhouse and an expansive 1-acre fitness arena.',
+        thumbnail: prestigeImage('prestige/prestige-southern-star/thumbnail.webp'),
         images: [
-            
+            prestigeImage('prestige/prestige-southern-star/gallery/exterior-view.webp'),
+            prestigeImage('prestige/prestige-southern-star/gallery/interior-view.webp'),
+            prestigeImage('prestige/prestige-southern-star/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '1 BHK', sqft: '695 sq. ft.', price: '₹83.7 L Onwards' },
-            { bhk: '2 BHK (Optima)', sqft: '1,138 - 1,599 sq. ft.', price: '₹1.29 Cr Onwards' },
-            { bhk: '3 BHK (Aspire)', sqft: '1,463 - 1,524 sq. ft.', price: '₹1.68 Cr Onwards' },
-            { bhk: '3 BHK (Premia)', sqft: '1,812 - 1,883 sq. ft.', price: '₹2.02 Cr Onwards' },
-            { bhk: '3 BHK + HOME OFFICE (Ultima)', sqft: '2,083 - 2,553 sq. ft.', price: '₹2.36 Cr Onwards' },
-            { bhk: '4 BHK + HOME OFFICE (Magnus)', sqft: '2,690 - 2,774 sq. ft.', price: '₹3.29 Cr Onwards' }
+            { bhk: '1 BHK', sqft: '695 sq. ft.', price: '₹83.7 L Onwards', image: prestigeImage('prestige/prestige-southern-star/floor-plans/1bhk-floor-plan.webp') },
+            { bhk: '2 BHK (Optima)', sqft: '1,138 - 1,599 sq. ft.', price: '₹1.29 Cr Onwards', image: prestigeImage('prestige/prestige-southern-star/floor-plans/2bhk-floor-plan.webp') },
+            { bhk: '3 BHK (Aspire)', sqft: '1,463 - 1,524 sq. ft.', price: '₹1.68 Cr Onwards', image: prestigeImage('prestige/prestige-southern-star/floor-plans/3bhk(as)-floor-plan.webp') },
+            { bhk: '3 BHK (Premia)', sqft: '1,812 - 1,883 sq. ft.', price: '₹2.02 Cr Onwards', image: prestigeImage('prestige/prestige-southern-star/floor-plans/3bhk(pr)-floor-plan.webp') },
+            { bhk: '3 BHK + HOME OFFICE (Ultima)', sqft: '2,083 - 2,553 sq. ft.', price: '₹2.36 Cr Onwards', image: prestigeImage('prestige/prestige-southern-star/floor-plans/3bhk-home-office-floor-plan.webp') },
+            { bhk: '4 BHK + HOME OFFICE (Magnus)', sqft: '2,690 - 2,774 sq. ft.', price: '₹3.29 Cr Onwards', image: prestigeImage('prestige/prestige-southern-star/floor-plans/4bhk(hom)-layout.webp') }
         ],
         amenities: [
             { name: '70,000 sq. ft. Grand Clubhouse', icon: 'fa-solid fa-hotel' },
@@ -687,14 +723,17 @@ export const propertiesData = [
         possession: 'December 2028',
         rera: 'PRM/KA/RERA/1251/446/PR/190924/007048',
         description: 'Prestige Pine Forest is a high-end forest-themed residential enclave by Prestige Group located on ECC Road in Pattandur Agrahara, Whitefield. Spread across 9 acres with over 80% open green spaces, the community features 4 high-rise towers (2B+G+14 floors) offering 316 large-format 3 & 4 BHK luxury residences with home office options and access to a 35,000+ sq. ft. clubhouse.',
+        thumbnail: prestigeImage('prestige/prestige-pine-forest/thumbnail.webp'),
         images: [
-            
+            prestigeImage('prestige/prestige-pine-forest/gallery/exterior-view.webp'),
+            prestigeImage('prestige/prestige-pine-forest/gallery/interior-view.webp'),
+            prestigeImage('prestige/prestige-pine-forest/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '3 BHK', sqft: '3,121 sq. ft.', price: '₹4.16 Cr Onwards' },
-            { bhk: '3 BHK + HOME OFFICE', sqft: '2,757 - 2,796 sq. ft.', price: '₹3.75 Cr Onwards' },
-            { bhk: '3 BHK + HOME OFFICE + STUDIO', sqft: '3,160 - 3,235 sq. ft.', price: '₹4.25 Cr Onwards' },
-            { bhk: '4 BHK + HOME OFFICE', sqft: '3,540 - 3,556 sq. ft.', price: '₹4.77 Cr Onwards' }
+            { bhk: '3 BHK', sqft: '3,121 sq. ft.', price: '₹4.16 Cr Onwards', image: prestigeImage('prestige/prestige-pine-forest/floor-plans/3bhk-floor-plan.webp') },
+            { bhk: '3 BHK + HOME OFFICE', sqft: '2,757 - 2,796 sq. ft.', price: '₹3.75 Cr Onwards', image: prestigeImage('prestige/prestige-pine-forest/floor-plans/3bhk-home-office-floor-plan.webp') },
+            { bhk: '3 BHK + HOME OFFICE + STUDIO', sqft: '3,160 - 3,235 sq. ft.', price: '₹4.25 Cr Onwards', image: prestigeImage('prestige/prestige-pine-forest/floor-plans/3bhk-home-office-studio-floor-plan.webp') },
+            { bhk: '4 BHK + HOME OFFICE', sqft: '3,540 - 3,556 sq. ft.', price: '₹4.77 Cr Onwards', image: prestigeImage('prestige/prestige-pine-forest/floor-plans/4bhk-home-office-floor-plan.webp') }
         ],
         amenities: [
             { name: '35,000+ sq. ft. Multi-Level Clubhouse', icon: 'fa-solid fa-hotel' },
@@ -732,15 +771,18 @@ export const propertiesData = [
         possession: 'December 2028',
         rera: 'PRM/KA/RERA/1251/446/PR/270824/006981',
         description: 'Prestige Raintree Park is a high-end residential township by Prestige Group located on the Whitefield-Varthur Main Road opposite Varthur Lake. Spread across 21 acres in Phase 1 (as part of a grand 107-acre mixed-use development comprising residential, commercial, and retail zones), the enclave features 18 high-rise towers (3B+G+19 floors) offering 1,520 large-format luxury apartments, an expansive 100,000+ sq. ft. clubhouse, and over 80% open spaces.',
+        thumbnail: prestigeImage('prestige/prestige-raintree-park/thumbnail.webp'),
         images: [
-
+            prestigeImage('prestige/prestige-raintree-park/gallery/exterior-view.webp'),
+            prestigeImage('prestige/prestige-raintree-park/gallery/interior-view.webp'),
+            prestigeImage('prestige/prestige-raintree-park/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '3 BHK', sqft: '2,005 sq. ft.', price: '₹2.93 Cr Onwards' },
-            { bhk: '3 BHK + Home Office', sqft: '2,187 sq. ft.', price: '₹3.40 Cr Onwards' },
-            { bhk: '4 BHK + Home Office', sqft: '2,451 sq. ft.', price: '₹3.65 Cr Onwards' },
-            { bhk: '4 BHK 4T + Home Office', sqft: '2,924 sq. ft.', price: '₹4.30 Cr Onwards' },
-            { bhk: '5 BHK', sqft: '3,503 sq. ft.', price: '₹5.12 Cr Onwards' }
+            { bhk: '3 BHK', sqft: '2,005 sq. ft.', price: '₹2.93 Cr Onwards', image: prestigeImage('prestige/prestige-raintree-park/floor-plans/3bhk-floor-plan.webp') },
+            { bhk: '3 BHK + Home Office', sqft: '2,187 sq. ft.', price: '₹3.40 Cr Onwards', image: prestigeImage('prestige/prestige-raintree-park/floor-plans/3bhk-home-floor-plan.webp') },
+            { bhk: '4 BHK + Home Office', sqft: '2,451 sq. ft.', price: '₹3.65 Cr Onwards', image: prestigeImage('prestige/prestige-raintree-park/floor-plans/4bhk-floor-plan.webp') },
+            { bhk: '4 BHK 4T + Home Office', sqft: '2,924 sq. ft.', price: '₹4.30 Cr Onwards', image: prestigeImage('prestige/prestige-raintree-park/floor-plans/4bhk-home-office-floor-plan.webp') },
+            { bhk: '5 BHK', sqft: '3,503 sq. ft.', price: '₹5.12 Cr Onwards', image: prestigeImage('prestige/prestige-raintree-park/floor-plans/5bhk-floor-plans.webp') }
         ],
         amenities: [
             { name: '100,000+ sq. ft. Multi-Level Clubhouse', icon: 'fa-solid fa-hotel' },
@@ -778,15 +820,18 @@ export const propertiesData = [
         possession: 'December 2026',
         rera: 'PRM/KA/RERA/1251/308/PR/290624/006936',
         description: 'Prestige Kings County is a premier 73-acre lakeside plotted township by Prestige Group located in Rajapura, off Electronic City on Jigani-Bommasandra Main Road. Adjacent to Hennagara Lake, the master community features 875 residential villa plots with wide internal asphalted roads, underground electrical & fiber-optic networks, dual water supply, and a dedicated multi-level clubhouse with over 40 active lifestyle amenities.',
+        thumbnail: prestigeImage('prestige/prestige-kings-county/thumbnail.webp'),
         images: [
-
+            prestigeImage('prestige/prestige-kings-county/gallery/exterior-view.webp'),
+            prestigeImage('prestige/prestige-kings-county/gallery/interior-view.webp'),
+            prestigeImage('prestige/prestige-kings-county/gallery/amenities.webp')
         ],
         floorPlans: [
-            { bhk: '30 x 40 PLOT', sqft: '1,200 sq. ft.', price: '₹1.02 Cr Onwards' },
-            { bhk: '30 x 50 PLOT', sqft: '1,500 sq. ft.', price: '₹1.27 Cr Onwards' },
-            { bhk: '40 x 50 PLOT', sqft: '1,800 sq. ft.', price: '₹1.53 Cr Onwards' },
-            { bhk: '30 x 60 PLOT', sqft: '2,000 sq. ft.', price: '₹1.70 Cr Onwards' },
-            { bhk: '40 x 60 PLOT', sqft: '2,400 sq. ft.', price: '₹2.04 Cr Onwards' }
+            { bhk: '30 x 40 PLOT', sqft: '1,200 sq. ft.', price: '₹1.02 Cr Onwards', image: prestigeImage('prestige/prestige-kings-county/floor-plans/30x40-plot-layout.webp') },
+            { bhk: '30 x 50 PLOT', sqft: '1,500 sq. ft.', price: '₹1.27 Cr Onwards', image: prestigeImage('prestige/prestige-kings-county/floor-plans/30x50-plot-layout.webp') },
+            { bhk: '40 x 50 PLOT', sqft: '1,800 sq. ft.', price: '₹1.53 Cr Onwards', image: prestigeImage('prestige/prestige-kings-county/floor-plans/40x50-plot-layout.webp') },
+            { bhk: '30 x 60 PLOT', sqft: '2,000 sq. ft.', price: '₹1.70 Cr Onwards', image: prestigeImage('prestige/prestige-kings-county/floor-plans/30x60-plot-layout.webp') },
+            { bhk: '40 x 60 PLOT', sqft: '2,400 sq. ft.', price: '₹2.04 Cr Onwards', image: prestigeImage('prestige/prestige-kings-county/floor-plans/40x60-plot-layout.webp') }
         ],
         amenities: [
             { name: 'Multi-Level Grand Clubhouse', icon: 'fa-solid fa-hotel' },

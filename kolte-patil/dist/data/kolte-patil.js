@@ -37,6 +37,7 @@ export const propertiesData = [
     {
         id: 'kolte-patil-raaga',
         name: 'Kolte Patil Raaga',
+        shortAddress: 'Kannuru, Bengaluru',
         location: 'Kannuru, Off Hennur Main Road, North Bengaluru, Karnataka 560077',
         category: 'READY',
         statusText: 'Ready to Move',
@@ -79,6 +80,7 @@ export const propertiesData = [
     {
         id: 'itowers-exente',
         name: 'I-Towers Exente',
+        shortAddress: 'Electronic City, Bengaluru',
         location: 'Kamadhenu Layout, Konappana Agrahara, Hosur Road, Electronic City Phase 1, Bengaluru, Karnataka 560100',
         category: 'READY',
         statusText: 'Ready to Move',
@@ -122,6 +124,7 @@ export const propertiesData = [
     {
         id: 'kolte-patil-mirabilis',
         name: 'Kolte Patil Mirabilis',
+        shortAddress: 'Horamavu, Bengaluru',
         location: 'Survey No. 71, Horamavu Agara Village, K R Puram Hobli, Horamavu, Bengaluru, Karnataka 560113',
         category: 'READY',
         statusText: 'Ready to Move',
@@ -163,6 +166,7 @@ export const propertiesData = [
     {
         id: 'kolte-patil-lakeside-24',
         name: 'Kolte Patil Lakeside 24',
+        shortAddress: 'Kannuru, Bengaluru',
         location: 'Sy No. 33 (Part), Kannuru, Off Hennur - Thanisandra Main Road, North Bengaluru, Karnataka 562149',
         category: 'NEW',
         statusText: 'New Launch',

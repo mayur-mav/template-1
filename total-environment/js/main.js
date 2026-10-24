@@ -333,7 +333,7 @@ function renderPropertyCards(data) {
                 ${item.rera?.trim() ? '<span class="rera-verified-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> RERA Verified</span>' : ''}
             </div>
             <div class="card-content">
-                <div class="card-location"><i class="fa-solid fa-location-dot"></i> ${item.location}</div>
+                <div class="card-location"><i class="fa-solid fa-location-dot"></i> ${item.shortAddress || item.location}</div>
                 <h3 class="card-title">${item.name}</h3>
                 <div class="card-specs-row">
                     <div class="spec-item"><i class="fa-solid fa-bed"></i> ${item.bhk}</div>

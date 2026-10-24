@@ -49,6 +49,7 @@ export const propertiesData = [
     {
         id: 'total-environment-down-by-the-water',
         name: 'Total Environment Down by the Water',
+        shortAddress: 'Jakkur, Bengaluru',
         location: 'Agrahara, Jakkur, Yelahanka, Bengaluru, Karnataka 560064',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -95,6 +96,7 @@ export const propertiesData = [
     {
         id: 'total-environment-after-the-rain',
         name: 'Total Environment After the Rain',
+        shortAddress: 'Yelahanka, Bengaluru',
         location: 'Sir MVIT College Road, Betthadasanapura, Yelahanka, Bengaluru, Karnataka 560097',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -138,6 +140,7 @@ export const propertiesData = [
     {
         id: 'total-environment-pursuit-of-a-radical-rhapsody',
         name: 'Total Environment Pursuit of a Radical Rhapsody',
+        shortAddress: 'Whitefield, Bengaluru',
         location: 'ITPL Main Road, Hoodi, Whitefield, Bengaluru, Karnataka 560048',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -186,6 +189,7 @@ export const propertiesData = [
     {
         id: 'total-environment-in-that-quiet-earth',
         name: 'Total Environment In That Quiet Earth',
+        shortAddress: 'Bileshivale, Bengaluru',
         location: 'Off Hennur Main Road, Bileshivale, Bengaluru, Karnataka 560077',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -228,6 +232,7 @@ export const propertiesData = [
     {
         id: 'total-environment-over-the-rainbow',
         name: 'Total Environment Over the Rainbow',
+        shortAddress: 'Nandi Hills, Devanahalli',
         location: 'Kuduvathi, (Nandi Hills), Devanahalli / Chikkaballapur, Karnataka 562103',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -269,6 +274,7 @@ export const propertiesData = [
     {
         id: 'total-environment-tangled-up-in-green',
         name: 'Total Environment Tangled Up in Green',
+        shortAddress: 'Devanahalli, Bengaluru',
         location: 'Doddaballapur Main Road, Next to STRR, Settarahally, Devanahalli, Bengaluru, Karnataka 562110',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -316,6 +322,7 @@ export const propertiesData = [
     {
         id: 'total-environment-the-magic-faraway-tree',
         name: 'Total Environment The Magic Faraway Tree',
+        shortAddress: 'Thalaghattapura, Bengaluru',
         location: 'Sy. No. 32/1, 33/1, Thalaghattapura, Kanakapura Road, Bengaluru, Karnataka 560062',
         category: 'READY',
         statusText: 'Ready to Move',

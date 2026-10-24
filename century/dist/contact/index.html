@@ -9,11 +9,14 @@
     <!-- Meta Description, Canonical and Meta Keywords-->
     <meta name="description" content="Contact information for Century Real Estate homes and projects in Bengaluru.">
     <link rel="preconnect" href="https://media.justflip.in">
+    <link rel="preload" as="image" href="https://media.justflip.in/builder-brand-pages/century/banner.webp" fetchpriority="high">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"></noscript>
     <!-- Font Awesome Icons -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <link rel="stylesheet" href="css/styles.css">
@@ -70,7 +73,7 @@
     <main id="catalog-view">
         <!-- 3. HERO & SIMPLE SEARCH SECTION -->
         <section class="hero-section" id="developer-hero">
-            <img class="hero-banner-image" id="developer-hero-image" alt="" aria-hidden="true">
+            <img class="hero-banner-image" id="developer-hero-image" src="https://media.justflip.in/builder-brand-pages/century/banner.webp" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async">
             <div class="hero-content">
             <span class="hero-subtitle" id="developer-hero-subtitle">PREMIUM LUXURY LIVING</span>
             <h1 class="hero-title" id="developer-hero-title">Century Real Estate Projects in Bengaluru</h1>

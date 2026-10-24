@@ -158,6 +158,7 @@ export const propertiesData = [
     {
         id: 'prestige-parklane',
         name: 'Prestige Parklane',
+        shortAddress: 'Devanahalli, Bengaluru',
         location: 'KIADB Hi-Tech, Defence and Aerospace Park Phase 2, Devanahalli, North Bengaluru, Karnataka 562129',
         category: 'NEW',
         statusText: 'New Launch',
@@ -208,6 +209,7 @@ export const propertiesData = [
     {
         id: 'prestige-evergreen',
         name: 'Prestige Evergreen',
+        shortAddress: 'Varthur, Bengaluru',
         location: 'SH 35, Whitefield Main Road, Varthur, Bengaluru, Karnataka 560087',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -274,6 +276,7 @@ export const propertiesData = [
     {
         id: 'prestige-glenbrook',
         name: 'Prestige Glenbrook',
+        shortAddress: 'Whitefield, Bengaluru',
         location: 'Nallurhalli, Borewell Road, Whitefield, Bengaluru, Karnataka 560066',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -319,6 +322,7 @@ export const propertiesData = [
     {
         id: 'prestige-garden-breeze',
         name: 'Prestige Garden Breeze',
+        shortAddress: 'Sarjapur, Bengaluru',
         location: 'Ittangur Road, off Sarjapur Main Road (SH 35), Yamare Village, Sarjapur, Bengaluru, Karnataka 562125',
         category: 'NEW',
         statusText: 'New Launch',
@@ -361,6 +365,7 @@ export const propertiesData = [
     {
         id: 'prestige-city-eaton-park',
         name: 'Prestige City Eaton Park',
+        shortAddress: 'Sarjapur, Bengaluru',
         location: 'Off Sarjapur - Marathahalli Main Road (SH 35), Yamare Village, Sarjapur, Bengaluru, Karnataka 562125',
         category: 'NEW',
         statusText: 'New Launch',
@@ -403,6 +408,7 @@ export const propertiesData = [
     {
         id: 'prestige-marigold',
         name: 'Prestige Marigold Phase 2',
+        shortAddress: 'Bettenahalli, Bengaluru',
         location: 'Chapparkallu Road, Bettenahalli, off Bellary Road (NH 44), North Bengaluru, Karnataka 562110',
         category: 'NEW',
         statusText: 'New Launch',
@@ -447,6 +453,7 @@ export const propertiesData = [
     {
         id: 'prestige-city-fernvale',
         name: 'Prestige City Fernvale',
+        shortAddress: 'Sarjapur, Bengaluru',
         location: 'Kalahalli, Off Sarjapur Main Road, Yamare Village, Sarjapur, Bengaluru, Karnataka 562125',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -488,6 +495,7 @@ export const propertiesData = [
     {
         id: 'prestige-crystal-lawns',
         name: 'Prestige Crystal Lawns',
+        shortAddress: 'Devanahalli, Bengaluru',
         location: 'IVC Road, Near Singarahalli, Kundana Hobli, Devanahalli, North Bengaluru, Karnataka 562110',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -530,6 +538,7 @@ export const propertiesData = [
     {
         id: 'prestige-greenbrook',
         name: 'Prestige Greenbrook',
+        shortAddress: 'Devanahalli, Bengaluru',
         location: 'IVC Road, Off Bellary Road (NH 44), Devanahalli, North Bengaluru, Karnataka 562110',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -574,6 +583,7 @@ export const propertiesData = [
     {
         id: 'prestige-autumn-leaves',
         name: 'Prestige Autumn Leaves',
+        shortAddress: 'Devanahalli, Bengaluru',
         location: 'Chapparkallu Road, Hegganahalli, Kundana Hobli, Devanahalli, North Bengaluru, Karnataka 562110',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -619,6 +629,7 @@ export const propertiesData = [
     {
         id: 'prestige-southern-star',
         name: 'Prestige Southern Star',
+        shortAddress: 'Akshayanagar, Bengaluru',
         location: 'Begur - DLF Newtown Road, Akshayanagar, Off Bannerghatta Road, Bengaluru, Karnataka 560068',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -665,6 +676,7 @@ export const propertiesData = [
     {
         id: 'prestige-pine-forest',
         name: 'Prestige Pine Forest',
+        shortAddress: 'Whitefield, Bengaluru',
         location: 'ECC Road, Pattandur Agrahara, Whitefield, Bengaluru, Karnataka 560066',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -709,6 +721,7 @@ export const propertiesData = [
     {
         id: 'prestige-raintree-park',
         name: 'Prestige Raintree Park',
+        shortAddress: 'Whitefield, Bengaluru',
         location: 'SH 35, Whitefield - Varthur Main Road, Opp. Varthur Lake, Whitefield, Bengaluru, Karnataka 560087',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -754,6 +767,7 @@ export const propertiesData = [
     {
         id: 'prestige-kings-county',
         name: 'Prestige Kings County',
+        shortAddress: 'Rajapura, Bengaluru',
         location: 'Rajapura, Jigani-Bommasandra Main Road, Off Electronic City, South Bengaluru, Karnataka 560105',
         category: 'ONGOING',
         statusText: 'Ongoing',

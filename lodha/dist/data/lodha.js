@@ -45,6 +45,7 @@ export const propertiesData = [
   {
     id: 'lodha-mirabelle',
     name: 'Lodha Mirabelle',
+    shortAddress: 'Nagavara, Bengaluru',
     location: 'Manyata Tech Park, Thanisandra Main Road, Nagavara, Bengaluru, Karnataka 560045',
     category: 'ONGOING',
     statusText: 'Ongoing',
@@ -89,6 +90,7 @@ export const propertiesData = [
   {
     id: 'lodha-haven',
     name: 'Lodha Haven',
+    shortAddress: 'HSR Extension, Bengaluru',
     location: 'Choodasandra Circle, Off Hosa Road & Haralur Road, HSR Extension, Bengaluru, Karnataka 560099',
     category: 'ONGOING',
     statusText: 'Ongoing',
@@ -132,6 +134,7 @@ export const propertiesData = [
   {
     id: 'lodha-azur',
     name: 'Lodha Azur',
+    shortAddress: 'Akshayanagar, Bengaluru',
     location: 'DLF Road, Akshayanagar West, Opposite Hulimavu Lake, Off Bannerghatta Road, Bengaluru, Karnataka 560076',
     category: 'ONGOING',
     statusText: 'Ongoing',
@@ -175,6 +178,7 @@ export const propertiesData = [
   {
     id: 'lodha-elanza',
     name: 'Lodha Élanza',
+    shortAddress: 'Dommasandra, Bengaluru',
     location: 'Off Sarjapur Main Road, Near Sompura & Yamare, Dommasandra, Bengaluru, Karnataka 562125',
     category: 'NEW',
     statusText: 'New Launch',
@@ -218,6 +222,7 @@ export const propertiesData = [
   {
     id: 'lodha-beaumont-estate',
     name: 'Lodha Beaumont Estate (Fiorana @ Lodha Beaumont Estate)',
+    shortAddress: 'Devanahalli, Bengaluru',
     location: 'Behind Prestige Tech Cloud, Near ITC Factory, Sadahalli, Off Airport Road (NH-44), Devanahalli, North Bengaluru, Karnataka 562110',
     category: 'NEW',
     statusText: 'New Launch',

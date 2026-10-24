@@ -62,6 +62,7 @@ export const propertiesData = [
     {
         id: 'century-liva',
         name: 'Century Liva',
+        shortAddress: 'Yelahanka, Bengaluru',
         location: 'Doddaballapur Main Road (SH-9), Singanayakanahalli, Yelahanka, North Bengaluru, Karnataka 560064',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -119,6 +120,7 @@ export const propertiesData = [
     {
         id: 'century-regalia',
         name: 'Century Regalia',
+        shortAddress: 'Indiranagar, Bengaluru',
         location: 'Golf Avenue, next to KGA Road, Indiranagar, Kodihalli, Bengaluru, Karnataka 560008',
         category: 'ONGOING',
         statusText: 'Ongoing',
@@ -165,6 +167,7 @@ export const propertiesData = [
     {
         id: 'century-ethos',
         name: 'Century Ethos',
+        shortAddress: 'Hebbal, Bengaluru',
         location: 'Bellary Road, opposite Sahakar Nagar, Hebbal, Bengaluru, Karnataka 560092',
         category: 'READY',
         statusText: 'Ready to Move',
@@ -208,6 +211,7 @@ export const propertiesData = [
     {
         id: 'century-renata',
         name: 'Century Renata',
+        shortAddress: 'Richmond Road, Bengaluru',
         location: 'Richmond Road, Central Bengaluru, Karnataka 560025',
         category: 'READY',
         statusText: 'Ready to Move',
@@ -251,6 +255,7 @@ export const propertiesData = [
         id: 'century-astoria',
         name: 'The Astoria at Century Immencity',
         location: 'Jakkur, International Airport Road, North Bengaluru, Karnataka 560064',
+        shortAddress: 'Jakkur, Bengaluru',
         category: 'NEW',
         statusText: 'New Launch',
         badgeClass: 'badge-new',
@@ -293,6 +298,7 @@ export const propertiesData = [
         id: 'century-kindle',
         name: 'Century Kindle',
         location: 'Attur Village, Attur Layout, Yelahanka New Town, Bengaluru, Karnataka 560064',
+        shortAddress: 'Yelahanka New Town, Bengaluru',
         category: 'NEW',
         statusText: 'NEW LAUNCH',
         badgeClass: 'badge-new',
@@ -342,6 +348,7 @@ export const propertiesData = [
         id: 'century-bliss',
         name: 'Century Bliss',
         location: 'Yelahanka - Doddaballapura Main Road, North Bengaluru, Karnataka 562163',
+        shortAddress: 'North Bengaluru',
         category: 'NEW',
         statusText: 'NEW LAUNCH',
         badgeClass: 'badge-new',
@@ -386,6 +393,7 @@ export const propertiesData = [
         id: 'century-mirai',
         name: 'Century Mirai',
         location: 'Silver Springs Layout, Munnekollal, Marathahalli, Bengaluru, Karnataka 560037',
+        shortAddress: 'Marathahalli, Bengaluru',
         category: 'NEW',
         statusText: 'NEW LAUNCH',
         badgeClass: 'badge-new',

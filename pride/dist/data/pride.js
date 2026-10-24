@@ -46,6 +46,7 @@ export const propertiesData = [
   {
     id: 'pride-green-avenue',
     name: 'Pride Green Avenue',
+    shortAddress: 'Jigani, Bengaluru',
     location: 'Jigani, off Bannerghatta Road, South Bengaluru, Anekal Taluk, Bengaluru, Karnataka 560105',
     category: 'NEW',
     statusText: 'New Launch',
@@ -84,6 +85,7 @@ export const propertiesData = [
   {
     id: 'pride-euphora',
     name: 'Pride Euphora',
+    shortAddress: 'KR Puram, Bengaluru',
     location: 'Old Madras Road, Bhattarahalli Signal, Hosabasavanapura, KR Puram, Bengaluru, Karnataka 560049',
     category: 'ONGOING',
     statusText: 'Ongoing',
@@ -122,6 +124,7 @@ export const propertiesData = [
   {
     id: 'pride-crosswinds-villas',
     name: 'Pride Crosswinds Villas',
+    shortAddress: 'Bukkasagara, Bengaluru',
     location: 'Pride Vatika Main Road, Bukkasagara Village, Jigani Hobli, Bannerghatta Road, Bengaluru, Karnataka 560083',
     category: 'READY',
     statusText: 'Ready to Move',
@@ -158,6 +161,7 @@ export const propertiesData = [
   {
     id: 'pride-vatika-phase-2',
     name: 'Pride Vatika Phase 2',
+    shortAddress: 'Koppa Gate, Bengaluru',
     location: 'Off Bannerghatta - Jigani Road, Bukkasagara / Koppa Gate, Bengaluru, Karnataka 560083',
     category: 'READY',
     statusText: 'Ready to Move',
@@ -192,6 +196,7 @@ export const propertiesData = [
   {
     id: 'pride-crosswinds-villa-plots-phase-2',
     name: 'Pride Crosswinds Phase 2 (Villa Plots)',
+    shortAddress: 'Bukkasagara, Bengaluru',
     location: 'Off Bannerghatta - Jigani Road, Near Koppa Gate, Bukkasagara Village, Anekal Taluk, Bengaluru, Karnataka 560083',
     category: 'READY',
     statusText: 'Ready to Move',
@@ -228,6 +233,7 @@ export const propertiesData = [
   {
     id: 'pride-altius',
     name: 'Pride Altius',
+    shortAddress: 'Bagalakunte, Bengaluru',
     location: 'Tumkur Main Road, Bagalakunte, Near IKEA, West Bengaluru, Karnataka 560073',
     category: 'READY',
     statusText: 'Ready to Move',

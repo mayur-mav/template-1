@@ -1,9 +1,12 @@
+const imageCdnPrefix = 'https://media.justflip.in/builder-brand-pages/';
+const prideImage = suffix => `${imageCdnPrefix}${suffix.replace(/^\/+/, '')}`;
+
 export const developerInfo = {
     hero: {
         subtitle: 'Pride Group | Bengaluru',
         title: 'Pride Developers & Projects in Bangalore',
         description: 'Explore Pride Group residential construction projects in Bangalore, including plots, villa plots, villas, and apartments. Compare locations, configurations, and prices.',
-        image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=70'
+        image: prideImage('pride-group/banner.webp')
     }
 };
 
@@ -57,12 +60,17 @@ export const propertiesData = [
     possession: 'June 2026',
     rera: 'PRM/KA/RERA/1251/308/PR/250725/007951',
     description: 'Pride Green Avenue (also known as Pride Green Avenues) is a premium 15-acre BMRDA and RERA-approved plotted development by Pride Group. Located in Jigani, off Bannerghatta Road in South Bengaluru, the community comprises 266 Vastu-compliant plots with tree-lined avenues, 5 landscaped parks, wide internal concrete roads, and a luxury clubhouse.',
-    images: [],
+    thumbnail: prideImage('pride-group/pride-green-avenue/thumbnail.webp'),
+    images: [
+        prideImage('pride-group/pride-green-avenue/gallery/exterior-view.webp'),
+        prideImage('pride-group/pride-green-avenue/gallery/interior-view.webp'),
+        prideImage('pride-group/pride-green-avenue/gallery/amenities.webp')
+    ],
     floorPlans: [
-        { bhk: '30 x 40 Plot (West Facing)', sqft: '1,200 sq.ft.', price: '₹85 Lakhs Onwards' },
-        { bhk: '30 x 40 Plot (East Facing)', sqft: '1,200 sq.ft.', price: '₹87 Lakhs Onwards' },
-        { bhk: '30 x 50 Plot (West Facing)', sqft: '1,500 sq.ft.', price: '₹1.07 Crore Onwards' },
-        { bhk: '30 x 50 Plot (East Facing)', sqft: '1,500 sq.ft.', price: '₹1.10 Crore Onwards' }
+        { bhk: '30 x 40 Plot (West Facing)', sqft: '1,200 sq.ft.', price: '₹85 Lakhs Onwards', image: prideImage('pride-group/pride-green-avenue/floor-plans/30x40-west-plot-layout.webp') },
+        { bhk: '30 x 40 Plot (East Facing)', sqft: '1,200 sq.ft.', price: '₹87 Lakhs Onwards', image: prideImage('pride-group/pride-green-avenue/floor-plans/30x40-east-plot-layout.webp') },
+        { bhk: '30 x 50 Plot (West Facing)', sqft: '1,500 sq.ft.', price: '₹1.07 Crore Onwards', image: prideImage('pride-group/pride-green-avenue/floor-plans/30x50-west-plot-layout.webp') },
+        { bhk: '30 x 50 Plot (East Facing)', sqft: '1,500 sq.ft.', price: '₹1.10 Crore Onwards', image: prideImage('pride-group/pride-green-avenue/floor-plans/30x50-east-plot-layout.webp') }
     ],
     amenities: [
         { name: 'Clubhouse', icon: 'fa-solid fa-building' },
@@ -96,10 +104,15 @@ export const propertiesData = [
     possession: 'September 2027',
     rera: 'PRM/KA/RERA/1251/446/PR/080824/006965',
     description: 'Pride Euphora is a luxury high-rise residential development by the Pride Group, strategically located right on Old Madras Road in KR Puram, East Bengaluru. Spread across 2.5 acres with 80% green open space, the project features 3 towers rising up to 18 floors, offering meticulously designed 3 & 4 BHK residences with modern architectural design, custom finishes, and over 30 lifestyle amenities.',
-    images: [],
+    thumbnail: prideImage('pride-group/pride-euphora/thumbnail.webp'),
+    images: [
+        prideImage('pride-group/pride-euphora/gallery/exterior.webp'),
+        prideImage('pride-group/pride-euphora/gallery/interior-view.webp'),
+        prideImage('pride-group/pride-euphora/gallery/amenities.webp')
+    ],
     floorPlans: [
-        { bhk: '3 BHK', sqft: '1,131 sq.ft.', price: '₹1.99 Crore Onwards' },
-        { bhk: '4 BHK', sqft: '2,982 sq.ft.', price: '₹3.75 Crore Onwards' }
+        { bhk: '3 BHK', sqft: '1,131 sq.ft.', price: '₹1.99 Crore Onwards', image: prideImage('pride-group/pride-euphora/floor-plans/3bhk-floor-plan.webp') },
+        { bhk: '4 BHK', sqft: '2,982 sq.ft.', price: '₹3.75 Crore Onwards', image: prideImage('pride-group/pride-euphora/floor-plans/4bhk-floor-plan.webp') }
     ],
     amenities: [
         { name: 'Grand Clubhouse', icon: 'fa-solid fa-building' },
@@ -135,9 +148,14 @@ export const propertiesData = [
     possession: 'Ready to Move',
     rera: 'PRM/KA/RERA/1251/308/PR/020622/004954',
     description: 'Pride Crosswinds is a 25-acre luxury villa and plotted development by Pride Group, located off Bannerghatta Road in Bukkasagara Village, Jigani. Set against an amphitheatre-style natural terrain with valley views, the project offers spacious 3 & 4 BHK independent villas designed with modern architectural styles, private gardens, and high-end security.',
-    images: [],
+    thumbnail: prideImage('pride-group/pride-crosswind-villas/thumbnail.webp'),
+    images: [
+        prideImage('pride-group/pride-crosswind-villas/gallery/exterior-view.webp'),
+        prideImage('pride-group/pride-crosswind-villas/gallery/interior-view.webp'),
+        prideImage('pride-group/pride-crosswind-villas/gallery/amenities.webp')
+    ],
     floorPlans: [
-        { bhk: '4 BHK Radiant Villa', sqft: '3,750 sq.ft.', price: '₹3.07 Crore Onwards' }
+        { bhk: '4 BHK Radiant Villa', sqft: '3,750 sq.ft.', price: '₹3.07 Crore Onwards', image: prideImage('pride-group/pride-crosswind-villas/floor-plans/4bhk-floor-plan.webp') }
     ],
     amenities: [
         { name: 'Grand Clubhouse', icon: 'fa-solid fa-building' },
@@ -172,10 +190,15 @@ export const propertiesData = [
     possession: 'Ready to Move',
     rera: 'PRM/KA/RERA/1251/308/PR/020822/005119',
     description: 'Pride Vatika Phase 2 is an exclusive BMRDA-approved 21-acre residential plotted development by Pride Group located off Bannerghatta - Jigani Road in South Bengaluru. Set within a thriving 200+ acre township, the project offers 293 villa plots designed with wide concrete roads, landscaped gardens, underground utilities, and full membership access to The Pride Club.',
-    images: [],
+    thumbnail: prideImage('pride-group/pride-vatika-phase-2/thumbnail.webp'),
+    images: [
+        prideImage('pride-group/pride-vatika-phase-2/gallery/exterior-view.webp'),
+        prideImage('pride-group/pride-vatika-phase-2/gallery/interior-view.webp'),
+        prideImage('pride-group/pride-vatika-phase-2/gallery/amenities.webp')
+    ],
     floorPlans: [
-        { bhk: '30 x 50 Plot', sqft: '1,200 sq.ft.', price: '₹82.5 Lakhs Onwards' },
-        { bhk: '40 x 60 Plot', sqft: '1,500 sq.ft.', price: '₹1.32 Crore Onwards' }
+        { bhk: '30 x 50 Plot', sqft: '1,200 sq.ft.', price: '₹82.5 Lakhs Onwards', image: prideImage('pride-group/pride-vatika-phase-2/floor-plans/30x50-plot-layout.webp') },
+        { bhk: '40 x 60 Plot', sqft: '1,500 sq.ft.', price: '₹1.32 Crore Onwards', image: prideImage('pride-group/pride-vatika-phase-2/floor-plans/40x60-plot-layout.webp') }
     ],
     amenities: [
         { name: 'The Pride Club Access', icon: 'fa-solid fa-building' },
@@ -207,9 +230,14 @@ export const propertiesData = [
     possession: 'Ready to Move',
     rera: 'PRM/KA/RERA/1251/308/PR/020622/004954',
     description: 'Pride Crosswinds Phase 2 is an exclusive 25-acre amphitheatre-styled terraced plotted development by Pride Group located off Bannerghatta - Jigani Road in South Bengaluru. The project features 387 premium villa plots contoured across natural slopes to provide scenic valley views, complemented by wide concrete roads, underground utilities, and over 30 world-class amenities.',
-    images: [],
+    thumbnail: prideImage('pride-group/pride-crosswinds-phase-2/thumbnail.webp'),
+    images: [
+        prideImage('pride-group/pride-crosswinds-phase-2/gallery/exterior-view.webp'),
+        prideImage('pride-group/pride-crosswinds-phase-2/gallery/interior-view.webp'),
+        prideImage('pride-group/pride-crosswinds-phase-2/gallery/amenities.webp')
+    ],
     floorPlans: [
-        { bhk: '40 x 60 Plot', sqft: '2,400 sq.ft.', price: '₹1.32 Crore Onwards' }
+        { bhk: '40 x 60 Plot', sqft: '2,400 sq.ft.', price: '₹1.32 Crore Onwards', image: prideImage('pride-group/pride-crosswinds-phase-2/floor-plans/40 x 60-plot-layout.webp') }
     ],
     amenities: [
         { name: 'Grand Clubhouse', icon: 'fa-solid fa-building' },
@@ -244,11 +272,16 @@ export const propertiesData = [
     possession: 'June 2026',
     rera: 'PRM/KA/RERA/1251/309/PR/050723/006035',
     description: 'Pride Altius is a high-rise luxury residential development by Pride Group located right on Tumkur Main Road in West Bengaluru. Spread across 1.29 acres, the project comprises 152 exclusive homes in a 2B+G+19 floor structure. Designed for modern urban living, the project offers well-ventilated 2, 2.5, and 3 BHK apartments with state-of-the-art amenities and prime connectivity to metro stations and commercial hubs.',
-    images: [],
+    thumbnail: prideImage('pride-group/pride-altius/thumbnail.webp'),
+    images: [
+        prideImage('pride-group/pride-altius/gallery/exterior-view.webp'),
+        prideImage('pride-group/pride-altius/gallery/interior-view.webp'),
+        prideImage('pride-group/pride-altius/gallery/amenities.webp')
+    ],
     floorPlans: [
-        { bhk: '2 BHK Apartment', sqft: '1,034 sq.ft.', price: '₹1.29 Crore Onwards' },
-        { bhk: '3 BHK Compact (3 BHK + 2T)', sqft: '1,414 - 1,445 sq.ft.', price: '₹1.74 Crore Onwards' },
-        { bhk: '3 BHK Large (3 BHK + 3T)', sqft: '1,544 - 1,691 sq.ft.', price: '₹2.00 Crore Onwards' }
+        { bhk: '2 BHK Apartment', sqft: '1,034 sq.ft.', price: '₹1.29 Crore Onwards', image: prideImage('pride-group/pride-altius/floor-plans/2bhk-apartment-floor-plans.webp') },
+        { bhk: '3 BHK Compact (3 BHK + 2T)', sqft: '1,414 - 1,445 sq.ft.', price: '₹1.74 Crore Onwards', image: prideImage('pride-group/pride-altius/floor-plans/3bhk-compact-floor-plans.webp') },
+        { bhk: '3 BHK Large (3 BHK + 3T)', sqft: '1,544 - 1,691 sq.ft.', price: '₹2.00 Crore Onwards', image: prideImage('pride-group/pride-altius/floor-plans/3bhk-large-floor-plans.webp') }
     ],
     amenities: [
         { name: 'Clubhouse', icon: 'fa-solid fa-building' },

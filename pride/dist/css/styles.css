@@ -2557,9 +2557,9 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
     border-color: var(--theme-badge-border);
 }
 .hero-title {
-    color: #0F172A;
-    -webkit-text-stroke: 0 transparent;
-    text-shadow: var(--theme-hero-shadow);
+    color: #FFFFFF;
+    -webkit-text-stroke: 0;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9), 0 0 16px rgba(0, 0, 0, 0.65);
 }
 .hero-description {
     color: var(--theme-action-text);

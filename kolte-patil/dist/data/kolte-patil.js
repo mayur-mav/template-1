@@ -39,6 +39,7 @@ export const propertiesData = [
         name: 'Kolte Patil Raaga',
         shortAddress: 'Kannuru, Bengaluru',
         location: 'Kannuru, Off Hennur Main Road, North Bengaluru, Karnataka 560077',
+        coordinates: { lat: 13.095736, lon: 77.6477063 },
         category: 'READY',
         statusText: 'Ready to Move',
         badgeClass: 'badge-ready',
@@ -73,12 +74,12 @@ export const propertiesData = [
             { name: 'Landscaped Courtyards & Seating Decks', icon: 'fa-solid fa-tree' }
         ],
         connectivity: [
-            { label: 'Outer Ring Road (ORR)', distance: '10 mins', icon: 'fa-solid fa-road' },
-            { label: 'Manyata Tech Park', distance: '15 mins', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Elements Mall', distance: '15 mins', icon: 'fa-solid fa-cart-shopping' },
-            { label: 'Yelahanka Railway Station', distance: '20 mins', icon: 'fa-solid fa-train' },
-            { label: 'Hebbal Flyover', distance: '25 mins', icon: 'fa-solid fa-road' },
-            { label: 'Kempegowda International Airport', distance: '35 mins', icon: 'fa-solid fa-plane' }
+            { label: 'Outer Ring Road (ORR)', destination: 'Outer Ring Road, Bengaluru, Karnataka', coordinates: { lat: 13.0410232, lon: 77.6194834 }, distance: '10 mins', icon: 'fa-solid fa-road' },
+            { label: 'Manyata Tech Park', destination: 'Manyata Tech Park, Nagavara, Bengaluru, Karnataka', coordinates: { lat: 13.0456346, lon: 77.621195 }, distance: '15 mins', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Elements Mall', destination: 'Elements Mall, Thanisandra Main Road, Bengaluru, Karnataka', coordinates: { lat: 13.0448351, lon: 77.626455 }, distance: '15 mins', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Yelahanka Railway Station', destination: 'Yelahanka Junction railway station, Bengaluru, Karnataka', coordinates: { lat: 13.1050067, lon: 77.5918938 }, distance: '20 mins', icon: 'fa-solid fa-train' },
+            { label: 'Hebbal Flyover', destination: 'Hebbal Flyover, Bengaluru, Karnataka', coordinates: { lat: 13.041662, lon: 77.5899438 }, distance: '25 mins', icon: 'fa-solid fa-road' },
+            { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, Devanahalli, Bengaluru, Karnataka', coordinates: { lat: 13.1976048, lon: 77.7074856 }, distance: '35 mins', icon: 'fa-solid fa-plane' }
         ]
     },
     {
@@ -86,6 +87,7 @@ export const propertiesData = [
         name: 'I-Towers Exente',
         shortAddress: 'Electronic City, Bengaluru',
         location: 'Kamadhenu Layout, Konappana Agrahara, Hosur Road, Electronic City Phase 1, Bengaluru, Karnataka 560100',
+        coordinates: { lat: 12.8447729, lon: 77.6696603 },
         category: 'READY',
         statusText: 'Ready to Move',
         badgeClass: 'badge-ready',
@@ -120,13 +122,13 @@ export const propertiesData = [
             { name: 'Children\'s Play Area & Creche', icon: 'fa-solid fa-child-reaching' }
         ],
         connectivity: [
-            { label: 'Infosys Main Campus', distance: '750 Meters', icon: 'fa-solid fa-building' },
-            { label: 'D-Mart Electronic City', distance: '850 Meters', icon: 'fa-solid fa-cart-shopping' },
-            { label: 'Elevated Expressway / Hosur Road', distance: '2 mins', icon: 'fa-solid fa-road' },
-            { label: 'IIIT Bangalore', distance: '2.9 Kms', icon: 'fa-solid fa-school' },
-            { label: 'Vimalalaya Hospital', distance: '3.9 Kms', icon: 'fa-solid fa-hospital' },
-            { label: 'Electronic City Metro Station', distance: '5 mins', icon: 'fa-solid fa-train-subway' },
-            { label: 'Cantonment Railway Station', distance: '18.9 Kms', icon: 'fa-solid fa-train' }
+            { label: 'Infosys Main Campus', destination: 'Infosys Main Campus, Electronic City, Bengaluru, Karnataka', coordinates: { lat: 12.8489439, lon: 77.6666804 }, distance: '750 Meters', icon: 'fa-solid fa-building' },
+            { label: 'D-Mart Electronic City', destination: 'DMart, Electronic City Phase 1, Bengaluru, Karnataka', coordinates: { lat: 12.8496783, lon: 77.6649749 }, distance: '850 Meters', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Elevated Expressway / Hosur Road', destination: 'Electronic City Elevated Expressway, Hosur Road, Bengaluru, Karnataka', coordinates: { lat: 12.8479, lon: 77.6677 }, distance: '2 mins', icon: 'fa-solid fa-road' },
+            { label: 'IIIT Bangalore', destination: 'IIIT Bangalore, Electronics City, Bengaluru, Karnataka', coordinates: { lat: 12.8447999, lon: 77.663239 }, distance: '2.9 Kms', icon: 'fa-solid fa-school' },
+            { label: 'Vimalalaya Hospital', destination: 'Vimalalaya Hospital, Electronic City, Bengaluru, Karnataka', coordinates: { lat: 12.838, lon: 77.664 }, distance: '3.9 Kms', icon: 'fa-solid fa-hospital' },
+            { label: 'Electronic City Metro Station', destination: 'Electronic City Metro Station, Bengaluru, Karnataka', coordinates: { lat: 12.851, lon: 77.670 }, distance: '5 mins', icon: 'fa-solid fa-train-subway' },
+            { label: 'Cantonment Railway Station', destination: 'Bangalore Cantonment Railway Station, Bengaluru, Karnataka', coordinates: { lat: 12.9936865, lon: 77.5980003 }, distance: '18.9 Kms', icon: 'fa-solid fa-train' }
         ]
     },
     {
@@ -134,6 +136,7 @@ export const propertiesData = [
         name: 'Kolte Patil Mirabilis',
         shortAddress: 'Horamavu, Bengaluru',
         location: 'Survey No. 71, Horamavu Agara Village, K R Puram Hobli, Horamavu, Bengaluru, Karnataka 560113',
+        coordinates: { lat: 13.0321507, lon: 77.6609376 },
         category: 'READY',
         statusText: 'Ready to Move',
         badgeClass: 'badge-ready',
@@ -167,12 +170,12 @@ export const propertiesData = [
             { name: '4-Storey High Indoor Tree Atriums & Gardens', icon: 'fa-solid fa-tree' }
         ],
         connectivity: [
-            { label: 'Outer Ring Road (ORR)', distance: '1.5 Kms', icon: 'fa-solid fa-road' },
-            { label: 'Bangalore International School', distance: '4.1 Kms', icon: 'fa-solid fa-school' },
-            { label: 'Manyata Tech Park', distance: '5.1 Kms', icon: 'fa-solid fa-laptop-code' },
-            { label: 'K.R. Puram Railway Station', distance: '5.7 Kms', icon: 'fa-solid fa-train' },
-            { label: 'Gopalan Signature Mall', distance: '6.1 Kms', icon: 'fa-solid fa-cart-shopping' },
-            { label: 'Kempegowda International Airport', distance: '29 Kms', icon: 'fa-solid fa-plane' }
+            { label: 'Outer Ring Road (ORR)', destination: 'Outer Ring Road, Horamavu, Bengaluru, Karnataka', coordinates: { lat: 13.036, lon: 77.651 }, distance: '1.5 Kms', icon: 'fa-solid fa-road' },
+            { label: 'Bangalore International School', destination: 'Bangalore International School, Hennur Bagalur Road, Bengaluru, Karnataka', coordinates: { lat: 13.0472161, lon: 77.6467009 }, distance: '4.1 Kms', icon: 'fa-solid fa-school' },
+            { label: 'Manyata Tech Park', destination: 'Manyata Tech Park, Nagavara, Bengaluru, Karnataka', coordinates: { lat: 13.0456346, lon: 77.621195 }, distance: '5.1 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'K.R. Puram Railway Station', destination: 'Krishnarajapuram railway station, Bengaluru, Karnataka', coordinates: { lat: 13.0005461, lon: 77.6754561 }, distance: '5.7 Kms', icon: 'fa-solid fa-train' },
+            { label: 'Gopalan Signature Mall', destination: 'Gopalan Signature Mall, Old Madras Road, Bengaluru, Karnataka', coordinates: { lat: 12.9929592, lon: 77.6618845 }, distance: '6.1 Kms', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, Devanahalli, Bengaluru, Karnataka', coordinates: { lat: 13.1976048, lon: 77.7074856 }, distance: '29 Kms', icon: 'fa-solid fa-plane' }
         ]
     },
     {
@@ -180,6 +183,7 @@ export const propertiesData = [
         name: 'Kolte Patil Lakeside 24',
         shortAddress: 'Kannuru, Bengaluru',
         location: 'Sy No. 33 (Part), Kannuru, Off Hennur - Thanisandra Main Road, North Bengaluru, Karnataka 562149',
+        coordinates: { lat: 13.096723, lon: 77.647419 },
         category: 'NEW',
         statusText: 'New Launch',
         badgeClass: 'badge-new',
@@ -217,13 +221,13 @@ export const propertiesData = [
             { name: 'Children\'s Play Area', icon: 'fa-solid fa-child-reaching' }
         ],
         connectivity: [
-            { label: 'Kannuru Main Road', distance: '2 mins', icon: 'fa-solid fa-road' },
-            { label: 'Decathlon Thanisandra', distance: '8 mins', icon: 'fa-solid fa-cart-shopping' },
-            { label: 'Elements Mall', distance: '12 mins', icon: 'fa-solid fa-bag-shopping' },
-            { label: 'Manyata Tech Park', distance: '15 mins', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Upcoming Kogilu Metro Station', distance: '15 mins', icon: 'fa-solid fa-train-subway' },
-            { label: 'Hebbal Flyover', distance: '20 mins', icon: 'fa-solid fa-road' },
-            { label: 'Kempegowda International Airport', distance: '30 mins', icon: 'fa-solid fa-plane' }
+            { label: 'Kannuru Main Road', destination: 'Kannuru Main Road, Bengaluru, Karnataka', coordinates: { lat: 13.0978811, lon: 77.6446264 }, distance: '2 mins', icon: 'fa-solid fa-road' },
+            { label: 'Decathlon Thanisandra', destination: 'Decathlon, Thanisandra, Bengaluru, Karnataka', coordinates: { lat: 13.0675, lon: 77.6275 }, distance: '8 mins', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Elements Mall', destination: 'Elements Mall, Thanisandra Main Road, Bengaluru, Karnataka', coordinates: { lat: 13.0448351, lon: 77.626455 }, distance: '12 mins', icon: 'fa-solid fa-bag-shopping' },
+            { label: 'Manyata Tech Park', destination: 'Manyata Tech Park, Nagavara, Bengaluru, Karnataka', coordinates: { lat: 13.0456346, lon: 77.621195 }, distance: '15 mins', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Upcoming Kogilu Metro Station', destination: 'Kogilu Cross, Bengaluru, Karnataka', coordinates: { lat: 13.103589, lon: 77.6012045 }, distance: '15 mins', icon: 'fa-solid fa-train-subway' },
+            { label: 'Hebbal Flyover', destination: 'Hebbal Flyover, Bengaluru, Karnataka', coordinates: { lat: 13.041662, lon: 77.5899438 }, distance: '20 mins', icon: 'fa-solid fa-road' },
+            { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, Devanahalli, Bengaluru, Karnataka', coordinates: { lat: 13.1976048, lon: 77.7074856 }, distance: '30 mins', icon: 'fa-solid fa-plane' }
         ]
     }
 ];

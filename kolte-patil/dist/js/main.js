@@ -1,6 +1,15 @@
 let propertiesData = [];
 let currentActiveCategory = 'ALL';
 let activeProperty = null;
+let connectivityMapPlaces = [];
+let connectivitySearchTimer = null;
+let connectivityLeafletMap = null;
+let connectivityMapPropertyId = null;
+let connectivityOriginMarker = null;
+let connectivityRouteLayer = null;
+let connectivityRouteController = null;
+let connectivityRouteRequestId = 0;
+const connectivityRouteCache = new Map();
 let initialDocumentTitle = document.body.dataset.homeTitle || document.title;
 let initialMetaDescription = document.body.dataset.homeDescription || document.querySelector('meta[name="description"]')?.content || '';
 
@@ -49,6 +58,30 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.addEventListener('keydown', handleBhkDropdownKeydown);
     document.addEventListener('keydown', handleProjectDropdownKeydown);
     window.addEventListener('popstate', restorePropertyRoute);
+    window.addEventListener('popstate', () => {
+        const map = document.getElementById('connectivity-map');
+        if (map && !map.hidden && new URL(window.location.href).searchParams.get('map') !== 'location') {
+            closeConnectivityMap({ updateUrl: false, restoreFocus: false });
+        }
+    });
+    document.getElementById('connectivity-map-open')?.addEventListener('click', () => openConnectivityMap());
+    document.getElementById('connectivity-map-close')?.addEventListener('click', () => closeConnectivityMap());
+    document.getElementById('connectivity-map-search-input')?.addEventListener('input', event => {
+        clearTimeout(connectivitySearchTimer);
+        connectivitySearchTimer = setTimeout(() => renderConnectivityMapPlaces(event.target.value), 250);
+    });
+    document.getElementById('connectivity-map-list')?.addEventListener('click', event => {
+        const placeButton = event.target.closest('[data-connectivity-place]');
+        if (!placeButton) return;
+        event.preventDefault();
+        event.stopPropagation();
+        selectConnectivityMapPlace(placeButton.dataset.connectivityPlace);
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && !document.getElementById('connectivity-map')?.hidden) {
+            closeConnectivityMap();
+        }
+    });
     document.getElementById('primaryNavigation')?.addEventListener('click', event => {
         const clickedLink = event.target.closest('.nav-link');
         if (!clickedLink) return;
@@ -383,6 +416,270 @@ function movePropertyCarousel(direction) {
     grid.scrollBy({ left: direction * (card.getBoundingClientRect().width + gap), behavior: 'smooth' });
 }
 
+function getConnectivityDestination(place) {
+    return place.destination || `${place.label}, Bengaluru, Karnataka`;
+}
+
+function initializeConnectivityMap(item) {
+    const status = document.getElementById('connectivity-map-route-status');
+    if (!window.L) {
+        status.textContent = 'The interactive map could not be loaded. Use Google Maps directions instead.';
+        return false;
+    }
+
+    const mapElement = document.getElementById('connectivity-map-canvas');
+    const themeColor = getComputedStyle(document.body).getPropertyValue('--theme-primary').trim() || '#7b263a';
+    const propertyPlaces = [
+        [item.coordinates.lat, item.coordinates.lon],
+        ...connectivityMapPlaces
+            .filter(place => place.coordinates)
+            .map(place => [place.coordinates.lat, place.coordinates.lon])
+    ];
+    const projectBounds = window.L.latLngBounds(propertyPlaces);
+    if (!connectivityLeafletMap) {
+        connectivityLeafletMap = window.L.map(mapElement, { scrollWheelZoom: false }).fitBounds(
+            projectBounds,
+            { padding: [30, 30], maxZoom: 12 }
+        );
+        window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> | Routing: <a href="https://project-osrm.org/" target="_blank" rel="noopener noreferrer">OSRM</a>'
+        }).addTo(connectivityLeafletMap);
+        connectivityRouteLayer = window.L.layerGroup().addTo(connectivityLeafletMap);
+    } else if (connectivityMapPropertyId !== item.id) {
+        connectivityRouteLayer.clearLayers();
+        connectivityOriginMarker?.remove();
+        connectivityLeafletMap.fitBounds(projectBounds, { padding: [30, 30], maxZoom: 12 });
+    }
+
+    if (connectivityMapPropertyId !== item.id || !connectivityOriginMarker) {
+        connectivityOriginMarker = window.L.circleMarker([item.coordinates.lat, item.coordinates.lon], {
+            radius: 8,
+            color: '#fff',
+            weight: 3,
+            fillColor: themeColor,
+            fillOpacity: 1
+        }).addTo(connectivityLeafletMap);
+        connectivityOriginMarker.bindTooltip(`${item.name} (Property)`);
+    }
+    connectivityMapPropertyId = item.id;
+    requestAnimationFrame(() => connectivityLeafletMap.invalidateSize());
+    return true;
+}
+
+function renderConnectivityDestinationMarker(place) {
+    const themeColor = getComputedStyle(document.body).getPropertyValue('--theme-primary').trim() || '#7b263a';
+    const destinationMarker = window.L.circleMarker([place.coordinates.lat, place.coordinates.lon], {
+        radius: 7,
+        color: '#fff',
+        weight: 3,
+        fillColor: themeColor,
+        fillOpacity: 1
+    }).addTo(connectivityRouteLayer);
+    destinationMarker.bindTooltip(place.label);
+}
+
+function renderConnectivityRoute(item, place, route) {
+    connectivityRouteLayer.clearLayers();
+    const routeCoordinates = route.geometry.coordinates.slice();
+    const originCoordinate = [item.coordinates.lon, item.coordinates.lat];
+    const destinationCoordinate = [place.coordinates.lon, place.coordinates.lat];
+    const firstRouteCoordinate = routeCoordinates[0];
+    const lastRouteCoordinate = routeCoordinates[routeCoordinates.length - 1];
+
+    if (firstRouteCoordinate[0] !== originCoordinate[0] || firstRouteCoordinate[1] !== originCoordinate[1]) {
+        routeCoordinates.unshift(originCoordinate);
+    }
+    if (lastRouteCoordinate[0] !== destinationCoordinate[0] || lastRouteCoordinate[1] !== destinationCoordinate[1]) {
+        routeCoordinates.push(destinationCoordinate);
+    }
+
+    const routeLine = window.L.geoJSON({
+        ...route.geometry,
+        coordinates: routeCoordinates
+    }, {
+        style: {
+            color: getComputedStyle(document.body).getPropertyValue('--theme-primary').trim() || '#7b263a',
+            weight: 5,
+            opacity: 0.85
+        }
+    }).addTo(connectivityRouteLayer);
+    renderConnectivityDestinationMarker(place);
+    const routeBounds = routeLine.getBounds();
+    if (routeBounds.isValid()) {
+        connectivityLeafletMap.fitBounds(routeBounds, { padding: [48, 48], maxZoom: 16 });
+    }
+}
+
+async function updateConnectivityRoute(item, place) {
+    const status = document.getElementById('connectivity-map-route-status');
+    if (!place.coordinates || !initializeConnectivityMap(item)) {
+        if (!place.coordinates) status.textContent = `A map location is not available for ${place.label}. Open Google Maps for directions.`;
+        return;
+    }
+
+    connectivityRouteController?.abort();
+    connectivityRouteController = new AbortController();
+    const requestId = ++connectivityRouteRequestId;
+    connectivityRouteLayer.clearLayers();
+    renderConnectivityDestinationMarker(place);
+    const routeKey = `${item.id}:${place.id}`;
+    const cachedRoute = connectivityRouteCache.get(routeKey);
+    if (cachedRoute) {
+        renderConnectivityRoute(item, place, cachedRoute);
+        status.textContent = `Route to ${place.label}`;
+        return;
+    }
+
+    status.textContent = `Loading route to ${place.label}…`;
+    const origin = item.coordinates;
+    const destination = place.coordinates;
+    const routeUrl = `https://router.project-osrm.org/route/v1/driving/${origin.lon},${origin.lat};${destination.lon},${destination.lat}?overview=full&geometries=geojson&steps=false`;
+
+    try {
+        const response = await fetch(routeUrl, { signal: connectivityRouteController.signal });
+        if (!response.ok) throw new Error(`Routing service returned HTTP ${response.status}.`);
+        const result = await response.json();
+        const route = result.routes?.[0];
+        if (result.code !== 'Ok' || !route?.geometry?.coordinates?.length) {
+            throw new Error(result.message || 'No road route is available for this destination.');
+        }
+        connectivityRouteCache.set(routeKey, route);
+        if (requestId !== connectivityRouteRequestId) return;
+        renderConnectivityRoute(item, place, route);
+        status.textContent = `Route to ${place.label}`;
+    } catch (error) {
+        if (error.name === 'AbortError' || requestId !== connectivityRouteRequestId) return;
+        status.textContent = `Could not load the route to ${place.label}. Open Google Maps for directions.`;
+    }
+}
+
+function getConnectivityDirectionsUrl(item, place) {
+    const url = new URL('https://www.google.com/maps/dir/');
+    url.searchParams.set('api', '1');
+    url.searchParams.set('origin', `${item.coordinates.lat},${item.coordinates.lon}`);
+    url.searchParams.set('destination', getConnectivityDestination(place));
+    url.searchParams.set('travelmode', 'driving');
+    return url.href;
+}
+
+function updateConnectivityMapUrl(placeId) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('map', 'location');
+    if (placeId) url.searchParams.set('destination', placeId);
+    else url.searchParams.delete('destination');
+    window.history.replaceState({ ...window.history.state, locationMap: true }, '', `${url.pathname}${url.search}${url.hash}`);
+}
+
+function selectConnectivityMapPlace(placeId) {
+    const place = connectivityMapPlaces.find(candidate => candidate.id === placeId);
+    if (!activeProperty?.coordinates || !place) return;
+
+    const directionsLink = document.getElementById('connectivity-map-directions-link');
+    directionsLink.href = getConnectivityDirectionsUrl(activeProperty, place);
+    directionsLink.firstChild.textContent = `Directions to ${place.label} in Google Maps `;
+
+    document.querySelectorAll('.connectivity-map-place').forEach(button => {
+        button.setAttribute('aria-pressed', String(button.dataset.connectivityPlace === placeId));
+    });
+    updateConnectivityMapUrl(placeId);
+    updateConnectivityRoute(activeProperty, place);
+}
+
+function renderConnectivityMapPlaces(query = '') {
+    const list = document.getElementById('connectivity-map-list');
+    if (!list) return;
+    const normalizedQuery = query.trim().toLocaleLowerCase();
+    const places = connectivityMapPlaces.filter(place =>
+        `${place.label} ${place.distance}`.toLocaleLowerCase().includes(normalizedQuery)
+    );
+    list.replaceChildren();
+    document.getElementById('connectivity-map-count').textContent = `${places.length} places`;
+
+    if (!places.length) {
+        const empty = document.createElement('p');
+        empty.className = 'connectivity-map-no-results';
+        empty.textContent = 'No listed destinations match your search.';
+        list.appendChild(empty);
+        return;
+    }
+
+    places.forEach(place => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'connectivity-map-place';
+        button.dataset.connectivityPlace = place.id;
+        button.setAttribute('aria-pressed', String(place.id === new URL(window.location.href).searchParams.get('destination')));
+
+        const icon = document.createElement('span');
+        icon.className = 'connectivity-map-place-icon';
+        const iconElement = document.createElement('i');
+        iconElement.className = place.icon || 'fa-solid fa-location-dot';
+        iconElement.setAttribute('aria-hidden', 'true');
+        icon.appendChild(iconElement);
+
+        const details = document.createElement('span');
+        details.className = 'connectivity-map-place-details';
+        const name = document.createElement('span');
+        name.textContent = place.label;
+        const distance = document.createElement('span');
+        distance.textContent = place.distance;
+        details.append(name, distance);
+        button.append(icon, details);
+        list.appendChild(button);
+    });
+
+}
+
+function openConnectivityMap({ updateUrl = true } = {}) {
+    if (!activeProperty?.coordinates) return;
+    const map = document.getElementById('connectivity-map');
+    const search = document.getElementById('connectivity-map-search-input');
+    document.getElementById('connectivity-map-project').textContent = `${activeProperty.name} · ${activeProperty.location}`;
+    connectivityMapPlaces = (activeProperty.connectivity || []).map((place, index) => ({
+        ...place,
+        id: `${activeProperty.id}-connectivity-${index + 1}`
+    }));
+    search.value = '';
+    map.hidden = false;
+    document.body.classList.add('connectivity-map-open');
+    initializeConnectivityMap(activeProperty);
+    renderConnectivityMapPlaces(search.value);
+    const directionsLink = document.getElementById('connectivity-map-directions-link');
+    directionsLink.href = `https://www.google.com/maps/search/?api=1&query=${activeProperty.coordinates.lat},${activeProperty.coordinates.lon}`;
+    directionsLink.firstChild.textContent = 'Open property location in Google Maps ';
+
+    const url = new URL(window.location.href);
+    if (updateUrl) {
+        url.searchParams.set('map', 'location');
+        url.searchParams.delete('destination');
+        window.history.replaceState({ ...window.history.state, locationMap: true }, '', `${url.pathname}${url.search}${url.hash}`);
+    }
+    const requestedDestination = new URL(window.location.href).searchParams.get('destination');
+    const selectedPlace = connectivityMapPlaces.find(place => place.id === requestedDestination)
+        || connectivityMapPlaces[0];
+    if (selectedPlace) selectConnectivityMapPlace(selectedPlace.id);
+    document.getElementById('connectivity-map-close').focus();
+}
+
+function closeConnectivityMap({ updateUrl = true, restoreFocus = true } = {}) {
+    const map = document.getElementById('connectivity-map');
+    if (!map || map.hidden) return;
+
+    map.hidden = true;
+    document.body.classList.remove('connectivity-map-open');
+    connectivityRouteRequestId++;
+    connectivityRouteController?.abort();
+    clearTimeout(connectivitySearchTimer);
+    if (updateUrl) {
+        const url = new URL(window.location.href);
+        url.searchParams.delete('map');
+        url.searchParams.delete('destination');
+        window.history.replaceState({ ...window.history.state, locationMap: false }, '', `${url.pathname}${url.search}${url.hash}`);
+    }
+    if (restoreFocus) document.getElementById('connectivity-map-open')?.focus();
+}
+
 // CATEGORY FILTERING
 function filterCategory(cat, btn) {
     currentActiveCategory = cat;
@@ -657,12 +954,9 @@ function handleBhkDropdownKeydown(event) {
 }
 
 function showCatalogView({ updateUrl = true } = {}) {
-    if (updateUrl && getPropertyIdFromPath()) {
-        if (window.history.state?.propertyId === activeProperty?.id) {
-            window.history.back();
-            return;
-        }
-        setPropertyRoute(null, { replace: true });
+    if (updateUrl) {
+        navigateToCatalogSection('residences');
+        return;
     }
     document.getElementById('property-detail-view').style.display = 'none';
     document.getElementById('catalog-view').style.display = 'block';
@@ -694,6 +988,9 @@ function restorePropertyRoute(event) {
     if (item) {
         setActiveNavigation(item.id);
         openPropertyDetails(item.id, { updateUrl: false });
+        if (new URL(window.location.href).searchParams.get('map') === 'location') {
+            openConnectivityMap({ updateUrl: false });
+        }
         return;
     }
 
@@ -753,7 +1050,6 @@ function clearPropertyRoute() {
 function navigateToCatalogSection(sectionId, route = sectionId, { scrollToTop = false } = {}) {
     const detailView = document.getElementById('property-detail-view');
     if (detailView && detailView.style.display !== 'none') {
-        clearPropertyRoute();
         detailView.style.display = 'none';
         document.getElementById('catalog-view').style.display = 'block';
     }

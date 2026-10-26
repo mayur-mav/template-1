@@ -9,6 +9,7 @@
     <!-- Meta Description, Canonical and Meta Keywords-->
     <meta name="description" content="Explore Kolte Patil projects in Bangalore, including homes in Electronic City, Horamavu and North Bengaluru. View project locations, prices and floor plans.">
     <link rel="preconnect" href="https://media.justflip.in">
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +19,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="css/styles.css">
     <meta property="og:title" content="Kolte Patil Developers Bangalore | Homes &amp; Projects">
     <meta property="og:description" content="Explore Kolte Patil projects in Bangalore, including homes in Electronic City, Horamavu and North Bengaluru. View project locations, prices and floor plans.">
@@ -349,7 +351,13 @@
 
                 <!-- Project-specific connectivity is rendered from the selected project data -->
                 <div class="connectivity-section" id="dt-connectivity-section" hidden>
-                    <h3 class="section-block-title">Strategic Connectivity</h3>
+                    <div class="connectivity-heading">
+                        <h3 class="section-block-title">Strategic Connectivity</h3>
+                        <button class="connectivity-map-trigger" id="connectivity-map-open" type="button">
+                            <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+                            View map &amp; directions
+                        </button>
+                    </div>
                     <div class="location-matrix" id="dt-connectivity"></div>
                 </div>
             </div>
@@ -442,6 +450,47 @@
         <img id="lightboxImg" src="" alt="Full View" class="lightbox-img" loading="lazy" decoding="async">
     </div>
 
+    <section class="connectivity-map" id="connectivity-map" aria-labelledby="connectivity-map-title" aria-modal="true" role="dialog" hidden>
+        <header class="connectivity-map-header">
+            <div class="connectivity-map-heading">
+                <span class="connectivity-map-eyebrow">LOCATION &amp; CONNECTIVITY</span>
+                <h2 id="connectivity-map-title">Connectivity map</h2>
+                <p id="connectivity-map-project"></p>
+            </div>
+            <label class="connectivity-map-search">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <span class="sr-only">Search listed destinations</span>
+                <input id="connectivity-map-search-input" type="search" placeholder="Search listed destinations" autocomplete="off">
+            </label>
+            <button class="connectivity-map-close" id="connectivity-map-close" type="button" aria-label="Close map">
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                <span>Back to property</span>
+            </button>
+        </header>
+        <div class="connectivity-map-layout">
+            <aside class="connectivity-map-sidebar" aria-label="Property connectivity">
+                <div class="connectivity-map-sidebar-heading">
+                    <h3>Listed destinations</h3>
+                    <span id="connectivity-map-count"></span>
+                </div>
+                <p class="connectivity-map-hint">Choose a destination from this property's connectivity list to view its route.</p>
+                <div class="connectivity-map-list" id="connectivity-map-list"></div>
+                <div class="connectivity-map-directions">
+                    <a id="connectivity-map-directions-link" href="#" target="_blank" rel="noopener noreferrer">
+                        Open directions in Google Maps
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                    </a>
+                    <small>Destinations come from this property's connectivity data. The route line is provided by OSRM; open Google Maps for turn-by-turn directions.</small>
+                </div>
+            </aside>
+            <div class="connectivity-map-canvas">
+                <div id="connectivity-map-canvas" class="connectivity-leaflet-map" role="application" aria-label="Map showing the property and selected destination"></div>
+                <p id="connectivity-map-route-status" class="connectivity-map-route-status" role="status" aria-live="polite"></p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script type="module" src="js/main.js"></script>
 </body>
 </html>

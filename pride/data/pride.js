@@ -45,6 +45,32 @@ export const faqData = [
   }
 ];
 
+const overviewSearchTerms = [
+  'Pride developers in Bangalore',
+  'Pride construction in Bangalore',
+  'Pride Group builders',
+  'Pride property developers'
+];
+
+function formatOverviewList(values) {
+  if (values.length < 2) return values[0] || '';
+  return `${values.slice(0, -1).join(', ')} and ${values[values.length - 1]}`;
+}
+
+export function createPropertyOverview(property) {
+  const projectIndex = propertiesData.findIndex(({ id }) => id === property.id);
+  const isPlotDevelopment = /plot/i.test(property.bhk);
+  const searchTerm = isPlotDevelopment ? 'Pride Group plots in Bangalore' : overviewSearchTerms[projectIndex % overviewSearchTerms.length];
+  const floorPlans = formatOverviewList((property.floorPlans || []).slice(0, 3).map(({ bhk }) => bhk));
+  const amenities = formatOverviewList((property.amenities || []).slice(0, 4).map(({ name }) => name));
+  const nearbyPlaces = formatOverviewList((property.connectivity || []).slice(0, 3).map(({ label, distance }) => `${label} (${distance})`));
+
+  return [
+      `${property.description} Buyers looking at ${searchTerm} can explore ${property.name} in ${property.shortAddress}, including the project’s location, status, and listed home or plot configurations.`,
+      `${property.name} is listed with ${property.bhk} across ${property.area}, with ${property.statusText.toLowerCase()} status and possession shown as ${property.possession}. Listed layout options include ${floorPlans || property.bhk}. Community features include ${amenities || 'the listed project amenities'}, with nearby destinations including ${nearbyPlaces || property.shortAddress}. Review Pride project layouts, amenities, and connectivity when comparing properties in Bengaluru.${property.rera ? ` RERA registration number: ${property.rera.replace(/\.$/, '')}.` : ''}`
+  ];
+}
+
 export const propertiesData = [
   {
     id: 'pride-green-avenue',

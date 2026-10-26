@@ -39,6 +39,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Dynamically import data based on HTML data-builder attribute
         const module = await import(`../data/${builder}.js`);
         propertiesData = module.propertiesData;
+        propertiesData.forEach(property => {
+            property.overview = module.createPropertyOverview(property);
+        });
         activeProperty = propertiesData[0];
         renderDeveloperHero(module.developerInfo?.hero);
         renderBuilderFaqs(module.faqData || []);
@@ -466,7 +469,27 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
     document.getElementById('dt-possession').textContent = item.possession;
     document.getElementById('dt-area').textContent = item.area;
     document.getElementById('dt-config').textContent = item.bhk;
-    document.getElementById('dt-description').textContent = item.description;
+    const overview = document.getElementById('dt-description');
+    overview.replaceChildren(...item.overview.map(paragraph => {
+        const element = document.createElement('p');
+        element.className = 'overview-text';
+        const registration = paragraph.match(/^(.*) RERA registration number: (.+)\.$/);
+        if (!registration) {
+            element.textContent = paragraph;
+            return element;
+        }
+
+        element.append(document.createTextNode(`${registration[1]} `));
+        const badge = document.createElement('span');
+        badge.className = 'overview-rera';
+        const label = document.createElement('strong');
+        label.textContent = 'RERA Registration No.';
+        const number = document.createElement('span');
+        number.textContent = registration[2];
+        badge.append(label, number);
+        element.append(badge);
+        return element;
+    }));
 
     setImageSource(document.getElementById('dt-img-1'), item.images[0], { loading: 'eager', priority: 'high' });
     setImageSource(document.getElementById('dt-img-2'), item.images[1], { loading: 'eager' });

@@ -57,6 +57,31 @@ export const faqData = [
   }
 ];
 
+const overviewSearchTerms = [
+  'Century Real Estate in Bangalore',
+  'Century builders in Bangalore',
+  'Century developers in Bangalore',
+  'Century estates in Bangalore'
+];
+
+function formatOverviewList(values) {
+  if (values.length < 2) return values[0] || '';
+  return `${values.slice(0, -1).join(', ')} and ${values[values.length - 1]}`;
+}
+
+export function createPropertyOverview(property) {
+  const projectIndex = propertiesData.findIndex(({ id }) => id === property.id);
+  const searchTerm = overviewSearchTerms[projectIndex % overviewSearchTerms.length];
+  const floorPlans = formatOverviewList((property.floorPlans || []).slice(0, 3).map(({ bhk }) => bhk));
+  const amenities = formatOverviewList((property.amenities || []).slice(0, 4).map(({ name }) => name));
+  const nearbyPlaces = formatOverviewList((property.connectivity || []).slice(0, 3).map(({ label, distance }) => `${label} (${distance})`));
+
+  return [
+      `${property.description} Buyers researching ${searchTerm} can explore Century Real Estate homes in ${property.shortAddress}, with project status, location, and configuration details available to compare.`,
+      `${property.name} is listed with ${property.bhk} across ${property.area}, with ${property.statusText.toLowerCase()} status and possession shown as ${property.possession}. Listed floor plan options include ${floorPlans || property.bhk}. Residents can explore amenities such as ${amenities || 'the community’s listed lifestyle facilities'}, with nearby destinations including ${nearbyPlaces || property.shortAddress}. Review this Century Real Estate project’s floor plans, amenities, and connectivity when comparing homes in Bengaluru.${property.rera ? ` RERA registration number: ${property.rera.replace(/\.$/, '')}.` : ''}`
+  ];
+}
+
 // Add uploaded gallery paths in each `images` array with centuryImage('century/project-name/image.webp').
 export const propertiesData = [
     {

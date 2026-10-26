@@ -32,6 +32,13 @@ function escapeHtml(value = '') {
   })[character]);
 }
 
+function renderOverviewParagraph(paragraph) {
+  const registration = paragraph.match(/^(.*) RERA registration number: (.+)\.$/);
+  if (!registration) return `<p class="overview-text">${escapeHtml(paragraph)}</p>`;
+
+  return `<p class="overview-text">${escapeHtml(registration[1])} <span class="overview-rera"><strong>RERA Registration No.</strong> <span>${escapeHtml(registration[2])}</span></span></p>`;
+}
+
 function replaceElementContent(html, id, content) {
   const elementPattern = new RegExp(`(<([a-z][a-z0-9]*)\\b[^>]*\\bid="${id}"[^>]*>)[\\s\\S]*?(<\\/\\2>)`, 'i');
   return html.replace(elementPattern, `$1${content}$3`);
@@ -58,7 +65,7 @@ function createRoutedHtml(route = '') {
     html = replaceElementContent(html, 'dt-area', escapeHtml(property.area));
     html = replaceElementContent(html, 'dt-config', escapeHtml(property.bhk));
     const overviewHtml = property.overview
-      .map((paragraph) => `<p class="overview-text">${escapeHtml(paragraph)}</p>`)
+      .map(renderOverviewParagraph)
       .join('\n                    ');
     html = replaceElementContent(html, 'dt-description', overviewHtml);
 

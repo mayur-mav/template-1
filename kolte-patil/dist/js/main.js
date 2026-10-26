@@ -476,7 +476,21 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
     overview.replaceChildren(...item.overview.map(paragraph => {
         const element = document.createElement('p');
         element.className = 'overview-text';
-        element.textContent = paragraph;
+        const registration = paragraph.match(/^(.*) RERA registration number: (.+)\.$/);
+        if (!registration) {
+            element.textContent = paragraph;
+            return element;
+        }
+
+        element.append(document.createTextNode(`${registration[1]} `));
+        const badge = document.createElement('span');
+        badge.className = 'overview-rera';
+        const label = document.createElement('strong');
+        label.textContent = 'RERA Registration No.';
+        const number = document.createElement('span');
+        number.textContent = registration[2];
+        badge.append(label, number);
+        element.append(badge);
         return element;
     }));
 

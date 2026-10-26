@@ -1523,6 +1523,33 @@ button {
     line-height: 1.8;
 }
 
+#dt-description .overview-text:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.overview-rera {
+    display: inline-flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 7px;
+    margin: 4px 0 4px 3px;
+    padding: 4px 9px;
+    border: 1px solid var(--brand-gold-hover);
+    border-radius: 6px;
+    background: var(--brand-gold-light);
+    color: var(--brand-primary);
+    font-size: 0.86rem;
+    line-height: 1.5;
+    vertical-align: middle;
+}
+
+.overview-rera strong {
+    color: var(--brand-gold-hover);
+    font-size: 0.74rem;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+}
+
 /* INTERACTIVE FLOOR PLAN SELECTOR */
 /* .floorplan-container {
     margin-bottom: 40px;

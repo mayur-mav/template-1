@@ -45,6 +45,27 @@ export const faqData = [
   }
 ];
 
+function formatOverviewList(values) {
+  if (values.length < 2) return values[0] || '';
+  return `${values.slice(0, -1).join(', ')} and ${values[values.length - 1]}`;
+}
+
+export function createPropertyOverview(property) {
+  const projectLocation = property.shortAddress || property.location;
+  const keywordLocation = ['Hennur', 'Whitefield', 'JP Nagar', 'Sarjapur'].find((location) => projectLocation.toLowerCase().includes(location.toLowerCase()));
+  const searchTerm = keywordLocation
+      ? `Total Environment ${keywordLocation}`
+      : 'Total Environment projects in Bangalore';
+  const floorPlans = formatOverviewList((property.floorPlans || []).slice(0, 3).map(({ bhk }) => bhk));
+  const amenities = formatOverviewList((property.amenities || []).slice(0, 4).map(({ name }) => name));
+  const nearbyPlaces = formatOverviewList((property.connectivity || []).slice(0, 3).map(({ label, distance }) => `${label} (${distance})`));
+
+  return [
+      `${property.description} Homebuyers researching ${searchTerm} can explore this Total Environment residence in ${projectLocation}, with project location, status, and listed configurations to compare.`,
+      `${property.name} is listed with ${property.bhk} across ${property.area}, with ${property.statusText.toLowerCase()} status and possession shown as ${property.possession}. Listed floor plan options include ${floorPlans || property.bhk}. Residents can explore amenities such as ${amenities || 'the community’s listed lifestyle facilities'}, with nearby destinations including ${nearbyPlaces || projectLocation}. Review Total Environment floor plans, amenities, and connectivity when comparing homes in Bengaluru.${property.rera ? ` RERA registration number: ${property.rera.replace(/\.$/, '')}.` : ''}`
+  ];
+}
+
 export const propertiesData = [
     {
         id: 'total-environment-down-by-the-water',

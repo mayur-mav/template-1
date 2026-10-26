@@ -1,7 +1,7 @@
 import { cpSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { developerInfo, propertiesData } from './data/prestige.js';
+import { createPropertyOverview, developerInfo, propertiesData } from './data/prestige.js';
 
 const projectDir = dirname(fileURLToPath(import.meta.url));
 const outputDir = join(projectDir, 'dist');
@@ -32,6 +32,13 @@ function escapeHtml(value = '') {
   })[character]);
 }
 
+function renderOverviewParagraph(paragraph) {
+  const registration = paragraph.match(/^(.*) RERA registration number: (.+)\.$/);
+  if (!registration) return `<p class="overview-text">${escapeHtml(paragraph)}</p>`;
+
+  return `<p class="overview-text">${escapeHtml(registration[1])} <span class="overview-rera"><strong>RERA Registration No.</strong> <span>${escapeHtml(registration[2])}</span></span></p>`;
+}
+
 function replaceElementContent(html, id, content) {
   const elementPattern = new RegExp(`(<([a-z][a-z0-9]*)\\b[^>]*\\bid="${id}"[^>]*>)[\\s\\S]*?(<\\/\\2>)`, 'i');
   return html.replace(elementPattern, `$1${content}$3`);
@@ -57,7 +64,10 @@ function createRoutedHtml(route = '') {
     html = replaceElementContent(html, 'dt-possession', escapeHtml(property.possession));
     html = replaceElementContent(html, 'dt-area', escapeHtml(property.area));
     html = replaceElementContent(html, 'dt-config', escapeHtml(property.bhk));
-    html = replaceElementContent(html, 'dt-description', escapeHtml(property.description));
+    const overviewHtml = createPropertyOverview(property)
+      .map(renderOverviewParagraph)
+      .join('\n                    ');
+    html = replaceElementContent(html, 'dt-description', overviewHtml);
 
     property.images.slice(0, 3).forEach((imageUrl, index) => {
       const imageNumber = index + 1;

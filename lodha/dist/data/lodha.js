@@ -41,6 +41,32 @@ export const faqData = [
   }
 ];
 
+const overviewSearchTerms = [
+    'Lodha Group projects in Bangalore',
+    'Lodha projects in Bangalore',
+    'Lodha developers in Bangalore',
+    'Lodha properties in Bangalore',
+    'Lodha Group projects'
+];
+
+function formatOverviewList(values) {
+    if (values.length < 2) return values[0] || '';
+    return `${values.slice(0, -1).join(', ')} and ${values[values.length - 1]}`;
+}
+
+export function createPropertyOverview(property) {
+    const projectIndex = propertiesData.findIndex(({ id }) => id === property.id);
+    const searchTerm = overviewSearchTerms[projectIndex % overviewSearchTerms.length];
+    const floorPlans = formatOverviewList((property.floorPlans || []).slice(0, 3).map(({ bhk }) => bhk));
+    const amenities = formatOverviewList((property.amenities || []).slice(0, 4).map(({ name }) => name));
+    const nearbyPlaces = formatOverviewList((property.connectivity || []).slice(0, 3).map(({ label, distance }) => `${label} (${distance})`));
+
+    return [
+        `${property.description} Homebuyers comparing ${searchTerm} can explore this Lodha residence in ${property.shortAddress}, including its project status, location, and listed home configurations.`,
+        `${property.name} is listed with ${property.bhk} across ${property.area}, with ${property.statusText.toLowerCase()} status and possession shown as ${property.possession}. Listed floor plan options include ${floorPlans || property.bhk}. Residents can explore amenities such as ${amenities || 'the community’s listed lifestyle facilities'}, with nearby destinations including ${nearbyPlaces || property.shortAddress}. Review Lodha floor plans, amenities, and connectivity when comparing homes and projects in Bengaluru.${property.rera ? ` RERA registration number: ${property.rera.replace(/\.$/, '')}.` : ''}`
+    ];
+}
+
 export const propertiesData = [
   {
     id: 'lodha-mirabelle',

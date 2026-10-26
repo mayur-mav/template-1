@@ -1508,6 +1508,10 @@ button {
     line-height: 1.8;
 }
 
+#dt-description .overview-text:not(:last-child) {
+    margin-bottom: 16px;
+}
+
 /* INTERACTIVE FLOOR PLAN SELECTOR */
 /* .floorplan-container {
     margin-bottom: 40px;

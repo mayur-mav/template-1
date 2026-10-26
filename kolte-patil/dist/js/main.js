@@ -472,7 +472,13 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
     document.getElementById('dt-possession').textContent = item.possession;
     document.getElementById('dt-area').textContent = item.area;
     document.getElementById('dt-config').textContent = item.bhk;
-    document.getElementById('dt-description').textContent = item.description;
+    const overview = document.getElementById('dt-description');
+    overview.replaceChildren(...item.overview.map(paragraph => {
+        const element = document.createElement('p');
+        element.className = 'overview-text';
+        element.textContent = paragraph;
+        return element;
+    }));
 
     setImageSource(document.getElementById('dt-img-1'), item.images[0], { loading: 'eager', priority: 'high' });
     setImageSource(document.getElementById('dt-img-2'), item.images[1], { loading: 'eager' });

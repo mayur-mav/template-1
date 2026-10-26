@@ -57,7 +57,10 @@ function createRoutedHtml(route = '') {
     html = replaceElementContent(html, 'dt-possession', escapeHtml(property.possession));
     html = replaceElementContent(html, 'dt-area', escapeHtml(property.area));
     html = replaceElementContent(html, 'dt-config', escapeHtml(property.bhk));
-    html = replaceElementContent(html, 'dt-description', escapeHtml(property.description));
+    const overviewHtml = property.overview
+      .map((paragraph) => `<p class="overview-text">${escapeHtml(paragraph)}</p>`)
+      .join('\n                    ');
+    html = replaceElementContent(html, 'dt-description', overviewHtml);
 
     property.images.slice(0, 3).forEach((imageUrl, index) => {
       const imageNumber = index + 1;

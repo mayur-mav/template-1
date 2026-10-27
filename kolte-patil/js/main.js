@@ -68,6 +68,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
     document.getElementById('connectivity-map-open')?.addEventListener('click', () => openConnectivityMap());
+    document.getElementById('dt-project-comparison')?.addEventListener('click', event => {
+        const enquiryButton = event.target.closest('[data-enquiry-project]');
+        if (enquiryButton) {
+            goToProjectEnquiry(enquiryButton.dataset.enquiryProject);
+            return;
+        }
+        const detailsButton = event.target.closest('[data-details-project]');
+        if (detailsButton) openPropertyDetails(detailsButton.dataset.detailsProject);
+    });
     const connectivityPreview = document.getElementById('connectivity-map-preview-canvas');
     if (connectivityPreview && 'IntersectionObserver' in window) {
         connectivityPreviewObserver = new IntersectionObserver(entries => {
@@ -121,6 +130,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderDeveloperHero(module.developerInfo?.hero);
         renderBuilderFaqs(module.faqData || []);
         populateHomeProjectDropdown(propertiesData);
+        restoreEnquiryProjectFromUrl();
         renderBuilderFooter(module.developerInfo?.hero, propertiesData);
 
         renderPropertyCards(propertiesData);
@@ -222,6 +232,28 @@ function populateHomeProjectDropdown(projects) {
         listbox.appendChild(option);
     });
     select.hidden = projects.length === 0;
+}
+
+function selectEnquiryProject(projectId) {
+    const project = propertiesData.find(candidate => candidate.id === projectId);
+    const select = document.getElementById('homeProjectSelect');
+    if (!project || !select) return false;
+
+    const option = [...select.querySelectorAll('.project-select-option')]
+        .find(candidate => candidate.dataset.value === project.name);
+    if (!option) return false;
+
+    select.querySelector('.project-select-trigger span').textContent = project.name;
+    select.querySelector('input[type="hidden"]').value = project.name;
+    select.querySelectorAll('.project-select-option').forEach(candidate => {
+        candidate.setAttribute('aria-selected', String(candidate === option));
+    });
+    return true;
+}
+
+function restoreEnquiryProjectFromUrl() {
+    const projectId = new URL(window.location.href).searchParams.get('project');
+    if (projectId) selectEnquiryProject(projectId);
 }
 
 function handleProjectDropdownClick(event) {
@@ -793,6 +825,131 @@ function openQuickView(id) {
     document.getElementById('quickViewModal').classList.add('active');
 }
 
+function getConfigurationTokens(item) {
+    return new Set((item.bhk.match(/\d+(?:\.\d+)?/g) || []).map(Number));
+}
+
+function getProjectDistance(first, second) {
+    if (!first.coordinates || !second.coordinates) return Number.POSITIVE_INFINITY;
+    const radians = degrees => degrees * Math.PI / 180;
+    const latitudeDelta = radians(second.coordinates.lat - first.coordinates.lat);
+    const longitudeDelta = radians(second.coordinates.lon - first.coordinates.lon);
+    const latitudeOne = radians(first.coordinates.lat);
+    const latitudeTwo = radians(second.coordinates.lat);
+    const haversine = Math.sin(latitudeDelta / 2) ** 2
+        + Math.cos(latitudeOne) * Math.cos(latitudeTwo) * Math.sin(longitudeDelta / 2) ** 2;
+    return 6371 * 2 * Math.atan2(Math.sqrt(haversine), Math.sqrt(1 - haversine));
+}
+
+function getSimilarProjects(item) {
+    const configurations = getConfigurationTokens(item);
+    return propertiesData
+        .filter(candidate => candidate.id !== item.id)
+        .map(candidate => ({
+            property: candidate,
+            sharedConfigurations: [...getConfigurationTokens(candidate)].filter(value => configurations.has(value)).length,
+            distance: getProjectDistance(item, candidate)
+        }))
+        .sort((first, second) =>
+            second.sharedConfigurations - first.sharedConfigurations
+            || first.distance - second.distance
+            || first.property.name.localeCompare(second.property.name)
+        )
+        .slice(0, 2)
+        .map(({ property }) => property);
+}
+
+function renderProjectComparison(item) {
+    const section = document.getElementById('dt-project-comparison');
+    const grid = document.getElementById('dt-project-comparison-grid');
+    const projects = [item, ...getSimilarProjects(item)];
+    grid.replaceChildren();
+
+    projects.forEach((project, index) => {
+        const projectCard = document.createElement('article');
+        projectCard.className = `project-comparison-card${index === 0 ? ' is-current' : ''}`;
+        const card = document.createElement('div');
+        card.className = 'comparison-project-card';
+        const imageWrap = document.createElement('div');
+        imageWrap.className = 'comparison-project-image-wrap';
+        const image = document.createElement('img');
+        image.className = 'comparison-project-image';
+        image.src = project.thumbnail || project.images[0];
+        image.alt = `${project.name} project`;
+        image.loading = 'lazy';
+        image.decoding = 'async';
+        image.fetchPriority = 'low';
+        imageWrap.appendChild(image);
+
+        if (index === 0) {
+            const currentLabel = document.createElement('span');
+            currentLabel.className = 'comparison-current-label';
+            currentLabel.textContent = 'Current Project';
+            imageWrap.appendChild(currentLabel);
+        }
+        card.appendChild(imageWrap);
+        const name = document.createElement('span');
+        name.className = 'comparison-project-name';
+        name.className = 'comparison-project-name';
+        const projectName = document.createElement('span');
+        projectName.textContent = project.name;
+        const location = document.createElement('span');
+        location.className = 'comparison-project-location';
+        location.textContent = project.shortAddress || project.location;
+        name.append(projectName, location);
+        card.appendChild(name);
+
+        const projectAction = document.createElement('button');
+        projectAction.type = 'button';
+        projectAction.className = 'comparison-project-link';
+        if (index === 0) {
+            projectAction.dataset.enquiryProject = project.id;
+            projectAction.innerHTML = '<i class="fa-solid fa-phone" aria-hidden="true"></i> Enquire Now';
+            projectAction.setAttribute('aria-label', `Enquire about ${project.name}`);
+        } else {
+            projectAction.dataset.detailsProject = project.id;
+            projectAction.innerHTML = '<i class="fa-solid fa-arrow-right" aria-hidden="true"></i> View Details';
+            projectAction.setAttribute('aria-label', `View ${project.name} details`);
+        }
+        card.appendChild(projectAction);
+
+        const specs = document.createElement('div');
+        specs.className = 'comparison-project-specs';
+        const rows = [
+            ['Price', project.price],
+            ['Configuration', project.bhk],
+            ['Project Area', project.area],
+            ['Status', project.statusText],
+            ['Possession', project.possession]
+        ];
+
+        rows.forEach(([label, value]) => {
+            const row = document.createElement('div');
+            row.className = 'comparison-project-spec';
+            const specLabel = document.createElement('span');
+            specLabel.className = 'comparison-project-spec-label';
+            specLabel.textContent = label;
+            const specValue = document.createElement('span');
+            specValue.className = 'comparison-project-spec-value';
+            specValue.textContent = value || 'Not listed';
+            row.append(specLabel, specValue);
+            specs.appendChild(row);
+        });
+        card.appendChild(specs);
+        projectCard.appendChild(card);
+        grid.appendChild(projectCard);
+    });
+    section.hidden = projects.length < 2;
+}
+
+function goToProjectEnquiry(projectId) {
+    if (!selectEnquiryProject(projectId)) return;
+    navigateToCatalogSection('contact');
+    const url = new URL(window.location.href);
+    url.searchParams.set('project', projectId);
+    window.history.replaceState({ ...window.history.state, enquiryProjectId: projectId }, '', `${url.pathname}${url.search}${url.hash}`);
+}
+
 // FULL SPA PROPERTY DETAILS VIEW SWITCHING
 function openPropertyDetails(id, { updateUrl = true } = {}) {
     const item = propertiesData.find(p => p.id === id);
@@ -890,6 +1047,7 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
     });
     addFeatureExpansion(connectivityGrid, 4, 'connectivity');
     connectivitySection.hidden = nearbyPlaces.length === 0;
+    renderProjectComparison(item);
 
     document.getElementById('catalog-view').style.display = 'none';
     document.getElementById('property-detail-view').style.display = 'block';
@@ -1056,6 +1214,7 @@ function restorePropertyRoute(event) {
         document.getElementById('property-detail-view').style.display = 'none';
         document.getElementById('catalog-view').style.display = 'block';
         updatePageMetadata(initialDocumentTitle, initialMetaDescription);
+        if (route === 'contact') restoreEnquiryProjectFromUrl();
         requestAnimationFrame(() => {
             document.getElementById(sectionTargets[route])?.scrollIntoView({ block: 'start' });
         });

@@ -712,7 +712,7 @@ button {
 }
 
 .rera-verified-badge,
-.rera-details summary {
+.rera-details {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -736,7 +736,7 @@ button {
 }
 
 .rera-verified-badge i,
-.rera-details summary i {
+.rera-details i {
     color: #22865A;
 }
 
@@ -749,22 +749,6 @@ button {
     align-items: center;
     flex-wrap: wrap;
     gap: 8px 14px;
-}
-
-.rera-details summary {
-    cursor: pointer;
-    list-style: none;
-}
-
-.rera-details summary::-webkit-details-marker {
-    display: none;
-}
-
-.rera-number {
-    margin-top: 8px;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    overflow-wrap: anywhere;
 }
 
 .card-specs-row {
@@ -2822,7 +2806,7 @@ body[data-property-route-loading="true"] #catalog-view {
 /* Keep small accent icons and labels readable on light surfaces. */
 .search-icon,
 .rera-verified-badge i,
-.rera-details summary i,
+.rera-details i,
 .spec-item i,
 .no-results i,
 .why-icon,

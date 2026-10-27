@@ -1131,11 +1131,8 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
 
     document.getElementById('dt-title').textContent = item.name;
     const reraDetails = document.getElementById('dt-rera-details');
-    const reraValue = document.getElementById('dt-rera-value');
     const hasRera = Boolean(item.rera?.trim());
     reraDetails.hidden = !hasRera;
-    reraDetails.open = false;
-    reraValue.textContent = hasRera ? `RERA No: ${item.rera}` : '';
     document.getElementById('dt-location').innerHTML = `<i class="fa-solid fa-location-dot"></i> ${item.location}`;
     document.getElementById('dt-price').textContent = item.price;
     document.getElementById('dt-status').textContent = item.statusText;

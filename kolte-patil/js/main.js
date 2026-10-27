@@ -9,6 +9,9 @@ let connectivityOriginMarker = null;
 let connectivityRouteLayer = null;
 let connectivityRouteController = null;
 let connectivityRouteRequestId = 0;
+let connectivityPreviewMap = null;
+let connectivityPreviewMarker = null;
+let connectivityPreviewObserver = null;
 const connectivityRouteCache = new Map();
 let initialDocumentTitle = document.body.dataset.homeTitle || document.title;
 let initialMetaDescription = document.body.dataset.homeDescription || document.querySelector('meta[name="description"]')?.content || '';
@@ -65,6 +68,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
     document.getElementById('connectivity-map-open')?.addEventListener('click', () => openConnectivityMap());
+    const connectivityPreview = document.getElementById('connectivity-map-preview-canvas');
+    if (connectivityPreview && 'IntersectionObserver' in window) {
+        connectivityPreviewObserver = new IntersectionObserver(entries => {
+            if (entries.some(entry => entry.isIntersecting) && activeProperty) {
+                initializeConnectivityPreview(activeProperty);
+                connectivityPreviewObserver.disconnect();
+            }
+        }, { rootMargin: '160px' });
+        connectivityPreviewObserver.observe(connectivityPreview);
+    }
     document.getElementById('connectivity-map-close')?.addEventListener('click', () => closeConnectivityMap());
     document.getElementById('connectivity-map-search-input')?.addEventListener('input', event => {
         clearTimeout(connectivitySearchTimer);
@@ -467,6 +480,42 @@ function initializeConnectivityMap(item) {
     return true;
 }
 
+function initializeConnectivityPreview(item) {
+    if (!window.L || !item?.coordinates) return;
+
+    const previewElement = document.getElementById('connectivity-map-preview-canvas');
+    const themeColor = getComputedStyle(document.body).getPropertyValue('--theme-primary').trim() || '#7b263a';
+    if (!connectivityPreviewMap) {
+        connectivityPreviewMap = window.L.map(previewElement, {
+            attributionControl: true,
+            boxZoom: false,
+            dragging: false,
+            doubleClickZoom: false,
+            keyboard: false,
+            scrollWheelZoom: false,
+            touchZoom: false,
+            zoomControl: false
+        }).setView([item.coordinates.lat, item.coordinates.lon], 14);
+        window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>'
+        }).addTo(connectivityPreviewMap);
+    } else {
+        connectivityPreviewMap.setView([item.coordinates.lat, item.coordinates.lon], 14);
+        connectivityPreviewMarker?.remove();
+    }
+
+    connectivityPreviewMarker = window.L.circleMarker([item.coordinates.lat, item.coordinates.lon], {
+        radius: 9,
+        color: '#fff',
+        weight: 3,
+        fillColor: themeColor,
+        fillOpacity: 1
+    }).addTo(connectivityPreviewMap);
+    connectivityPreviewMarker.bindTooltip(item.name);
+    requestAnimationFrame(() => connectivityPreviewMap.invalidateSize());
+}
+
 function renderConnectivityDestinationMarker(place) {
     const themeColor = getComputedStyle(document.body).getPropertyValue('--theme-primary').trim() || '#7b263a';
     const destinationMarker = window.L.circleMarker([place.coordinates.lat, place.coordinates.lon], {
@@ -845,6 +894,8 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
     document.getElementById('catalog-view').style.display = 'none';
     document.getElementById('property-detail-view').style.display = 'block';
     document.body.removeAttribute('data-property-route-loading');
+    if (connectivityPreviewMap) initializeConnectivityPreview(item);
+    else if (!connectivityPreviewObserver) initializeConnectivityPreview(item);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 

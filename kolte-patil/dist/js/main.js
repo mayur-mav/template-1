@@ -12,6 +12,10 @@ let connectivityRouteRequestId = 0;
 let connectivityPreviewMap = null;
 let connectivityPreviewMarker = null;
 let connectivityPreviewObserver = null;
+let projectGalleryImages = [];
+let currentGalleryCategory = 'photo';
+let currentGalleryIndex = 0;
+let projectGalleryTrigger = null;
 const connectivityRouteCache = new Map();
 let initialDocumentTitle = document.body.dataset.homeTitle || document.title;
 let initialMetaDescription = document.body.dataset.homeDescription || document.querySelector('meta[name="description"]')?.content || '';
@@ -77,6 +81,41 @@ document.addEventListener('DOMContentLoaded', async () => {
         const detailsButton = event.target.closest('[data-details-project]');
         if (detailsButton) openPropertyDetails(detailsButton.dataset.detailsProject);
     });
+    document.getElementById('projectGalleryPreview')?.addEventListener('click', event => openProjectGallery(event.currentTarget));
+    document.getElementById('projectGalleryClose')?.addEventListener('click', closeProjectGallery);
+    document.getElementById('projectGalleryDialog')?.addEventListener('click', event => {
+        if (event.target === event.currentTarget) closeProjectGallery();
+    });
+    document.querySelector('.project-gallery-tabs')?.addEventListener('click', event => {
+        const tab = event.target.closest('[data-gallery-category]');
+        if (tab) setProjectGalleryCategory(tab.dataset.galleryCategory);
+    });
+    document.querySelector('.project-gallery-tabs')?.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+        const tabs = [...document.querySelectorAll('.project-gallery-tab:not([hidden])')];
+        const index = tabs.indexOf(event.target);
+        if (index < 0 || tabs.length < 2) return;
+        event.preventDefault();
+        event.stopPropagation();
+        const nextTab = tabs[(index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length];
+        setProjectGalleryCategory(nextTab.dataset.galleryCategory);
+        nextTab.focus();
+    });
+    document.getElementById('projectGalleryThumbnails')?.addEventListener('click', event => {
+        const thumbnail = event.target.closest('[data-gallery-index]');
+        if (thumbnail) selectProjectGalleryImage(Number(thumbnail.dataset.galleryIndex));
+    });
+    document.getElementById('projectGalleryPrevious')?.addEventListener('click', () => changeProjectGalleryImage(-1));
+    document.getElementById('projectGalleryNext')?.addEventListener('click', () => changeProjectGalleryImage(1));
+    document.getElementById('projectGalleryDialog')?.addEventListener('close', () => {
+        document.getElementById('projectGalleryCurrentImage').removeAttribute('src');
+        document.getElementById('projectGalleryThumbnails').replaceChildren();
+        if (projectGalleryTrigger?.isConnected) projectGalleryTrigger.focus();
+        projectGalleryTrigger = null;
+    });
+    document.addEventListener('copy', event => {
+        if (document.getElementById('projectGalleryDialog')?.open) event.preventDefault();
+    });
     const connectivityPreview = document.getElementById('connectivity-map-preview-canvas');
     if (connectivityPreview && 'IntersectionObserver' in window) {
         connectivityPreviewObserver = new IntersectionObserver(entries => {
@@ -103,6 +142,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (event.key === 'Escape' && !document.getElementById('connectivity-map')?.hidden) {
             closeConnectivityMap();
         }
+        const galleryDialog = document.getElementById('projectGalleryDialog');
+        if (!galleryDialog?.open) return;
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            closeProjectGallery();
+        } else if (event.key === 'ArrowLeft') changeProjectGalleryImage(-1);
+        else if (event.key === 'ArrowRight') changeProjectGalleryImage(1);
     });
     document.getElementById('primaryNavigation')?.addEventListener('click', event => {
         const clickedLink = event.target.closest('.nav-link');
@@ -942,6 +988,127 @@ function renderProjectComparison(item) {
     section.hidden = projects.length < 2;
 }
 
+function getProjectGalleryImages(item) {
+    const galleryImages = (item.images || [])
+        .filter(image => typeof image === 'string' && image.trim())
+        .map((src, index) => ({ src, alt: `${item.name} project image ${index + 1}`, type: 'photo' }));
+    const thumbnail = item.thumbnail && !galleryImages.some(image => image.src === item.thumbnail)
+        ? [{ src: item.thumbnail, alt: `${item.name} project thumbnail`, type: 'photo' }]
+        : [];
+    const floorPlanImages = (item.floorPlans || [])
+        .filter(plan => typeof plan.image === 'string' && plan.image.trim())
+        .map(plan => ({ src: plan.image, alt: `${item.name} ${plan.bhk} floor plan`, type: 'floor-plan' }));
+    return [...thumbnail, ...galleryImages, ...floorPlanImages];
+}
+
+function renderProjectGallery(item) {
+    const section = document.getElementById('dt-project-gallery');
+    projectGalleryImages = getProjectGalleryImages(item);
+    const preview = projectGalleryImages.find(image => image.type === 'photo') || projectGalleryImages[0];
+    const previewImage = document.getElementById('projectGalleryPreviewImage');
+    previewImage.src = preview?.src || '';
+    previewImage.alt = preview?.alt || '';
+    document.getElementById('projectGalleryImageCount').textContent =
+        `${projectGalleryImages.length} ${projectGalleryImages.length === 1 ? 'image' : 'images'} · Project photos and floor plans`;
+    section.hidden = projectGalleryImages.length === 0;
+}
+
+function getGalleryCategoryImages(category = currentGalleryCategory) {
+    return projectGalleryImages.filter(image => image.type === category);
+}
+
+function openProjectGallery(trigger) {
+    const dialog = document.getElementById('projectGalleryDialog');
+    if (!dialog || dialog.open || !projectGalleryImages.length) return;
+    projectGalleryTrigger = trigger;
+    document.getElementById('projectGalleryTitle').textContent = activeProperty?.name || 'Project Gallery';
+    dialog.showModal();
+    const initialCategory = projectGalleryImages.some(image => image.type === 'photo') ? 'photo' : 'floor-plan';
+    setProjectGalleryCategory(initialCategory);
+    document.getElementById('projectGalleryClose').focus();
+}
+
+function setProjectGalleryCategory(category) {
+    const selectedCategory = category === 'floor-plan' ? 'floor-plan' : 'photo';
+    const images = getGalleryCategoryImages(selectedCategory);
+    if (!images.length) return;
+    currentGalleryCategory = selectedCategory;
+    currentGalleryIndex = 0;
+    document.getElementById('projectGalleryDialog').classList.toggle('is-floor-plan', selectedCategory === 'floor-plan');
+
+    const projectTab = document.getElementById('projectGalleryProjectTab');
+    const floorPlanTab = document.getElementById('projectGalleryFloorPlanTab');
+    projectTab.hidden = !getGalleryCategoryImages('photo').length;
+    floorPlanTab.hidden = !getGalleryCategoryImages('floor-plan').length;
+    [projectTab, floorPlanTab].forEach(tab => {
+        const selected = tab.dataset.galleryCategory === selectedCategory;
+        tab.setAttribute('aria-selected', String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+    });
+    document.getElementById('projectGalleryViewer').setAttribute(
+        'aria-labelledby',
+        selectedCategory === 'photo' ? projectTab.id : floorPlanTab.id
+    );
+
+    const thumbnails = document.getElementById('projectGalleryThumbnails');
+    thumbnails.replaceChildren();
+    images.forEach((image, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = `project-gallery-thumbnail${selectedCategory === 'floor-plan' ? ' is-floor-plan' : ''}`;
+        button.dataset.galleryIndex = String(index);
+        button.setAttribute('aria-label', `Show ${image.alt}`);
+        button.setAttribute('aria-pressed', String(index === 0));
+        const thumbnailImage = document.createElement('img');
+        thumbnailImage.src = image.src;
+        thumbnailImage.alt = '';
+        thumbnailImage.loading = 'lazy';
+        thumbnailImage.decoding = 'async';
+        thumbnailImage.fetchPriority = 'low';
+        thumbnailImage.draggable = false;
+        button.appendChild(thumbnailImage);
+        thumbnails.appendChild(button);
+    });
+    updateProjectGalleryImage();
+}
+
+function selectProjectGalleryImage(index) {
+    const images = getGalleryCategoryImages();
+    if (!images[index]) return;
+    currentGalleryIndex = index;
+    updateProjectGalleryImage();
+}
+
+function updateProjectGalleryImage() {
+    const images = getGalleryCategoryImages();
+    const image = images[currentGalleryIndex];
+    if (!image) return;
+    const currentImage = document.getElementById('projectGalleryCurrentImage');
+    currentImage.src = image.src;
+    currentImage.alt = image.alt;
+    currentImage.loading = 'eager';
+    currentImage.decoding = 'async';
+    currentImage.fetchPriority = 'high';
+    currentImage.classList.toggle('is-floor-plan', currentGalleryCategory === 'floor-plan');
+    document.getElementById('projectGalleryCounter').textContent = `${currentGalleryIndex + 1} / ${images.length}`;
+    document.querySelectorAll('.project-gallery-thumbnail').forEach((thumbnail, index) => {
+        thumbnail.setAttribute('aria-pressed', String(index === currentGalleryIndex));
+        if (index === currentGalleryIndex) thumbnail.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    });
+}
+
+function changeProjectGalleryImage(direction) {
+    const images = getGalleryCategoryImages();
+    if (!images.length) return;
+    currentGalleryIndex = (currentGalleryIndex + direction + images.length) % images.length;
+    updateProjectGalleryImage();
+}
+
+function closeProjectGallery() {
+    const dialog = document.getElementById('projectGalleryDialog');
+    if (dialog?.open) dialog.close();
+}
+
 function goToProjectEnquiry(projectId) {
     if (!selectEnquiryProject(projectId)) return;
     navigateToCatalogSection('contact');
@@ -996,6 +1163,7 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
         element.append(badge);
         return element;
     }));
+    renderProjectGallery(item);
 
     setImageSource(document.getElementById('dt-img-1'), item.images[0], { loading: 'eager', priority: 'high' });
     setImageSource(document.getElementById('dt-img-2'), item.images[1], { loading: 'eager' });
@@ -1400,17 +1568,6 @@ function handleFormSubmit(e) {
     alert('Your request has been registered. Our sales representative will contact you within 15 minutes.');
 }
 
-// LIGHTBOX GALLERY
-function openLightbox(index) {
-    if (!activeProperty || !activeProperty.images[index]) return;
-    setImageSource(document.getElementById('lightboxImg'), activeProperty.images[index], { loading: 'eager' });
-    document.getElementById('lightboxModal').classList.add('active');
-}
-
-function closeLightbox() {
-    document.getElementById('lightboxModal').classList.remove('active');
-}
-
 // EXPOSE FUNCTIONS TO GLOBAL SCOPE FOR HTML INLINE ONCLICK HANDLERS
 Object.assign(window, {
     movePropertyCarousel,
@@ -1434,7 +1591,5 @@ Object.assign(window, {
     closeModal,
     openWhatsAppModal,
     sendWhatsAppLead,
-    handleFormSubmit,
-    openLightbox,
-    closeLightbox
+    handleFormSubmit
 });

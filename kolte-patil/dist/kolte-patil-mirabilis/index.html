@@ -261,15 +261,14 @@
 
             <!-- 3 IMAGE SHOWCASE GRID -->
             <div class="image-gallery-grid">
-                <div class="gallery-item gallery-item-1" onclick="openLightbox(0)">
+                <div class="gallery-item gallery-item-1">
                     <img id="dt-img-1" src="https://media.justflip.in/builder-brand-pages/kolte-patil/kolte-patil-mirabilis/gallery/exterior-view.webp" alt="Kolte Patil Mirabilis exterior in Bengaluru" loading="lazy" decoding="async">
                 </div>
-                <div class="gallery-item" onclick="openLightbox(1)">
+                <div class="gallery-item">
                     <img id="dt-img-2" src="https://media.justflip.in/builder-brand-pages/kolte-patil/kolte-patil-mirabilis/gallery/interior-view.webp" alt="Kolte Patil Mirabilis interior in Bengaluru" loading="lazy" decoding="async">
                 </div>
-                <div class="gallery-item" onclick="openLightbox(2)">
+                <div class="gallery-item">
                     <img id="dt-img-3" src="https://media.justflip.in/builder-brand-pages/kolte-patil/kolte-patil-mirabilis/gallery/amenities.webp" alt="Kolte Patil Mirabilis amenities in Bengaluru" loading="lazy" decoding="async">
-                    <div class="gallery-overlay-btn"><i class="fa-solid fa-expand"></i> View Fullscreen</div>
                 </div>
             </div>
 
@@ -312,6 +311,18 @@
                 <h3 class="section-block-title">Architectural Overview</h3>
                 <div id="dt-description"><p class="overview-text">Kolte Patil Mirabilis is a ready-to-move residential project in Horamavu, North-East Bengaluru. Set across 7 acres, this Kolte Patil community has seven high-rise towers and 640 homes, with 1, 2, 2.5, 3, and 4-bedroom configurations listed. Landscaped open areas and four-storey indoor tree atriums bring greenery into the development, while the range of home sizes gives buyers options to compare when searching for Kolte Patil apartments in Bangalore.</p>
                     <p class="overview-text">Amenities include a clubhouse and party lawn, swimming and kids’ splash pools, gym, basketball and volleyball courts, cricket practice pitch, skating rink, indoor games, squash court, and outdoor amphitheatre. Horamavu provides access to Outer Ring Road, Manyata Tech Park, Hebbal, K.R. Puram Railway Station, schools, and shopping. Explore Kolte Patil Mirabilis project details, listed apartment configurations, available floor plan information, amenities, and pricing. <span class="overview-rera"><strong>RERA Registration No.</strong> <span>PRM/KA/RERA/1251/446/PR/170922/000838</span></span></p></div>
+
+                <section class="project-gallery-section" id="dt-project-gallery" aria-labelledby="dt-project-gallery-title" hidden>
+                    <h3 class="section-block-title" id="dt-project-gallery-title">Project Gallery</h3>
+                    <p class="project-gallery-description">Browse project photos and available floor plans.</p>
+                    <button class="project-gallery-preview" id="projectGalleryPreview" type="button" aria-haspopup="dialog">
+                        <img id="projectGalleryPreviewImage" src="" alt="" loading="lazy" decoding="async">
+                        <span class="project-gallery-preview-overlay">
+                            <span class="project-gallery-image-count" id="projectGalleryImageCount"></span>
+                            <span class="project-gallery-preview-action"><i class="fa-solid fa-images" aria-hidden="true"></i> View gallery</span>
+                        </span>
+                    </button>
+                </section>
 
                 <!-- INTERACTIVE FLOOR PLAN SELECTOR -->
                 <h3 class="section-block-title">Floor Plans & Pricing</h3>
@@ -452,15 +463,41 @@
         </div>
     </div>
 
+    <dialog class="project-gallery-dialog" id="projectGalleryDialog" aria-labelledby="projectGalleryTitle">
+        <div class="project-gallery-dialog-content">
+            <header class="project-gallery-dialog-header">
+                <div>
+                    <span class="connectivity-map-eyebrow">PROJECT GALLERY</span>
+                    <h2 id="projectGalleryTitle"></h2>
+                </div>
+                <button class="project-gallery-close" id="projectGalleryClose" type="button" aria-label="Close gallery">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+            </header>
+            <div class="project-gallery-tabs" role="tablist" aria-label="Gallery category">
+                <button class="project-gallery-tab" id="projectGalleryProjectTab" type="button" role="tab" aria-selected="true" aria-controls="projectGalleryViewer" data-gallery-category="photo">Project Images</button>
+                <button class="project-gallery-tab" id="projectGalleryFloorPlanTab" type="button" role="tab" aria-selected="false" aria-controls="projectGalleryViewer" data-gallery-category="floor-plan">Floor Plans</button>
+            </div>
+            <div class="project-gallery-viewer" id="projectGalleryViewer" role="tabpanel" aria-labelledby="projectGalleryProjectTab">
+                <div class="project-gallery-main">
+                    <button class="project-gallery-nav project-gallery-previous" id="projectGalleryPrevious" type="button" aria-label="Previous image">
+                        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                    </button>
+                    <img class="project-gallery-current-image" id="projectGalleryCurrentImage" src="" alt="" decoding="async" draggable="false">
+                    <button class="project-gallery-nav project-gallery-next" id="projectGalleryNext" type="button" aria-label="Next image">
+                        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                    </button>
+                    <span class="project-gallery-counter" id="projectGalleryCounter" aria-live="polite"></span>
+                </div>
+                <div class="project-gallery-thumbnails" id="projectGalleryThumbnails" aria-label="Gallery thumbnails"></div>
+            </div>
+        </div>
+    </dialog>
+
     <!-- FLOATING WHATSAPP BUTTON -->
     <a href="#" class="floating-wa-btn" aria-label="Contact us on WhatsApp" onclick="openWhatsAppModal(); return false;">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
-
-    <!-- FULLSCREEN LIGHTBOX MODAL -->
-    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
-        <img id="lightboxImg" src="" alt="Full View" class="lightbox-img" loading="lazy" decoding="async">
-    </div>
 
     <section class="connectivity-map" id="connectivity-map" aria-labelledby="connectivity-map-title" aria-modal="true" role="dialog" hidden>
         <header class="connectivity-map-header">

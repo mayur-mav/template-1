@@ -19,13 +19,15 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="css/styles.css">
     <meta property="og:title" content="Century Bliss in Bengaluru | Century Real Estate">
     <meta property="og:description" content="Explore Century Bliss by Century Real Estate in Bengaluru. 2, 2.5 &amp; 3 Bed Homes. View prices, floor plans, amenities, and possession details.">
     <meta property="og:type" content="website">
     <link rel="preload" as="image" href="https://media.justflip.in/builder-brand-pages/century/banner.webp" fetchpriority="high">
 </head>
-<body data-property-route-loading="true" data-home-title="Century Real Estate in Bengaluru | Projects &amp; Apartments" data-home-description="Explore Century Real Estate apartments and homes in Bengaluru. Compare projects, locations, floor plans, prices, and amenities, and enquire about a site visit." data-builder="century">
+<body data-property-route-loading="true" data-home-title="Century Real Estate in Bengaluru | Projects &amp; Apartments" data-home-description="Explore Century Real Estate apartments and homes in Bengaluru. Compare projects, locations, floor plans, prices, and amenities, and enquire about a site visit." data-builder="century" data-home-builder="Century Real Estate">
 
     <!-- 1. TOP CONTACT STRIP -->
     <div class="top-ticker">
@@ -247,10 +249,9 @@
                 <div>
                     <div class="detail-name-line">
                         <h1 class="detail-title" id="dt-title">Century Bliss</h1>
-                    <details class="rera-details" id="dt-rera-details" hidden>
-                        <summary><i class="fa-solid fa-circle-check" aria-hidden="true"></i> RERA Verified</summary>
-                        <div class="rera-number" id="dt-rera-value"></div>
-                    </details>
+                    <span class="rera-details" id="dt-rera-details" hidden>
+                        <i class="fa-solid fa-circle-check" aria-hidden="true"></i> RERA Verified
+                    </span>
                     </div>
                     <div class="detail-location-str" id="dt-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Yelahanka - Doddaballapura Main Road, North Bengaluru, Karnataka 562163</div>
                 </div>
@@ -262,15 +263,15 @@
 
             <!-- 3 IMAGE SHOWCASE GRID -->
             <div class="image-gallery-grid">
-                <div class="gallery-item gallery-item-1" onclick="openLightbox(0)">
+                <div class="gallery-item gallery-item-1">
                     <img id="dt-img-1" src="https://media.justflip.in/builder-brand-pages/century/century-bliss/gallery/exterior-view.webp" alt="Century Bliss exterior in Bengaluru" loading="lazy" decoding="async">
                 </div>
-                <div class="gallery-item" onclick="openLightbox(1)">
+                <div class="gallery-item">
                     <img id="dt-img-2" src="https://media.justflip.in/builder-brand-pages/century/century-bliss/gallery/interior-view.webp" alt="Century Bliss interior in Bengaluru" loading="lazy" decoding="async">
                 </div>
-                <div class="gallery-item" onclick="openLightbox(2)">
+                <div class="gallery-item">
                     <img id="dt-img-3" src="https://media.justflip.in/builder-brand-pages/century/century-bliss/gallery/amenities.webp" alt="Century Bliss amenities in Bengaluru" loading="lazy" decoding="async">
-                    <div class="gallery-overlay-btn"><i class="fa-solid fa-expand"></i> View Fullscreen</div>
+                    
                 </div>
             </div>
 
@@ -314,6 +315,18 @@
                 <div id="dt-description"><p class="overview-text">Century Bliss by Century Real Estate is a thoughtfully planned residential community located on the Yelahanka-Doddaballapura Main Road. Spread across 4.25 acres with 75% landscaped open spaces, the development features 2 residential towers with 194 thoughtfully designed 2, 2.5, and 3-bed homes, complemented by a 26,000+ sq. ft. multi-level clubhouse and an attached commercial hub. Buyers researching Century developers in Bangalore can explore Century Real Estate homes in North Bengaluru, with project status, location, and configuration details available to compare.</p>
                     <p class="overview-text">Century Bliss is listed with 2, 2.5 &amp; 3 Bed Homes across 4.2 Acres, with new launch status and possession shown as April 2031. Listed floor plan options include 2-BED RESIDENCES, 2.5-BED RESIDENCES and 3-BED RESIDENCES. Residents can explore amenities such as 26,000+ sq. ft. Multi-Level Clubhouse, Swimming Pool &amp; Kids Pool, Fully Equipped Modern Gymnasium and Yoga &amp; Activity Zone, with nearby destinations including Doddaballapura Industrial Zone (10 mins), Foxconn Facility (20 mins) and Satellite Town Ring Road (STRR) (15 mins). Review this Century Real Estate project’s floor plans, amenities, and connectivity when comparing homes in Bengaluru. <span class="overview-rera"><strong>RERA Registration No.</strong> <span>PRM/KA/RERA/1250/301/PR/210426/008595</span></span></p></div>
 
+                <section class="project-gallery-section" id="dt-project-gallery" aria-labelledby="dt-project-gallery-title" hidden>
+                    <h3 class="section-block-title" id="dt-project-gallery-title">Project Gallery</h3>
+                    <p class="project-gallery-description">Browse project photos and available floor plans.</p>
+                    <button class="project-gallery-preview" id="projectGalleryPreview" type="button" aria-haspopup="dialog">
+                        <img id="projectGalleryPreviewImage" src="" alt="" loading="lazy" decoding="async">
+                        <span class="project-gallery-preview-overlay">
+                            <span class="project-gallery-image-count" id="projectGalleryImageCount"></span>
+                            <span class="project-gallery-preview-action"><i class="fa-solid fa-images" aria-hidden="true"></i> View gallery</span>
+                        </span>
+                    </button>
+                </section>
+
                 <!-- INTERACTIVE FLOOR PLAN SELECTOR -->
                 <h3 class="section-block-title">Floor Plans & Pricing</h3>
                 <div class="floorplan-container">
@@ -350,9 +363,29 @@
 
                 <!-- Project-specific connectivity is rendered from the selected project data -->
                 <div class="connectivity-section" id="dt-connectivity-section" hidden>
-                    <h3 class="section-block-title">Strategic Connectivity</h3>
-                    <div class="location-matrix" id="dt-connectivity"></div>
+                    <div class="connectivity-heading">
+                        <h3 class="section-block-title">Strategic Connectivity</h3>
+                    </div>
+                    <div class="connectivity-overview">
+                        <div class="connectivity-map-preview">
+                            <div id="connectivity-map-preview-canvas" class="connectivity-map-preview-canvas" role="img" aria-label="Map preview of the property location"></div>
+                            <button class="connectivity-map-trigger" id="connectivity-map-open" type="button">
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                                Show on Map
+                            </button>
+                        </div>
+                        <div class="connectivity-destinations">
+                            <h4>Nearby Destinations</h4>
+                            <div class="location-matrix" id="dt-connectivity"></div>
+                        </div>
+                    </div>
                 </div>
+
+                <section class="project-comparison-section" id="dt-project-comparison" aria-labelledby="dt-project-comparison-title" hidden>
+                    <h3 class="section-block-title" id="dt-project-comparison-title">Compare Similar Projects</h3>
+                    <p class="project-comparison-intro">Compare this project with other Century Real Estate homes before you decide.</p>
+                    <div class="project-comparison-grid" id="dt-project-comparison-grid"></div>
+                </section>
             </div>
 
             <!-- STICKY SIDEBAR ENQUIRY FORM -->
@@ -438,11 +471,82 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- FULLSCREEN LIGHTBOX MODAL -->
-    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
-        <img id="lightboxImg" src="" alt="Full View" class="lightbox-img" loading="lazy" decoding="async">
-    </div>
+    <dialog class="project-gallery-dialog" id="projectGalleryDialog" aria-labelledby="projectGalleryTitle">
+        <div class="project-gallery-dialog-content">
+            <div class="project-gallery-dialog-header">
+                <div>
+                    <span class="connectivity-map-eyebrow">PROJECT VISUALS</span>
+                    <h2 id="projectGalleryTitle">Project Gallery</h2>
+                </div>
+                <button class="project-gallery-close" id="projectGalleryClose" type="button" aria-label="Close gallery">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="project-gallery-tabs" role="tablist" aria-label="Gallery media categories">
+                <button class="project-gallery-tab" id="projectGalleryProjectTab" type="button" role="tab" aria-selected="true" data-gallery-category="photo">
+                    Project Photos
+                </button>
+                <button class="project-gallery-tab" id="projectGalleryFloorPlanTab" type="button" role="tab" aria-selected="false" data-gallery-category="floor-plan" tabindex="-1">
+                    Floor Plans
+                </button>
+            </div>
+            <div class="project-gallery-viewer" id="projectGalleryViewer" role="region" aria-roledescription="carousel" aria-label="Gallery viewer">
+                <div class="project-gallery-main">
+                    <button class="project-gallery-nav project-gallery-previous" id="projectGalleryPrevious" type="button" aria-label="Previous image">
+                        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                    </button>
+                    <img class="project-gallery-current-image" id="projectGalleryCurrentImage" src="" alt="" decoding="async" draggable="false">
+                    <button class="project-gallery-nav project-gallery-next" id="projectGalleryNext" type="button" aria-label="Next image">
+                        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                    </button>
+                    <span class="project-gallery-counter" id="projectGalleryCounter" aria-live="polite"></span>
+                </div>
+                <div class="project-gallery-thumbnails" id="projectGalleryThumbnails" aria-label="Gallery thumbnails"></div>
+            </div>
+        </div>
+    </dialog>
 
+    <section class="connectivity-map" id="connectivity-map" aria-labelledby="connectivity-map-title" aria-modal="true" role="dialog" hidden>
+        <header class="connectivity-map-header">
+            <div class="connectivity-map-heading">
+                <span class="connectivity-map-eyebrow">LOCATION &amp; CONNECTIVITY</span>
+                <h2 id="connectivity-map-title">Connectivity map</h2>
+                <p id="connectivity-map-project"></p>
+            </div>
+            <label class="connectivity-map-search">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <span class="sr-only">Search listed destinations</span>
+                <input id="connectivity-map-search-input" type="search" placeholder="Search listed destinations" autocomplete="off">
+            </label>
+            <button class="connectivity-map-close" id="connectivity-map-close" type="button" aria-label="Close map">
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                <span>Back to property</span>
+            </button>
+        </header>
+        <div class="connectivity-map-layout">
+            <aside class="connectivity-map-sidebar" aria-label="Property connectivity">
+                <div class="connectivity-map-sidebar-heading">
+                    <h3>Listed destinations</h3>
+                    <span id="connectivity-map-count"></span>
+                </div>
+                <p class="connectivity-map-hint">Choose a destination from this property's connectivity list to view its route.</p>
+                <div class="connectivity-map-list" id="connectivity-map-list"></div>
+                <div class="connectivity-map-directions">
+                    <a id="connectivity-map-directions-link" href="#" target="_blank" rel="noopener noreferrer">
+                        Open directions in Google Maps
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                    </a>
+                    <small>Destinations come from this property's connectivity data. The route line is provided by OSRM; open Google Maps for turn-by-turn directions.</small>
+                </div>
+            </aside>
+            <div class="connectivity-map-canvas">
+                <div id="connectivity-map-canvas" class="connectivity-leaflet-map" role="application" aria-label="Map showing the property and selected destination"></div>
+                <p id="connectivity-map-route-status" class="connectivity-map-route-status" role="status" aria-live="polite"></p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script type="module" src="js/main.js"></script>
 </body>
 </html>

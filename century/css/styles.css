@@ -2362,7 +2362,7 @@ button {
 
 .emi-hero-amount {
     font-family: 'Outfit', sans-serif;
-    font-size: 2.35rem;
+    font-size: clamp(1.85rem, 2.2vw, 2.35rem);
     font-weight: 700;
     color: var(--brand-gold);
     line-height: 1;
@@ -2510,12 +2510,14 @@ button {
 .emi-legend-title {
     color: var(--text-secondary);
     font-size: 0.78rem;
+    white-space: nowrap;
 }
 
 .emi-legend-value {
     color: var(--text-primary);
     font-size: 0.95rem;
     font-variant-numeric: tabular-nums;
+    white-space: nowrap;
 }
 
 .emi-legend-pct {
@@ -2570,7 +2572,7 @@ button {
     color: var(--brand-bronze);
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
     .emi-calculator-container {
         grid-template-columns: 1fr;
         gap: 24px;
@@ -2578,7 +2580,34 @@ button {
     }
 
     .emi-chart-box {
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+        padding: 24px 20px;
+    }
+
+    .emi-donut-wrapper {
+        margin: 0 auto;
+    }
+
+    .emi-chart-legend {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px 36px;
+        width: 100%;
+        max-width: 520px;
+    }
+
+    .emi-legend-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-align: left;
     }
 }
 
@@ -2598,17 +2627,16 @@ button {
     }
 
     .emi-chart-box {
-        flex-direction: column;
-        text-align: center;
+        padding: 18px 14px;
+        gap: 16px;
     }
 
     .emi-chart-legend {
-        width: 100%;
-        align-items: center;
+        gap: 12px 20px;
     }
 
     .emi-legend-item {
-        justify-content: center;
+        font-size: 0.8rem;
     }
 
     .emi-val-display {

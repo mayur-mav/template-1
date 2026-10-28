@@ -180,6 +180,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderBuilderFooter(module.developerInfo?.hero, propertiesData);
 
         renderPropertyCards(propertiesData);
+        initEmiCalculator();
         restorePropertyRoute();
     } catch (err) {
         console.error(`Failed to load data for builder "${builder}":`, err);
@@ -1177,6 +1178,7 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
     });
     populatePreferredBhk(item.floorPlans || []);
     switchFloorplan(item.floorPlans[0], fpTabs.firstChild);
+    syncEmiCalculatorWithProperty(item);
 
     const amenGrid = document.getElementById('dt-amenities');
     amenGrid.innerHTML = '';
@@ -1518,6 +1520,7 @@ function switchFloorplan(fp, btn) {
         if (placeholder) placeholder.innerHTML = '<i class="fa-solid fa-map" style="font-size: 2.5rem; margin-bottom: 8px;"></i><span>Master Floor Layout Blueprint</span>';
     }
     setPreferredBhk(fp.bhk);
+    syncEmiCalculatorWithFloorPlan(fp);
 }
 
 function setPreferredBhk(bhk) {
@@ -1566,6 +1569,321 @@ function handleFormSubmit(e) {
     alert('Your request has been registered. Our sales representative will contact you within 15 minutes.');
 }
 
+// ==================== HOME LOAN EMI CALCULATOR ====================
+let emiBasePrice = 31500000;
+let emiCurrentPropertyName = 'Lodha Mirabelle';
+let emiUserModifiedPrice = false;
+
+function parseIndianPrice(priceStr) {
+    if (!priceStr || typeof priceStr !== 'string') return null;
+    const clean = priceStr.replace(/,/g, '').trim();
+    const crMatch = clean.match(/([\d.]+)\s*(?:cr|crore)/i);
+    if (crMatch) {
+        const val = parseFloat(crMatch[1]);
+        if (!isNaN(val) && val > 0) return Math.round(val * 10000000);
+    }
+    const lMatch = clean.match(/([\d.]+)\s*(?:l|lac|lakh|lakhs)/i);
+    if (lMatch) {
+        const val = parseFloat(lMatch[1]);
+        if (!isNaN(val) && val > 0) return Math.round(val * 100000);
+    }
+    const numMatch = clean.match(/(\d+)/);
+    if (numMatch) {
+        const val = parseInt(numMatch[1], 10);
+        if (!isNaN(val) && val > 0) return val;
+    }
+    return null;
+}
+
+function formatINR(val) {
+    if (isNaN(val) || val === null || val === undefined) return '₹0';
+    return '₹' + Math.round(val).toLocaleString('en-IN');
+}
+
+function formatINRShort(val) {
+    if (isNaN(val) || val <= 0) return '₹0';
+    if (val >= 10000000) {
+        const cr = (val / 10000000).toFixed(2).replace(/\.00$/, '').replace(/(\.[1-9])0$/, '$1');
+        return `₹${cr} Cr`;
+    }
+    if (val >= 100000) {
+        const l = (val / 100000).toFixed(2).replace(/\.00$/, '').replace(/(\.[1-9])0$/, '$1');
+        return `₹${l} Lakh`;
+    }
+    return '₹' + Math.round(val).toLocaleString('en-IN');
+}
+
+function calculateEmi(principal, annualRate, tenureYears) {
+    if (principal <= 0 || tenureYears <= 0) {
+        return { emi: 0, totalPayment: 0, totalInterest: 0, principalPct: 50, interestPct: 50 };
+    }
+    const r = (annualRate / 12) / 100;
+    const n = tenureYears * 12;
+    if (r === 0) {
+        const emi = Math.round(principal / n);
+        return { emi, totalPayment: principal, totalInterest: 0, principalPct: 100, interestPct: 0 };
+    }
+    const factor = Math.pow(1 + r, n);
+    const emi = Math.round(principal * r * (factor / (factor - 1)));
+    const totalPayment = emi * n;
+    const totalInterest = Math.max(0, totalPayment - principal);
+    const principalPct = totalPayment > 0 ? (principal / totalPayment) * 100 : 50;
+    const interestPct = totalPayment > 0 ? (totalInterest / totalPayment) * 100 : 50;
+    return { emi, totalPayment, totalInterest, principalPct, interestPct };
+}
+
+function getPropertySliderLimits(price) {
+    if (!price || price <= 0) return { min: 2500000, max: 250000000, step: 100000 };
+    let min, max, step;
+    if (price < 15000000) {
+        min = Math.max(2500000, Math.floor((price * 0.4) / 500000) * 500000);
+        max = Math.ceil((price * 2.5) / 2500000) * 2500000;
+        step = 100000;
+    } else if (price < 50000000) {
+        min = Math.floor((price * 0.4) / 1000000) * 1000000;
+        max = Math.ceil((price * 2.2) / 5000000) * 5000000;
+        step = 100000;
+    } else {
+        min = Math.floor((price * 0.4) / 2500000) * 2500000;
+        max = Math.ceil((price * 2.0) / 10000000) * 10000000;
+        step = 500000;
+    }
+    return { min, max, step };
+}
+
+function updateSliderTrack(slider) {
+    if (!slider) return;
+    const min = parseFloat(slider.min) || 0;
+    const max = parseFloat(slider.max) || 100;
+    const val = parseFloat(slider.value) || 0;
+    const percentage = Math.max(0, Math.min(100, ((val - min) / (max - min)) * 100));
+    slider.style.background = `linear-gradient(to right, var(--brand-gold) 0%, var(--brand-gold) ${percentage}%, var(--border-light) ${percentage}%, var(--border-light) 100%)`;
+}
+
+function updateEmiCalculator() {
+    const propSlider = document.getElementById('emi-prop-slider');
+    const downSlider = document.getElementById('emi-down-slider');
+    const tenureSlider = document.getElementById('emi-tenure-slider');
+    const rateSlider = document.getElementById('emi-rate-slider');
+    if (!propSlider || !downSlider || !tenureSlider || !rateSlider) return;
+
+    const propVal = parseFloat(propSlider.value) || 0;
+    const downPct = parseFloat(downSlider.value) || 20;
+    const tenureYears = parseInt(tenureSlider.value, 10) || 20;
+    const rate = parseFloat(rateSlider.value) || 8.5;
+
+    const downPaymentAmt = Math.round(propVal * (downPct / 100));
+    const loanAmount = Math.max(0, propVal - downPaymentAmt);
+    const result = calculateEmi(loanAmount, rate, tenureYears);
+
+    const propDisplay = document.getElementById('emi-prop-display');
+    const propSub = document.getElementById('emi-prop-sub');
+    if (propDisplay) propDisplay.textContent = formatINR(propVal);
+    if (propSub) propSub.textContent = `(${formatINRShort(propVal)})`;
+
+    const downPctDisplay = document.getElementById('emi-down-pct-display');
+    const downAmtDisplay = document.getElementById('emi-down-amount-display');
+    if (downPctDisplay) downPctDisplay.textContent = `${Math.round(downPct)}%`;
+    if (downAmtDisplay) downAmtDisplay.textContent = formatINR(downPaymentAmt);
+
+    const loanAmountDisplay = document.getElementById('emi-loan-amount');
+    if (loanAmountDisplay) loanAmountDisplay.textContent = formatINR(loanAmount);
+
+    const tenureDisplay = document.getElementById('emi-tenure-display');
+    const tenureMonths = document.getElementById('emi-tenure-months');
+    if (tenureDisplay) tenureDisplay.textContent = `${tenureYears} Years`;
+    if (tenureMonths) tenureMonths.textContent = `(${tenureYears * 12} Months)`;
+
+    const rateDisplay = document.getElementById('emi-rate-display');
+    if (rateDisplay) rateDisplay.textContent = `${rate.toFixed(2)}%`;
+
+    const monthlyOutput = document.getElementById('emi-monthly-output');
+    if (monthlyOutput) monthlyOutput.textContent = formatINR(result.emi);
+
+    const heroFootnote = document.getElementById('emi-hero-footnote');
+    if (heroFootnote) {
+        heroFootnote.textContent = `*For ${formatINRShort(loanAmount)} loan at ${rate.toFixed(2)}% for ${tenureYears} yrs`;
+    }
+
+    const tableDown = document.getElementById('emi-table-down');
+    const tableDownPct = document.getElementById('emi-table-down-pct');
+    if (tableDown) tableDown.textContent = formatINR(downPaymentAmt);
+    if (tableDownPct) tableDownPct.textContent = `(${Math.round(downPct)}%)`;
+
+    const tablePrincipal = document.getElementById('emi-table-principal');
+    const tableInterest = document.getElementById('emi-table-interest');
+    const tableTotal = document.getElementById('emi-table-total');
+    if (tablePrincipal) tablePrincipal.textContent = formatINR(loanAmount);
+    if (tableInterest) tableInterest.textContent = formatINR(result.totalInterest);
+    if (tableTotal) tableTotal.textContent = formatINR(result.totalPayment);
+
+    const donutCenterVal = document.getElementById('emi-donut-center-val');
+    if (donutCenterVal) donutCenterVal.textContent = formatINRShort(result.totalPayment);
+
+    const legendPrincipalVal = document.getElementById('emi-legend-principal-val');
+    const legendPrincipalPct = document.getElementById('emi-legend-principal-pct');
+    const legendInterestVal = document.getElementById('emi-legend-interest-val');
+    const legendInterestPct = document.getElementById('emi-legend-interest-pct');
+    if (legendPrincipalVal) legendPrincipalVal.textContent = formatINR(loanAmount);
+    if (legendPrincipalPct) legendPrincipalPct.textContent = `(${Math.round(result.principalPct)}%)`;
+    if (legendInterestVal) legendInterestVal.textContent = formatINR(result.totalInterest);
+    if (legendInterestPct) legendInterestPct.textContent = `(${Math.round(result.interestPct)}%)`;
+
+    const C = 238.761;
+    const principalDash = (result.principalPct / 100) * C;
+    const interestDash = (result.interestPct / 100) * C;
+
+    const donutPrincipal = document.getElementById('emi-donut-principal');
+    const donutInterest = document.getElementById('emi-donut-interest');
+    if (donutPrincipal) {
+        donutPrincipal.style.strokeDasharray = `${principalDash.toFixed(2)} ${C}`;
+        donutPrincipal.style.strokeDashoffset = '0';
+    }
+    if (donutInterest) {
+        donutInterest.style.strokeDasharray = `${interestDash.toFixed(2)} ${C}`;
+        donutInterest.style.strokeDashoffset = `-${principalDash.toFixed(2)}`;
+    }
+
+    updateSliderTrack(propSlider);
+    updateSliderTrack(downSlider);
+    updateSliderTrack(tenureSlider);
+    updateSliderTrack(rateSlider);
+}
+
+function syncEmiCalculatorWithProperty(property) {
+    if (!property) return;
+    emiCurrentPropertyName = property.name;
+    const parsed = parseIndianPrice(property.price);
+    if (parsed) {
+        emiBasePrice = parsed;
+    }
+    emiUserModifiedPrice = false;
+
+    const propSlider = document.getElementById('emi-prop-slider');
+    if (propSlider && parsed) {
+        const limits = getPropertySliderLimits(parsed);
+        propSlider.min = String(limits.min);
+        propSlider.max = String(limits.max);
+        propSlider.step = String(limits.step);
+        propSlider.value = String(parsed);
+
+        const minLbl = document.getElementById('emi-prop-min-lbl');
+        const maxLbl = document.getElementById('emi-prop-max-lbl');
+        if (minLbl) minLbl.textContent = formatINRShort(limits.min);
+        if (maxLbl) maxLbl.textContent = formatINRShort(limits.max);
+    }
+
+    const syncLabel = document.getElementById('emi-sync-property');
+    if (syncLabel) {
+        syncLabel.textContent = property.name;
+    }
+
+    updateEmiCalculator();
+}
+
+function syncEmiCalculatorWithFloorPlan(fp) {
+    if (!fp || emiUserModifiedPrice) return;
+    const parsed = parseIndianPrice(fp.price);
+    if (parsed) {
+        emiBasePrice = parsed;
+        const propSlider = document.getElementById('emi-prop-slider');
+        if (propSlider) {
+            const limits = getPropertySliderLimits(parsed);
+            propSlider.min = String(limits.min);
+            propSlider.max = String(limits.max);
+            propSlider.step = String(limits.step);
+            propSlider.value = String(parsed);
+
+            const minLbl = document.getElementById('emi-prop-min-lbl');
+            const maxLbl = document.getElementById('emi-prop-max-lbl');
+            if (minLbl) minLbl.textContent = formatINRShort(limits.min);
+            if (maxLbl) maxLbl.textContent = formatINRShort(limits.max);
+        }
+        const syncLabel = document.getElementById('emi-sync-property');
+        if (syncLabel && activeProperty) {
+            syncLabel.textContent = `${activeProperty.name} (${fp.bhk})`;
+        }
+        updateEmiCalculator();
+    }
+}
+
+function initEmiCalculator() {
+    const calcSection = document.getElementById('dt-emi-calculator');
+    if (!calcSection) return;
+
+    const propSlider = document.getElementById('emi-prop-slider');
+    const downSlider = document.getElementById('emi-down-slider');
+    const tenureSlider = document.getElementById('emi-tenure-slider');
+    const rateSlider = document.getElementById('emi-rate-slider');
+    const resetBtn = document.getElementById('emi-reset-price-btn');
+
+    if (propSlider) {
+        propSlider.addEventListener('input', () => {
+            emiUserModifiedPrice = true;
+            const syncLabel = document.getElementById('emi-sync-property');
+            if (syncLabel) {
+                syncLabel.textContent = `${emiCurrentPropertyName} (Custom Value)`;
+            }
+            updateEmiCalculator();
+        });
+    }
+
+    if (downSlider) {
+        downSlider.addEventListener('input', updateEmiCalculator);
+    }
+
+    if (tenureSlider) {
+        tenureSlider.addEventListener('input', () => {
+            const years = parseInt(tenureSlider.value, 10);
+            document.querySelectorAll('.emi-chip').forEach(chip => {
+                chip.classList.toggle('active', parseInt(chip.dataset.years, 10) === years);
+            });
+            updateEmiCalculator();
+        });
+    }
+
+    if (rateSlider) {
+        rateSlider.addEventListener('input', updateEmiCalculator);
+    }
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            emiUserModifiedPrice = false;
+            if (propSlider) {
+                const limits = getPropertySliderLimits(emiBasePrice);
+                propSlider.min = String(limits.min);
+                propSlider.max = String(limits.max);
+                propSlider.step = String(limits.step);
+                propSlider.value = String(emiBasePrice);
+
+                const minLbl = document.getElementById('emi-prop-min-lbl');
+                const maxLbl = document.getElementById('emi-prop-max-lbl');
+                if (minLbl) minLbl.textContent = formatINRShort(limits.min);
+                if (maxLbl) maxLbl.textContent = formatINRShort(limits.max);
+            }
+            const syncLabel = document.getElementById('emi-sync-property');
+            if (syncLabel) {
+                syncLabel.textContent = emiCurrentPropertyName;
+            }
+            updateEmiCalculator();
+        });
+    }
+
+    document.querySelectorAll('.emi-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+            document.querySelectorAll('.emi-chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            const years = parseInt(chip.dataset.years, 10);
+            if (tenureSlider) {
+                tenureSlider.value = String(years);
+            }
+            updateEmiCalculator();
+        });
+    });
+
+    updateEmiCalculator();
+}
+
 // EXPOSE FUNCTIONS TO GLOBAL SCOPE FOR HTML INLINE ONCLICK HANDLERS
 Object.assign(window, {
     movePropertyCarousel,
@@ -1589,5 +1907,6 @@ Object.assign(window, {
     closeModal,
     openWhatsAppModal,
     sendWhatsAppLead,
-    handleFormSubmit
+    handleFormSubmit,
+    updateEmiCalculator
 });

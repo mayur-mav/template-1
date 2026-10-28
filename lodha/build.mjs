@@ -44,6 +44,79 @@ function replaceElementContent(html, id, content) {
   return html.replace(elementPattern, `$1${content}$3`);
 }
 
+function parseIndianPrice(priceStr) {
+  if (!priceStr || typeof priceStr !== 'string') return null;
+  const clean = priceStr.replace(/,/g, '').trim();
+  const crMatch = clean.match(/([\d.]+)\s*(?:cr|crore)/i);
+  if (crMatch) {
+    const val = parseFloat(crMatch[1]);
+    if (!isNaN(val) && val > 0) return Math.round(val * 10000000);
+  }
+  const lMatch = clean.match(/([\d.]+)\s*(?:l|lac|lakh|lakhs)/i);
+  if (lMatch) {
+    const val = parseFloat(lMatch[1]);
+    if (!isNaN(val) && val > 0) return Math.round(val * 100000);
+  }
+  const numMatch = clean.match(/(\d+)/);
+  if (numMatch) {
+    const val = parseInt(numMatch[1], 10);
+    if (!isNaN(val) && val > 0) return val;
+  }
+  return null;
+}
+
+function formatINR(val) {
+  if (isNaN(val) || val === null || val === undefined) return '₹0';
+  return '₹' + Math.round(val).toLocaleString('en-IN');
+}
+
+function formatINRShort(val) {
+  if (isNaN(val) || val <= 0) return '₹0';
+  if (val >= 10000000) {
+    const cr = (val / 10000000).toFixed(2).replace(/\.00$/, '').replace(/(\.[1-9])0$/, '$1');
+    return `₹${cr} Cr`;
+  }
+  if (val >= 100000) {
+    const l = (val / 100000).toFixed(2).replace(/\.00$/, '').replace(/(\.[1-9])0$/, '$1');
+    return `₹${l} Lakh`;
+  }
+  return '₹' + Math.round(val).toLocaleString('en-IN');
+}
+
+function calculateEmi(principal, annualRate = 8.5, tenureYears = 20) {
+  if (principal <= 0 || tenureYears <= 0) {
+    return { emi: 0, totalPayment: 0, totalInterest: 0, principalPct: 50, interestPct: 50 };
+  }
+  const r = (annualRate / 12) / 100;
+  const n = tenureYears * 12;
+  const factor = Math.pow(1 + r, n);
+  const emi = Math.round(principal * r * (factor / (factor - 1)));
+  const totalPayment = emi * n;
+  const totalInterest = Math.max(0, totalPayment - principal);
+  const principalPct = totalPayment > 0 ? (principal / totalPayment) * 100 : 50;
+  const interestPct = totalPayment > 0 ? (totalInterest / totalPayment) * 100 : 50;
+  return { emi, totalPayment, totalInterest, principalPct, interestPct };
+}
+
+function getPropertySliderLimits(price) {
+  if (!price || price <= 0) return { min: 2500000, max: 250000000, step: 100000 };
+  let min, max, step;
+  if (price < 15000000) {
+    min = Math.max(2500000, Math.floor((price * 0.4) / 500000) * 500000);
+    max = Math.ceil((price * 2.5) / 2500000) * 2500000;
+    step = 100000;
+  } else if (price < 50000000) {
+    min = Math.floor((price * 0.4) / 1000000) * 1000000;
+    max = Math.ceil((price * 2.2) / 5000000) * 5000000;
+    step = 100000;
+  } else {
+    min = Math.floor((price * 0.4) / 2500000) * 2500000;
+    max = Math.ceil((price * 2.0) / 10000000) * 10000000;
+    step = 500000;
+  }
+  return { min, max, step };
+}
+
 function createRoutedHtml(route = '') {
   let html = sourceHtml.replace('<head>', `<head>\n    <base href="${basePath}">`);
   html = html.replace('<body ', `<body data-home-title="${escapeHtml(homeTitle)}" data-home-description="${escapeHtml(homeDescription)}" data-home-builder="${escapeHtml(brandName)}" `);
@@ -64,6 +137,31 @@ function createRoutedHtml(route = '') {
     html = replaceElementContent(html, 'dt-possession', escapeHtml(property.possession));
     html = replaceElementContent(html, 'dt-area', escapeHtml(property.area));
     html = replaceElementContent(html, 'dt-config', escapeHtml(property.bhk));
+    const parsedPrice = parseIndianPrice(property.price) || 15000000;
+    const loanAmt = Math.round(parsedPrice * 0.8);
+    const emiRes = calculateEmi(loanAmt, 8.5, 20);
+    const limits = getPropertySliderLimits(parsedPrice);
+    html = replaceElementContent(html, 'emi-sync-property', escapeHtml(property.name));
+    html = replaceElementContent(html, 'emi-prop-display', formatINR(parsedPrice));
+    html = replaceElementContent(html, 'emi-prop-sub', `(${formatINRShort(parsedPrice)})`);
+    html = replaceElementContent(html, 'emi-prop-min-lbl', formatINRShort(limits.min));
+    html = replaceElementContent(html, 'emi-prop-max-lbl', formatINRShort(limits.max));
+    html = replaceElementContent(html, 'emi-down-amount-display', formatINR(Math.round(parsedPrice * 0.2)));
+    html = replaceElementContent(html, 'emi-loan-amount', formatINR(loanAmt));
+    html = replaceElementContent(html, 'emi-monthly-output', formatINR(emiRes.emi));
+    html = replaceElementContent(html, 'emi-hero-footnote', `*For ${formatINRShort(loanAmt)} loan at 8.50% for 20 yrs`);
+    html = replaceElementContent(html, 'emi-table-down', formatINR(Math.round(parsedPrice * 0.2)));
+    html = replaceElementContent(html, 'emi-table-down-pct', '(20%)');
+    html = replaceElementContent(html, 'emi-table-principal', formatINR(loanAmt));
+    html = replaceElementContent(html, 'emi-table-interest', formatINR(emiRes.totalInterest));
+    html = replaceElementContent(html, 'emi-table-total', formatINR(emiRes.totalPayment));
+    html = replaceElementContent(html, 'emi-donut-center-val', formatINRShort(emiRes.totalPayment));
+    html = replaceElementContent(html, 'emi-legend-principal-val', formatINR(loanAmt));
+    html = replaceElementContent(html, 'emi-legend-principal-pct', `(${Math.round(emiRes.principalPct)}%)`);
+    html = replaceElementContent(html, 'emi-legend-interest-val', formatINR(emiRes.totalInterest));
+    html = replaceElementContent(html, 'emi-legend-interest-pct', `(${Math.round(emiRes.interestPct)}%)`);
+    html = html.replace(/id="emi-prop-slider"[^>]*>/i, `id="emi-prop-slider" min="${limits.min}" max="${limits.max}" step="${limits.step}" value="${parsedPrice}" aria-label="Property Value">`);
+
     const overviewHtml = createPropertyOverview(property)
       .map(renderOverviewParagraph)
       .join('\n                    ');

@@ -1,7 +1,7 @@
 import { cpSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { developerInfo, propertiesData } from './data/kolte-patil.js';
+import { createPropertyOverview, developerInfo, propertiesData } from './data/kolte-patil.js';
 
 const projectDir = dirname(fileURLToPath(import.meta.url));
 const outputDir = join(projectDir, 'dist');
@@ -162,7 +162,7 @@ function createRoutedHtml(route = '') {
     html = replaceElementContent(html, 'emi-legend-interest-pct', `(${Math.round(emiRes.interestPct)}%)`);
     html = html.replace(/id="emi-prop-slider"[^>]*>/i, `id="emi-prop-slider" min="${limits.min}" max="${limits.max}" step="${limits.step}" value="${parsedPrice}" aria-label="Property Value">`);
 
-    const overviewHtml = property.overview
+    const overviewHtml = createPropertyOverview(property)
       .map(renderOverviewParagraph)
       .join('\n                    ');
     html = replaceElementContent(html, 'dt-description', overviewHtml);

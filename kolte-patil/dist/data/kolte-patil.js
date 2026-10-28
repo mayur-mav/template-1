@@ -33,6 +33,34 @@ export const faqData = [
     }
 ];
 
+const overviewSearchTerms = [
+    'Kolte Patil developers in Bangalore',
+    'Kolte Patil Bangalore Electronic City',
+    'Kolte Patil builders in Bangalore',
+    'Kolte Patil in Bangalore'
+];
+
+function formatOverviewList(values) {
+    if (values.length < 2) return values[0] || '';
+    return `${values.slice(0, -1).join(', ')} and ${values[values.length - 1]}`;
+}
+
+export function createPropertyOverview(property) {
+    const projectIndex = propertiesData.findIndex(({ id }) => id === property.id);
+    const isElectronicCity = /electronic city/i.test(property.shortAddress || property.location);
+    const searchTerm = isElectronicCity
+        ? 'Kolte Patil Bangalore Electronic City'
+        : overviewSearchTerms[(projectIndex >= 0 ? projectIndex : 0) % overviewSearchTerms.length];
+    const floorPlans = formatOverviewList((property.floorPlans || []).slice(0, 3).map(({ bhk }) => bhk));
+    const amenities = formatOverviewList((property.amenities || []).slice(0, 4).map(({ name }) => name));
+    const nearbyPlaces = formatOverviewList((property.connectivity || []).slice(0, 3).map(({ label, distance }) => `${label} (${distance})`));
+
+    return [
+        `${property.description} Buyers researching ${searchTerm} can explore Kolte-Patil Developers homes in ${property.shortAddress}, with project status, location, and configuration details available to compare.`,
+        `${property.name} is listed with ${property.bhk} across ${property.area}, with ${property.statusText.toLowerCase()} status and possession shown as ${property.possession}. Listed floor plan options include ${floorPlans || property.bhk}. Residents can explore amenities such as ${amenities || 'the community’s listed lifestyle facilities'}, with nearby destinations including ${nearbyPlaces || property.shortAddress}. Review Kolte-Patil Developers floor plans, amenities, and connectivity when comparing homes in Bengaluru.${property.rera ? ` RERA registration number: ${property.rera.replace(/\.$/, '')}.` : ''}`
+    ];
+}
+
 export const propertiesData = [
     {
         id: 'kolte-patil-raaga',
@@ -49,10 +77,6 @@ export const propertiesData = [
         possession: 'Ready to Move',
         rera: 'PRM/KA/RERA/1251/446/PR/171014/000856',
         description: 'Kolte Patil Raaga is a ready-to-move residential community in Kannuru, off Hennur Main Road in North Bengaluru. The project offers thoughtfully planned 2 and 3 BHK apartments across 12 towers, with 590 homes, landscaped open spaces, and layouts designed for ventilation and privacy with no common walls. Residents can enjoy a clubhouse, swimming pool, gym, indoor games room, sports courts, and children’s play area. Its location connects residents to Manyata Tech Park, Outer Ring Road, Hebbal, and Kempegowda International Airport. Explore Kolte Patil Raaga apartments, floor plans, amenities, and current pricing.',
-        overview: [
-            'Kolte Patil Raaga is a ready-to-move residential project by Kolte-Patil Developers in Kannuru, off Hennur Main Road in North Bengaluru. For homebuyers comparing Kolte Patil apartments in Bangalore, Raaga offers 2 and 3 BHK homes in a community of 12 towers and 590 residences. The layouts are designed without common walls, with landscaped open spaces that add breathing room between buildings.',
-            'Residents have access to a clubhouse, swimming pool, gym, indoor games room, badminton and basketball courts, children’s play area, and landscaped courtyards. The Kannuru location connects the homes to Outer Ring Road, Manyata Tech Park, Elements Mall, Hebbal, and Kempegowda International Airport. Explore Kolte Patil Raaga floor plans, apartment configurations, amenities, and pricing to understand the available homes and their location. RERA registration number: PRM/KA/RERA/1251/446/PR/171014/000856.'
-        ],
         thumbnail: builderImage('kolte-patil/kolte-patil-raaga/thumbnail.webp'),
         images: [
             builderImage('kolte-patil/kolte-patil-raaga/gallery/exterior-view.webp'),
@@ -97,10 +121,6 @@ export const propertiesData = [
         possession: 'Ready to Move',
         rera: 'PRM/KA/RERA/1251/310/PR/171026/000862',
         description: 'I-Towers Exente by Kolte-Patil Developers is a ready-to-move high-rise residential project at the entrance to Electronic City Phase 1, Bengaluru. The development comprises five towers with 438 2 and 3 BHK residences, designed to capture open city views; more than 70% of the site is open space. Residents have access to a rooftop swimming pool and clubhouse, gym, yoga deck, sports courts, themed gardens, and the Aristotle digital library and study zone. Infosys, D-Mart, Hosur Road, and the Electronic City Metro Station are among the nearby destinations. Explore I-Towers Exente apartments, floor plans, amenities, and pricing.',
-        overview: [
-            'I-Towers Exente by Kolte-Patil Developers is a ready-to-move high-rise residential project at the entrance to Electronic City Phase 1, Bengaluru. Buyers looking for Kolte Patil homes in Bangalore’s Electronic City can explore 2 and 3 BHK residences across five towers, comprising 438 homes. The towers rise to 22 or 23 floors, and more than 70% of the development area is open space, with residences designed to take in open city views.',
-            'The project’s lifestyle facilities include a rooftop swimming pool and clubhouse, gym, yoga deck, squash and badminton courts, themed gardens, children’s play area, and the Aristotle digital library and study zone. Infosys, D-Mart, Hosur Road, IIIT Bangalore, and Electronic City Metro Station are among the nearby destinations. Review I-Towers Exente apartment configurations, floor plans, amenities, and pricing when comparing Kolte Patil projects in Bangalore. RERA registration number: PRM/KA/RERA/1251/310/PR/171026/000862.'
-        ],
         thumbnail: builderImage('kolte-patil/kolte-patil-i-towers-exente/thumbnail.webp'),
         images: [
             builderImage('kolte-patil/kolte-patil-i-towers-exente/gallery/exterior-view.webp'),
@@ -146,10 +166,6 @@ export const propertiesData = [
         possession: 'October 2021',
         rera: 'PRM/KA/RERA/1251/446/PR/170922/000838',
         description: 'Kolte Patil Mirabilis is a ready-to-move residential community in Horamavu, North-East Bengaluru. Set among landscaped open areas, the project has seven high-rise towers and 640 homes, with 1, 2, 2.5, 3, and 4-bedroom configurations listed. Amenities include a clubhouse, swimming and kids’ pools, gym, basketball and volleyball courts, cricket practice pitch, skating rink, indoor games, and garden atriums. The Horamavu location offers access to Outer Ring Road, Manyata Tech Park, K.R. Puram Railway Station, and Hebbal, with nearby schools and shopping. View Kolte Patil Mirabilis apartments, available floor plan details, amenities, and pricing.',
-        overview: [
-            'Kolte Patil Mirabilis is a ready-to-move residential project in Horamavu, North-East Bengaluru. Set across 7 acres, this Kolte Patil community has seven high-rise towers and 640 homes, with 1, 2, 2.5, 3, and 4-bedroom configurations listed. Landscaped open areas and four-storey indoor tree atriums bring greenery into the development, while the range of home sizes gives buyers options to compare when searching for Kolte Patil apartments in Bangalore.',
-            'Amenities include a clubhouse and party lawn, swimming and kids’ splash pools, gym, basketball and volleyball courts, cricket practice pitch, skating rink, indoor games, squash court, and outdoor amphitheatre. Horamavu provides access to Outer Ring Road, Manyata Tech Park, Hebbal, K.R. Puram Railway Station, schools, and shopping. Explore Kolte Patil Mirabilis project details, listed apartment configurations, available floor plan information, amenities, and pricing. RERA registration number: PRM/KA/RERA/1251/446/PR/170922/000838.'
-        ],
         thumbnail: builderImage('kolte-patil/kolte-patil-mirabilis/thumbnail.webp'),
         images: [
             builderImage('kolte-patil/kolte-patil-mirabilis/gallery/exterior-view.webp'),
@@ -193,10 +209,6 @@ export const propertiesData = [
         possession: 'October 2028',
         rera: 'PRM/KA/RERA/1251/446/PR/060324/006667',
         description: 'Kolte Patil Lakeside 24 is a new-launch residential project in Kannuru, off Hennur–Thanisandra Main Road in North Bengaluru. Planned as a low-density community, it has one high-rise tower with 131 residences and more than 80% open space. Home options include 2, 2.5, 3, and 4 BHK layouts, while the lakeside setting, rooftop pool and sun deck, clubhouse, yoga lawn, reflexology park, pet park, and viewing deck create space for recreation and relaxation. Manyata Tech Park, Elements Mall, Hebbal, and Kempegowda International Airport are among the connected destinations. Explore Lakeside 24 apartments, floor plans, amenities, and possession details.',
-        overview: [
-            'Kolte Patil Lakeside 24 is a new-launch residential project in Kannuru, off Hennur–Thanisandra Main Road in North Bengaluru. Planned across 1.86 acres, this Kolte Patil development has a single high-rise tower with 131 residences and over 80% open space. Homebuyers can compare 2, 2.5, 3, and 4 BHK options, including duplex homes, in a low-density setting beside a natural lake. The stated possession timeline is October 2028.',
-            'The lakeside homes are complemented by a rooftop swimming pool and sun deck, clubhouse, gym, yoga lawn, reflexology park, multi-sport court, pet park, children’s play area, and a viewing deck with a tree-lined walkway. Kannuru Main Road, Elements Mall, Manyata Tech Park, Hebbal, and Kempegowda International Airport are among the connected destinations. Explore Kolte Patil Lakeside 24 apartment floor plans, amenities, location, and possession details when comparing new Kolte Patil projects in Bangalore. RERA registration number: PRM/KA/RERA/1251/446/PR/060324/006667.'
-        ],
         thumbnail: builderImage('kolte-patil/kolte-patil-lakeside-24/thumbnail.webp'),
         images: [
             builderImage('kolte-patil/kolte-patil-lakeside-24/gallery/exterior-view.webp'),
@@ -231,3 +243,7 @@ export const propertiesData = [
         ]
     }
 ];
+
+propertiesData.forEach(property => {
+    property.overview = property.overview || createPropertyOverview(property);
+});

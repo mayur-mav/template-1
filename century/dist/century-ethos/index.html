@@ -355,6 +355,176 @@
                     </div>
                 </div>
 
+                <!-- HOME LOAN EMI CALCULATOR -->
+                <section class="emi-calculator-section" id="dt-emi-calculator" aria-labelledby="emi-calc-heading">
+                    <div class="emi-header-row">
+                        <div>
+                            <h3 class="section-block-title" id="emi-calc-heading">Home Loan EMI Calculator</h3>
+                            <p class="emi-section-intro">Estimate monthly loan installments with dynamic property pricing and customizable loan terms.</p>
+                        </div>
+                        <div class="emi-sync-badge" id="emi-sync-badge">
+                            <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
+                            <span>Synced with: <strong id="emi-sync-property">Century Ethos</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="emi-calculator-container">
+                        <!-- Left Column: Controls & Sliders -->
+                        <div class="emi-controls-col">
+                            <!-- Property Value Slider -->
+                            <div class="emi-control-group">
+                                <div class="emi-label-row">
+                                    <label for="emi-prop-slider" class="emi-label">
+                                        <i class="fa-solid fa-indian-rupee-sign" aria-hidden="true"></i> Property Value
+                                    </label>
+                                    <div class="emi-val-wrap">
+                                        <span class="emi-val-display" id="emi-prop-display">₹4,10,00,000</span>
+                                        <span class="emi-val-sub" id="emi-prop-sub">(₹4.1 Cr)</span>
+                                    </div>
+                                </div>
+                                <div class="emi-slider-wrap">
+                                    <input type="range" class="emi-slider" id="emi-prop-slider" min="16000000" max="95000000" step="100000" value="41000000" aria-label="Property Value">
+                                </div>
+                                <div class="emi-range-limits">
+                                    <span id="emi-prop-min-lbl">₹1.6 Cr</span>
+                                    <button type="button" class="emi-reset-link" id="emi-reset-price-btn" title="Reset to project price">
+                                        <i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Reset to Project Price
+                                    </button>
+                                    <span id="emi-prop-max-lbl">₹9.5 Cr</span>
+                                </div>
+                            </div>
+
+                            <!-- Down Payment Slider -->
+                            <div class="emi-control-group">
+                                <div class="emi-label-row">
+                                    <label for="emi-down-slider" class="emi-label">
+                                        <i class="fa-solid fa-hand-holding-dollar" aria-hidden="true"></i> Down Payment
+                                    </label>
+                                    <div class="emi-val-wrap">
+                                        <span class="emi-val-pill" id="emi-down-pct-display">20%</span>
+                                        <span class="emi-val-display" id="emi-down-amount-display">₹82,00,000</span>
+                                    </div>
+                                </div>
+                                <div class="emi-slider-wrap">
+                                    <input type="range" class="emi-slider" id="emi-down-slider" min="10" max="80" step="1" value="20" aria-label="Down Payment Percentage">
+                                </div>
+                                <div class="emi-range-limits">
+                                    <span>10% (Min)</span>
+                                    <span class="emi-loan-caption">Loan Amount: <strong id="emi-loan-amount">₹3,28,00,000</strong></span>
+                                    <span>80%</span>
+                                </div>
+                            </div>
+
+                            <!-- Loan Tenure Slider & Quick Chips -->
+                            <div class="emi-control-group">
+                                <div class="emi-label-row">
+                                    <label for="emi-tenure-slider" class="emi-label">
+                                        <i class="fa-regular fa-clock" aria-hidden="true"></i> Loan Tenure
+                                    </label>
+                                    <div class="emi-val-wrap">
+                                        <span class="emi-val-display" id="emi-tenure-display">20 Years</span>
+                                        <span class="emi-val-sub" id="emi-tenure-months">(240 Months)</span>
+                                    </div>
+                                </div>
+                                <div class="emi-slider-wrap">
+                                    <input type="range" class="emi-slider" id="emi-tenure-slider" min="5" max="30" step="1" value="20" aria-label="Loan Tenure in Years">
+                                </div>
+                                <div class="emi-tenure-chips" role="radiogroup" aria-label="Quick Loan Tenure selection">
+                                    <button type="button" class="emi-chip" data-years="5">5 Yrs</button>
+                                    <button type="button" class="emi-chip" data-years="10">10 Yrs</button>
+                                    <button type="button" class="emi-chip" data-years="15">15 Yrs</button>
+                                    <button type="button" class="emi-chip active" data-years="20">20 Yrs</button>
+                                    <button type="button" class="emi-chip" data-years="25">25 Yrs</button>
+                                    <button type="button" class="emi-chip" data-years="30">30 Yrs</button>
+                                </div>
+                            </div>
+
+                            <!-- Interest Rate Slider -->
+                            <div class="emi-control-group">
+                                <div class="emi-label-row">
+                                    <label for="emi-rate-slider" class="emi-label">
+                                        <i class="fa-solid fa-percent" aria-hidden="true"></i> Interest Rate (% p.a.)
+                                    </label>
+                                    <div class="emi-val-wrap">
+                                        <span class="emi-val-display" id="emi-rate-display">8.50%</span>
+                                    </div>
+                                </div>
+                                <div class="emi-slider-wrap">
+                                    <input type="range" class="emi-slider" id="emi-rate-slider" min="6.5" max="15" step="0.05" value="8.5" aria-label="Interest Rate per annum">
+                                </div>
+                                <div class="emi-range-limits">
+                                    <span>6.5%</span>
+                                    <span class="emi-bank-note"><i class="fa-solid fa-building-columns"></i> Benchmark home loan rates</span>
+                                    <span>15.0%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Results & Interactive SVG Chart -->
+                        <div class="emi-results-col">
+                            <!-- Hero EMI Card -->
+                            <div class="emi-hero-card">
+                                <span class="emi-hero-label">Estimated Monthly EMI</span>
+                                <div class="emi-hero-amount" id="emi-monthly-output">₹2,84,646</div>
+                                <span class="emi-hero-footnote" id="emi-hero-footnote">*For ₹3.28 Cr loan at 8.50% for 20 yrs</span>
+                            </div>
+
+                            <!-- Visual Donut Chart + Legend -->
+                            <div class="emi-chart-box">
+                                <div class="emi-donut-wrapper">
+                                    <svg class="emi-donut-svg" viewBox="0 0 100 100" width="110" height="110" aria-label="Principal versus interest breakdown chart" role="img">
+                                        <circle class="emi-donut-meter" cx="50" cy="50" r="38" />
+                                        <circle class="emi-donut-segment emi-segment-principal" id="emi-donut-principal" cx="50" cy="50" r="38" />
+                                        <circle class="emi-donut-segment emi-segment-interest" id="emi-donut-interest" cx="50" cy="50" r="38" />
+                                    </svg>
+                                    <div class="emi-donut-center">
+                                        <span class="emi-donut-center-lbl">Total</span>
+                                        <span class="emi-donut-center-val" id="emi-donut-center-val">₹6.83 Cr</span>
+                                    </div>
+                                </div>
+                                <div class="emi-chart-legend">
+                                    <div class="emi-legend-item">
+                                        <span class="emi-legend-bullet bullet-principal"></span>
+                                        <div class="emi-legend-info">
+                                            <span class="emi-legend-title">Principal Loan</span>
+                                            <strong class="emi-legend-value" id="emi-legend-principal-val">₹3,28,00,000</strong>
+                                            <span class="emi-legend-pct" id="emi-legend-principal-pct">(48%)</span>
+                                        </div>
+                                    </div>
+                                    <div class="emi-legend-item">
+                                        <span class="emi-legend-bullet bullet-interest"></span>
+                                        <div class="emi-legend-info">
+                                            <span class="emi-legend-title">Total Interest</span>
+                                            <strong class="emi-legend-value" id="emi-legend-interest-val">₹3,55,15,040</strong>
+                                            <span class="emi-legend-pct" id="emi-legend-interest-pct">(52%)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Summary Details List -->
+                            <div class="emi-breakdown-table">
+                                <div class="emi-breakdown-row">
+                                    <span class="emi-row-title">Down Payment <span id="emi-table-down-pct" style="font-size: 0.78rem; color: var(--text-muted);">(20%)</span></span>
+                                    <strong class="emi-row-value" id="emi-table-down">₹82,00,000</strong>
+                                </div>
+                                <div class="emi-breakdown-row">
+                                    <span class="emi-row-title">Principal Loan Amount</span>
+                                    <strong class="emi-row-value" id="emi-table-principal">₹3,28,00,000</strong>
+                                </div>
+                                <div class="emi-breakdown-row">
+                                    <span class="emi-row-title">Total Interest Payable</span>
+                                    <strong class="emi-row-value" id="emi-table-interest">₹3,55,15,040</strong>
+                                </div>
+                                <div class="emi-breakdown-row emi-row-total">
+                                    <span class="emi-row-title">Total Amount Payable</span>
+                                    <strong class="emi-row-value" id="emi-table-total">₹6,83,15,040</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- AMENITIES GRID -->
                 <h3 class="section-block-title">World-Class Amenities</h3>
                 <div class="amenities-grid" id="dt-amenities">

@@ -75,20 +75,29 @@ function createRoutedHtml(route = '') {
       const imagePattern = new RegExp(`(<img\\s+id="dt-img-${imageNumber}"[^>]*src=")[^"]*("[^>]*>)`, 'i');
       html = html.replace(imagePattern, `$1${escapeHtml(imageUrl)}$2`);
       html = html.replace(new RegExp(`(<img\\s+id="dt-img-${imageNumber}"[^>]*alt=")[^"]*(")`, 'i'), `$1${escapeHtml(alt)}$2`);
-    });
+    });
 
+    html = html.replace(/(<img\s+id="dt-img-1"[^>]*?)loading="lazy"/i, '$1loading="eager" fetchpriority="high"');
+    html = html.replace(/(<img\s+id="dt-img-2"[^>]*?)loading="lazy"/i, '$1loading="eager"');
   }
 
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`);
   html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i, `<meta name="description" content="${escapeHtml(description)}">`);
   html = html.replace('</head>', `    <meta property="og:title" content="${escapeHtml(title)}">\n    <meta property="og:description" content="${escapeHtml(description)}">\n    <meta property="og:type" content="website">\n</head>`);
 
-  const preloadImageUrl = developerInfo.hero.image.replace(/&/g, '&amp;');
-  html = html.replace(/<link\s+rel="preload"\s+as="image"[^>]*fetchpriority="high"[^>]*>\s*/i, '');
-  html = html.replace(
-    '</head>',
-    `    <link rel="preload" as="image" href="${preloadImageUrl}" fetchpriority="high">\n</head>`
-  );
+  const preloadImageUrl = (property ? property.images[0] : developerInfo.hero.image).replace(/&/g, '&amp;');
+  if (html.includes('<link rel="preload" as="image"')) {
+    html = html.replace(
+      /(<link\s+rel="preload"\s+as="image"\s+href=")[^"]*("[^>]*>)/i,
+      `$1${preloadImageUrl}$2`
+    );
+  } else {
+    html = html.replace(
+      '</head>',
+      `    <link rel="preload" as="image" href="${preloadImageUrl}" fetchpriority="high">\n</head>`
+    );
+  }
+
   html = html.replace(/<link rel="canonical" href="https:\/\/yourdomain\.com\/[^"]*">\s*/i, '');
   if (siteOrigin) {
     const canonicalRoute = property ? route : '';

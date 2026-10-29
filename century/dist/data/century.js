@@ -98,6 +98,16 @@ export const propertiesData = [
         area: '3 Acres',
         possession: 'December 2028',
         rera: 'PRM/KA/RERA/1251/309/PR/130924/007015',
+        highlights: [
+            "80% Open Green Space & Landscaped Central Court",
+            "Close Proximity to BMSIT & Yelahanka Junction",
+            "Quick Access to Kempegowda International Airport",
+            "Hammock Garden, Lily Pond & Water Cascade",
+            "Reflexology Pathway & Yoga Pavilion",
+            "Dedicated Pet Park & Children's Play Zone",
+            "24/7 Security with Smart Access Control",
+            "RERA Approved Residential Community"
+        ],
         description: 'Century Liva is a luxury residential development by Century Real Estate located on Doddaballapur Main Road, Yelahanka. Spread across 3 acres with 80% open green space, the project features 247 exclusive apartments with modern lifestyle amenities and seamless connectivity to Kempegowda International Airport.',
         thumbnail: centuryImage('century/century-liva/thumbnail.webp'),
         images: [
@@ -157,6 +167,16 @@ export const propertiesData = [
         area: '8.5 Acres',
         possession: 'Phase 1: April 2029 | Phase 2: December 2030',
         rera: 'Phase 1: PRM/KA/RERA/1251/446/PR/170524/006883 | Phase 2: PRM/KA/RERA/1251/446/PR/150325/007586',
+        highlights: [
+            "Prestigious Indiranagar Prime Tech-Corridor Address",
+            "100% Vastu Compliant Homes with Zero Common Walls",
+            "~45,000 sq. ft. Club Regalia with Sky Lounge",
+            "Rooftop Infinity Pool with Panoramic Skyline Views",
+            "Minutes from Indiranagar Metro Station & 100 Ft Road",
+            "Direct Connectivity to EGL Tech Park & MG Road",
+            "International Standard Tennis & Squash Courts",
+            "CRISIL Rated Premium High-Rise Architecture"
+        ],
         description: 'Century Regalia by Century Real Estate is an ultra-luxury residential enclave situated off HAL Old Airport Road, adjacent to the 125-acre Karnataka Golf Association (KGA) course in Indiranagar. Developed across two phases on an 8.5-acre land parcel with 80% open space, it features low-density towers, a massive 64,000 sq. ft. clubhouse, and exquisite luxury configurations.',
         thumbnail: centuryImage('century/century-regalia/thumbnail.webp'),
         images: [
@@ -205,6 +225,16 @@ export const propertiesData = [
         area: '7.3 Acres',
         possession: 'Ready Possession',
         rera: 'PRM/KA/RERA/1251/309/PR/171014/000283',
+        highlights: [
+            "Iconic Wave Architecture on Prime Bellary Road",
+            "Expansive 50,000 sq. ft. Grand Clubhouse (Club Ethos)",
+            "Temperature-Controlled Indoor Lap Pool & Spa",
+            "Opposite Hebbal Flyover & Aster CMI Hospital",
+            "Just 10 Mins to Manyata Tech Park",
+            "Skydeck & Banquet Lawn with Horizon Views",
+            "Bowling Alley, Squash Court & Golf Simulator",
+            "Ready to Move Ultra-Luxury 3 & 4 BHK Enclave"
+        ],
         description: 'Century Ethos is an iconic ultra-luxury residential enclave by Century Real Estate located on Bellary Road, Hebbal. Spread across 7.3 acres with 80% open spaces, the project features 4 low-density towers, a massive 50,000 sq. ft. clubhouse, zero common walls for maximum privacy, and grand uber-sized residences.',
         thumbnail: centuryImage('century/century-ethos/thumbnail.webp'),
         images: [
@@ -250,6 +280,16 @@ export const propertiesData = [
         area: '1.14 Acres',
         possession: 'Ready Possession',
         rera: 'PRM/KA/RERA/1251/446/PR/170918/000782',
+        highlights: [
+            "Elite Central Bengaluru Posh Heritage Enclave",
+            "Ultra-Exclusive Boutique Living with Private Decks",
+            "Rooftop Heated Pool & Open-Air Horizon Terrace",
+            "5 Mins from UB City, MG Road & Brigade Road",
+            "Designer Imported Marble Flooring & Home Automation",
+            "Private Elevator Access to Every Residence",
+            "State-of-the-Art Fitness Center & Yoga Studio",
+            "Ready to Move Luxury with Clear Freehold Titles"
+        ],
         description: 'Century Renata is an ultra-luxury boutique residential enclave located on Richmond Road in Central Bengaluru. Spread across 1.14 acres, the low-density property features a single tower comprising just 36 bespoke residences (3 and 4 BHK layouts, including select options with private gardens and wrap-around decks) designed for complete privacy and elegance.',
         thumbnail: centuryImage('century/century-renata/thumbnail.webp'),
         images: [
@@ -294,6 +334,16 @@ export const propertiesData = [
         area: '6.07 Acres',
         possession: 'February 2031',
         rera: 'PRM/KA/RERA/1251/309/PR/160526/008662',
+        highlights: [
+            "Strategic NH 44 Airport Corridor Location",
+            "Signature 40,000 sq. ft. Clubhouse & Recreation Hub",
+            "3 & 3.5 BHK Layouts with Panoramic Sunrise Views",
+            "Heated Indoor Swimming Pool & Steam Sauna",
+            "15 Mins to Kempegowda International Airport",
+            "Tennis Courts, Badminton & Professional Squash",
+            "Multi-Tier Landscaped Gardens & Reflexology Path",
+            "Premium Integrated Township Infrastructure"
+        ],
         description: 'The Astoria is a premium residential enclave comprising 334 Neo Luxe residences across 5 low-density towers, situated within Century Immencity—a landmark 50+ acre mixed-use destination on International Airport Road, Jakkur. Developed by Century Real Estate, the enclave features approximately 75% to 70% open spaces, a ~40,000 sq. ft. clubhouse, and a landscape-led amenity ecosystem integrating retail, commercial, and residential luxury.',
         thumbnail: centuryImage('century/century-immencity/thumbnail.webp'),
         images: [
@@ -338,6 +388,16 @@ export const propertiesData = [
         area: '4.66 Acres',
         possession: 'March 2031',
         rera: 'PRM/KA/RERA/1251/309/PR/200326/008542',
+        highlights: [
+            "Contemporary High-Rise Living in Prime Yelahanka",
+            "Smart Space Layouts with Zero Dead Space",
+            "Rooftop Sky Lounge & Elevated Jogging Track",
+            "5 Mins from Yelahanka Railway Station & NH 44",
+            "Proximity to Kogilu Cross & RMZ Galleria Mall",
+            "Sustainable Eco-Design with Rainwater Harvesting",
+            "Fully Equipped Gymnasium & Multipurpose Hall",
+            "Secure Gated Community with EV Charging Stations"
+        ],
         description: 'Century Kindle by Century Real Estate is a premium residential enclave located in Attur Village, Yelahanka New Town. Spread across 4.6 acres with well-planned towers (2B + G + 19 floors), the project features 458 modern residences emphasizing large balconies, cross-ventilation, and extensive lifestyle amenities in a rapidly developing North Bengaluru corridor.',
         thumbnail: centuryImage('century/century-kindle/thumbnail.webp'),
         images: [
@@ -389,6 +449,16 @@ export const propertiesData = [
         area: '4.2 Acres',
         possession: 'April 2031',
         rera: 'PRM/KA/RERA/1250/301/PR/210426/008595',
+        highlights: [
+            "Peaceful Green Sanctuary with 75% Open Spaces",
+            "Naturally Lit Homes with Optimal Cross-Ventilation",
+            "25,000 sq. ft. Grand Clubhouse & Sunken Pool",
+            "Near Ramanashree California Resort & Presidency University",
+            "Quick Connectivity to Yelahanka & Outer Ring Road",
+            "Cricket Pitch, Basketball Court & Kids Play Area",
+            "Herbal Garden & Tree-Lined Walking Avenues",
+            "Valid Karnataka RERA Certified Enclave"
+        ],
         description: 'Century Bliss by Century Real Estate is a thoughtfully planned residential community located on the Yelahanka-Doddaballapura Main Road. Spread across 4.25 acres with 75% landscaped open spaces, the development features 2 residential towers with 194 thoughtfully designed 2, 2.5, and 3-bed homes, complemented by a 26,000+ sq. ft. multi-level clubhouse and an attached commercial hub.',
         thumbnail: centuryImage('century/century-bliss/thumbnail.webp'),
         images: [
@@ -435,6 +505,16 @@ export const propertiesData = [
         area: '9.4 Acres (Phase 1), within a 14+ acre mixed-use site',
         possession: 'October 2030',
         rera: 'PRM/KA/RERA/1251/446/PR/181025/008182',
+        highlights: [
+            "Prime East Bengaluru Tech-Corridor Setting",
+            "Massive ~35,000 sq. ft. Multi-Level Clubhouse",
+            "Minutes from Kundalahalli Metro & Outer Ring Road",
+            "Close to Cessna Business Park, JP Morgan & EPIP Zone",
+            "Resort-Style Swimming Pool & Kids Splash Zone",
+            "Modern Co-Working Lounge & Aristotle Digital Library",
+            "Badminton Courts, Squash Court & Cycling Track",
+            "Low-Density Towers with Expansive Central Greens"
+        ],
         description: 'Century Mirai by Century Real Estate is a major landmark residential enclave situated in Silver Springs Layout, Marathahalli. Spread across over 14 acres of prime land in East Bengaluru, the project features low-density high-rise towers, expansive open green spaces, a massive ~35,000 sq. ft. clubhouse, and meticulously planned modern residences tailored for tech-corridor professionals.',
         thumbnail: centuryImage('century/century-mirai/thumbnail.webp'),
         images: [
@@ -474,6 +554,24 @@ export const propertiesData = [
     }
 ];
 
+export function createPropertyHighlights(property) {
+    const list = [];
+    if (property.area) list.push(`Expansive ${property.area} development with landscaped open spaces`);
+    if (property.bhk) list.push(`Thoughtfully planned ${property.bhk} layouts designed for optimal ventilation`);
+    if (property.possession) list.push(`${property.statusText || 'Possession'} timeline: ${property.possession}`);
+    if (property.amenities && property.amenities.length > 0) {
+        const topAmenities = property.amenities.slice(0, 3).map(a => a.name).join(', ');
+        list.push(`Premium lifestyle amenities including ${topAmenities}`);
+    }
+    if (property.connectivity && property.connectivity.length > 0) {
+        const topPlace = property.connectivity[0];
+        list.push(`Prime connectivity with proximity to ${topPlace.label} (${topPlace.distance})`);
+    }
+    if (property.rera) list.push(`RERA Approved Project: ${property.rera.replace(/\.$/, '')}`);
+    return list;
+}
+
 propertiesData.forEach(property => {
     property.overview = property.overview || createPropertyOverview(property);
+    property.highlights = property.highlights || createPropertyHighlights(property);
 });

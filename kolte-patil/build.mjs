@@ -1,7 +1,7 @@
 import { cpSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createPropertyOverview, developerInfo, propertiesData } from './data/kolte-patil.js';
+import { createPropertyHighlights, createPropertyOverview, developerInfo, propertiesData } from './data/kolte-patil.js';
 
 const projectDir = dirname(fileURLToPath(import.meta.url));
 const outputDir = join(projectDir, 'dist');
@@ -39,7 +39,70 @@ function renderOverviewParagraph(paragraph) {
   return `<p class="overview-text">${escapeHtml(registration[1])} <span class="overview-rera"><strong>RERA Registration No.</strong> <span>${escapeHtml(registration[2])}</span></span></p>`;
 }
 
+function getHighlightIcon(text, defaultIcon = 'fa-solid fa-circle-check') {
+  if (!text || typeof text !== 'string') return defaultIcon;
+  const lower = text.toLowerCase();
+  if (lower.includes('rera') || lower.includes('approv') || lower.includes('certif') || lower.includes('legal') || lower.includes('bda') || lower.includes('bmrda')) return 'fa-solid fa-certificate';
+  if (lower.includes('wall') || lower.includes('privacy')) return 'fa-solid fa-shield-halved';
+  if (lower.includes('road') || lower.includes('location') || lower.includes('connect') || lower.includes('metro') || lower.includes('highway') || lower.includes('expressway') || lower.includes('station') || lower.includes('airport') || lower.includes('tech park')) return 'fa-solid fa-location-dot';
+  if (lower.includes('acre') || lower.includes('land') || lower.includes('garden') || lower.includes('open space') || lower.includes('landscape') || /\bpark\b/.test(lower) || lower.includes('green')) return 'fa-solid fa-tree';
+  if (lower.includes('pool') || lower.includes('swim')) return 'fa-solid fa-person-swimming';
+  if (lower.includes('gym') || lower.includes('fit') || lower.includes('sport') || lower.includes('court') || lower.includes('jog')) return 'fa-solid fa-dumbbell';
+  if (lower.includes('club') || lower.includes('amenit') || lower.includes('lifestyle') || lower.includes('resort') || lower.includes('luxury')) return 'fa-solid fa-hotel';
+  if (lower.includes('tower') || lower.includes('floor') || lower.includes('high-rise') || lower.includes('architecture') || /\bunits?\b/.test(lower) || lower.includes('structure')) return 'fa-solid fa-building';
+  if (lower.includes('ready') || lower.includes('possession') || lower.includes('move-in') || lower.includes('keys') || lower.includes('oc ')) return 'fa-solid fa-key';
+  if (lower.includes('vastu') || lower.includes('vaastu') || lower.includes('facing')) return 'fa-solid fa-compass';
+  if (lower.includes('lake') || lower.includes('water') || lower.includes('view') || lower.includes('scenic')) return 'fa-solid fa-water';
+  if (lower.includes('price') || lower.includes('offer') || lower.includes('crore') || lower.includes('lakh') || lower.includes('payment') || lower.includes('emi')) return 'fa-solid fa-indian-rupee-sign';
+  return defaultIcon;
+}
+
+function renderHighlightCardHtml(highlight) {
+  let iconClass = 'fa-solid fa-circle-check';
+  let titleText = '';
+  let bodyText = '';
+
+  if (typeof highlight === 'string') {
+    bodyText = highlight;
+    iconClass = getHighlightIcon(highlight);
+  } else if (typeof highlight === 'object' && highlight !== null) {
+    bodyText = highlight.text || highlight.description || highlight.value || '';
+    titleText = highlight.title || highlight.heading || highlight.label || '';
+    iconClass = highlight.icon || getHighlightIcon(`${titleText} ${bodyText}`);
+  }
+
+  const titleHtml = titleText ? `<strong class="highlight-title">${escapeHtml(titleText)}</strong>` : '';
+  const bodyHtml = bodyText ? `<span class="highlight-text">${escapeHtml(bodyText)}</span>` : '';
+
+  return `<div class="highlight-card">
+                        <div class="highlight-icon-wrap"><i class="${escapeHtml(iconClass)}" aria-hidden="true"></i></div>
+                        <div class="highlight-text-wrap">${titleHtml}${bodyHtml}</div>
+                    </div>`;
+}
+
 function replaceElementContent(html, id, content) {
+  const openRegex = new RegExp(`<([a-z][a-z0-9]*)\\b[^>]*\\bid="${id}"[^>]*>`, 'i');
+  const openMatch = openRegex.exec(html);
+  if (!openMatch) return html;
+
+  const tag = openMatch[1].toLowerCase();
+  const startContent = openMatch.index + openMatch[0].length;
+  let depth = 1;
+  const tagRegex = new RegExp(`</?${tag}\\b[^>]*>`, 'gi');
+  tagRegex.lastIndex = startContent;
+
+  let match;
+  while ((match = tagRegex.exec(html)) !== null) {
+    if (match[0].startsWith('</')) {
+      depth--;
+      if (depth === 0) {
+        return html.slice(0, startContent) + content + html.slice(match.index);
+      }
+    } else if (!match[0].endsWith('/>')) {
+      depth++;
+    }
+  }
+
   const elementPattern = new RegExp(`(<([a-z][a-z0-9]*)\\b[^>]*\\bid="${id}"[^>]*>)[\\s\\S]*?(<\\/\\2>)`, 'i');
   return html.replace(elementPattern, `$1${content}$3`);
 }
@@ -167,13 +230,23 @@ function createRoutedHtml(route = '') {
       .join('\n                    ');
     html = replaceElementContent(html, 'dt-description', overviewHtml);
 
+    const highlights = property.highlights || createPropertyHighlights(property);
+    if (highlights && highlights.length > 0) {
+      const highlightsHtml = highlights.map(renderHighlightCardHtml).join('\n                        ');
+      html = replaceElementContent(html, 'dt-highlights', `\n                        ${highlightsHtml}\n                    `);
+      html = html.replace(/<section\b[^>]*\bid="dt-project-highlights"[^>]*hidden[^>]*>/i, '<section class="project-highlights-section" id="dt-project-highlights" aria-labelledby="dt-highlights-title">');
+    } else {
+      html = replaceElementContent(html, 'dt-highlights', '');
+      html = html.replace(/<section\b[^>]*\bid="dt-project-highlights"[^>]*>/i, '<section class="project-highlights-section" id="dt-project-highlights" aria-labelledby="dt-highlights-title" hidden>');
+    }
+
     property.images.slice(0, 3).forEach((imageUrl, index) => {
       const imageNumber = index + 1;
       const alt = `${property.name} ${['exterior', 'interior', 'amenities'][index] || 'residences'} in Bengaluru`;
       const imagePattern = new RegExp(`(<img\\s+id="dt-img-${imageNumber}"[^>]*src=")[^"]*("[^>]*>)`, 'i');
       html = html.replace(imagePattern, `$1${escapeHtml(imageUrl)}$2`);
       html = html.replace(new RegExp(`(<img\\s+id="dt-img-${imageNumber}"[^>]*alt=")[^"]*(")`, 'i'), `$1${escapeHtml(alt)}$2`);
-    });
+    });
 
   }
 

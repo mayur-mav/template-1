@@ -79,12 +79,14 @@ export const propertiesData = [
         description: 'Kolte Patil Raaga is a ready-to-move residential community in Kannuru, off Hennur Main Road in North Bengaluru. The project offers thoughtfully planned 2 and 3 BHK apartments across 12 towers, with 590 homes, landscaped open spaces, and layouts designed for ventilation and privacy with no common walls. Residents can enjoy a clubhouse, swimming pool, gym, indoor games room, sports courts, and children’s play area. Its location connects residents to Manyata Tech Park, Outer Ring Road, Hebbal, and Kempegowda International Airport. Explore Kolte Patil Raaga apartments, floor plans, amenities, and current pricing.',
         thumbnail: builderImage('kolte-patil/kolte-patil-raaga/thumbnail.webp'),
         highlights: [
-            'Spread across 6 expansive acres with lush green landscaped open spaces',
-            'Low-density living with 12 towers and 590 thoughtfully planned homes',
-            'Zero common walls design ensuring enhanced privacy and cross-ventilation',
-            'Full-fledged clubhouse featuring swimming pool with deck, gym & indoor games',
-            'Prime Kannuru location off Hennur Main Road with direct access to Manyata Tech Park',
-            'Ready to move residential community with RERA: PRM/KA/RERA/1251/446/PR/171014/000856'
+            'Within 9.5 km of Manyata Tech Park',
+            'Peaceful Open Spaces',
+            'Strategic Kannur Road Connectivity',
+            '10-min to Outer Ring Road',
+            'Full-fledged Clubhouse & Health Club',
+            'Close to Yelahanka Junction',
+            'Convenient Medical Facilities Nearby',
+            'Cycling & Jogging Tracks'
         ],
         images: [
             builderImage('kolte-patil/kolte-patil-raaga/gallery/exterior-view.webp'),
@@ -131,12 +133,12 @@ export const propertiesData = [
         description: 'I-Towers Exente by Kolte-Patil Developers is a ready-to-move high-rise residential project at the entrance to Electronic City Phase 1, Bengaluru. The development comprises five towers with 438 2 and 3 BHK residences, designed to capture open city views; more than 70% of the site is open space. Residents have access to a rooftop swimming pool and clubhouse, gym, yoga deck, sports courts, themed gardens, and the Aristotle digital library and study zone. Infosys, D-Mart, Hosur Road, and the Electronic City Metro Station are among the nearby destinations. Explore I-Towers Exente apartments, floor plans, amenities, and pricing.',
         thumbnail: builderImage('kolte-patil/kolte-patil-i-towers-exente/thumbnail.webp'),
         highlights: [
-            'Iconic 4.4-acre high-rise development at the gateway of Electronic City Phase 1',
-            '5 elegant residential towers rising 22 storeys with open skyline vistas',
-            'Over 70% open landscape area featuring 4 themed serene gardens',
-            'Rooftop swimming pool and luxury sky clubhouse with yoga fitness deck',
-            'Aristotle digital library, modern fitness pavilion, squash & badminton courts',
-            'Walking distance to Infosys (750m) and Electronic City Metro Station (500m)'
+            'Near Major IT Hubs: Infosys, GE, TCS',
+            'Themed Gardens: Aromatic, Spice & Secret',
+            'State-of-the-art Aristotle Digital Library',
+            'Swimming Pool & Rainwater Harvesting',
+            'Innovative Design for Sustainable Living',
+            'Award-winning Real Estate Development'
         ],
         images: [
             builderImage('kolte-patil/kolte-patil-i-towers-exente/gallery/exterior-view.webp'),
@@ -183,13 +185,14 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1251/446/PR/170922/000838',
         description: 'Kolte Patil Mirabilis is a ready-to-move residential community in Horamavu, North-East Bengaluru. Set among landscaped open areas, the project has seven high-rise towers and 640 homes, with 1, 2, 2.5, 3, and 4-bedroom configurations listed. Amenities include a clubhouse, swimming and kids’ pools, gym, basketball and volleyball courts, cricket practice pitch, skating rink, indoor games, and garden atriums. The Horamavu location offers access to Outer Ring Road, Manyata Tech Park, K.R. Puram Railway Station, and Hebbal, with nearby schools and shopping. View Kolte Patil Mirabilis apartments, available floor plan details, amenities, and pricing.',
         thumbnail: builderImage('kolte-patil/kolte-patil-mirabilis/thumbnail.webp'),
-        highlights: [
-            'Sprawling 7-acre residential enclave in Horamavu with 7 high-rise towers',
-            'Unique 4-storey high indoor tree atriums and lush garden landscapes',
-            'Comprehensive sports facilities: basketball, volleyball, cricket pitch & skating rink',
-            'Expansive clubhouse with lap swimming pool, kids pool & modern gymnasium',
-            'Seamless road connectivity to Outer Ring Road (1.5 km) & Manyata Tech Park (5.1 km)',
-            'Ready to move residences with Karnataka RERA: PRM/KA/RERA/1251/446/PR/170922/000838'
+        highlights:	[
+            "Unique Communal Spaces with Pergola",
+            "Eco-Friendly Sustainable Construction",
+            "CRISIL A+ Positive Rating",
+            "Designer Interiors for Sophisticated Living",
+            "ISO 9001:2008 Certified Quality",
+            "State-of-the-art Spacious Campuses",
+            "Premium Vitrified Flooring"
         ],
         images: [
             builderImage('kolte-patil/kolte-patil-mirabilis/gallery/exterior-view.webp'),
@@ -234,13 +237,16 @@ export const propertiesData = [
         rera: 'PRM/KA/RERA/1251/446/PR/060324/006667',
         description: 'Kolte Patil Lakeside 24 is a new-launch residential project in Kannuru, off Hennur–Thanisandra Main Road in North Bengaluru. Planned as a low-density community, it has one high-rise tower with 131 residences and more than 80% open space. Home options include 2, 2.5, 3, and 4 BHK layouts, while the lakeside setting, rooftop pool and sun deck, clubhouse, yoga lawn, reflexology park, pet park, and viewing deck create space for recreation and relaxation. Manyata Tech Park, Elements Mall, Hebbal, and Kempegowda International Airport are among the connected destinations. Explore Lakeside 24 apartments, floor plans, amenities, and possession details.',
         thumbnail: builderImage('kolte-patil/kolte-patil-lakeside-24/thumbnail.webp'),
-        highlights: [
-            'Exclusive low-density boutique community with only 131 premium residences on 1.86 acres',
-            'Over 80% open landscape offering tranquil lakeside views and green scenery',
-            'Rooftop swimming pool & sun deck overlooking serene water bodies',
-            'Dedicated pet park, reflexology walkway, yoga lawn & lakeside viewing deck',
-            'Well-ventilated 2, 2.5, 3 & 4 BHK duplex configurations designed for modern families',
-            'Strategic Kannuru location off Hennur-Thanisandra Road with quick airport connectivity'
+        highlights: [ 
+            "Just 7.5 km from Manyata Tech Park", 
+            "Stunning Lake View & Lush Greenery",
+            "Panoramic Rooftop & Kids Pool", 
+            "Facing Beautiful Kannur Lake",
+            "Floral Garden & Palm Court Tranquility", 
+            "Convenient Outdoor Seating with Charging", 
+            "Family-friendly Pet Park & Sandpit", 
+            "Wellness Herbal Garden & Reflexology Path", 
+            "Single-tower 24-floor Development" 
         ],
         images: [
             builderImage('kolte-patil/kolte-patil-lakeside-24/gallery/exterior-view.webp'),

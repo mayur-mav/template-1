@@ -89,7 +89,7 @@ export const propertiesData = [
         name: 'Century Liva',
         shortAddress: 'Yelahanka, Bengaluru',
         location: 'Doddaballapur Main Road (SH-9), Singanayakanahalli, Yelahanka, North Bengaluru, Karnataka 560064',
-        coordinates: { lat: 13.1492, lon: 77.5678 },
+        coordinates: { lat: 13.149200, lon: 77.567800 },
         category: 'ONGOING',
         statusText: 'Ongoing',
         badgeClass: 'badge-ongoing',
@@ -126,21 +126,21 @@ export const propertiesData = [
             { name: 'Seating Zone', icon: 'fa-solid fa-couch' }
         ],
         connectivity: [
-            { label: 'BMS Institute of Technology', destination: 'BMS Institute of Technology, Yelahanka, Bengaluru', coordinates: { lat: 13.1332, lon: 77.5674 }, distance: '04 mins', icon: 'fa-solid fa-graduation-cap' },
-            { label: 'Ramada by Wyndham', destination: 'Ramada by Wyndham, Yelahanka, Bengaluru', coordinates: { lat: 13.1415, lon: 77.5658 }, distance: '5 mins', icon: 'fa-solid fa-hotel' },
-            { label: 'Mallya Aditi International School', destination: 'Mallya Aditi International School, Yelahanka, Bengaluru', coordinates: { lat: 13.0985, lon: 77.5935 }, distance: '09 mins', icon: 'fa-solid fa-school' },
-            { label: 'Angsana Oasis Spa And Resort', destination: 'Angsana Oasis Spa And Resort, Doddaballapur Road, Bengaluru', coordinates: { lat: 13.2085, lon: 77.5255 }, distance: '10 mins', icon: 'fa-solid fa-hotel' },
-            { label: 'National Public School', destination: 'National Public School, Yelahanka, Bengaluru', coordinates: { lat: 13.109, lon: 77.585 }, distance: '12 mins', icon: 'fa-solid fa-school' },
-            { label: 'The Galleria Mall', distance: '14 mins', icon: 'fa-solid fa-cart-shopping' },
-            { label: 'Manipal Institute of Technology', distance: '16 mins', icon: 'fa-solid fa-graduation-cap' },
-            { label: 'Vidyashilp Academy', distance: '20 mins', icon: 'fa-solid fa-school' },
-            { label: 'Manipal Hospital, Doddaballapura', distance: '22 mins', icon: 'fa-solid fa-hospital' },
-            { label: 'Philips Innovation Center', distance: '22 mins', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Mall of Asia', destination: 'Phoenix Mall of Asia, Bellary Road, Bengaluru', coordinates: { lat: 13.0585, lon: 77.591 }, distance: '22 mins', icon: 'fa-solid fa-cart-shopping' },
-            { label: 'Sparsh Multispeciality', distance: '25 mins', icon: 'fa-solid fa-hospital' },
-            { label: 'Grover Zampa Vineyards', distance: '30 mins', icon: 'fa-solid fa-wine-glass' },
-            { label: 'Information Tech Investment Region (ITIR)', distance: '30 mins', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Aster CMI', distance: '33 mins', icon: 'fa-solid fa-hospital' }
+            { label: 'BMS Institute of Technology', destination: 'BMS Institute of Technology and Management, Doddaballapur Main Road, Avalahalli, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.133200, lon: 77.567400 }, distance: '2.0 Kms', icon: 'fa-solid fa-graduation-cap' },
+            { label: 'Ramada by Wyndham', destination: 'Ramada by Wyndham Bengaluru Yelahanka, Doddaballapur Road, Singanayakanahalli, Bengaluru, Karnataka 560064', coordinates: { lat: 13.141500, lon: 77.565800 }, distance: '900 Meters', icon: 'fa-solid fa-hotel' },
+            { label: 'Mallya Aditi International School', destination: 'Mallya Aditi International School, Behind Yelahanka New Town, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.098500, lon: 77.593500 }, distance: '7.2 Kms', icon: 'fa-solid fa-school' },
+            { label: 'Angsana Oasis Spa And Resort', destination: 'Angsana Oasis Spa & Resort, Main Doddaballapur Road, Rajanukunte, Bengaluru, Karnataka 560064', coordinates: { lat: 13.208500, lon: 77.525500 }, distance: '8.5 Kms', icon: 'fa-solid fa-hotel' },
+            { label: 'National Public School', destination: 'National Public School, Ananthapura, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.109000, lon: 77.585000 }, distance: '5.8 Kms', icon: 'fa-solid fa-school' },
+            { label: 'The Galleria Mall', destination: 'RMZ Galleria Mall, B.B. Road, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.102300, lon: 77.589400 }, distance: '6.5 Kms', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Manipal Institute of Technology', destination: 'Manipal Academy of Higher Education (MAHE) Bengaluru Campus, Govindapura, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.125200, lon: 77.588000 }, distance: '5.2 Kms', icon: 'fa-solid fa-graduation-cap' },
+            { label: 'Vidyashilp Academy', destination: 'Vidyashilp Academy, Jakkur Post, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.089500, lon: 77.597500 }, distance: '8.2 Kms', icon: 'fa-solid fa-school' },
+            { label: 'Manipal Hospital, Doddaballapura', destination: 'Manipal Hospital, Doddaballapur Road, Rajanukunte, Bengaluru, Karnataka 560064', coordinates: { lat: 13.185200, lon: 77.545000 }, distance: '5.5 Kms', icon: 'fa-solid fa-hospital' },
+            { label: 'Philips Innovation Center', destination: 'Philips Innovation Campus, Manyata Tech Park, Nagavara, Bengaluru, Karnataka 560045', coordinates: { lat: 13.045600, lon: 77.621200 }, distance: '14.5 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Mall of Asia', destination: 'Phoenix Mall of Asia, Bellary Road, Byatarayanapura, Yelahanka, Bengaluru, Karnataka 560092', coordinates: { lat: 13.058500, lon: 77.591000 }, distance: '11.8 Kms', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Sparsh Multispeciality', destination: 'SPARSH Hospital, Bellary Road, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.108500, lon: 77.593000 }, distance: '6.0 Kms', icon: 'fa-solid fa-hospital' },
+            { label: 'Grover Zampa Vineyards', destination: 'Grover Zampa Vineyards, Raghunathapur, Doddaballapur Road, Bengaluru, Karnataka 561205', coordinates: { lat: 13.268000, lon: 77.522000 }, distance: '16.0 Kms', icon: 'fa-solid fa-wine-glass' },
+            { label: 'Information Tech Investment Region (ITIR)', destination: 'Bangalore ITIR Region, Devanahalli - Doddaballapura Highway, Bengaluru, Karnataka 562110', coordinates: { lat: 13.245000, lon: 77.620000 }, distance: '18.5 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Aster CMI', destination: 'Aster CMI Hospital, Bellary Road, Sahakar Nagar, Hebbal, Bengaluru, Karnataka 560092', coordinates: { lat: 13.054500, lon: 77.592500 }, distance: '12.5 Kms', icon: 'fa-solid fa-hospital' }
         ]
     },
     {
@@ -148,7 +148,7 @@ export const propertiesData = [
         name: 'Century Regalia',
         shortAddress: 'Indiranagar, Bengaluru',
         location: 'Golf Avenue, next to KGA Road, Indiranagar, Kodihalli, Bengaluru, Karnataka 560008',
-        coordinates: { lat: 12.9612, lon: 77.6485 },
+        coordinates: { lat: 12.961200, lon: 77.648500 },
         category: 'ONGOING',
         statusText: 'Ongoing',
         badgeClass: 'badge-ongoing',
@@ -182,13 +182,13 @@ export const propertiesData = [
             { name: 'Children\'s Play Area', icon: 'fa-solid fa-child-reaching' }
         ],
         connectivity: [
-            { label: 'KGA Golf Course', destination: 'Karnataka Golf Association, Golf Avenue, Kodihalli, Bengaluru', coordinates: { lat: 12.959, lon: 77.6495 }, distance: '0.15 km', icon: 'fa-solid fa-flag' },
-            { label: 'Hotel The Leela Palace', destination: 'The Leela Palace Bengaluru, Old Airport Road, Bengaluru', coordinates: { lat: 12.9605, lon: 77.648 }, distance: '500 m', icon: 'fa-solid fa-hotel' },
-            { label: 'Embassy Golf Links (EGL)', destination: 'Embassy Golf Links Business Park, Domlur, Bengaluru', coordinates: { lat: 12.949, lon: 77.646 }, distance: '1 km', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Indiranagar Club', destination: 'Indiranagar Club, Indiranagar, Bengaluru', coordinates: { lat: 12.973, lon: 77.641 }, distance: '2 km', icon: 'fa-solid fa-users' },
-            { label: 'Indiranagar 100 Ft. Road', destination: '100 Feet Road, Indiranagar, Bengaluru', coordinates: { lat: 12.97, lon: 77.639 }, distance: '3 km', icon: 'fa-solid fa-cart-shopping' },
-            { label: 'Manipal Hospital, Old Airport Road', distance: '800 m', icon: 'fa-solid fa-hospital' },
-            { label: 'Indiranagar Metro Station', distance: '4.3 km', icon: 'fa-solid fa-train' }
+            { label: 'KGA Golf Course', destination: 'Karnataka Golf Association, Golf Avenue, Kodihalli, Bengaluru, Karnataka 560008', coordinates: { lat: 12.959000, lon: 77.649500 }, distance: '150 Meters', icon: 'fa-solid fa-flag' },
+            { label: 'Hotel The Leela Palace', destination: 'The Leela Palace Bengaluru, 23, HAL Old Airport Road, Kodihalli, Bengaluru, Karnataka 560008', coordinates: { lat: 12.960500, lon: 77.648000 }, distance: '500 Meters', icon: 'fa-solid fa-hotel' },
+            { label: 'Manipal Hospital, Old Airport Road', destination: 'Manipal Hospital, 98, HAL Old Airport Road, Kodihalli, Bengaluru, Karnataka 560017', coordinates: { lat: 12.959200, lon: 77.650800 }, distance: '800 Meters', icon: 'fa-solid fa-hospital' },
+            { label: 'Embassy Golf Links (EGL)', destination: 'Embassy GolfLinks Business Park, Off Intermediate Ring Road, Domlur, Bengaluru, Karnataka 560071', coordinates: { lat: 12.949000, lon: 77.646000 }, distance: '1.5 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Indiranagar Club', destination: 'Indiranagar Club, 4th Cross Road, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560008', coordinates: { lat: 12.973000, lon: 77.641000 }, distance: '2.0 Kms', icon: 'fa-solid fa-users' },
+            { label: 'Indiranagar 100 Ft. Road', destination: '100 Feet Road, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560038', coordinates: { lat: 12.970000, lon: 77.639000 }, distance: '2.8 Kms', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Indiranagar Metro Station', destination: 'Indiranagar Metro Station (Purple Line), CMH Road, Binnamangala, Indiranagar, Bengaluru, Karnataka 560038', coordinates: { lat: 12.978300, lon: 77.638700 }, distance: '3.8 Kms', icon: 'fa-solid fa-train' }
         ]
     },
     {
@@ -196,7 +196,7 @@ export const propertiesData = [
         name: 'Century Ethos',
         shortAddress: 'Hebbal, Bengaluru',
         location: 'Bellary Road, opposite Sahakar Nagar, Hebbal, Bengaluru, Karnataka 560092',
-        coordinates: { lat: 13.0535, lon: 77.5925 },
+        coordinates: { lat: 13.053500, lon: 77.592500 },
         category: 'READY',
         statusText: 'Ready to Move',
         badgeClass: 'badge-ready',
@@ -228,12 +228,12 @@ export const propertiesData = [
             { name: 'Indoor & Outdoor Co-Working Spaces', icon: 'fa-solid fa-laptop-code' }
         ],
         connectivity: [
-            { label: 'Phoenix Mall of Asia', destination: 'Phoenix Mall of Asia, Bellary Road, Bengaluru', coordinates: { lat: 13.0585, lon: 77.591 }, distance: '850 m', icon: 'fa-solid fa-cart-shopping' },
-            { label: 'Aster CMI Hospital', destination: 'Aster CMI Hospital, Sahakar Nagar, Bengaluru', coordinates: { lat: 13.0545, lon: 77.5925 }, distance: '1.2 km', icon: 'fa-solid fa-hospital' },
-            { label: 'Kodigehalli Railway Station', destination: 'Kodigehalli Railway Station, Bengaluru', coordinates: { lat: 13.061, lon: 77.581 }, distance: '2.9 km', icon: 'fa-solid fa-train' },
-            { label: 'Esteem Mall', destination: 'Esteem Mall, Hebbal, Bengaluru', coordinates: { lat: 13.047, lon: 77.592 }, distance: '2.5 km', icon: 'fa-solid fa-cart-shopping' },
-            { label: 'Manyata Tech Park', destination: 'Manyata Tech Park, Nagavara, Bengaluru', coordinates: { lat: 13.0456, lon: 77.6212 }, distance: '6.5 km', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, Devanahalli, Bengaluru', coordinates: { lat: 13.1986, lon: 77.7066 }, distance: '25 km', icon: 'fa-solid fa-plane' }
+            { label: 'Phoenix Mall of Asia', destination: 'Phoenix Mall of Asia, Bellary Road, Byatarayanapura, Bengaluru, Karnataka 560092', coordinates: { lat: 13.058500, lon: 77.591000 }, distance: '850 Meters', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Aster CMI Hospital', destination: 'Aster CMI Hospital, Bellary Road, Sahakar Nagar, Hebbal, Bengaluru, Karnataka 560092', coordinates: { lat: 13.054500, lon: 77.592500 }, distance: '1.2 Kms', icon: 'fa-solid fa-hospital' },
+            { label: 'Esteem Mall', destination: 'Esteem Mall, Bellary Road, Chiranjeevi Layout, Hebbal, Bengaluru, Karnataka 560024', coordinates: { lat: 13.047000, lon: 77.592000 }, distance: '1.8 Kms', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Kodigehalli Railway Station', destination: 'Kodigehalli Railway Station, Sahakar Nagar, Bengaluru, Karnataka 560092', coordinates: { lat: 13.061000, lon: 77.581000 }, distance: '2.9 Kms', icon: 'fa-solid fa-train' },
+            { label: 'Manyata Tech Park', destination: 'Manyata Embassy Business Park, Outer Ring Road, Nagavara, Bengaluru, Karnataka 560045', coordinates: { lat: 13.045635, lon: 77.621195 }, distance: '6.5 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '24.5 Kms', icon: 'fa-solid fa-plane' }
         ]
     },
     {
@@ -241,7 +241,7 @@ export const propertiesData = [
         name: 'Century Renata',
         shortAddress: 'Richmond Road, Bengaluru',
         location: 'Richmond Road, Central Bengaluru, Karnataka 560025',
-        coordinates: { lat: 12.966, lon: 77.6045 },
+        coordinates: { lat: 12.966000, lon: 77.604500 },
         category: 'READY',
         statusText: 'Ready to Move',
         badgeClass: 'badge-ready',
@@ -272,19 +272,19 @@ export const propertiesData = [
             { name: 'Children\'s Play Area', icon: 'fa-solid fa-child-reaching' }
         ],
         connectivity: [
-            { label: 'The Bangalore Club', destination: 'The Bangalore Club, Field Marshal Cariappa Road, Bengaluru', coordinates: { lat: 12.968, lon: 77.601 }, distance: '0.3 km', icon: 'fa-solid fa-users' },
-            { label: 'Cubbon Park', destination: 'Cubbon Park, Bengaluru', coordinates: { lat: 12.974, lon: 77.593 }, distance: '1.5 km', icon: 'fa-solid fa-tree' },
-            { label: 'Bangalore Golf Club', destination: 'Bangalore Golf Club, Sankey Road, Bengaluru', coordinates: { lat: 12.989, lon: 77.584 }, distance: '3.4 km', icon: 'fa-solid fa-flag' },
-            { label: 'MG Road & Brigade Road', destination: 'Brigade Road, Bengaluru', coordinates: { lat: 12.9735, lon: 77.608 }, distance: '2 km', icon: 'fa-solid fa-cart-shopping' },
-            { label: 'UB City Mall', destination: 'UB City, Vittal Mallya Road, Bengaluru', coordinates: { lat: 12.9715, lon: 77.596 }, distance: '1.2 km', icon: 'fa-solid fa-shop' },
-            { label: 'MG Road Metro Station', distance: '2 km', icon: 'fa-solid fa-train' }
+            { label: 'The Bangalore Club', destination: 'The Bangalore Club, 10, Field Marshal Cariappa Road, Bengaluru, Karnataka 560025', coordinates: { lat: 12.968000, lon: 77.601000 }, distance: '300 Meters', icon: 'fa-solid fa-users' },
+            { label: 'UB City Mall', destination: 'UB City, 24, Vittal Mallya Road, KG Halli, D Souza Layout, Ashok Nagar, Bengaluru, Karnataka 560001', coordinates: { lat: 12.971500, lon: 77.596000 }, distance: '1.2 Kms', icon: 'fa-solid fa-shop' },
+            { label: 'Cubbon Park', destination: 'Cubbon Park, Kasturba Road, Bengaluru, Karnataka 560001', coordinates: { lat: 12.974000, lon: 77.593000 }, distance: '1.5 Kms', icon: 'fa-solid fa-tree' },
+            { label: 'MG Road & Brigade Road', destination: 'Brigade Road Junction, MG Road, Ashok Nagar, Bengaluru, Karnataka 560001', coordinates: { lat: 12.973500, lon: 77.608000 }, distance: '1.8 Kms', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'MG Road Metro Station', destination: 'Mahatma Gandhi Road Metro Station (Purple Line), MG Road, Bengaluru, Karnataka 560001', coordinates: { lat: 12.975500, lon: 77.606800 }, distance: '1.8 Kms', icon: 'fa-solid fa-train' },
+            { label: 'Bangalore Golf Club', destination: 'Bangalore Golf Club, 2, Sankey Road, High Grounds, Bengaluru, Karnataka 560001', coordinates: { lat: 12.989000, lon: 77.584000 }, distance: '3.4 Kms', icon: 'fa-solid fa-flag' }
         ]
     },
     {
         id: 'century-astoria',
         name: 'The Astoria at Century Immencity',
         location: 'Jakkur, International Airport Road, North Bengaluru, Karnataka 560064',
-        coordinates: { lat: 13.0782, lon: 77.6012 },
+        coordinates: { lat: 13.078200, lon: 77.601200 },
         shortAddress: 'Jakkur, Bengaluru',
         category: 'NEW',
         statusText: 'New Launch',
@@ -317,18 +317,18 @@ export const propertiesData = [
             { name: 'High-Street Retail & Dining Access', icon: 'fa-solid fa-cart-shopping' }
         ],
         connectivity: [
-            { label: 'Jakkur Aerodrome', destination: 'Jakkur Aerodrome, Bellary Road, Bengaluru', coordinates: { lat: 13.076, lon: 77.599 }, distance: 'Close Proximity', icon: 'fa-solid fa-plane-up' },
-            { label: 'Hebbal', destination: 'Hebbal Flyover, Bengaluru', coordinates: { lat: 13.0416, lon: 77.5899 }, distance: '~6 km / ~12 mins', icon: 'fa-solid fa-road' },
-            { label: 'Manyata Tech Park', distance: '~5.1 km - 8 km', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Yelahanka', destination: 'Yelahanka Junction, Bengaluru', coordinates: { lat: 13.1005, lon: 77.5963 }, distance: '~5 km / ~10 mins', icon: 'fa-solid fa-train' },
-            { label: 'Kempegowda International Airport', distance: '~15 km / ~25 mins', icon: 'fa-solid fa-plane' }
+            { label: 'Jakkur Aerodrome', destination: 'Jakkur Aerodrome, Bellary Road, Jakkuru, Bengaluru, Karnataka 560064', coordinates: { lat: 13.076000, lon: 77.599000 }, distance: '500 Meters', icon: 'fa-solid fa-plane-up' },
+            { label: 'Yelahanka', destination: 'Yelahanka Junction Railway Station, Railway Station Road, Gandhi Nagar, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.100500, lon: 77.596300 }, distance: '3.8 Kms', icon: 'fa-solid fa-train' },
+            { label: 'Hebbal', destination: 'Hebbal Flyover, Bellary Road, Hebbal, Bengaluru, Karnataka 560024', coordinates: { lat: 13.041662, lon: 77.589944 }, distance: '5.5 Kms', icon: 'fa-solid fa-road' },
+            { label: 'Manyata Tech Park', destination: 'Manyata Embassy Business Park, Outer Ring Road, Nagavara, Bengaluru, Karnataka 560045', coordinates: { lat: 13.045635, lon: 77.621195 }, distance: '6.8 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '21.0 Kms', icon: 'fa-solid fa-plane' }
         ]
     },
     {
         id: 'century-kindle',
         name: 'Century Kindle',
         location: 'Attur Village, Attur Layout, Yelahanka New Town, Bengaluru, Karnataka 560064',
-        coordinates: { lat: 13.1185, lon: 77.575 },
+        coordinates: { lat: 13.118500, lon: 77.575000 },
         shortAddress: 'Yelahanka New Town, Bengaluru',
         category: 'NEW',
         statusText: 'NEW LAUNCH',
@@ -367,19 +367,19 @@ export const propertiesData = [
             { name: 'Outdoor Gym', icon: 'fa-solid fa-dumbbell' },
         ],
         connectivity: [
-            { label: 'Yelahanka Railway Station', destination: 'Yelahanka Junction Railway Station, Bengaluru', coordinates: { lat: 13.105, lon: 77.5919 }, distance: '4 km', icon: 'fa-solid fa-train' },
-            { label: 'Doddaballapur Main Road', destination: 'Doddaballapur Main Road, Yelahanka, Bengaluru', coordinates: { lat: 13.125, lon: 77.57 }, distance: '2 km', icon: 'fa-solid fa-road' },
-            { label: 'RMZ Galleria Mall', destination: 'RMZ Galleria Mall, Yelahanka, Bengaluru', coordinates: { lat: 13.102, lon: 77.589 }, distance: '3 km', icon: 'fa-solid fa-cart-shopping' },
-            { label: 'Hebbal Flyover', destination: 'Hebbal Flyover, Bengaluru', coordinates: { lat: 13.0416, lon: 77.5899 }, distance: '10 km', icon: 'fa-solid fa-road' },
-            { label: 'Manyata Tech Park', distance: '15 km', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Kempegowda International Airport', distance: '26 km', icon: 'fa-solid fa-plane' }
+            { label: 'Doddaballapur Main Road', destination: 'Doddaballapur Main Road, Attur Layout, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.125000, lon: 77.570000 }, distance: '1.5 Kms', icon: 'fa-solid fa-road' },
+            { label: 'RMZ Galleria Mall', destination: 'RMZ Galleria Mall, B.B. Road, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.102300, lon: 77.589400 }, distance: '3.0 Kms', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Yelahanka Railway Station', destination: 'Yelahanka Junction Railway Station, Railway Station Road, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.105007, lon: 77.591894 }, distance: '3.5 Kms', icon: 'fa-solid fa-train' },
+            { label: 'Hebbal Flyover', destination: 'Hebbal Flyover, Bellary Road, Hebbal, Bengaluru, Karnataka 560024', coordinates: { lat: 13.041662, lon: 77.589944 }, distance: '9.5 Kms', icon: 'fa-solid fa-road' },
+            { label: 'Manyata Tech Park', destination: 'Manyata Embassy Business Park, Outer Ring Road, Nagavara, Bengaluru, Karnataka 560045', coordinates: { lat: 13.045635, lon: 77.621195 }, distance: '12.5 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '23.0 Kms', icon: 'fa-solid fa-plane' }
         ]
     },
     {
         id: 'century-bliss',
         name: 'Century Bliss',
         location: 'Yelahanka - Doddaballapura Main Road, North Bengaluru, Karnataka 562163',
-        coordinates: { lat: 13.205, lon: 77.552 },
+        coordinates: { lat: 13.205000, lon: 77.552000 },
         shortAddress: 'North Bengaluru',
         category: 'NEW',
         statusText: 'NEW LAUNCH',
@@ -413,19 +413,19 @@ export const propertiesData = [
             { name: 'Attached Commercial Hub', icon: 'fa-solid fa-cart-shopping' }
         ],
         connectivity: [
-            { label: 'Doddaballapura Industrial Zone', destination: 'Doddaballapura Industrial Area, Karnataka', coordinates: { lat: 13.25, lon: 77.54 }, distance: '10 mins', icon: 'fa-solid fa-industry' },
-            { label: 'Foxconn Facility', destination: 'Foxconn Manufacturing Unit, Devanahalli, Karnataka', coordinates: { lat: 13.22, lon: 77.68 }, distance: '20 mins', icon: 'fa-solid fa-microchip' },
-            { label: 'Satellite Town Ring Road (STRR)', destination: 'Satellite Town Ring Road (STRR), Doddaballapura, Karnataka', coordinates: { lat: 13.24, lon: 77.56 }, distance: '15 mins', icon: 'fa-solid fa-road' },
-            { label: 'RMZ Galleria Mall', distance: '15 mins', icon: 'fa-solid fa-cart-shopping' },
-            { label: 'Yelahanka New Town', destination: 'Yelahanka New Town, Bengaluru', coordinates: { lat: 13.098, lon: 77.575 }, distance: '10 mins', icon: 'fa-solid fa-train' },
-            { label: 'Kempegowda International Airport', distance: '40 mins', icon: 'fa-solid fa-plane' }
+            { label: 'Satellite Town Ring Road (STRR)', destination: 'Satellite Town Ring Road (STRR), Doddaballapura, Karnataka 561203', coordinates: { lat: 13.240000, lon: 77.560000 }, distance: '4.5 Kms', icon: 'fa-solid fa-road' },
+            { label: 'Doddaballapura Industrial Zone', destination: 'Doddaballapura Industrial Area, Doddaballapura, Karnataka 561203', coordinates: { lat: 13.250000, lon: 77.540000 }, distance: '5.8 Kms', icon: 'fa-solid fa-industry' },
+            { label: 'Yelahanka New Town', destination: 'Yelahanka New Town, Bengaluru, Karnataka 560064', coordinates: { lat: 13.098000, lon: 77.575000 }, distance: '12.0 Kms', icon: 'fa-solid fa-train' },
+            { label: 'RMZ Galleria Mall', destination: 'RMZ Galleria Mall, B.B. Road, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.102300, lon: 77.589400 }, distance: '13.5 Kms', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Foxconn Facility', destination: 'Foxconn Manufacturing Campus, Devanahalli / ITIR Region, Doddaballapura, Karnataka 561203', coordinates: { lat: 13.220000, lon: 77.680000 }, distance: '14.5 Kms', icon: 'fa-solid fa-microchip' },
+            { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '26.0 Kms', icon: 'fa-solid fa-plane' }
         ]
     },
     {
         id: 'century-mirai',
         name: 'Century Mirai',
         location: 'Silver Springs Layout, Munnekollal, Marathahalli, Bengaluru, Karnataka 560037',
-        coordinates: { lat: 12.9465, lon: 77.712 },
+        coordinates: { lat: 12.946500, lon: 77.712000 },
         shortAddress: 'Marathahalli, Bengaluru',
         category: 'NEW',
         statusText: 'NEW LAUNCH',
@@ -458,18 +458,18 @@ export const propertiesData = [
             { name: 'Landscaped Central Gardens', icon: 'fa-solid fa-tree' }
         ],
         connectivity: [
-            { label: 'SAP Labs', destination: 'SAP Labs India, Whitefield, Bengaluru', coordinates: { lat: 12.977, lon: 77.715 }, distance: '3.7 Kms', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Cessna Business Park', destination: 'Cessna Business Park, Kadubeesanahalli, Bengaluru', coordinates: { lat: 12.936, lon: 77.693 }, distance: '4.2 Kms', icon: 'fa-solid fa-building' },
-            { label: 'JP Morgan', destination: 'JP Morgan Chase, Embassy TechVillage, Bengaluru', coordinates: { lat: 12.934, lon: 77.692 }, distance: '4.9 Kms', icon: 'fa-solid fa-building-columns' },
-            { label: 'GE Healthcare', destination: 'GE Healthcare, Whitefield, Bengaluru', coordinates: { lat: 12.975, lon: 77.731 }, distance: '4.9 Kms', icon: 'fa-solid fa-square-h' },
-            { label: 'Embassy Tech Village', destination: 'Embassy TechVillage, Outer Ring Road, Bengaluru', coordinates: { lat: 12.929, lon: 77.692 }, distance: '5 Kms', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Ryan International School', destination: 'Ryan International School, Kundalahalli, Bengaluru', coordinates: { lat: 12.965, lon: 77.715 }, distance: '2.1 Kms', icon: 'fa-solid fa-school' },
-            { label: 'Euro School', destination: 'EuroSchool Whitefield, Bengaluru', coordinates: { lat: 12.96, lon: 77.725 }, distance: '4.5 Kms', icon: 'fa-solid fa-school' },
-            { label: 'Manipal Hospital', destination: 'Manipal Hospital Whitefield, Bengaluru', coordinates: { lat: 12.979, lon: 77.728 }, distance: '4.2 Kms', icon: 'fa-solid fa-hospital' },
-            { label: 'Motherhood Hospital', destination: 'Motherhood Hospital, Marathahalli, Bengaluru', coordinates: { lat: 12.955, lon: 77.705 }, distance: '4.9 Kms', icon: 'fa-solid fa-hospital-user' },
-            { label: 'Seetharam Palya Metro Station', destination: 'Seetharam Palya Metro Station, Bengaluru', coordinates: { lat: 12.9805, lon: 77.716 }, distance: '3.4 Kms', icon: 'fa-solid fa-train-subway' },
-            { label: 'Kundalahalli Metro Station', destination: 'Kundalahalli Metro Station, Bengaluru', coordinates: { lat: 12.9705, lon: 77.72 }, distance: '3.8 Kms', icon: 'fa-solid fa-train-subway' },
-            { label: 'Nexus Whitefield', destination: 'Nexus Whitefield Mall, Bengaluru', coordinates: { lat: 12.9585, lon: 77.746 }, distance: '4.8 Kms', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Ryan International School', destination: 'Ryan International School, Kundalahalli, Brookefield, Bengaluru, Karnataka 560037', coordinates: { lat: 12.965000, lon: 77.715000 }, distance: '2.1 Kms', icon: 'fa-solid fa-school' },
+            { label: 'Seetharam Palya Metro Station', destination: 'Seetharampalya Metro Station (Purple Line), Whitefield Main Road, Bengaluru, Karnataka 560048', coordinates: { lat: 12.980500, lon: 77.716000 }, distance: '3.4 Kms', icon: 'fa-solid fa-train-subway' },
+            { label: 'SAP Labs', destination: 'SAP Labs India, 138, EPIP Zone, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.977000, lon: 77.715000 }, distance: '3.7 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Kundalahalli Metro Station', destination: 'Kundalahalli Metro Station (Purple Line), Whitefield Main Road, Bengaluru, Karnataka 560066', coordinates: { lat: 12.970500, lon: 77.720000 }, distance: '3.8 Kms', icon: 'fa-solid fa-train-subway' },
+            { label: 'Manipal Hospital', destination: 'Manipal Hospital Whitefield, 143, EPIP Zone, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.979000, lon: 77.728000 }, distance: '4.2 Kms', icon: 'fa-solid fa-hospital' },
+            { label: 'Cessna Business Park', destination: 'Cessna Business Park, Marathahalli - Sarjapur Outer Ring Road, Kadubeesanahalli, Bengaluru, Karnataka 560103', coordinates: { lat: 12.936000, lon: 77.693000 }, distance: '4.2 Kms', icon: 'fa-solid fa-building' },
+            { label: 'Euro School', destination: 'EuroSchool Whitefield, Chimney Hills, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.960000, lon: 77.725000 }, distance: '4.5 Kms', icon: 'fa-solid fa-school' },
+            { label: 'Nexus Whitefield', destination: 'Nexus Whitefield Mall, Whitefield Main Road, Bengaluru, Karnataka 560066', coordinates: { lat: 12.958500, lon: 77.746000 }, distance: '4.8 Kms', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Motherhood Hospital', destination: 'Motherhood Hospital, Sarjapur-Marathahalli Road, Bengaluru, Karnataka 560037', coordinates: { lat: 12.955000, lon: 77.705000 }, distance: '4.9 Kms', icon: 'fa-solid fa-hospital-user' },
+            { label: 'JP Morgan', destination: 'JPMorgan Chase & Co., Embassy TechVillage, Outer Ring Road, Devarabisanahalli, Bengaluru, Karnataka 560103', coordinates: { lat: 12.934000, lon: 77.692000 }, distance: '4.9 Kms', icon: 'fa-solid fa-building-columns' },
+            { label: 'GE Healthcare', destination: 'GE Healthcare, John F. Welch Technology Centre, EPIP Zone, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.975000, lon: 77.731000 }, distance: '4.9 Kms', icon: 'fa-solid fa-square-h' },
+            { label: 'Embassy Tech Village', destination: 'Embassy TechVillage, Outer Ring Road, Devarabisanahalli, Bellandur, Bengaluru, Karnataka 560103', coordinates: { lat: 12.929000, lon: 77.692000 }, distance: '5.0 Kms', icon: 'fa-solid fa-laptop-code' }
         ]
     }
 ];

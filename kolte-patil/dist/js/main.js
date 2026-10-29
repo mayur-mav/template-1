@@ -1192,8 +1192,10 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
 
     const connectivitySection = document.getElementById('dt-connectivity-section');
     const connectivityGrid = document.getElementById('dt-connectivity');
-    const nearbyPlaces = item.connectivity || [];
+    const nearbyPlaces = (item.connectivity || []).slice(0, 4);
     connectivityGrid.innerHTML = '';
+    const oldConnLink = connectivityGrid.nextElementSibling;
+    if (oldConnLink?.classList.contains('feature-expansion-link')) oldConnLink.remove();
     nearbyPlaces.forEach(place => {
         const row = document.createElement('div');
         row.className = 'loc-item';
@@ -1212,8 +1214,7 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
         row.appendChild(text);
         connectivityGrid.appendChild(row);
     });
-    addFeatureExpansion(connectivityGrid, 4, 'connectivity');
-    connectivitySection.hidden = nearbyPlaces.length === 0;
+    connectivitySection.hidden = (item.connectivity || []).length === 0;
     renderProjectComparison(item);
 
     document.getElementById('catalog-view').style.display = 'none';

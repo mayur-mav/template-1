@@ -71,8 +71,10 @@
         </button>
     </header>
 
-    <!-- MAIN SPA CATALOG CONTAINER -->
-    <main id="catalog-view">
+    <!-- MAIN CONTENT LANDMARK (Wraps Catalog and Property Detail SPA Views) -->
+    <main id="main-content">
+        <!-- MAIN SPA CATALOG CONTAINER -->
+        <div id="catalog-view">
         <!-- 3. HERO & SIMPLE SEARCH SECTION -->
         <section class="hero-section" id="developer-hero">
             <img class="hero-banner-image" id="developer-hero-image" src="https://media.justflip.in/builder-brand-pages/century/banner.webp" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async">
@@ -87,8 +89,8 @@
             <div class="search-container">
                 <div class="search-box-wrapper">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" id="searchInput" class="search-input" placeholder="Search by project name, location (e.g. Hinjewadi, NIBM), or BHK..." oninput="handleSearch()" onkeydown="if (event.key === 'Enter') { event.preventDefault(); submitSearch(); }">
-                    <button id="searchClearBtn" class="search-clear-btn" onclick="clearSearch()">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search by project name, location (e.g. Hinjewadi, NIBM), or BHK..." aria-label="Search by project name, location, or BHK" oninput="handleSearch()" onkeydown="if (event.key === 'Enter') { event.preventDefault(); submitSearch(); }">
+                    <button id="searchClearBtn" class="search-clear-btn" type="button" aria-label="Clear search" onclick="clearSearch()">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
@@ -181,13 +183,13 @@
                     <div>
                         <form onsubmit="handleFormSubmit(event)">
                             <div class="form-group">
-                                <input type="text" class="form-input" placeholder="Your Full Name" required>
+                                <input type="text" class="form-input" placeholder="Your Full Name" aria-label="Your Full Name" required>
                             </div>
                             <div class="form-group">
-                                <input type="tel" class="form-input" placeholder="Mobile Number (+91)" required>
+                                <input type="tel" class="form-input" placeholder="Mobile Number (+91)" aria-label="Mobile Number (+91)" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-input" placeholder="Email Address" required>
+                                <input type="email" class="form-input" placeholder="Email Address" aria-label="Email Address" required>
                             </div>
                             <div class="form-group">
                                 <div class="project-select" id="homeProjectSelect">
@@ -230,9 +232,9 @@
                 <span id="footer-builder-attribution"></span>
             </div>
         </footer>
-    </main>
+        </div>
 
-    <!-- 10. FULL PROPERTY DETAIL SPA VIEW (#FFFFFF Background) -->
+        <!-- 10. FULL PROPERTY DETAIL SPA VIEW (#FFFFFF Background) -->
     <div id="property-detail-view">
         <!-- Top Action Bar for Details View (Shown when scrolled to top) -->
         <div class="detail-top-bar" id="detailTopBar">
@@ -247,7 +249,7 @@
         <!-- Sticky Sub-Navigation Tabs Bar for Project Details -->
         <nav class="detail-subnav-bar" id="detailSubnavBar" aria-label="Project sections navigation">
             <div class="subnav-container">
-                <button type="button" class="subnav-arrow subnav-arrow-left" id="subnavArrowLeft" aria-label="Scroll tabs left" tabindex="-1">
+                <button type="button" class="subnav-arrow subnav-arrow-left" id="subnavArrowLeft" aria-label="Scroll tabs left">
                     <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
                 </button>
                 <div class="subnav-track" id="subnavTrack" role="tablist">
@@ -260,7 +262,7 @@
                     <button type="button" class="subnav-tab" role="tab" id="subnav-tab-connectivity" data-target="dt-connectivity-section" aria-selected="false" tabindex="-1">Location &amp; Connectivity</button>
                     <button type="button" class="subnav-tab" role="tab" id="subnav-tab-comparison" data-target="dt-project-comparison" aria-selected="false" tabindex="-1">Compare Projects</button>
                 </div>
-                <button type="button" class="subnav-arrow subnav-arrow-right" id="subnavArrowRight" aria-label="Scroll tabs right" tabindex="-1">
+                <button type="button" class="subnav-arrow subnav-arrow-right" id="subnavArrowRight" aria-label="Scroll tabs right">
                     <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
                 </button>
             </div>
@@ -336,7 +338,7 @@
         <div class="detail-body-layout">
             <div class="detail-main-content">
                 <section class="detail-section-block" id="dt-overview-section" aria-labelledby="dt-overview-title">
-                    <h3 class="section-block-title" id="dt-overview-title">Architectural Overview</h3>
+                    <h2 class="section-block-title" id="dt-overview-title">Architectural Overview</h2>
                     <div id="dt-description">
                     <p class="overview-text">Century Liva is a luxury residential development by Century Real Estate located on Doddaballapur Main Road, Yelahanka. Spread across 3 acres with 80% open green space, the project features 247 exclusive apartments with modern lifestyle amenities and connectivity to Kempegowda International Airport. Buyers researching Century Real Estate in Bangalore can explore homes in Yelahanka, Bengaluru, with project status, location, and configuration details to compare.</p>
                     <p class="overview-text">Century Liva is listed with 2, 3, and 4 BHK configurations and a December 2028 possession timeline. Residents can explore landscaped gardens and lifestyle amenities, with nearby destinations including BMS Institute of Technology, Ramada by Wyndham, and Mallya Aditi International School. Review Century Liva floor plans, amenities, and connectivity when comparing Century homes in Bengaluru. <span class="overview-rera"><strong>RERA Registration No.</strong> <span>PRM/KA/RERA/1251/309/PR/130924/007015</span></span></p>
@@ -347,14 +349,14 @@
 
                 <!-- PROJECT HIGHLIGHTS -->
                 <section class="project-highlights-section detail-section-block" id="dt-project-highlights" aria-labelledby="dt-highlights-title">
-                    <h3 class="section-block-title" id="dt-highlights-title">Project Highlights</h3>
+                    <h2 class="section-block-title" id="dt-highlights-title">Project Highlights</h2>
                     <div class="highlights-grid" id="dt-highlights">
                         <!-- Dynamic Highlights -->
                     </div>
                 </section>
 
                 <section class="project-gallery-section detail-section-block" id="dt-project-gallery" aria-labelledby="dt-project-gallery-title" hidden>
-                    <h3 class="section-block-title" id="dt-project-gallery-title">Project Gallery</h3>
+                    <h2 class="section-block-title" id="dt-project-gallery-title">Project Gallery</h2>
                     <p class="project-gallery-description">Browse project photos and available floor plans.</p>
                     <button class="project-gallery-preview" id="projectGalleryPreview" type="button" aria-haspopup="dialog">
                         <img id="projectGalleryPreviewImage" src="" alt="" loading="lazy" decoding="async">
@@ -367,7 +369,7 @@
 
                 <!-- INTERACTIVE FLOOR PLAN SELECTOR -->
                 <section class="detail-section-block" id="dt-floorplans-section" aria-labelledby="dt-floorplans-title">
-                    <h3 class="section-block-title" id="dt-floorplans-title">Floor Plans &amp; Pricing</h3>
+                    <h2 class="section-block-title" id="dt-floorplans-title">Floor Plans &amp; Pricing</h2>
                 <div class="floorplan-container">
                     <div class="floorplan-tabs" id="fp-tabs">
                         <!-- Floor plan tab buttons generated dynamically -->
@@ -399,7 +401,7 @@
                 <section class="emi-calculator-section detail-section-block" id="dt-emi-calculator" aria-labelledby="emi-calc-heading">
                     <div class="emi-header-row">
                         <div>
-                            <h3 class="section-block-title" id="emi-calc-heading">Home Loan EMI Calculator</h3>
+                            <h2 class="section-block-title" id="emi-calc-heading">Home Loan EMI Calculator</h2>
                             <p class="emi-section-intro">Estimate monthly loan installments with dynamic property pricing and customizable loan terms.</p>
                         </div>
                         <div class="emi-sync-badge" id="emi-sync-badge">
@@ -567,7 +569,7 @@
 
                 <!-- AMENITIES GRID -->
                 <section class="detail-section-block" id="dt-amenities-section" aria-labelledby="dt-amenities-title">
-                    <h3 class="section-block-title" id="dt-amenities-title">World-Class Amenities</h3>
+                    <h2 class="section-block-title" id="dt-amenities-title">World-Class Amenities</h2>
                     <div class="amenities-grid" id="dt-amenities">
                     <!-- Dynamic Amenities -->
                 </div>
@@ -576,7 +578,7 @@
                 <!-- Project-specific connectivity is rendered from the selected project data -->
                 <div class="connectivity-section detail-section-block" id="dt-connectivity-section" hidden>
                     <div class="connectivity-heading">
-                        <h3 class="section-block-title">Strategic Connectivity</h3>
+                        <h2 class="section-block-title">Strategic Connectivity</h2>
                     </div>
                     <div class="connectivity-overview">
                         <div class="connectivity-map-preview">
@@ -587,14 +589,14 @@
                             </button>
                         </div>
                         <div class="connectivity-destinations">
-                            <h4>Nearby Destinations</h4>
+                            <h3>Nearby Destinations</h3>
                             <div class="location-matrix" id="dt-connectivity"></div>
                         </div>
                     </div>
                 </div>
 
                 <section class="project-comparison-section detail-section-block" id="dt-project-comparison" aria-labelledby="dt-project-comparison-title" hidden>
-                    <h3 class="section-block-title" id="dt-project-comparison-title">Compare Similar Projects</h3>
+                    <h2 class="section-block-title" id="dt-project-comparison-title">Compare Similar Projects</h2>
                     <p class="project-comparison-intro">Compare this project with other Century Real Estate homes before you decide.</p>
                     <div class="project-comparison-grid" id="dt-project-comparison-grid"></div>
                 </section>
@@ -603,18 +605,18 @@
             <!-- STICKY SIDEBAR ENQUIRY FORM -->
             <div class="detail-sidebar">
                 <div class="enquiry-card" id="detail-site-visit">
-                    <h4 class="enquiry-title serif-font">Schedule a Site Visit</h4>
+                    <h2 class="enquiry-title serif-font">Schedule a Site Visit</h2>
                     <p class="enquiry-subtitle">Get private tour & official pricing breakdown</p>
                     
                     <form onsubmit="handleFormSubmit(event)">
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Your Full Name" required>
+                            <input type="text" class="form-input" placeholder="Your Full Name" aria-label="Your Full Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-input" placeholder="Phone Number" required>
+                            <input type="tel" class="form-input" placeholder="Phone Number" aria-label="Phone Number" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" placeholder="Email Address" required>
+                            <input type="email" class="form-input" placeholder="Email Address" aria-label="Email Address" required>
                         </div>
                         <div class="form-group">
                             <div class="bhk-select" id="preferredBhkSelect">
@@ -631,15 +633,17 @@
             </div>
         </div>
     </div>
+        </div>
+    </main>
 
     <!-- 11. QUICK VIEW MODAL OVERLAY -->
-    <!-- <div class="modal-overlay" id="quickViewModal">
+    <!-- <div class="modal-overlay" id="quickViewModal" role="dialog" aria-modal="true" aria-labelledby="qv-title">
         <div class="modal-box">
-            <button class="modal-close-btn" onclick="closeModal('quickViewModal')">&times;</button>
+            <button class="modal-close-btn" type="button" aria-label="Close property preview" onclick="closeModal('quickViewModal')">&times;</button>
             <div class="qv-header">
                 <img id="qv-img" src="" alt="" class="qv-img" loading="lazy" decoding="async">
                 <div>
-                    <h3 class="qv-title" id="qv-title">Property Title</h3>
+                    <h2 class="qv-title" id="qv-title">Property Title</h2>
                     <p style="font-size: 0.85rem; color: var(--text-secondary);" id="qv-location"></p>
                     <div class="qv-price" id="qv-price">Starting ₹ --</div>
                 </div>
@@ -659,18 +663,18 @@
     </div> -->
 
     <!-- 12. TIMED WHATSAPP POPUP MODAL (Triggers after 3.5 seconds) -->
-    <div class="modal-overlay" id="waPopModal">
+    <div class="modal-overlay" id="waPopModal" role="dialog" aria-modal="true" aria-labelledby="waPopModalTitle">
         <div class="modal-box wa-popup-box">
-            <button class="modal-close-btn" onclick="closeModal('waPopModal')">&times;</button>
+            <button class="modal-close-btn" type="button" aria-label="Close WhatsApp modal" onclick="closeModal('waPopModal')">&times;</button>
             <div class="wa-popup-icon">
                 <i class="fa-brands fa-whatsapp"></i>
             </div>
-            <h3 class="serif-font" style="font-size: 1.5rem; margin-bottom: 8px;">Get Instant E-Brochure</h3>
+            <h2 class="serif-font" id="waPopModalTitle" style="font-size: 1.5rem; margin-bottom: 8px;">Get Instant E-Brochure</h2>
             <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px;">
                 Receive instant floor plans, pricing sheets, and payment schedules directly on your WhatsApp.
             </p>
             <div class="form-group">
-                <input type="tel" id="waPhoneInput" class="form-input" placeholder="Enter Your WhatsApp Number">
+                <input type="tel" id="waPhoneInput" class="form-input" placeholder="Enter Your WhatsApp Number" aria-label="WhatsApp Number">
             </div>
             <button class="wa-btn" onclick="sendWhatsAppLead()">
                 <i class="fa-brands fa-whatsapp"></i> Get Info on WhatsApp

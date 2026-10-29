@@ -160,10 +160,13 @@ button {
 
 .top-ticker-link {
     color: #CBD5E1;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     white-space: nowrap;
+    padding: 6px 10px;
+    min-height: 40px;
+    border-radius: 4px;
 }
 
 .top-ticker-link:hover {
@@ -304,9 +307,19 @@ button {
 .mobile-menu-toggle {
     display: none;
     background: transparent;
+    border: none;
     font-size: 1.5rem;
     color: var(--text-primary);
-    padding: 5px;
+    cursor: pointer;
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    line-height: 1;
 }
 
 @media (max-width: 1150px) {
@@ -1384,7 +1397,7 @@ button {
     font-family: 'Outfit', sans-serif;
     font-size: 0.92rem;
     font-weight: 500;
-    color: var(--text-muted, #6B7280);
+    color: var(--theme-text-secondary);
     cursor: pointer;
     position: relative;
     transition: color 0.2s ease, font-weight 0.2s ease;
@@ -1442,20 +1455,19 @@ button {
     display: none;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 28px;
-    min-width: 28px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
     border-radius: 50%;
     background: #FFFFFF;
     border: 1px solid var(--border-light, #E5E7EB);
     color: var(--text-primary, #1F2937);
-    font-size: 0.68rem;
+    font-size: 0.85rem;
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
     z-index: 3;
-    flex-shrink: 0;
-    padding: 0;
 }
 
 .subnav-arrow:disabled {
@@ -1495,8 +1507,9 @@ button {
     gap: 8px;
     background: var(--bg-champagne);
     color: var(--text-primary);
-    padding: 8px 18px;
-    border-radius: 20px;
+    padding: 10px 20px;
+    min-height: 44px;
+    border-radius: 24px;
     font-weight: 600;
     font-size: 0.9rem;
     border: 1px solid var(--border-gold);
@@ -1811,7 +1824,7 @@ button {
 
 .project-gallery-preview {
     position: relative;
-    display: block;
+    display: inline-flex;
     width: 100%;
     aspect-ratio: 16 / 9;
     max-height: 480px;
@@ -2101,7 +2114,11 @@ button {
 }
 
 .fp-tab-btn {
-    padding: 8px 18px;
+    padding: 10px 18px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 20px;
     background: var(--bg-body);
     color: var(--text-secondary);
@@ -2286,7 +2303,8 @@ button {
     }
 
     .fp-tab-btn {
-        padding: 6px 12px;
+        padding: 8px 14px;
+        min-height: 44px;
         font-size: 0.82rem;
     }
 
@@ -2521,7 +2539,8 @@ button {
     font-size: 0.78rem;
     font-weight: 600;
     cursor: pointer;
-    padding: 2px 6px;
+    padding: 6px 12px;
+    min-height: 38px;
     border-radius: 4px;
     display: inline-flex;
     align-items: center;
@@ -2558,19 +2577,23 @@ button {
 .emi-tenure-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
     margin-top: 10px;
 }
 
 .emi-chip {
-    padding: 4px 10px;
-    border-radius: 14px;
+    padding: 8px 14px;
+    min-height: 40px;
+    border-radius: 20px;
     background: #FFFFFF;
     border: 1px solid var(--border-light);
     color: var(--text-secondary);
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     transition: var(--transition);
 }
 
@@ -3241,11 +3264,22 @@ button {
 
 .modal-close-btn {
     position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 1.5rem;
-    color: var(--text-muted);
+    top: 10px;
+    right: 12px;
     background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
 }
 
 .modal-close-btn:hover {
@@ -3287,29 +3321,33 @@ button {
 .wa-popup-icon {
     width: 60px;
     height: 60px;
-    background: #25D366;
+    background: #075E54;
     color: #FFFFFF;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2rem;
-    margin: 0 auto 15px auto;
-    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+    margin: 0 auto 15px;
 }
 
 .wa-btn {
-    background: #25D366;
-    color: #FFFFFF;
     width: 100%;
-    padding: 12px;
-    border-radius: var(--radius-sm);
-    font-weight: 600;
+    padding: 14px;
+    min-height: 48px;
+    background: #075E54;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
     font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(7, 94, 84, 0.35);
+    transition: var(--transition);
 }
 
 .wa-btn:hover {
@@ -3323,15 +3361,18 @@ button {
     right: 20px;
     width: 56px;
     height: 56px;
-    background: #25D366;
+    min-width: 56px;
+    min-height: 56px;
+    background: #075E54;
     color: #FFFFFF;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.8rem;
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-    z-index: 900;
+    box-shadow: 0 4px 15px rgba(7, 94, 84, 0.4);
+    z-index: 990;
+    cursor: pointer;
     transition: var(--transition);
 }
 
@@ -3413,6 +3454,11 @@ button {
 
     .top-ticker-left, 
     .top-ticker-right {
+        gap: 12px;
+    }
+    .top-ticker-link {
+        padding: 8px 12px;
+        min-height: 44px;
         justify-content: center;
         gap: 10px;
     }
@@ -3519,8 +3565,10 @@ button {
     }
 
     .carousel-arrow {
-        width: 40px;
-        height: 40px;
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        min-height: 48px;
     }
 
     .carousel-arrow:first-child,
@@ -3661,10 +3709,11 @@ button {
     }
 
     .subnav-arrow {
-        width: 26px;
-        height: 26px;
-        min-width: 26px;
-        font-size: 0.65rem;
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        min-height: 38px;
+        font-size: 0.8rem;
     }
 
     .detail-section-block,
@@ -3780,6 +3829,10 @@ body[data-property-route-loading="true"] #catalog-view {
 .pill-icon,
 .amenity-card i,
 .loc-item i,
+.emi-sync-badge i,
+.emi-label i,
+.emi-bank-note i,
+.highlight-icon-wrap i,
 .feature-expansion-link:hover {
     color: var(--theme-accent-text);
 }
@@ -3870,6 +3923,7 @@ body[data-property-route-loading="true"] #catalog-view {
     background: var(--bg-white, #fff);
 }
 
+.connectivity-destinations h3,
 .connectivity-destinations h4 {
     margin: 0 0 12px;
     color: var(--text-primary);

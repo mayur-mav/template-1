@@ -181,6 +181,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         renderPropertyCards(propertiesData);
         initEmiCalculator();
+        initDetailSubnav();
+        syncDetailSubnavTabs();
         restorePropertyRoute();
     } catch (err) {
         console.error(`Failed to load data for builder "${builder}":`, err);
@@ -1092,6 +1094,7 @@ function renderProjectGallery(item) {
     document.getElementById('projectGalleryImageCount').textContent =
         `${projectGalleryImages.length} ${projectGalleryImages.length === 1 ? 'image' : 'images'} · Project photos and floor plans`;
     section.hidden = projectGalleryImages.length === 0;
+    syncDetailSubnavTabs();
 }
 
 function getGalleryCategoryImages(category = currentGalleryCategory) {
@@ -1300,10 +1303,12 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
 
     document.getElementById('catalog-view').style.display = 'none';
     document.getElementById('property-detail-view').style.display = 'block';
+    document.getElementById('detailSubnavBar')?.classList.remove('is-visible');
     document.body.removeAttribute('data-property-route-loading');
     if (connectivityPreviewMap) initializeConnectivityPreview(item);
     else if (!connectivityPreviewObserver) initializeConnectivityPreview(item);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    syncDetailSubnavTabs();
 }
 
 function addFeatureExpansion(list, limit, label) {
@@ -1325,6 +1330,239 @@ function addFeatureExpansion(list, limit, label) {
         link.textContent = expanded ? expandedLabel : collapsedLabel;
     });
     list.insertAdjacentElement('afterend', link);
+}
+
+// DETAIL SUB-NAVIGATION TABS & SCROLLSPY
+let isProgrammaticScroll = false;
+let programmaticScrollTimer = null;
+let subnavRafId = null;
+
+function initDetailSubnav() {
+    const subnavBar = document.getElementById('detailSubnavBar');
+    const subnavTrack = document.getElementById('subnavTrack');
+    const subnavArrowLeft = document.getElementById('subnavArrowLeft');
+    const subnavArrowRight = document.getElementById('subnavArrowRight');
+
+    if (!subnavBar || !subnavTrack) return;
+
+    // Click handler for subnav tabs
+    subnavTrack.addEventListener('click', event => {
+        const tab = event.target.closest('.subnav-tab');
+        if (!tab) return;
+        const targetId = tab.dataset.target;
+        if (!targetId) return;
+        const targetSection = document.getElementById(targetId);
+        if (!targetSection || targetSection.hidden) return;
+
+        event.preventDefault();
+
+        // Lock scrollspy during programmatic smooth scroll
+        isProgrammaticScroll = true;
+        clearTimeout(programmaticScrollTimer);
+        programmaticScrollTimer = setTimeout(() => {
+            isProgrammaticScroll = false;
+        }, 850);
+
+        // Update active tab UI immediately
+        setActiveSubnavTab(tab);
+
+        // Smooth scroll to target section
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // Keyboard navigation (ArrowLeft / ArrowRight) for tabs
+    subnavTrack.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+        const visibleTabs = [...subnavTrack.querySelectorAll('.subnav-tab:not([hidden])')];
+        const currentIndex = visibleTabs.indexOf(document.activeElement);
+        if (currentIndex < 0) return;
+        event.preventDefault();
+        const nextIndex = event.key === 'ArrowRight'
+            ? (currentIndex + 1) % visibleTabs.length
+            : (currentIndex - 1 + visibleTabs.length) % visibleTabs.length;
+        visibleTabs[nextIndex].focus();
+        visibleTabs[nextIndex].click();
+    });
+
+    // Arrow navigation buttons
+    subnavArrowLeft?.addEventListener('click', () => {
+        subnavTrack.scrollBy({ left: -220, behavior: 'smooth' });
+    });
+
+    subnavArrowRight?.addEventListener('click', () => {
+        subnavTrack.scrollBy({ left: 220, behavior: 'smooth' });
+    });
+
+    // Update arrows on track scroll
+    subnavTrack.addEventListener('scroll', updateSubnavArrows, { passive: true });
+
+    // Window scroll handler for visibility & scrollspy
+    window.addEventListener('scroll', onWindowScrollForSubnav, { passive: true });
+    window.addEventListener('resize', onWindowResizeForSubnav, { passive: true });
+
+    // Initial arrow state
+    updateSubnavArrows();
+}
+
+function updateSubnavArrows() {
+    const track = document.getElementById('subnavTrack');
+    const leftBtn = document.getElementById('subnavArrowLeft');
+    const rightBtn = document.getElementById('subnavArrowRight');
+    if (!track || !leftBtn || !rightBtn) return;
+
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    const hasOverflow = maxScroll > 8;
+
+    if (!hasOverflow) {
+        leftBtn.style.display = 'none';
+        rightBtn.style.display = 'none';
+        leftBtn.disabled = true;
+        rightBtn.disabled = true;
+        return;
+    }
+
+    const currentScroll = track.scrollLeft;
+    const canScrollLeft = currentScroll > 8;
+    const canScrollRight = currentScroll < maxScroll - 8;
+
+    leftBtn.style.display = canScrollLeft ? 'inline-flex' : 'none';
+    leftBtn.disabled = !canScrollLeft;
+
+    rightBtn.style.display = canScrollRight ? 'inline-flex' : 'none';
+    rightBtn.disabled = !canScrollRight;
+}
+
+function setActiveSubnavTab(targetTab) {
+    if (!targetTab) return;
+    const track = document.getElementById('subnavTrack');
+    if (!track) return;
+
+    const allTabs = track.querySelectorAll('.subnav-tab');
+    allTabs.forEach(tab => {
+        const isActive = tab === targetTab;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        tab.setAttribute('tabindex', isActive ? '0' : '-1');
+    });
+
+    // Auto-scroll track to keep active tab centered
+    targetTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    updateSubnavArrows();
+}
+
+function onWindowScrollForSubnav() {
+    if (subnavRafId) return;
+    subnavRafId = requestAnimationFrame(() => {
+        subnavRafId = null;
+        handleSubnavScrollspy();
+    });
+}
+
+function onWindowResizeForSubnav() {
+    updateSubnavArrows();
+    onWindowScrollForSubnav();
+}
+
+function handleSubnavScrollspy() {
+    const detailView = document.getElementById('property-detail-view');
+    const subnavBar = document.getElementById('detailSubnavBar');
+    if (!detailView || !subnavBar) return;
+
+    // Check if property detail view is currently visible
+    if (detailView.style.display === 'none' || detailView.offsetParent === null) {
+        subnavBar.classList.remove('is-visible');
+        return;
+    }
+
+    // Visibility toggle: reveal only when scrolled down past hero
+    const revealThreshold = 260;
+    const isPastHero = window.scrollY > revealThreshold;
+    subnavBar.classList.toggle('is-visible', isPastHero);
+
+    if (!isPastHero) {
+        // Reset to first tab when at the top
+        const firstTab = document.querySelector('.subnav-tab[data-target="dt-overview-section"]');
+        if (firstTab && !firstTab.classList.contains('active')) {
+            setActiveSubnavTab(firstTab);
+        }
+        return;
+    }
+
+    if (isProgrammaticScroll) return;
+
+    // Scrollspy section detection
+    const sectionTargets = [
+        'dt-overview-section',
+        'dt-project-highlights',
+        'dt-project-gallery',
+        'dt-floorplans-section',
+        'dt-emi-calculator',
+        'dt-amenities-section',
+        'dt-connectivity-section',
+        'dt-project-comparison'
+    ];
+
+    const isNearBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60);
+
+    const visibleSections = sectionTargets
+        .map(id => document.getElementById(id))
+        .filter(el => el && !el.hidden && el.offsetParent !== null);
+
+    if (!visibleSections.length) return;
+
+    let currentSection = null;
+
+    if (isNearBottom) {
+        currentSection = visibleSections[visibleSections.length - 1];
+    } else {
+        const triggerLine = (window.innerWidth <= 768 ? 120 : 140) + 40;
+        for (let i = 0; i < visibleSections.length; i++) {
+            const rect = visibleSections[i].getBoundingClientRect();
+            if (rect.top <= triggerLine) {
+                currentSection = visibleSections[i];
+            } else {
+                break;
+            }
+        }
+        if (!currentSection) currentSection = visibleSections[0];
+    }
+
+    if (currentSection) {
+        const matchingTab = document.querySelector(`.subnav-tab[data-target="${currentSection.id}"]`);
+        if (matchingTab && !matchingTab.classList.contains('active')) {
+            setActiveSubnavTab(matchingTab);
+        }
+    }
+}
+
+function syncDetailSubnavTabs() {
+    const subnavBar = document.getElementById('detailSubnavBar');
+    const track = document.getElementById('subnavTrack');
+    if (!subnavBar || !track) return;
+
+    const hlSection = document.getElementById('dt-project-highlights');
+    const gallerySection = document.getElementById('dt-project-gallery');
+    const connSection = document.getElementById('dt-connectivity-section');
+    const compSection = document.getElementById('dt-project-comparison');
+
+    const hlTab = document.getElementById('subnav-tab-highlights');
+    const galleryTab = document.getElementById('subnav-tab-gallery');
+    const connTab = document.getElementById('subnav-tab-connectivity');
+    const compTab = document.getElementById('subnav-tab-comparison');
+
+    if (hlTab) hlTab.hidden = !hlSection || hlSection.hidden || hlSection.offsetParent === null;
+    if (galleryTab) galleryTab.hidden = !gallerySection || gallerySection.hidden || gallerySection.offsetParent === null;
+    if (connTab) connTab.hidden = !connSection || connSection.hidden || connSection.offsetParent === null;
+    if (compTab) compTab.hidden = !compSection || compSection.hidden || compSection.offsetParent === null;
+
+    // Reset to first visible tab if no active tab or active tab is hidden
+    const currentActive = track.querySelector('.subnav-tab.active:not([hidden])');
+    if (!currentActive) {
+        const firstTab = track.querySelector('.subnav-tab:not([hidden])');
+        if (firstTab) setActiveSubnavTab(firstTab);
+    }
+
+    updateSubnavArrows();
 }
 function populatePreferredBhk(floorPlans) {
     const select = document.getElementById('preferredBhkSelect');
@@ -1417,6 +1655,7 @@ function showCatalogView({ updateUrl = true } = {}) {
         return;
     }
     document.getElementById('property-detail-view').style.display = 'none';
+    document.getElementById('detailSubnavBar')?.classList.remove('is-visible');
     document.getElementById('catalog-view').style.display = 'block';
     updatePageMetadata(initialDocumentTitle, initialMetaDescription);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1461,6 +1700,7 @@ function restorePropertyRoute(event) {
     if (sectionTargets[route]) {
         setActiveNavigation(route);
         document.getElementById('property-detail-view').style.display = 'none';
+        document.getElementById('detailSubnavBar')?.classList.remove('is-visible');
         document.getElementById('catalog-view').style.display = 'block';
         updatePageMetadata(initialDocumentTitle, initialMetaDescription);
         if (route === 'contact') restoreEnquiryProjectFromUrl();
@@ -1989,5 +2229,7 @@ Object.assign(window, {
     openWhatsAppModal,
     sendWhatsAppLead,
     handleFormSubmit,
-    updateEmiCalculator
+    updateEmiCalculator,
+    initDetailSubnav,
+    syncDetailSubnavTabs
 });

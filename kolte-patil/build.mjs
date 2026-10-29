@@ -234,10 +234,60 @@ function createRoutedHtml(route = '') {
     if (highlights && highlights.length > 0) {
       const highlightsHtml = highlights.map(renderHighlightCardHtml).join('\n                        ');
       html = replaceElementContent(html, 'dt-highlights', `\n                        ${highlightsHtml}\n                    `);
-      html = html.replace(/<section\b[^>]*\bid="dt-project-highlights"[^>]*hidden[^>]*>/i, '<section class="project-highlights-section" id="dt-project-highlights" aria-labelledby="dt-highlights-title">');
+      html = html.replace(/<section\b[^>]*\bid="dt-project-highlights"[^>]*hidden[^>]*>/i, '<section class="project-highlights-section detail-section-block" id="dt-project-highlights" aria-labelledby="dt-highlights-title">');
     } else {
       html = replaceElementContent(html, 'dt-highlights', '');
-      html = html.replace(/<section\b[^>]*\bid="dt-project-highlights"[^>]*>/i, '<section class="project-highlights-section" id="dt-project-highlights" aria-labelledby="dt-highlights-title" hidden>');
+      html = html.replace(/<section\b[^>]*\bid="dt-project-highlights"[^>]*>/i, '<section class="project-highlights-section detail-section-block" id="dt-project-highlights" aria-labelledby="dt-highlights-title" hidden>');
+      html = html.replace('id="subnav-tab-highlights"', 'id="subnav-tab-highlights" hidden');
+    }
+
+    const galleryPhotos = (property.images || []).map((src, index) => ({
+      src,
+      alt: `${property.name} photo ${index + 1}`
+    }));
+    const galleryFloorPlans = (property.floorPlans || []).map(fp => ({
+      src: fp.image || property.images[0],
+      alt: `${property.name} ${fp.bhk} floor plan`
+    }));
+    const allGalleryImages = [...galleryPhotos, ...galleryFloorPlans];
+    if (allGalleryImages.length > 0) {
+      html = html.replace(/<section\b[^>]*\bid="dt-project-gallery"[^>]*hidden[^>]*>/i, '<section class="project-gallery-section detail-section-block" id="dt-project-gallery" aria-labelledby="dt-project-gallery-title">');
+      const previewImg = property.images[0] || '';
+      const previewAlt = `${property.name} gallery preview in Bengaluru`;
+      html = html.replace(/id="projectGalleryPreviewImage"\s+src=""\s+alt=""/i, `id="projectGalleryPreviewImage" src="${escapeHtml(previewImg)}" alt="${escapeHtml(previewAlt)}"`);
+      const countText = `${allGalleryImages.length} ${allGalleryImages.length === 1 ? 'image' : 'images'} · Project photos and floor plans`;
+      html = replaceElementContent(html, 'projectGalleryImageCount', escapeHtml(countText));
+    } else {
+      html = html.replace('id="subnav-tab-gallery"', 'id="subnav-tab-gallery" hidden');
+    }
+
+    if (property.floorPlans && property.floorPlans.length > 0) {
+      const fpTabsHtml = property.floorPlans.map((fp, index) =>
+        `<button class="fp-tab-btn ${index === 0 ? 'active' : ''}">${escapeHtml(fp.bhk)}</button>`
+      ).join('');
+      html = replaceElementContent(html, 'fp-tabs', fpTabsHtml);
+      const firstFp = property.floorPlans[0];
+      html = replaceElementContent(html, 'fp-type', escapeHtml(firstFp.bhk));
+      html = replaceElementContent(html, 'fp-sqft', escapeHtml(firstFp.sqft));
+      html = replaceElementContent(html, 'fp-price', escapeHtml(firstFp.price));
+    }
+
+    if (property.amenities && property.amenities.length > 0) {
+      const amenitiesHtml = property.amenities.map(a =>
+        `<div class="amenity-card"><i class="${escapeHtml(a.icon)}"></i><span>${escapeHtml(a.name)}</span></div>`
+      ).join('\n                        ');
+      html = replaceElementContent(html, 'dt-amenities', `\n                        ${amenitiesHtml}\n                    `);
+    }
+
+    if (property.connectivity && property.connectivity.length > 0) {
+      html = html.replace(/<div\b[^>]*\bid="dt-connectivity-section"[^>]*hidden[^>]*>/i, '<div class="connectivity-section detail-section-block" id="dt-connectivity-section">');
+      const nearbyPlaces = property.connectivity.slice(0, 4);
+      const connectivityHtml = nearbyPlaces.map(place =>
+        `<div class="loc-item">${place.icon ? `<i class="${escapeHtml(place.icon)}" aria-hidden="true"></i>` : ''}<div><strong>${escapeHtml(place.label)}:</strong> ${escapeHtml(place.distance)}</div></div>`
+      ).join('\n                                ');
+      html = replaceElementContent(html, 'dt-connectivity', `\n                                ${connectivityHtml}\n                            `);
+    } else {
+      html = html.replace('id="subnav-tab-connectivity"', 'id="subnav-tab-connectivity" hidden');
     }
 
     property.images.slice(0, 3).forEach((imageUrl, index) => {

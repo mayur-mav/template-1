@@ -231,8 +231,8 @@
 
     <!-- 10. FULL PROPERTY DETAIL SPA VIEW (#FFFFFF Background) -->
     <div id="property-detail-view" style="display:block">
-        <!-- Sticky Navigation Header for Details View -->
-        <div class="detail-sticky-bar">
+        <!-- Top Action Bar for Details View (Shown when scrolled to top) -->
+        <div class="detail-top-bar" id="detailTopBar">
             <button class="btn-back" onclick="showCatalogView()">
                 <i class="fa-solid fa-arrow-left"></i> Back to Residences
             </button>
@@ -240,6 +240,28 @@
                 <i class="fa-regular fa-calendar-check"></i> Enquire Now
             </button>
         </div>
+
+        <!-- Sticky Sub-Navigation Tabs Bar for Project Details -->
+        <nav class="detail-subnav-bar" id="detailSubnavBar" aria-label="Project sections navigation">
+            <div class="subnav-container">
+                <button type="button" class="subnav-arrow subnav-arrow-left" id="subnavArrowLeft" aria-label="Scroll tabs left" tabindex="-1">
+                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <div class="subnav-track" id="subnavTrack" role="tablist">
+                    <button type="button" class="subnav-tab active" role="tab" id="subnav-tab-overview" data-target="dt-overview-section" aria-selected="true" tabindex="0">About the Project</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-highlights" data-target="dt-project-highlights" aria-selected="false" tabindex="-1">Highlights</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-gallery" data-target="dt-project-gallery" aria-selected="false" tabindex="-1">Project Gallery</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-floorplans" data-target="dt-floorplans-section" aria-selected="false" tabindex="-1">Floor Plans</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-emi" data-target="dt-emi-calculator" aria-selected="false" tabindex="-1">Financial Estimator</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-amenities" data-target="dt-amenities-section" aria-selected="false" tabindex="-1">Amenities &amp; Specifications</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-connectivity" data-target="dt-connectivity-section" aria-selected="false" tabindex="-1">Location &amp; Connectivity</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-comparison" data-target="dt-project-comparison" aria-selected="false" tabindex="-1">Compare Projects</button>
+                </div>
+                <button type="button" class="subnav-arrow subnav-arrow-right" id="subnavArrowRight" aria-label="Scroll tabs right" tabindex="-1">
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
 
         <div class="detail-hero-header">
             <div class="detail-title-wrap">
@@ -261,7 +283,7 @@
             <!-- 3 IMAGE SHOWCASE GRID -->
             <div class="image-gallery-grid">
                 <div class="gallery-item gallery-item-1">
-                    <img id="dt-img-1" src="https://media.justflip.in/builder-brand-pages/kolte-patil/kolte-patil-mirabilis/gallery/exterior-view.webp" alt="Kolte Patil Mirabilis exterior in Bengaluru" loading="lazy" decoding="async">
+                    <img id="dt-img-1" src="https://media.justflip.in/builder-brand-pages/kolte-patil/kolte-patil-mirabilis/gallery/exterior-view.webp" alt="Kolte Patil Mirabilis exterior in Bengaluru" loading="eager" fetchpriority="high" decoding="async">
                 </div>
                 <div class="gallery-item">
                     <img id="dt-img-2" src="https://media.justflip.in/builder-brand-pages/kolte-patil/kolte-patil-mirabilis/gallery/interior-view.webp" alt="Kolte Patil Mirabilis interior in Bengaluru" loading="lazy" decoding="async">
@@ -307,12 +329,14 @@
         <!-- DETAIL BODY LAYOUT WITH STICKY SIDEBAR -->
         <div class="detail-body-layout">
             <div class="detail-main-content">
-                <h3 class="section-block-title">Architectural Overview</h3>
-                <div id="dt-description"><p class="overview-text">Kolte Patil Mirabilis is a ready-to-move residential community in Horamavu, North-East Bengaluru. Set among landscaped open areas, the project has seven high-rise towers and 640 homes, with 1, 2, 2.5, 3, and 4-bedroom configurations listed. Amenities include a clubhouse, swimming and kids’ pools, gym, basketball and volleyball courts, cricket practice pitch, skating rink, indoor games, and garden atriums. The Horamavu location offers access to Outer Ring Road, Manyata Tech Park, K.R. Puram Railway Station, and Hebbal, with nearby schools and shopping. View Kolte Patil Mirabilis apartments, available floor plan details, amenities, and pricing. Buyers researching Kolte Patil builders in Bangalore can explore Kolte-Patil Developers homes in Horamavu, Bengaluru, with project status, location, and configuration details available to compare.</p>
+                <section class="detail-section-block" id="dt-overview-section" aria-labelledby="dt-overview-title">
+                    <h3 class="section-block-title" id="dt-overview-title">Architectural Overview</h3>
+                    <div id="dt-description"><p class="overview-text">Kolte Patil Mirabilis is a ready-to-move residential community in Horamavu, North-East Bengaluru. Set among landscaped open areas, the project has seven high-rise towers and 640 homes, with 1, 2, 2.5, 3, and 4-bedroom configurations listed. Amenities include a clubhouse, swimming and kids’ pools, gym, basketball and volleyball courts, cricket practice pitch, skating rink, indoor games, and garden atriums. The Horamavu location offers access to Outer Ring Road, Manyata Tech Park, K.R. Puram Railway Station, and Hebbal, with nearby schools and shopping. View Kolte Patil Mirabilis apartments, available floor plan details, amenities, and pricing. Buyers researching Kolte Patil builders in Bangalore can explore Kolte-Patil Developers homes in Horamavu, Bengaluru, with project status, location, and configuration details available to compare.</p>
                     <p class="overview-text">Kolte Patil Mirabilis is listed with 1, 2, 2.5 , 3 &amp; 4 Bed Homes across 7 Acres, with ready to move status and possession shown as October 2021. Listed floor plan options include 3-BED RESIDENCES. Residents can explore amenities such as Full-Fledged Clubhouse &amp; Party Lawn, Swimming Pool &amp; Kids Splash Pool, Fully Equipped Gymnasium and Full Basketball &amp; Volleyball Courts, with nearby destinations including Outer Ring Road (ORR) (1.5 Kms), Bangalore International School (4.1 Kms) and Manyata Tech Park (5.1 Kms). Review Kolte-Patil Developers floor plans, amenities, and connectivity when comparing homes in Bengaluru. <span class="overview-rera"><strong>RERA Registration No.</strong> <span>PRM/KA/RERA/1251/446/PR/170922/000838</span></span></p></div>
+                </section>
 
                 <!-- PROJECT HIGHLIGHTS -->
-                <section class="project-highlights-section" id="dt-project-highlights" aria-labelledby="dt-highlights-title">
+                <section class="project-highlights-section detail-section-block" id="dt-project-highlights" aria-labelledby="dt-highlights-title">
                     <h3 class="section-block-title" id="dt-highlights-title">Project Highlights</h3>
                     <div class="highlights-grid" id="dt-highlights">
                         <div class="highlight-card">
@@ -346,48 +370,48 @@
                     </div>
                 </section>
 
-                <section class="project-gallery-section" id="dt-project-gallery" aria-labelledby="dt-project-gallery-title" hidden>
+                <section class="project-gallery-section detail-section-block" id="dt-project-gallery" aria-labelledby="dt-project-gallery-title">
                     <h3 class="section-block-title" id="dt-project-gallery-title">Project Gallery</h3>
                     <p class="project-gallery-description">Browse project photos and available floor plans.</p>
                     <button class="project-gallery-preview" id="projectGalleryPreview" type="button" aria-haspopup="dialog">
-                        <img id="projectGalleryPreviewImage" src="" alt="" loading="lazy" decoding="async">
+                        <img id="projectGalleryPreviewImage" src="https://media.justflip.in/builder-brand-pages/kolte-patil/kolte-patil-mirabilis/gallery/exterior-view.webp" alt="Kolte Patil Mirabilis gallery preview in Bengaluru" loading="lazy" decoding="async">
                         <span class="project-gallery-preview-overlay">
-                            <span class="project-gallery-image-count" id="projectGalleryImageCount"></span>
+                            <span class="project-gallery-image-count" id="projectGalleryImageCount">4 images · Project photos and floor plans</span>
                             <span class="project-gallery-preview-action"><i class="fa-solid fa-images" aria-hidden="true"></i> View gallery</span>
                         </span>
                     </button>
                 </section>
 
                 <!-- INTERACTIVE FLOOR PLAN SELECTOR -->
-                <h3 class="section-block-title">Floor Plans & Pricing</h3>
-                <div class="floorplan-container">
-                    <div class="floorplan-tabs" id="fp-tabs">
-                        <!-- Floor plan tab buttons generated dynamically -->
-                    </div>
-                    <div class="floorplan-display" id="fp-display">
-                        <div class="fp-details">
-                            <div class="fp-data-row">
-                                <span style="color: var(--text-muted);">Typology</span>
-                                <strong id="fp-type">2-BED RESIDENCES</strong>
+                <section class="detail-section-block" id="dt-floorplans-section" aria-labelledby="dt-floorplans-title">
+                    <h3 class="section-block-title" id="dt-floorplans-title">Floor Plans &amp; Pricing</h3>
+                    <div class="floorplan-container">
+                        <div class="floorplan-tabs" id="fp-tabs"><button class="fp-tab-btn active">3-BED RESIDENCES</button></div>
+                        <div class="floorplan-display" id="fp-display">
+                            <div class="fp-details">
+                                <div class="fp-data-row">
+                                    <span style="color: var(--text-muted);">Typology</span>
+                                    <strong id="fp-type">3-BED RESIDENCES</strong>
+                                </div>
+                                <div class="fp-data-row">
+                                    <span style="color: var(--text-muted);">Carpet Area</span>
+                                    <strong id="fp-sqft">1,599 sq. ft.</strong>
+                                </div>
+                                <div class="fp-data-row">
+                                    <span style="color: var(--text-muted);">Starting Price</span>
+                                    <strong id="fp-price" style="color: var(--brand-bronze);">₹2.19 Cr Onwards</strong>
+                                </div>
                             </div>
-                            <div class="fp-data-row">
-                                <span style="color: var(--text-muted);">Carpet Area</span>
-                                <strong id="fp-sqft">938 - 1,078 sq. ft.</strong>
-                            </div>
-                            <div class="fp-data-row">
-                                <span style="color: var(--text-muted);">Starting Price</span>
-                                <strong id="fp-price" style="color: var(--brand-bronze);">₹90 Lakh Onwards</strong>
+                            <div class="fp-img-placeholder">
+                                <i class="fa-solid fa-map" style="font-size: 2.5rem; margin-bottom: 8px;"></i>
+                                <span>Master Floor Layout Blueprint</span>
                             </div>
                         </div>
-                        <div class="fp-img-placeholder">
-                            <i class="fa-solid fa-map" style="font-size: 2.5rem; margin-bottom: 8px;"></i>
-                            <span>Master Floor Layout Blueprint</span>
-                        </div>
                     </div>
-                </div>
+                </section>
 
-                                <!-- HOME LOAN EMI CALCULATOR -->
-                <section class="emi-calculator-section" id="dt-emi-calculator" aria-labelledby="emi-calc-heading">
+                <!-- HOME LOAN EMI CALCULATOR -->
+                <section class="emi-calculator-section detail-section-block" id="dt-emi-calculator" aria-labelledby="emi-calc-heading">
                     <div class="emi-header-row">
                         <div>
                             <h3 class="section-block-title" id="emi-calc-heading">Home Loan EMI Calculator</h3>
@@ -557,13 +581,22 @@
                 </section>
 
                 <!-- AMENITIES GRID -->
-                <h3 class="section-block-title">World-Class Amenities</h3>
-                <div class="amenities-grid" id="dt-amenities">
-                    <!-- Dynamic Amenities -->
-                </div>
+                <section class="detail-section-block" id="dt-amenities-section" aria-labelledby="dt-amenities-title">
+                    <h3 class="section-block-title" id="dt-amenities-title">World-Class Amenities</h3>
+                    <div class="amenities-grid" id="dt-amenities">
+                        <div class="amenity-card"><i class="fa-solid fa-hotel"></i><span>Full-Fledged Clubhouse &amp; Party Lawn</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-person-swimming"></i><span>Swimming Pool &amp; Kids Splash Pool</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-dumbbell"></i><span>Fully Equipped Gymnasium</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-basketball"></i><span>Full Basketball &amp; Volleyball Courts</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-baseball-bat-ball"></i><span>Cricket Practice Pitch &amp; Skating Rink</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-table-tennis-paddle-ball"></i><span>Indoor Games &amp; Squash Court</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-masks-theater"></i><span>Outdoor Amphitheatre</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-tree"></i><span>4-Storey High Indoor Tree Atriums &amp; Gardens</span></div>
+                    </div>
+                </section>
 
                 <!-- Project-specific connectivity is rendered from the selected project data -->
-                <div class="connectivity-section" id="dt-connectivity-section" hidden>
+                <div class="connectivity-section detail-section-block" id="dt-connectivity-section">
                     <div class="connectivity-heading">
                         <h3 class="section-block-title">Strategic Connectivity</h3>
                     </div>
@@ -577,12 +610,17 @@
                         </div>
                         <div class="connectivity-destinations">
                             <h4>Nearby Destinations</h4>
-                            <div class="location-matrix" id="dt-connectivity"></div>
+                            <div class="location-matrix" id="dt-connectivity">
+                                <div class="loc-item"><i class="fa-solid fa-road" aria-hidden="true"></i><div><strong>Outer Ring Road (ORR):</strong> 1.5 Kms</div></div>
+                                <div class="loc-item"><i class="fa-solid fa-school" aria-hidden="true"></i><div><strong>Bangalore International School:</strong> 4.1 Kms</div></div>
+                                <div class="loc-item"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i><div><strong>Manyata Tech Park:</strong> 5.1 Kms</div></div>
+                                <div class="loc-item"><i class="fa-solid fa-train" aria-hidden="true"></i><div><strong>K.R. Puram Railway Station:</strong> 5.7 Kms</div></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <section class="project-comparison-section" id="dt-project-comparison" aria-labelledby="dt-project-comparison-title" hidden>
+                <section class="project-comparison-section detail-section-block" id="dt-project-comparison" aria-labelledby="dt-project-comparison-title" hidden>
                     <h3 class="section-block-title" id="dt-project-comparison-title">Compare Similar Projects</h3>
                     <p class="project-comparison-intro">Compare this project with other Kolte-Patil homes before you decide.</p>
                     <div class="project-comparison-grid" id="dt-project-comparison-grid"></div>

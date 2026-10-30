@@ -1352,7 +1352,6 @@ function initDetailSubnav() {
     };
     syncHeaderHeight();
     window.addEventListener('resize', syncHeaderHeight, { passive: true });
-    window.addEventListener('orientationchange', syncHeaderHeight, { passive: true });
 
     // Click handler for subnav tabs
     subnavTrack.addEventListener('click', event => {

@@ -757,7 +757,7 @@ button {
 
 .rera-verified-badge {
     position: absolute;
-    right: 12px;
+    right: 8px;
     bottom: 12px;
     z-index: 2;
     margin: 0;
@@ -1327,7 +1327,7 @@ button {
 /* ---------------- DETAIL VIEW SUB-NAVIGATION BAR ---------------- */
 .detail-subnav-bar {
     position: fixed;
-    top: 70px;
+    top: var(--header-height, 75px);
     left: 0;
     right: 0;
     width: 100%;
@@ -1355,6 +1355,7 @@ button {
 }
 
 .subnav-container {
+    gap: 10px;
     width: 100%;
     max-width: 100%;
     margin: 0;
@@ -1367,6 +1368,7 @@ button {
 }
 
 .subnav-track {
+    width: auto !important;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -1376,6 +1378,10 @@ button {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    flex: 1 1 auto;
+    min-width: 0;
+    min-width: 0;
+
     width: 100%;
     height: 100%;
     padding: 0;
@@ -1408,13 +1414,13 @@ button {
 }
 
 #subnav-tab-overview {
-    margin-left: 54px;
+    margin-left: 0;
     padding-left: 0;
 }
 
 #subnav-tab-overview::after {
     left: 0;
-    right: 12px;
+    right: 8px;
 }
 
 .subnav-tab:hover {
@@ -1452,6 +1458,7 @@ button {
 
 /* Arrow buttons */
 .subnav-arrow {
+    flex-shrink: 0;
     display: none;
     align-items: center;
     justify-content: center;
@@ -1484,11 +1491,11 @@ button {
 }
 
 .subnav-arrow-left {
-    margin-right: 6px;
+    margin-right: 0;
 }
 
 .subnav-arrow-right {
-    margin-left: 6px;
+    margin-left: 0;
 }
 
 /* Scroll margin for smooth target alignment */
@@ -1538,6 +1545,7 @@ button {
 
 .detail-title-wrap > div:first-child {
     flex: 1 1 auto;
+    min-width: 0;
     min-width: 0;
 }
 
@@ -2458,6 +2466,7 @@ button {
 }
 
 .emi-slider-wrap {
+    height: 36px;
     position: relative;
     width: 100%;
     display: flex;
@@ -2465,6 +2474,10 @@ button {
 }
 
 .emi-slider {
+    padding: 0;
+    margin: 0;
+    border: none;
+    vertical-align: middle;
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
@@ -2476,7 +2489,16 @@ button {
     transition: background 0.1s ease;
 }
 
+.emi-slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    border: none;
+    background: transparent;
+}
+
 .emi-slider::-webkit-slider-thumb {
+    margin-top: -7px;
     -webkit-appearance: none;
     appearance: none;
     width: 20px;
@@ -2501,7 +2523,16 @@ button {
     border-color: var(--brand-gold);
 }
 
+.emi-slider::-moz-range-track {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    border: none;
+    background: transparent;
+}
+
 .emi-slider::-moz-range-thumb {
+    margin-top: -7px;
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -3265,7 +3296,7 @@ button {
 .modal-close-btn {
     position: absolute;
     top: 10px;
-    right: 12px;
+    right: 8px;
     background: none;
     border: none;
     font-size: 1.6rem;
@@ -3640,7 +3671,7 @@ button {
     }
 
     .nav-menu .btn-header-cta {
-        width: auto;
+    
         height: auto;
         padding: 8px 14px;
         gap: 8px;
@@ -3679,15 +3710,17 @@ button {
     }
 
     .detail-subnav-bar {
-        top: 60px;
+        top: var(--header-height, 72px);
     }
 
     .subnav-container {
-        padding: 0 16px;
-        height: 46px;
+    gap: 10px;
+        padding: 0 10px;
+        height: 48px;
     }
 
     .subnav-track {
+    width: auto !important;
         gap: 8px;
         justify-content: flex-start;
     }
@@ -3698,7 +3731,7 @@ button {
     }
 
     #subnav-tab-overview {
-        margin-left: 54px;
+        margin-left: 0;
         padding-left: 0;
     }
 
@@ -3709,10 +3742,12 @@ button {
     }
 
     .subnav-arrow {
-        width: 38px;
-        height: 38px;
-        min-width: 38px;
-        min-height: 38px;
+    flex-shrink: 0;
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        min-height: 34px;
+        flex-shrink: 0;
         font-size: 0.8rem;
     }
 

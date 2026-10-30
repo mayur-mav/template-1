@@ -1345,6 +1345,16 @@ function initDetailSubnav() {
 
     if (!subnavBar || !subnavTrack) return;
 
+    const syncHeaderHeight = () => {
+        const header = document.querySelector('.main-header');
+        if (header) {
+            document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`);
+        }
+    };
+    syncHeaderHeight();
+    window.addEventListener('resize', syncHeaderHeight, { passive: true });
+    window.addEventListener('orientationchange', syncHeaderHeight, { passive: true });
+
     // Click handler for subnav tabs
     subnavTrack.addEventListener('click', event => {
         const tab = event.target.closest('.subnav-tab');
@@ -1536,6 +1546,8 @@ function handleSubnavScrollspy() {
 }
 
 function syncDetailSubnavTabs() {
+    const header = document.querySelector('.main-header');
+    if (header) document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`);
     const subnavBar = document.getElementById('detailSubnavBar');
     const track = document.getElementById('subnavTrack');
     if (!subnavBar || !track) return;

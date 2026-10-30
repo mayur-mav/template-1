@@ -3321,7 +3321,7 @@ button {
 .wa-popup-icon {
     width: 60px;
     height: 60px;
-    background: #075E54;
+    background: #25D366;
     color: #FFFFFF;
     border-radius: 50%;
     display: flex;
@@ -3335,7 +3335,7 @@ button {
     width: 100%;
     padding: 14px;
     min-height: 48px;
-    background: #075E54;
+    background: #25D366;
     color: #FFFFFF;
     border: none;
     border-radius: 8px;
@@ -3346,7 +3346,7 @@ button {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    box-shadow: 0 4px 15px rgba(7, 94, 84, 0.35);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
     transition: var(--transition);
 }
 
@@ -3363,14 +3363,14 @@ button {
     height: 56px;
     min-width: 56px;
     min-height: 56px;
-    background: #075E54;
+    background: #25D366;
     color: #FFFFFF;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.8rem;
-    box-shadow: 0 4px 15px rgba(7, 94, 84, 0.4);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
     z-index: 990;
     cursor: pointer;
     transition: var(--transition);

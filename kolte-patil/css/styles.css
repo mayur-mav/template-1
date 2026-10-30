@@ -1319,9 +1319,9 @@ button {
     right: 0;
     width: 100%;
     z-index: 950;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: #FFFFFF;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border-bottom: 1px solid var(--border-light, #E5E7EB);
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
     opacity: 0;
@@ -1345,7 +1345,7 @@ button {
     width: 100%;
     max-width: 100%;
     margin: 0;
-    padding: 0 5%;
+    padding: 0 5% 0 calc(5% + 54px);
     display: flex;
     align-items: center;
     position: relative;
@@ -1476,6 +1476,9 @@ button {
 }
 
 .subnav-arrow-left {
+    position: absolute;
+    left: 5%;
+    top: 6px;
     margin-right: 0;
 }
 
@@ -2655,10 +2658,9 @@ button {
 .emi-results-col {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 100%;
     min-width: 0;
-    gap: 16px;
+    gap: 14px;
 }
 
 .emi-hero-card {
@@ -2736,7 +2738,8 @@ button {
     display: flex;
     align-items: center;
     gap: 20px;
-    flex-shrink: 0;
+    flex: 1 1 0%;
+    min-height: 140px;
     transition: var(--transition);
 }
 
@@ -2860,17 +2863,24 @@ button {
     font-size: 0.75rem;
 }
 
-/* Clean Unboxed Summary Details - Exact Image 1 */
+/* Balanced Summary Details Box */
 .emi-breakdown-table {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 0 4px;
+    background: var(--bg-body);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    flex-shrink: 0;
+    justify-content: space-between;
+    gap: 8px;
+    flex: 1 1 0%;
+    min-height: 140px;
+    transition: var(--transition);
+}
+
+.emi-breakdown-table:hover {
+    border-color: var(--border-gold, var(--brand-gold));
+    box-shadow: var(--shadow-sm);
 }
 
 .emi-breakdown-row {
@@ -2917,6 +2927,9 @@ button {
     }
 
     .emi-chart-box {
+        flex: none;
+        height: auto;
+        min-height: auto;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -2948,11 +2961,19 @@ button {
     }
 
     .emi-breakdown-table {
-        padding: 6px 4px;
+        flex: none;
+        height: auto;
+        min-height: auto;
+        padding: 18px 20px;
+        gap: 12px;
     }
 }
 
 @media (max-width: 600px) {
+    .emi-breakdown-table {
+        padding: 14px 16px;
+        gap: 10px;
+    }
     .emi-calculator-container {
         padding: 16px;
     }
@@ -3526,6 +3547,15 @@ button {
         padding: 12px 16px;
     }
 
+    .subnav-container {
+        padding: 0 16px 0 70px;
+    }
+
+    .subnav-arrow-left {
+        left: 16px;
+        top: 6px;
+    }
+
     .mobile-menu-toggle {
         display: block;
     }
@@ -3736,9 +3766,14 @@ button {
     }
 
     .subnav-container {
-        padding: 0 10px;
+        padding: 0 16px 0 70px;
         gap: 8px;
         height: 48px;
+    }
+
+    .subnav-arrow-left {
+        left: 16px;
+        top: 8px;
     }
 
     .subnav-track {

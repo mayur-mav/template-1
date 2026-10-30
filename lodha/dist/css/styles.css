@@ -1283,7 +1283,7 @@ button {
     top: 70px;
     background: #FFFFFF;
     border-bottom: 1px solid var(--border-light);
-    padding: 14px 5%;
+    padding: 14px 5% 14px calc(5% + 54px);
     z-index: 90;
     display: flex;
     justify-content: space-between;
@@ -2331,10 +2331,9 @@ button {
 .emi-results-col {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 100%;
     min-width: 0;
-    gap: 16px;
+    gap: 14px;
 }
 
 .emi-hero-card {
@@ -2412,7 +2411,8 @@ button {
     display: flex;
     align-items: center;
     gap: 20px;
-    flex-shrink: 0;
+    flex: 1 1 0%;
+    min-height: 140px;
     transition: var(--transition);
 }
 
@@ -2536,17 +2536,24 @@ button {
     font-size: 0.75rem;
 }
 
-/* Clean Unboxed Summary Details - Exact Image 1 */
+/* Balanced Summary Details Box */
 .emi-breakdown-table {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 0 4px;
+    background: var(--bg-body);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    flex-shrink: 0;
+    justify-content: space-between;
+    gap: 8px;
+    flex: 1 1 0%;
+    min-height: 140px;
+    transition: var(--transition);
+}
+
+.emi-breakdown-table:hover {
+    border-color: var(--border-gold, var(--brand-gold));
+    box-shadow: var(--shadow-sm);
 }
 
 .emi-breakdown-row {
@@ -2593,6 +2600,9 @@ button {
     }
 
     .emi-chart-box {
+        flex: none;
+        height: auto;
+        min-height: auto;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -2624,11 +2634,19 @@ button {
     }
 
     .emi-breakdown-table {
-        padding: 6px 4px;
+        flex: none;
+        height: auto;
+        min-height: auto;
+        padding: 18px 20px;
+        gap: 12px;
     }
 }
 
 @media (max-width: 600px) {
+    .emi-breakdown-table {
+        padding: 14px 16px;
+        gap: 10px;
+    }
     .emi-calculator-container {
         padding: 16px;
     }

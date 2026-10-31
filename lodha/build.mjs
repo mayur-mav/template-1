@@ -1,7 +1,7 @@
 import { cpSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createPropertyOverview, developerInfo, propertiesData } from './data/lodha.js';
+import { createPropertyHighlights, createPropertyOverview, developerInfo, propertiesData } from './data/lodha.js';
 
 const projectDir = dirname(fileURLToPath(import.meta.url));
 const outputDir = join(projectDir, 'dist');
@@ -39,7 +39,70 @@ function renderOverviewParagraph(paragraph) {
   return `<p class="overview-text">${escapeHtml(registration[1])} <span class="overview-rera"><strong>RERA Registration No.</strong> <span>${escapeHtml(registration[2])}</span></span></p>`;
 }
 
+function getHighlightIcon(text, defaultIcon = 'fa-solid fa-circle-check') {
+  if (!text || typeof text !== 'string') return defaultIcon;
+  const lower = text.toLowerCase();
+  if (lower.includes('rera') || lower.includes('approv') || lower.includes('certif') || lower.includes('legal') || lower.includes('bda') || lower.includes('bmrda')) return 'fa-solid fa-certificate';
+  if (lower.includes('wall') || lower.includes('privacy')) return 'fa-solid fa-shield-halved';
+  if (lower.includes('road') || lower.includes('location') || lower.includes('connect') || lower.includes('metro') || lower.includes('highway') || lower.includes('expressway') || lower.includes('station') || lower.includes('airport') || lower.includes('tech park')) return 'fa-solid fa-location-dot';
+  if (lower.includes('acre') || lower.includes('land') || lower.includes('garden') || lower.includes('open space') || lower.includes('landscape') || /\bpark\b/.test(lower) || lower.includes('green')) return 'fa-solid fa-tree';
+  if (lower.includes('pool') || lower.includes('swim')) return 'fa-solid fa-person-swimming';
+  if (lower.includes('gym') || lower.includes('fit') || lower.includes('sport') || lower.includes('court') || lower.includes('jog')) return 'fa-solid fa-dumbbell';
+  if (lower.includes('club') || lower.includes('amenit') || lower.includes('lifestyle') || lower.includes('resort') || lower.includes('luxury')) return 'fa-solid fa-hotel';
+  if (lower.includes('tower') || lower.includes('floor') || lower.includes('high-rise') || lower.includes('architecture') || /\bunits?\b/.test(lower) || lower.includes('structure')) return 'fa-solid fa-building';
+  if (lower.includes('ready') || lower.includes('possession') || lower.includes('move-in') || lower.includes('keys') || lower.includes('oc ')) return 'fa-solid fa-key';
+  if (lower.includes('vastu') || lower.includes('vaastu') || lower.includes('facing')) return 'fa-solid fa-compass';
+  if (lower.includes('lake') || lower.includes('water') || lower.includes('view') || lower.includes('scenic')) return 'fa-solid fa-water';
+  if (lower.includes('price') || lower.includes('offer') || lower.includes('crore') || lower.includes('lakh') || lower.includes('payment') || lower.includes('emi')) return 'fa-solid fa-indian-rupee-sign';
+  return defaultIcon;
+}
+
+function renderHighlightCardHtml(highlight) {
+  let iconClass = 'fa-solid fa-circle-check';
+  let titleText = '';
+  let bodyText = '';
+
+  if (typeof highlight === 'string') {
+    bodyText = highlight;
+    iconClass = getHighlightIcon(highlight);
+  } else if (typeof highlight === 'object' && highlight !== null) {
+    bodyText = highlight.text || highlight.description || highlight.value || '';
+    titleText = highlight.title || highlight.heading || highlight.label || '';
+    iconClass = highlight.icon || getHighlightIcon(`${titleText} ${bodyText}`);
+  }
+
+  const titleHtml = titleText ? `<strong class="highlight-title">${escapeHtml(titleText)}</strong>` : '';
+  const bodyHtml = bodyText ? `<span class="highlight-text">${escapeHtml(bodyText)}</span>` : '';
+
+  return `<div class="highlight-card">
+                        <div class="highlight-icon-wrap"><i class="${escapeHtml(iconClass)}" aria-hidden="true"></i></div>
+                        <div class="highlight-text-wrap">${titleHtml}${bodyHtml}</div>
+                    </div>`;
+}
+
 function replaceElementContent(html, id, content) {
+  const openRegex = new RegExp(`<([a-z][a-z0-9]*)\\b[^>]*\\bid="${id}"[^>]*>`, 'i');
+  const openMatch = openRegex.exec(html);
+  if (!openMatch) return html;
+
+  const tag = openMatch[1].toLowerCase();
+  const startContent = openMatch.index + openMatch[0].length;
+  let depth = 1;
+  const tagRegex = new RegExp(`</?${tag}\\b[^>]*>`, 'gi');
+  tagRegex.lastIndex = startContent;
+
+  let match;
+  while ((match = tagRegex.exec(html)) !== null) {
+    if (match[0].startsWith('</')) {
+      depth--;
+      if (depth === 0) {
+        return html.slice(0, startContent) + content + html.slice(match.index);
+      }
+    } else if (!match[0].endsWith('/>')) {
+      depth++;
+    }
+  }
+
   const elementPattern = new RegExp(`(<([a-z][a-z0-9]*)\\b[^>]*\\bid="${id}"[^>]*>)[\\s\\S]*?(<\\/\\2>)`, 'i');
   return html.replace(elementPattern, `$1${content}$3`);
 }
@@ -167,35 +230,86 @@ function createRoutedHtml(route = '') {
       .join('\n                    ');
     html = replaceElementContent(html, 'dt-description', overviewHtml);
 
+    const highlights = property.highlights || createPropertyHighlights(property);
+    if (highlights && highlights.length > 0) {
+      const highlightsHtml = highlights.map(renderHighlightCardHtml).join('\n                        ');
+      html = replaceElementContent(html, 'dt-highlights', `\n                        ${highlightsHtml}\n                    `);
+      html = html.replace(/<section\b[^>]*\bid="dt-project-highlights"[^>]*hidden[^>]*>/i, '<section class="project-highlights-section detail-section-block" id="dt-project-highlights" aria-labelledby="dt-highlights-title">');
+    } else {
+      html = replaceElementContent(html, 'dt-highlights', '');
+      html = html.replace(/<section\b[^>]*\bid="dt-project-highlights"[^>]*>/i, '<section class="project-highlights-section detail-section-block" id="dt-project-highlights" aria-labelledby="dt-highlights-title" hidden>');
+      html = html.replace('id="subnav-tab-highlights"', 'id="subnav-tab-highlights" hidden');
+    }
+
+    const galleryPhotos = (property.images || []).map((src, index) => ({
+      src,
+      alt: `${property.name} photo ${index + 1}`
+    }));
+    const galleryFloorPlans = (property.floorPlans || []).map(fp => ({
+      src: fp.image || property.images[0],
+      alt: `${property.name} ${fp.bhk} floor plan`
+    }));
+    const allGalleryImages = [...galleryPhotos, ...galleryFloorPlans];
+    if (allGalleryImages.length > 0) {
+      html = html.replace(/<section\b[^>]*\bid="dt-project-gallery"[^>]*hidden[^>]*>/i, '<section class="project-gallery-section detail-section-block" id="dt-project-gallery" aria-labelledby="dt-project-gallery-title">');
+      const previewImg = property.images[0] || '';
+      const previewAlt = `${property.name} gallery preview in Bengaluru`;
+      html = html.replace(/id="projectGalleryPreviewImage"\s+src=""\s+alt=""/i, `id="projectGalleryPreviewImage" src="${escapeHtml(previewImg)}" alt="${escapeHtml(previewAlt)}"`);
+      const countText = `${allGalleryImages.length} ${allGalleryImages.length === 1 ? 'image' : 'images'} · Project photos and floor plans`;
+      html = replaceElementContent(html, 'projectGalleryImageCount', escapeHtml(countText));
+    } else {
+      html = html.replace('id="subnav-tab-gallery"', 'id="subnav-tab-gallery" hidden');
+    }
+
+    if (property.floorPlans && property.floorPlans.length > 0) {
+      const fpTabsHtml = property.floorPlans.map((fp, index) =>
+        `<button class="fp-tab-btn ${index === 0 ? 'active' : ''}">${escapeHtml(fp.bhk)}</button>`
+      ).join('');
+      html = replaceElementContent(html, 'fp-tabs', fpTabsHtml);
+      const firstFp = property.floorPlans[0];
+      html = replaceElementContent(html, 'fp-type', escapeHtml(firstFp.bhk));
+      html = replaceElementContent(html, 'fp-sqft', escapeHtml(firstFp.sqft));
+      html = replaceElementContent(html, 'fp-price', escapeHtml(firstFp.price));
+    }
+
+    if (property.amenities && property.amenities.length > 0) {
+      const amenitiesHtml = property.amenities.map(a =>
+        `<div class="amenity-card"><i class="${escapeHtml(a.icon)}"></i><span>${escapeHtml(a.name)}</span></div>`
+      ).join('\n                        ');
+      html = replaceElementContent(html, 'dt-amenities', `\n                        ${amenitiesHtml}\n                    `);
+    }
+
+    if (property.connectivity && property.connectivity.length > 0) {
+      html = html.replace(/<div\b[^>]*\bid="dt-connectivity-section"[^>]*hidden[^>]*>/i, '<div class="connectivity-section detail-section-block" id="dt-connectivity-section">');
+      const nearbyPlaces = property.connectivity.slice(0, 4);
+      const connectivityHtml = nearbyPlaces.map(place =>
+        `<div class="loc-item">${place.icon ? `<i class="${escapeHtml(place.icon)}" aria-hidden="true"></i>` : ''}<div><strong>${escapeHtml(place.label)}:</strong> ${escapeHtml(place.distance)}</div></div>`
+      ).join('\n                                ');
+      html = replaceElementContent(html, 'dt-connectivity', `\n                                ${connectivityHtml}\n                            `);
+    } else {
+      html = html.replace('id="subnav-tab-connectivity"', 'id="subnav-tab-connectivity" hidden');
+    }
+
+
     property.images.slice(0, 3).forEach((imageUrl, index) => {
       const imageNumber = index + 1;
       const alt = `${property.name} ${['exterior', 'interior', 'amenities'][index] || 'residences'} in Bengaluru`;
       const imagePattern = new RegExp(`(<img\\s+id="dt-img-${imageNumber}"[^>]*src=")[^"]*("[^>]*>)`, 'i');
       html = html.replace(imagePattern, `$1${escapeHtml(imageUrl)}$2`);
       html = html.replace(new RegExp(`(<img\\s+id="dt-img-${imageNumber}"[^>]*alt=")[^"]*(")`, 'i'), `$1${escapeHtml(alt)}$2`);
-    });
+    });
 
-    html = html.replace(/(<img\s+id="dt-img-1"[^>]*?)loading="lazy"/i, '$1loading="eager" fetchpriority="high"');
-    html = html.replace(/(<img\s+id="dt-img-2"[^>]*?)loading="lazy"/i, '$1loading="eager"');
   }
 
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`);
   html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i, `<meta name="description" content="${escapeHtml(description)}">`);
   html = html.replace('</head>', `    <meta property="og:title" content="${escapeHtml(title)}">\n    <meta property="og:description" content="${escapeHtml(description)}">\n    <meta property="og:type" content="website">\n</head>`);
 
-  const preloadImageUrl = (property ? property.images[0] : developerInfo.hero.image).replace(/&/g, '&amp;');
-  if (html.includes('<link rel="preload" as="image"')) {
-    html = html.replace(
-      /(<link\s+rel="preload"\s+as="image"\s+href=")[^"]*("[^>]*>)/i,
-      `$1${preloadImageUrl}$2`
-    );
-  } else {
-    html = html.replace(
-      '</head>',
-      `    <link rel="preload" as="image" href="${preloadImageUrl}" fetchpriority="high">\n</head>`
-    );
-  }
-
+  const preloadImageUrl = developerInfo.hero.image.replace(/&/g, '&amp;');
+  html = html.replace(
+    '</head>',
+    `    <link rel="preload" as="image" href="${preloadImageUrl}" fetchpriority="high">\n</head>`
+  );
   html = html.replace(/<link rel="canonical" href="https:\/\/yourdomain\.com\/[^"]*">\s*/i, '');
   if (siteOrigin) {
     const canonicalRoute = property ? route : '';

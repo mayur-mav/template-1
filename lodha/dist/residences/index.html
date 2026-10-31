@@ -10,7 +10,7 @@
     <meta name="description" content="Explore Lodha Group projects in Bangalore, including new launches and ongoing projects in Thanisandra, HSR Extension, Bannerghatta Road, Sarjapur and Devanahalli.">
     <link rel="preconnect" href="https://media.justflip.in">
     <link rel="preload" as="image" href="https://media.justflip.in/builder-brand-pages/lodha-group/banner.webp" fetchpriority="high">
-<!-- Google Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -19,14 +19,15 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-        <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="css/styles.css">
     <meta property="og:title" content="Lodha Group Projects in Bangalore | Lodha Developers">
     <meta property="og:description" content="Explore Lodha Group projects in Bangalore, including new launches and ongoing projects in Thanisandra, HSR Extension, Bannerghatta Road, Sarjapur and Devanahalli.">
     <meta property="og:type" content="website">
+    <link rel="preload" as="image" href="https://media.justflip.in/builder-brand-pages/lodha-group/banner.webp" fetchpriority="high">
 </head>
-<body data-home-title="Lodha Group Projects in Bangalore | Lodha Developers" data-home-description="Explore Lodha Group projects in Bangalore, including new launches and ongoing projects in Thanisandra, HSR Extension, Bannerghatta Road, Sarjapur and Devanahalli." data-home-builder="Lodha Developers" data-builder="lodha" data-home-builder="Lodha Group">
+<body data-home-title="Lodha Group Projects in Bangalore | Lodha Developers" data-home-description="Explore Lodha Group projects in Bangalore, including new launches and ongoing projects in Thanisandra, HSR Extension, Bannerghatta Road, Sarjapur and Devanahalli." data-home-builder="Lodha Developers" data-builder="lodha" data-home-builder="Lodha Developers">
 
     <!-- 1. TOP CONTACT STRIP -->
     <div class="top-ticker">
@@ -70,8 +71,10 @@
         </button>
     </header>
 
-    <!-- MAIN SPA CATALOG CONTAINER -->
-    <main id="catalog-view">
+    <!-- MAIN CONTENT LANDMARK (Wraps Catalog and Property Detail SPA Views) -->
+    <main id="main-content">
+        <!-- MAIN SPA CATALOG CONTAINER -->
+        <div id="catalog-view">
         <!-- 3. HERO & SIMPLE SEARCH SECTION -->
         <section class="hero-section" id="developer-hero">
             <img class="hero-banner-image" id="developer-hero-image" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async">
@@ -84,8 +87,8 @@
             <div class="search-container">
                 <div class="search-box-wrapper">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" id="searchInput" class="search-input" placeholder="Search by project name, location (e.g. Hinjewadi, NIBM), or BHK..." oninput="handleSearch()" onkeydown="if (event.key === 'Enter') { event.preventDefault(); submitSearch(); }">
-                    <button id="searchClearBtn" class="search-clear-btn" onclick="clearSearch()">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search by project name, location (e.g. Hinjewadi, NIBM), or BHK..." aria-label="Search by project name, location, or BHK" oninput="handleSearch()" onkeydown="if (event.key === 'Enter') { event.preventDefault(); submitSearch(); }">
+                    <button id="searchClearBtn" class="search-clear-btn" type="button" aria-label="Clear search" onclick="clearSearch()">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
@@ -125,29 +128,29 @@
         <section class="about-section" id="about">
             <div class="about-grid">
                 <div>
-                    <span class="about-badge">40+ YEARS OF LEGACY</span>
-                    <h2 class="about-heading serif-font">Lodha Homes and Projects in Bengaluru</h2>
+                    <span class="about-badge">38+ YEARS OF EXCELLENCE</span>
+                    <h2 class="about-heading serif-font">Prestige Apartments and Projects in Bengaluru</h2>
                     <p class="about-text">
-                        Founded in 1980, Lodha (Macrotech Developers) is India's premier real estate developer with over four decades of industry leadership. Headquartered in Mumbai, the group has established a dominant presence across residential, commercial, retail, and digital infrastructure developments in Mumbai MMR, Pune, Bengaluru, and London.
+                        Founded in 1986, Prestige Group (Prestige Estates Projects Limited) is one of India's leading real estate developers with over three decades of experience. Headquartered in Bengaluru, the group has established a strong presence across residential, commercial, retail, and hospitality segments.
                     </p>
                     <p class="about-text">
-                        Driven by its core motto, "Building a Better Life," Lodha focuses on world-class design, sustainable construction principles, and human-centric urban planning, consistently setting global benchmarks for luxury residences, master-planned townships, and integrated smart cities.
+                        Driven by quality design and strategic development, Prestige Group has delivered numerous landmark projects across key Indian markets, consistently setting industry benchmarks for excellence, financial transparency, and community development.
                     </p>
                     <p class="about-text">
-                        Discover Lodha Group projects in Bangalore, with residences across locations including Thanisandra, Sarjapur, HSR Extension, Bannerghatta Road, and Devanahalli. Compare Lodha properties by location, home configuration, floor plans, amenities, and possession details.
+                        Explore Prestige Group projects in Bangalore, from Prestige flats and apartments to villas and plotted developments in established and emerging locations. Compare homes by neighbourhood, configuration, floor plan, amenities, and project status.
                     </p>
                     <div class="stats-grid">
                         <div class="stat-box">
-                            <div class="stat-number">112M</div>
+                            <div class="stat-number">216M+</div>
                             <div class="stat-label">Sq. Ft. Delivered</div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-number">300+</div>
+                            <div class="stat-number">316+</div>
                             <div class="stat-label">Completed Projects</div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-number">65K+</div>
-                            <div class="stat-label">Happy Families</div>
+                            <div class="stat-number">67+</div>
+                            <div class="stat-label">Ongoing Projects</div>
                         </div>
                     </div>
                 </div>
@@ -178,13 +181,13 @@
                     <div>
                         <form onsubmit="handleFormSubmit(event)">
                             <div class="form-group">
-                                <input type="text" class="form-input" placeholder="Your Full Name" required>
+                                <input type="text" class="form-input" placeholder="Your Full Name" aria-label="Your Full Name" required>
                             </div>
                             <div class="form-group">
-                                <input type="tel" class="form-input" placeholder="Mobile Number (+91)" required>
+                                <input type="tel" class="form-input" placeholder="Mobile Number (+91)" aria-label="Mobile Number (+91)" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-input" placeholder="Email Address" required>
+                                <input type="email" class="form-input" placeholder="Email Address" aria-label="Email Address" required>
                             </div>
                             <div class="form-group">
                                 <div class="project-select" id="homeProjectSelect">
@@ -227,12 +230,12 @@
                 <span id="footer-builder-attribution"></span>
             </div>
         </footer>
-    </main>
+        </div>
 
-    <!-- 10. FULL PROPERTY DETAIL SPA VIEW (#FFFFFF Background) -->
+        <!-- 10. FULL PROPERTY DETAIL SPA VIEW (#FFFFFF Background) -->
     <div id="property-detail-view">
-        <!-- Sticky Navigation Header for Details View -->
-        <div class="detail-sticky-bar">
+        <!-- Top Action Bar for Details View (Shown when scrolled to top) -->
+        <div class="detail-top-bar" id="detailTopBar">
             <button class="btn-back" onclick="showCatalogView()">
                 <i class="fa-solid fa-arrow-left"></i> Back to Residences
             </button>
@@ -240,6 +243,28 @@
                 <i class="fa-regular fa-calendar-check"></i> Enquire Now
             </button>
         </div>
+
+        <!-- Sticky Sub-Navigation Tabs Bar for Project Details -->
+        <nav class="detail-subnav-bar" id="detailSubnavBar" aria-label="Project sections navigation">
+            <div class="subnav-container">
+                <button type="button" class="subnav-arrow subnav-arrow-left" id="subnavArrowLeft" aria-label="Scroll tabs left">
+                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <div class="subnav-track" id="subnavTrack" role="tablist">
+                    <button type="button" class="subnav-tab active" role="tab" id="subnav-tab-overview" data-target="dt-overview-section" aria-selected="true" tabindex="0">About the Project</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-highlights" data-target="dt-project-highlights" aria-selected="false" tabindex="-1">Highlights</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-gallery" data-target="dt-project-gallery" aria-selected="false" tabindex="-1">Project Gallery</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-floorplans" data-target="dt-floorplans-section" aria-selected="false" tabindex="-1">Floor Plans</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-emi" data-target="dt-emi-calculator" aria-selected="false" tabindex="-1">Financial Estimator</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-amenities" data-target="dt-amenities-section" aria-selected="false" tabindex="-1">Amenities &amp; Specifications</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-connectivity" data-target="dt-connectivity-section" aria-selected="false" tabindex="-1">Location &amp; Connectivity</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-comparison" data-target="dt-project-comparison" aria-selected="false" tabindex="-1">Compare Projects</button>
+                </div>
+                <button type="button" class="subnav-arrow subnav-arrow-right" id="subnavArrowRight" aria-label="Scroll tabs right">
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
 
         <div class="detail-hero-header">
             <div class="detail-title-wrap">
@@ -261,7 +286,7 @@
             <!-- 3 IMAGE SHOWCASE GRID -->
             <div class="image-gallery-grid">
                 <div class="gallery-item gallery-item-1">
-                    <img id="dt-img-1" src="" alt="Main Exterior" loading="lazy" decoding="async">
+                    <img id="dt-img-1" src="" alt="Main Exterior" loading="eager" fetchpriority="high" decoding="async">
                 </div>
                 <div class="gallery-item">
                     <img id="dt-img-2" src="" alt="Interior" loading="lazy" decoding="async">
@@ -278,28 +303,28 @@
                     <div class="pill-icon"><i class="fa-regular fa-building"></i></div>
                     <div>
                         <div class="pill-title">Status</div>
-                        <div class="pill-value" id="dt-status">Ongoing</div>
+                        <div class="pill-value" id="dt-status">New Launch</div>
                     </div>
                 </div>
                 <div class="pill-box">
                     <div class="pill-icon"><i class="fa-regular fa-calendar-days"></i></div>
                     <div>
                         <div class="pill-title">Possession</div>
-                        <div class="pill-value" id="dt-possession">May 2030</div>
+                        <div class="pill-value" id="dt-possession">December 2030</div>
                     </div>
                 </div>
                 <div class="pill-box">
                     <div class="pill-icon"><i class="fa-solid fa-vector-square"></i></div>
                     <div>
                         <div class="pill-title">Land Area</div>
-                        <div class="pill-value" id="dt-area">1.05 Acres</div>
+                        <div class="pill-value" id="dt-area">11.76 Acres</div>
                     </div>
                 </div>
                 <div class="pill-box">
                     <div class="pill-icon"><i class="fa-solid fa-bed"></i></div>
                     <div>
                         <div class="pill-title">Configurations</div>
-                        <div class="pill-value" id="dt-config">3.5 &amp; 4 Bed Luxury Residences</div>
+                        <div class="pill-value" id="dt-config">1 BHK, 2BHK, 2BHK large, 3BHK 2T, 3BHK 3T, 3BHK 3T Large</div>
                     </div>
                 </div>
             </div>
@@ -308,14 +333,26 @@
         <!-- DETAIL BODY LAYOUT WITH STICKY SIDEBAR -->
         <div class="detail-body-layout">
             <div class="detail-main-content">
-                <h3 class="section-block-title">Architectural Overview</h3>
-                <div id="dt-description">
-                    <p class="overview-text">Lodha Mirabelle by Lodha Group is an urban luxury residential ecosystem spread over 19 acres inside Manyata Tech Park, Nagavara. The development features a 3.2-acre central green landscape, low-density high-rise towers rising up to 28 floors, an IGBC Gold-certified design, and a 45,000 sq. ft. club resort. Homebuyers comparing Lodha Group projects in Bangalore can explore this Nagavara residence, including its status and listed home configurations.</p>
-                    <p class="overview-text">Lodha Mirabelle is listed with 3.5 and 4-bed luxury residences, with possession shown as May 2030. Residents can explore the clubhouse, swimming pools, gym, yoga studio, and wellness spa, with Manyata Tech Park, the upcoming Nagavara Metro Station, and Elements Mall nearby. Review Lodha Mirabelle floor plans, amenities, and connectivity when comparing Lodha properties in Bengaluru. <span class="overview-rera"><strong>RERA Registration No.</strong> <span>PRM/KA/RERA/1251/309/PR/131023/006321</span></span></p>
+                <section class="detail-section-block" id="dt-overview-section" aria-labelledby="dt-overview-title">
+                    <h2 class="section-block-title" id="dt-overview-title">Architectural Overview</h2>
+                    <div id="dt-description">
+                    <p class="overview-text">Lodha Mirabelle by Lodha Group is an urban luxury residential ecosystem spread over 19 acres situated right inside Manyata Tech Park, Nagavara. The development features a 3.2-acre central green landscape, low-density high-rise towers rising up to 28 floors, an IGBC Gold-certified design, and a lavish 45,000 sq. ft. club resort. Homes feature grand master bedroom suites with private decks and premium interior specifications. Homebuyers comparing Lodha Group projects in Bangalore can explore this Lodha residence in Nagavara, Bengaluru, including its project status, location, and listed home configurations.</p>
+                    <p class="overview-text">Lodha Mirabelle is listed with 3.5 &amp; 4 Bed Luxury Residences across 1.05 Acres, with ongoing status and possession shown as May 2030. Listed floor plan options include 3.5-BED RESIDENCES WITH STUDY and 4-BED RESIDENCES. Residents can explore amenities such as 45,000 sq. ft. Grand Clubhouse (Club Luxuria), Indoor &amp; Outdoor Swimming Pools, Fully Equipped Modern Gymnasium and Yoga Studio &amp; Wellness Spa, with nearby destinations including Manyata Tech Park Campus (100 Meters), Upcoming Nagavara Metro Station (1.2 Kms) and Elements Mall (1.8 Kms). Review Lodha floor plans, amenities, and connectivity when comparing homes and projects in Bengaluru. <span class="overview-rera"><strong>RERA Registration No.</strong> <span>PRM/KA/RERA/1251/309/PR/131023/006321</span></span></p>
                 </div>
+                </section>
 
-                <section class="project-gallery-section" id="dt-project-gallery" aria-labelledby="dt-project-gallery-title" hidden>
-                    <h3 class="section-block-title" id="dt-project-gallery-title">Project Gallery</h3>
+                
+
+                <!-- PROJECT HIGHLIGHTS -->
+                <section class="project-highlights-section detail-section-block" id="dt-project-highlights" aria-labelledby="dt-highlights-title">
+                    <h2 class="section-block-title" id="dt-highlights-title">Project Highlights</h2>
+                    <div class="highlights-grid" id="dt-highlights">
+                        <!-- Dynamic Highlights -->
+                    </div>
+                </section>
+
+                <section class="project-gallery-section detail-section-block" id="dt-project-gallery" aria-labelledby="dt-project-gallery-title" hidden>
+                    <h2 class="section-block-title" id="dt-project-gallery-title">Project Gallery</h2>
                     <p class="project-gallery-description">Browse project photos and available floor plans.</p>
                     <button class="project-gallery-preview" id="projectGalleryPreview" type="button" aria-haspopup="dialog">
                         <img id="projectGalleryPreviewImage" src="" alt="" loading="lazy" decoding="async">
@@ -327,7 +364,8 @@
                 </section>
 
                 <!-- INTERACTIVE FLOOR PLAN SELECTOR -->
-                <h3 class="section-block-title">Floor Plans & Pricing</h3>
+                <section class="detail-section-block" id="dt-floorplans-section" aria-labelledby="dt-floorplans-title">
+                    <h2 class="section-block-title" id="dt-floorplans-title">Floor Plans &amp; Pricing</h2>
                 <div class="floorplan-container">
                     <div class="floorplan-tabs" id="fp-tabs">
                         <!-- Floor plan tab buttons generated dynamically -->
@@ -353,12 +391,13 @@
                         </div>
                     </div>
                 </div>
+                </section>
 
-                                <!-- HOME LOAN EMI CALCULATOR -->
-                <section class="emi-calculator-section" id="dt-emi-calculator" aria-labelledby="emi-calc-heading">
+                <!-- HOME LOAN EMI CALCULATOR -->
+                <section class="emi-calculator-section detail-section-block" id="dt-emi-calculator" aria-labelledby="emi-calc-heading">
                     <div class="emi-header-row">
                         <div>
-                            <h3 class="section-block-title" id="emi-calc-heading">Home Loan EMI Calculator</h3>
+                            <h2 class="section-block-title" id="emi-calc-heading">Home Loan EMI Calculator</h2>
                             <p class="emi-section-intro">Estimate monthly loan installments with dynamic property pricing and customizable loan terms.</p>
                         </div>
                         <div class="emi-sync-badge" id="emi-sync-badge">
@@ -378,18 +417,18 @@
                                     </label>
                                     <div class="emi-val-wrap">
                                         <span class="emi-val-display" id="emi-prop-display">₹3,15,00,000</span>
-                                        <span class="emi-val-sub" id="emi-prop-sub">(₹3.15 Cr)</span>
+                                        <span class="emi-val-sub" id="emi-prop-sub">(₹65 Lakh)</span>
                                     </div>
                                 </div>
                                 <div class="emi-slider-wrap">
-                                    <input type="range" class="emi-slider" id="emi-prop-slider" min="12000000" max="70000000" step="100000" value="31500000" aria-label="Property Value">
+                                    <input type="range" class="emi-slider" id="emi-prop-slider" min="2500000" max="17500000" step="100000" value="6500000" aria-label="Property Value">
                                 </div>
                                 <div class="emi-range-limits">
-                                    <span id="emi-prop-min-lbl">₹1.2 Cr</span>
+                                    <span id="emi-prop-min-lbl">₹25 Lakh</span>
                                     <button type="button" class="emi-reset-link" id="emi-reset-price-btn" title="Reset to project price">
                                         <i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Reset to Project Price
                                     </button>
-                                    <span id="emi-prop-max-lbl">₹7 Cr</span>
+                                    <span id="emi-prop-max-lbl">₹1.75 Cr</span>
                                 </div>
                             </div>
 
@@ -464,8 +503,8 @@
                             <!-- Hero EMI Card -->
                             <div class="emi-hero-card">
                                 <span class="emi-hero-label">Estimated Monthly EMI</span>
-                                <div class="emi-hero-amount" id="emi-monthly-output">₹2,18,691</div>
-                                <span class="emi-hero-footnote" id="emi-hero-footnote">*For ₹2.52 Cr loan at 8.50% for 20 yrs</span>
+                                <div class="emi-hero-amount" id="emi-monthly-output">₹45,127</div>
+                                <span class="emi-hero-footnote" id="emi-hero-footnote">*For ₹52 Lakh loan at 8.50% for 20 yrs</span>
                             </div>
 
                             <!-- Visual Donut Chart + Legend -->
@@ -494,7 +533,7 @@
                                         <span class="emi-legend-bullet bullet-interest"></span>
                                         <div class="emi-legend-info">
                                             <span class="emi-legend-title">Total Interest</span>
-                                            <strong class="emi-legend-value" id="emi-legend-interest-val">₹2,72,85,840</strong>
+                                            <strong class="emi-legend-value" id="emi-legend-interest-val">₹2,72,83,920</strong>
                                             <span class="emi-legend-pct" id="emi-legend-interest-pct">(52%)</span>
                                         </div>
                                     </div>
@@ -513,11 +552,11 @@
                                 </div>
                                 <div class="emi-breakdown-row">
                                     <span class="emi-row-title">Total Interest Payable</span>
-                                    <strong class="emi-row-value" id="emi-table-interest">₹2,72,85,840</strong>
+                                    <strong class="emi-row-value" id="emi-table-interest">₹2,72,83,920</strong>
                                 </div>
                                 <div class="emi-breakdown-row emi-row-total">
                                     <span class="emi-row-title">Total Amount Payable</span>
-                                    <strong class="emi-row-value" id="emi-table-total">₹5,24,85,840</strong>
+                                    <strong class="emi-row-value" id="emi-table-total">₹5,24,83,920</strong>
                                 </div>
                             </div>
                         </div>
@@ -525,15 +564,17 @@
                 </section>
 
                 <!-- AMENITIES GRID -->
-                <h3 class="section-block-title">World-Class Amenities</h3>
-                <div class="amenities-grid" id="dt-amenities">
+                <section class="detail-section-block" id="dt-amenities-section" aria-labelledby="dt-amenities-title">
+                    <h2 class="section-block-title" id="dt-amenities-title">World-Class Amenities</h2>
+                    <div class="amenities-grid" id="dt-amenities">
                     <!-- Dynamic Amenities -->
                 </div>
+                </section>
 
                 <!-- Project-specific connectivity is rendered from the selected project data -->
-                <div class="connectivity-section" id="dt-connectivity-section" hidden>
+                <div class="connectivity-section detail-section-block" id="dt-connectivity-section" hidden>
                     <div class="connectivity-heading">
-                        <h3 class="section-block-title">Strategic Connectivity</h3>
+                        <h2 class="section-block-title">Strategic Connectivity</h2>
                     </div>
                     <div class="connectivity-overview">
                         <div class="connectivity-map-preview">
@@ -544,14 +585,14 @@
                             </button>
                         </div>
                         <div class="connectivity-destinations">
-                            <h4>Nearby Destinations</h4>
+                            <h3>Nearby Destinations</h3>
                             <div class="location-matrix" id="dt-connectivity"></div>
                         </div>
                     </div>
                 </div>
 
-                <section class="project-comparison-section" id="dt-project-comparison" aria-labelledby="dt-project-comparison-title" hidden>
-                    <h3 class="section-block-title" id="dt-project-comparison-title">Compare Similar Projects</h3>
+                <section class="project-comparison-section detail-section-block" id="dt-project-comparison" aria-labelledby="dt-project-comparison-title" hidden>
+                    <h2 class="section-block-title" id="dt-project-comparison-title">Compare Similar Projects</h2>
                     <p class="project-comparison-intro">Compare this project with other Lodha homes before you decide.</p>
                     <div class="project-comparison-grid" id="dt-project-comparison-grid"></div>
                 </section>
@@ -560,18 +601,18 @@
             <!-- STICKY SIDEBAR ENQUIRY FORM -->
             <div class="detail-sidebar">
                 <div class="enquiry-card" id="detail-site-visit">
-                    <h4 class="enquiry-title serif-font">Schedule a Site Visit</h4>
+                    <h2 class="enquiry-title serif-font">Schedule a Site Visit</h2>
                     <p class="enquiry-subtitle">Get private tour & official pricing breakdown</p>
                     
                     <form onsubmit="handleFormSubmit(event)">
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Your Full Name" required>
+                            <input type="text" class="form-input" placeholder="Your Full Name" aria-label="Your Full Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-input" placeholder="Phone Number" required>
+                            <input type="tel" class="form-input" placeholder="Phone Number" aria-label="Phone Number" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" placeholder="Email Address" required>
+                            <input type="email" class="form-input" placeholder="Email Address" aria-label="Email Address" required>
                         </div>
                         <div class="form-group">
                             <div class="bhk-select" id="preferredBhkSelect">
@@ -588,15 +629,17 @@
             </div>
         </div>
     </div>
+        </div>
+    </main>
 
     <!-- 11. QUICK VIEW MODAL OVERLAY -->
-    <!-- <div class="modal-overlay" id="quickViewModal">
+    <!-- <div class="modal-overlay" id="quickViewModal" role="dialog" aria-modal="true" aria-labelledby="qv-title">
         <div class="modal-box">
-            <button class="modal-close-btn" onclick="closeModal('quickViewModal')">&times;</button>
+            <button class="modal-close-btn" type="button" aria-label="Close property preview" onclick="closeModal('quickViewModal')">&times;</button>
             <div class="qv-header">
                 <img id="qv-img" src="" alt="" class="qv-img" loading="lazy" decoding="async">
                 <div>
-                    <h3 class="qv-title" id="qv-title">Property Title</h3>
+                    <h2 class="qv-title" id="qv-title">Property Title</h2>
                     <p style="font-size: 0.85rem; color: var(--text-secondary);" id="qv-location"></p>
                     <div class="qv-price" id="qv-price">Starting ₹ --</div>
                 </div>
@@ -616,18 +659,18 @@
     </div> -->
 
     <!-- 12. TIMED WHATSAPP POPUP MODAL (Triggers after 3.5 seconds) -->
-    <div class="modal-overlay" id="waPopModal">
+    <div class="modal-overlay" id="waPopModal" role="dialog" aria-modal="true" aria-labelledby="waPopModalTitle">
         <div class="modal-box wa-popup-box">
-            <button class="modal-close-btn" onclick="closeModal('waPopModal')">&times;</button>
+            <button class="modal-close-btn" type="button" aria-label="Close WhatsApp modal" onclick="closeModal('waPopModal')">&times;</button>
             <div class="wa-popup-icon">
                 <i class="fa-brands fa-whatsapp"></i>
             </div>
-            <h3 class="serif-font" style="font-size: 1.5rem; margin-bottom: 8px;">Get Instant E-Brochure</h3>
+            <h2 class="serif-font" id="waPopModalTitle" style="font-size: 1.5rem; margin-bottom: 8px;">Get Instant E-Brochure</h2>
             <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px;">
                 Receive instant floor plans, pricing sheets, and payment schedules directly on your WhatsApp.
             </p>
             <div class="form-group">
-                <input type="tel" id="waPhoneInput" class="form-input" placeholder="Enter Your WhatsApp Number">
+                <input type="tel" id="waPhoneInput" class="form-input" placeholder="Enter Your WhatsApp Number" aria-label="WhatsApp Number">
             </div>
             <button class="wa-btn" onclick="sendWhatsAppLead()">
                 <i class="fa-brands fa-whatsapp"></i> Get Info on WhatsApp
@@ -719,3 +762,5 @@
     <script type="module" src="js/main.js"></script>
 </body>
 </html>
+
+        

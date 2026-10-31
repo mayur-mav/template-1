@@ -9,8 +9,8 @@
     <!-- Meta Description, Canonical and Meta Keywords-->
     <meta name="description" content="Explore Lodha Élanza by Lodha Developers. View location, configurations, prices, floor plans, amenities, and possession details.">
     <link rel="preconnect" href="https://media.justflip.in">
-    <link rel="preload" as="image" href="https://media.justflip.in/builder-brand-pages/lodha-group/lodha-elanza/gallery/exterior-view.webp" fetchpriority="high">
-<!-- Google Fonts -->
+    <link rel="preload" as="image" href="https://media.justflip.in/builder-brand-pages/lodha-group/banner.webp" fetchpriority="high">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -19,14 +19,15 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-        <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="css/styles.css">
     <meta property="og:title" content="Lodha Élanza | Lodha Developers Bengaluru">
     <meta property="og:description" content="Explore Lodha Élanza by Lodha Developers. View location, configurations, prices, floor plans, amenities, and possession details.">
     <meta property="og:type" content="website">
+    <link rel="preload" as="image" href="https://media.justflip.in/builder-brand-pages/lodha-group/banner.webp" fetchpriority="high">
 </head>
-<body data-property-route-loading="true" data-home-title="Lodha Group Projects in Bangalore | Lodha Developers" data-home-description="Explore Lodha Group projects in Bangalore, including new launches and ongoing projects in Thanisandra, HSR Extension, Bannerghatta Road, Sarjapur and Devanahalli." data-home-builder="Lodha Developers" data-builder="lodha" data-home-builder="Lodha Group">
+<body data-property-route-loading="true" data-home-title="Lodha Group Projects in Bangalore | Lodha Developers" data-home-description="Explore Lodha Group projects in Bangalore, including new launches and ongoing projects in Thanisandra, HSR Extension, Bannerghatta Road, Sarjapur and Devanahalli." data-home-builder="Lodha Developers" data-builder="lodha" data-home-builder="Lodha Developers">
 
     <!-- 1. TOP CONTACT STRIP -->
     <div class="top-ticker">
@@ -70,8 +71,10 @@
         </button>
     </header>
 
-    <!-- MAIN SPA CATALOG CONTAINER -->
-    <main id="catalog-view">
+    <!-- MAIN CONTENT LANDMARK (Wraps Catalog and Property Detail SPA Views) -->
+    <main id="main-content">
+        <!-- MAIN SPA CATALOG CONTAINER -->
+        <div id="catalog-view">
         <!-- 3. HERO & SIMPLE SEARCH SECTION -->
         <section class="hero-section" id="developer-hero">
             <img class="hero-banner-image" id="developer-hero-image" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async">
@@ -84,8 +87,8 @@
             <div class="search-container">
                 <div class="search-box-wrapper">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" id="searchInput" class="search-input" placeholder="Search by project name, location (e.g. Hinjewadi, NIBM), or BHK..." oninput="handleSearch()" onkeydown="if (event.key === 'Enter') { event.preventDefault(); submitSearch(); }">
-                    <button id="searchClearBtn" class="search-clear-btn" onclick="clearSearch()">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search by project name, location (e.g. Hinjewadi, NIBM), or BHK..." aria-label="Search by project name, location, or BHK" oninput="handleSearch()" onkeydown="if (event.key === 'Enter') { event.preventDefault(); submitSearch(); }">
+                    <button id="searchClearBtn" class="search-clear-btn" type="button" aria-label="Clear search" onclick="clearSearch()">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
@@ -125,29 +128,29 @@
         <section class="about-section" id="about">
             <div class="about-grid">
                 <div>
-                    <span class="about-badge">40+ YEARS OF LEGACY</span>
-                    <h2 class="about-heading serif-font">Lodha Homes and Projects in Bengaluru</h2>
+                    <span class="about-badge">38+ YEARS OF EXCELLENCE</span>
+                    <h2 class="about-heading serif-font">Prestige Apartments and Projects in Bengaluru</h2>
                     <p class="about-text">
-                        Founded in 1980, Lodha (Macrotech Developers) is India's premier real estate developer with over four decades of industry leadership. Headquartered in Mumbai, the group has established a dominant presence across residential, commercial, retail, and digital infrastructure developments in Mumbai MMR, Pune, Bengaluru, and London.
+                        Founded in 1986, Prestige Group (Prestige Estates Projects Limited) is one of India's leading real estate developers with over three decades of experience. Headquartered in Bengaluru, the group has established a strong presence across residential, commercial, retail, and hospitality segments.
                     </p>
                     <p class="about-text">
-                        Driven by its core motto, "Building a Better Life," Lodha focuses on world-class design, sustainable construction principles, and human-centric urban planning, consistently setting global benchmarks for luxury residences, master-planned townships, and integrated smart cities.
+                        Driven by quality design and strategic development, Prestige Group has delivered numerous landmark projects across key Indian markets, consistently setting industry benchmarks for excellence, financial transparency, and community development.
                     </p>
                     <p class="about-text">
-                        Discover Lodha Group projects in Bangalore, with residences across locations including Thanisandra, Sarjapur, HSR Extension, Bannerghatta Road, and Devanahalli. Compare Lodha properties by location, home configuration, floor plans, amenities, and possession details.
+                        Explore Prestige Group projects in Bangalore, from Prestige flats and apartments to villas and plotted developments in established and emerging locations. Compare homes by neighbourhood, configuration, floor plan, amenities, and project status.
                     </p>
                     <div class="stats-grid">
                         <div class="stat-box">
-                            <div class="stat-number">112M</div>
+                            <div class="stat-number">216M+</div>
                             <div class="stat-label">Sq. Ft. Delivered</div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-number">300+</div>
+                            <div class="stat-number">316+</div>
                             <div class="stat-label">Completed Projects</div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-number">65K+</div>
-                            <div class="stat-label">Happy Families</div>
+                            <div class="stat-number">67+</div>
+                            <div class="stat-label">Ongoing Projects</div>
                         </div>
                     </div>
                 </div>
@@ -178,13 +181,13 @@
                     <div>
                         <form onsubmit="handleFormSubmit(event)">
                             <div class="form-group">
-                                <input type="text" class="form-input" placeholder="Your Full Name" required>
+                                <input type="text" class="form-input" placeholder="Your Full Name" aria-label="Your Full Name" required>
                             </div>
                             <div class="form-group">
-                                <input type="tel" class="form-input" placeholder="Mobile Number (+91)" required>
+                                <input type="tel" class="form-input" placeholder="Mobile Number (+91)" aria-label="Mobile Number (+91)" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-input" placeholder="Email Address" required>
+                                <input type="email" class="form-input" placeholder="Email Address" aria-label="Email Address" required>
                             </div>
                             <div class="form-group">
                                 <div class="project-select" id="homeProjectSelect">
@@ -227,12 +230,12 @@
                 <span id="footer-builder-attribution"></span>
             </div>
         </footer>
-    </main>
+        </div>
 
-    <!-- 10. FULL PROPERTY DETAIL SPA VIEW (#FFFFFF Background) -->
+        <!-- 10. FULL PROPERTY DETAIL SPA VIEW (#FFFFFF Background) -->
     <div id="property-detail-view" style="display:block">
-        <!-- Sticky Navigation Header for Details View -->
-        <div class="detail-sticky-bar">
+        <!-- Top Action Bar for Details View (Shown when scrolled to top) -->
+        <div class="detail-top-bar" id="detailTopBar">
             <button class="btn-back" onclick="showCatalogView()">
                 <i class="fa-solid fa-arrow-left"></i> Back to Residences
             </button>
@@ -240,6 +243,28 @@
                 <i class="fa-regular fa-calendar-check"></i> Enquire Now
             </button>
         </div>
+
+        <!-- Sticky Sub-Navigation Tabs Bar for Project Details -->
+        <nav class="detail-subnav-bar" id="detailSubnavBar" aria-label="Project sections navigation">
+            <div class="subnav-container">
+                <button type="button" class="subnav-arrow subnav-arrow-left" id="subnavArrowLeft" aria-label="Scroll tabs left">
+                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <div class="subnav-track" id="subnavTrack" role="tablist">
+                    <button type="button" class="subnav-tab active" role="tab" id="subnav-tab-overview" data-target="dt-overview-section" aria-selected="true" tabindex="0">About the Project</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-highlights" data-target="dt-project-highlights" aria-selected="false" tabindex="-1">Highlights</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-gallery" data-target="dt-project-gallery" aria-selected="false" tabindex="-1">Project Gallery</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-floorplans" data-target="dt-floorplans-section" aria-selected="false" tabindex="-1">Floor Plans</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-emi" data-target="dt-emi-calculator" aria-selected="false" tabindex="-1">Financial Estimator</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-amenities" data-target="dt-amenities-section" aria-selected="false" tabindex="-1">Amenities &amp; Specifications</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-connectivity" data-target="dt-connectivity-section" aria-selected="false" tabindex="-1">Location &amp; Connectivity</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-comparison" data-target="dt-project-comparison" aria-selected="false" tabindex="-1">Compare Projects</button>
+                </div>
+                <button type="button" class="subnav-arrow subnav-arrow-right" id="subnavArrowRight" aria-label="Scroll tabs right">
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
 
         <div class="detail-hero-header">
             <div class="detail-title-wrap">
@@ -264,7 +289,7 @@
                     <img id="dt-img-1" src="https://media.justflip.in/builder-brand-pages/lodha-group/lodha-elanza/gallery/exterior-view.webp" alt="Lodha Élanza exterior in Bengaluru" loading="eager" fetchpriority="high" decoding="async">
                 </div>
                 <div class="gallery-item">
-                    <img id="dt-img-2" src="https://media.justflip.in/builder-brand-pages/lodha-group/lodha-elanza/gallery/interior-view.webp" alt="Lodha Élanza interior in Bengaluru" loading="eager" decoding="async">
+                    <img id="dt-img-2" src="https://media.justflip.in/builder-brand-pages/lodha-group/lodha-elanza/gallery/interior-view.webp" alt="Lodha Élanza interior in Bengaluru" loading="lazy" decoding="async">
                 </div>
                 <div class="gallery-item">
                     <img id="dt-img-3" src="https://media.justflip.in/builder-brand-pages/lodha-group/lodha-elanza/gallery/amenities.webp" alt="Lodha Élanza amenities in Bengaluru" loading="lazy" decoding="async">
@@ -308,41 +333,79 @@
         <!-- DETAIL BODY LAYOUT WITH STICKY SIDEBAR -->
         <div class="detail-body-layout">
             <div class="detail-main-content">
-                <h3 class="section-block-title">Architectural Overview</h3>
-                <div id="dt-description"><p class="overview-text">Lodha Élanza by Lodha Group is an Art Deco-inspired luxury residential project spread across 19 acres off Sarjapur Road in East Bengaluru. The development features 8 high-rise towers (rising up to 33 floors) with over 80% open spaces, vast horizontal living rooms, and private curved balconies with lake views. Centered around a resort-style clubhouse, cascading gardens, and sports arenas, it offers quiet grace and rapid connectivity to Wipro SEZ, ORR, and top international schools. Homebuyers comparing Lodha properties in Bangalore can explore this Lodha residence in Dommasandra, Bengaluru, including its project status, location, and listed home configurations.</p>
-                    <p class="overview-text">Lodha Élanza is listed with 3 Bed Luxury Residences across 6.75 Acres, with new launch status and possession shown as September 2031. Listed floor plan options include 3-BED RESIDENCES. Residents can explore amenities such as Grand Resort-Style Clubhouse, Temperature-Controlled Indoor Pool &amp; Lap Pool, Fully Equipped Modern Gymnasium and Yoga Deck &amp; Stargazing Platform, with nearby destinations including Sarjapur Main Road (2 mins), Oakridge &amp; TISB International Schools (5 mins) and Greenwood High &amp; Inventure Academy (10 mins). Review Lodha floor plans, amenities, and connectivity when comparing homes and projects in Bengaluru. <span class="overview-rera"><strong>RERA Registration No.</strong> <span>PRM/KA/RERA/1251/308/PR/191225/008353</span></span></p></div>
+                <section class="detail-section-block" id="dt-overview-section" aria-labelledby="dt-overview-title">
+                    <h2 class="section-block-title" id="dt-overview-title">Architectural Overview</h2>
+                    <div id="dt-description"><p class="overview-text">Lodha Élanza by Lodha Group is an Art Deco-inspired luxury residential project spread across 19 acres off Sarjapur Road in East Bengaluru. The development features 8 high-rise towers (rising up to 33 floors) with over 80% open spaces, vast horizontal living rooms, and private curved balconies with lake views. Centered around a resort-style clubhouse, cascading gardens, and sports arenas, it offers quiet grace and rapid connectivity to Wipro SEZ, ORR, and top international schools. Homebuyers comparing Lodha properties in Bangalore can explore this Lodha residence in Dommasandra, Bengaluru, including its project status, location, and listed home configurations.</p>
+                    <p class="overview-text">Lodha Élanza is listed with 3 Bed Luxury Residences across 6.75 Acres, with new launch status and possession shown as September 2031. Listed floor plan options include 3-BED RESIDENCES. Residents can explore amenities such as Grand Resort-Style Clubhouse, Temperature-Controlled Indoor Pool &amp; Lap Pool, Fully Equipped Modern Gymnasium and Yoga Deck &amp; Stargazing Platform, with nearby destinations including Sarjapur Main Road (1.3 Kms), Oakridge &amp; TISB International Schools (1.7 Kms) and Greenwood High &amp; Inventure Academy (4.2 Kms). Review Lodha floor plans, amenities, and connectivity when comparing homes and projects in Bengaluru. <span class="overview-rera"><strong>RERA Registration No.</strong> <span>PRM/KA/RERA/1251/308/PR/191225/008353</span></span></p></div>
+                </section>
 
-                <section class="project-gallery-section" id="dt-project-gallery" aria-labelledby="dt-project-gallery-title" hidden>
-                    <h3 class="section-block-title" id="dt-project-gallery-title">Project Gallery</h3>
+                
+
+                <!-- PROJECT HIGHLIGHTS -->
+                <section class="project-highlights-section detail-section-block" id="dt-project-highlights" aria-labelledby="dt-highlights-title">
+                    <h2 class="section-block-title" id="dt-highlights-title">Project Highlights</h2>
+                    <div class="highlights-grid" id="dt-highlights">
+                        <div class="highlight-card">
+                        <div class="highlight-icon-wrap"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></div>
+                        <div class="highlight-text-wrap"><span class="highlight-text">Art Deco-inspired luxury development spanning 19 acres off Sarjapur Road</span></div>
+                    </div>
+                        <div class="highlight-card">
+                        <div class="highlight-icon-wrap"><i class="fa-solid fa-tree" aria-hidden="true"></i></div>
+                        <div class="highlight-text-wrap"><span class="highlight-text">8 high-rise towers up to 33 floors with over 80% lush green open spaces</span></div>
+                    </div>
+                        <div class="highlight-card">
+                        <div class="highlight-icon-wrap"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></div>
+                        <div class="highlight-text-wrap"><span class="highlight-text">Expansive horizontal living layouts with private curved balconies</span></div>
+                    </div>
+                        <div class="highlight-card">
+                        <div class="highlight-icon-wrap"><i class="fa-solid fa-person-swimming" aria-hidden="true"></i></div>
+                        <div class="highlight-text-wrap"><span class="highlight-text">Resort-style clubhouse with temperature-controlled lap pool &amp; fitness center</span></div>
+                    </div>
+                        <div class="highlight-card">
+                        <div class="highlight-icon-wrap"><i class="fa-solid fa-tree" aria-hidden="true"></i></div>
+                        <div class="highlight-text-wrap"><span class="highlight-text">Vast cascading gardens, sports arenas, and tranquil stargazing decks</span></div>
+                    </div>
+                        <div class="highlight-card">
+                        <div class="highlight-icon-wrap"><i class="fa-solid fa-tree" aria-hidden="true"></i></div>
+                        <div class="highlight-text-wrap"><span class="highlight-text">Adjacent to top international schools including TISB, Greenwood High &amp; Oakridge</span></div>
+                    </div>
+                        <div class="highlight-card">
+                        <div class="highlight-icon-wrap"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></div>
+                        <div class="highlight-text-wrap"><span class="highlight-text">Rapid connectivity to Wipro Kodathi SEZ, Carmelaram, and Outer Ring Road</span></div>
+                    </div>
+                    </div>
+                </section>
+
+                <section class="project-gallery-section detail-section-block" id="dt-project-gallery" aria-labelledby="dt-project-gallery-title">
+                    <h2 class="section-block-title" id="dt-project-gallery-title">Project Gallery</h2>
                     <p class="project-gallery-description">Browse project photos and available floor plans.</p>
                     <button class="project-gallery-preview" id="projectGalleryPreview" type="button" aria-haspopup="dialog">
-                        <img id="projectGalleryPreviewImage" src="" alt="" loading="lazy" decoding="async">
+                        <img id="projectGalleryPreviewImage" src="https://media.justflip.in/builder-brand-pages/lodha-group/lodha-elanza/gallery/exterior-view.webp" alt="Lodha Élanza gallery preview in Bengaluru" loading="lazy" decoding="async">
                         <span class="project-gallery-preview-overlay">
-                            <span class="project-gallery-image-count" id="projectGalleryImageCount"></span>
+                            <span class="project-gallery-image-count" id="projectGalleryImageCount">4 images · Project photos and floor plans</span>
                             <span class="project-gallery-preview-action"><i class="fa-solid fa-images" aria-hidden="true"></i> View gallery</span>
                         </span>
                     </button>
                 </section>
 
                 <!-- INTERACTIVE FLOOR PLAN SELECTOR -->
-                <h3 class="section-block-title">Floor Plans & Pricing</h3>
+                <section class="detail-section-block" id="dt-floorplans-section" aria-labelledby="dt-floorplans-title">
+                    <h2 class="section-block-title" id="dt-floorplans-title">Floor Plans &amp; Pricing</h2>
                 <div class="floorplan-container">
-                    <div class="floorplan-tabs" id="fp-tabs">
-                        <!-- Floor plan tab buttons generated dynamically -->
-                    </div>
+                    <div class="floorplan-tabs" id="fp-tabs"><button class="fp-tab-btn active">3-BED RESIDENCES</button></div>
                     <div class="floorplan-display" id="fp-display">
                         <div class="fp-details">
                             <div class="fp-data-row">
                                 <span style="color: var(--text-muted);">Typology</span>
-                                <strong id="fp-type">3.5-BED RESIDENCES WITH STUDY</strong>
+                                <strong id="fp-type">3-BED RESIDENCES</strong>
                             </div>
                             <div class="fp-data-row">
                                 <span style="color: var(--text-muted);">Carpet Area</span>
-                                <strong id="fp-sqft">1,308 sq. ft.</strong>
+                                <strong id="fp-sqft">976 - 1,499 sq.ft.</strong>
                             </div>
                             <div class="fp-data-row">
                                 <span style="color: var(--text-muted);">Starting Price</span>
-                                <strong id="fp-price" style="color: var(--brand-bronze);">₹3.15 Cr Onwards</strong>
+                                <strong id="fp-price" style="color: var(--brand-bronze);">₹1.92 Cr Onwards</strong>
                             </div>
                         </div>
                         <div class="fp-img-placeholder">
@@ -351,12 +414,13 @@
                         </div>
                     </div>
                 </div>
+                </section>
 
-                                <!-- HOME LOAN EMI CALCULATOR -->
-                <section class="emi-calculator-section" id="dt-emi-calculator" aria-labelledby="emi-calc-heading">
+                <!-- HOME LOAN EMI CALCULATOR -->
+                <section class="emi-calculator-section detail-section-block" id="dt-emi-calculator" aria-labelledby="emi-calc-heading">
                     <div class="emi-header-row">
                         <div>
-                            <h3 class="section-block-title" id="emi-calc-heading">Home Loan EMI Calculator</h3>
+                            <h2 class="section-block-title" id="emi-calc-heading">Home Loan EMI Calculator</h2>
                             <p class="emi-section-intro">Estimate monthly loan installments with dynamic property pricing and customizable loan terms.</p>
                         </div>
                         <div class="emi-sync-badge" id="emi-sync-badge">
@@ -523,15 +587,25 @@
                 </section>
 
                 <!-- AMENITIES GRID -->
-                <h3 class="section-block-title">World-Class Amenities</h3>
-                <div class="amenities-grid" id="dt-amenities">
-                    <!-- Dynamic Amenities -->
-                </div>
+                <section class="detail-section-block" id="dt-amenities-section" aria-labelledby="dt-amenities-title">
+                    <h2 class="section-block-title" id="dt-amenities-title">World-Class Amenities</h2>
+                    <div class="amenities-grid" id="dt-amenities">
+                        <div class="amenity-card"><i class="fa-solid fa-hotel"></i><span>Grand Resort-Style Clubhouse</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-person-swimming"></i><span>Temperature-Controlled Indoor Pool &amp; Lap Pool</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-dumbbell"></i><span>Fully Equipped Modern Gymnasium</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-mattress-pillow"></i><span>Yoga Deck &amp; Stargazing Platform</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-basketball"></i><span>Full-Size American College Basketball Court</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-table-tennis-paddle-ball"></i><span>Professional Padel Court</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-mug-hot"></i><span>Hydration Bar &amp; Exclusive Resident Cafe</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-tree"></i><span>Cascading Greens &amp; Terraced Promenades</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-child-reaching"></i><span>Children&#39;s Play Park &amp; Banquet Hall</span></div>
+                    </div>
+                </section>
 
                 <!-- Project-specific connectivity is rendered from the selected project data -->
-                <div class="connectivity-section" id="dt-connectivity-section" hidden>
+                <div class="connectivity-section detail-section-block" id="dt-connectivity-section">
                     <div class="connectivity-heading">
-                        <h3 class="section-block-title">Strategic Connectivity</h3>
+                        <h2 class="section-block-title">Strategic Connectivity</h2>
                     </div>
                     <div class="connectivity-overview">
                         <div class="connectivity-map-preview">
@@ -542,14 +616,19 @@
                             </button>
                         </div>
                         <div class="connectivity-destinations">
-                            <h4>Nearby Destinations</h4>
-                            <div class="location-matrix" id="dt-connectivity"></div>
+                            <h3>Nearby Destinations</h3>
+                            <div class="location-matrix" id="dt-connectivity">
+                                <div class="loc-item"><i class="fa-solid fa-road" aria-hidden="true"></i><div><strong>Sarjapur Main Road:</strong> 1.3 Kms</div></div>
+                                <div class="loc-item"><i class="fa-solid fa-school" aria-hidden="true"></i><div><strong>Oakridge &amp; TISB International Schools:</strong> 1.7 Kms</div></div>
+                                <div class="loc-item"><i class="fa-solid fa-school" aria-hidden="true"></i><div><strong>Greenwood High &amp; Inventure Academy:</strong> 4.2 Kms</div></div>
+                                <div class="loc-item"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i><div><strong>Wipro Kodathi SEZ Campus:</strong> 9.3 Kms</div></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <section class="project-comparison-section" id="dt-project-comparison" aria-labelledby="dt-project-comparison-title" hidden>
-                    <h3 class="section-block-title" id="dt-project-comparison-title">Compare Similar Projects</h3>
+                <section class="project-comparison-section detail-section-block" id="dt-project-comparison" aria-labelledby="dt-project-comparison-title" hidden>
+                    <h2 class="section-block-title" id="dt-project-comparison-title">Compare Similar Projects</h2>
                     <p class="project-comparison-intro">Compare this project with other Lodha homes before you decide.</p>
                     <div class="project-comparison-grid" id="dt-project-comparison-grid"></div>
                 </section>
@@ -558,18 +637,18 @@
             <!-- STICKY SIDEBAR ENQUIRY FORM -->
             <div class="detail-sidebar">
                 <div class="enquiry-card" id="detail-site-visit">
-                    <h4 class="enquiry-title serif-font">Schedule a Site Visit</h4>
+                    <h2 class="enquiry-title serif-font">Schedule a Site Visit</h2>
                     <p class="enquiry-subtitle">Get private tour & official pricing breakdown</p>
                     
                     <form onsubmit="handleFormSubmit(event)">
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Your Full Name" required>
+                            <input type="text" class="form-input" placeholder="Your Full Name" aria-label="Your Full Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-input" placeholder="Phone Number" required>
+                            <input type="tel" class="form-input" placeholder="Phone Number" aria-label="Phone Number" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" placeholder="Email Address" required>
+                            <input type="email" class="form-input" placeholder="Email Address" aria-label="Email Address" required>
                         </div>
                         <div class="form-group">
                             <div class="bhk-select" id="preferredBhkSelect">
@@ -586,15 +665,17 @@
             </div>
         </div>
     </div>
+        </div>
+    </main>
 
     <!-- 11. QUICK VIEW MODAL OVERLAY -->
-    <!-- <div class="modal-overlay" id="quickViewModal">
+    <!-- <div class="modal-overlay" id="quickViewModal" role="dialog" aria-modal="true" aria-labelledby="qv-title">
         <div class="modal-box">
-            <button class="modal-close-btn" onclick="closeModal('quickViewModal')">&times;</button>
+            <button class="modal-close-btn" type="button" aria-label="Close property preview" onclick="closeModal('quickViewModal')">&times;</button>
             <div class="qv-header">
                 <img id="qv-img" src="" alt="" class="qv-img" loading="lazy" decoding="async">
                 <div>
-                    <h3 class="qv-title" id="qv-title">Property Title</h3>
+                    <h2 class="qv-title" id="qv-title">Property Title</h2>
                     <p style="font-size: 0.85rem; color: var(--text-secondary);" id="qv-location"></p>
                     <div class="qv-price" id="qv-price">Starting ₹ --</div>
                 </div>
@@ -614,18 +695,18 @@
     </div> -->
 
     <!-- 12. TIMED WHATSAPP POPUP MODAL (Triggers after 3.5 seconds) -->
-    <div class="modal-overlay" id="waPopModal">
+    <div class="modal-overlay" id="waPopModal" role="dialog" aria-modal="true" aria-labelledby="waPopModalTitle">
         <div class="modal-box wa-popup-box">
-            <button class="modal-close-btn" onclick="closeModal('waPopModal')">&times;</button>
+            <button class="modal-close-btn" type="button" aria-label="Close WhatsApp modal" onclick="closeModal('waPopModal')">&times;</button>
             <div class="wa-popup-icon">
                 <i class="fa-brands fa-whatsapp"></i>
             </div>
-            <h3 class="serif-font" style="font-size: 1.5rem; margin-bottom: 8px;">Get Instant E-Brochure</h3>
+            <h2 class="serif-font" id="waPopModalTitle" style="font-size: 1.5rem; margin-bottom: 8px;">Get Instant E-Brochure</h2>
             <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px;">
                 Receive instant floor plans, pricing sheets, and payment schedules directly on your WhatsApp.
             </p>
             <div class="form-group">
-                <input type="tel" id="waPhoneInput" class="form-input" placeholder="Enter Your WhatsApp Number">
+                <input type="tel" id="waPhoneInput" class="form-input" placeholder="Enter Your WhatsApp Number" aria-label="WhatsApp Number">
             </div>
             <button class="wa-btn" onclick="sendWhatsAppLead()">
                 <i class="fa-brands fa-whatsapp"></i> Get Info on WhatsApp
@@ -717,3 +798,5 @@
     <script type="module" src="js/main.js"></script>
 </body>
 </html>
+
+        

@@ -1,4 +1,4 @@
-const imageCdnPrefix = 'https://media.justflip.in/builder-brand-pages/';
+﻿const imageCdnPrefix = 'https://media.justflip.in/builder-brand-pages/';
 const prestigeImage = suffix => `${imageCdnPrefix}${suffix.replace(/^\/+/, '')}`;
 
 export const developerInfo = {
@@ -242,12 +242,11 @@ export const propertiesData = [
         connectivity: [
             { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '19.8 Kms', icon: 'fa-solid fa-plane' },
             { label: 'Devanahalli Railway Station', destination: 'Devanahalli Railway Station, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.243700, lon: 77.712600 }, distance: '9.3 Kms', icon: 'fa-solid fa-train' },
-            { label: 'KIAL Terminals Metro Station', destination: 'KIAL Terminals Metro Station (Blue Line), Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197900, lon: 77.706300 }, distance: '20.0 Kms', icon: 'fa-solid fa-train-subway' },
-            { label: 'EKTA School', destination: 'EKTA School, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.218500, lon: 77.695000 }, distance: '13.8 Kms', icon: 'fa-solid fa-school' },
-            { label: 'United Christian PU College', destination: 'United Christian PU College, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.239000, lon: 77.705000 }, distance: '10.4 Kms', icon: 'fa-solid fa-graduation-cap' },
+            { label: 'EKTA School', destination: 'EKTA School, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.218500, lon: 77.695000 }, distance: '4.0 Kms', icon: 'fa-solid fa-school' },
+            { label: 'United Christian PU College', destination: 'United Christian PU College, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.239000, lon: 77.705000 }, distance: '5.2 Kms', icon: 'fa-solid fa-graduation-cap' },
             { label: 'Doctors For You Hospital', destination: 'Doctors For You Hospital, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.245000, lon: 77.711000 }, distance: '9.5 Kms', icon: 'fa-solid fa-hospital' },
-            { label: 'KIADB Aerospace SEZ', destination: 'KIADB Aerospace Park Phase 2, Devanahalli, Bengaluru, Karnataka 562149', coordinates: { lat: 13.206000, lon: 77.698000 }, distance: '350 Meters', icon: 'fa-solid fa-laptop-code' },
-            { label: 'The Arcade at Brigade Orchards', destination: 'The Arcade at Brigade Orchards, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.241000, lon: 77.731000 }, distance: '7.5 Kms', icon: 'fa-solid fa-cart-shopping' }
+            { label: 'KIADB Aerospace SEZ', destination: 'KIADB Aerospace Park Phase 2, Devanahalli, Bengaluru, Karnataka 562149', coordinates: { lat: 13.206000, lon: 77.698000 }, distance: '11.4 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'The Arcade at Brigade Orchards', destination: 'The Arcade at Brigade Orchards, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.241000, lon: 77.731000 }, distance: '6.6 Kms', icon: 'fa-solid fa-cart-shopping' }
         ]
     },
     {
@@ -322,10 +321,10 @@ export const propertiesData = [
             { name: 'clinic', icon: 'fa-solid fa-user-doctor' }
         ],
         connectivity: [
-            { label: 'Prestige Tech Forest', destination: 'Prestige Tech Forest, SH 35, Varthur, Bengaluru, Karnataka 560087', coordinates: { lat: 12.938000, lon: 77.749000 }, distance: '100 Meters', icon: 'fa-solid fa-laptop-code' },
-            { label: 'The Deens Academy', destination: 'The Deens Academy, ECC Road, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.969800, lon: 77.749900 }, distance: '4.1 Kms', icon: 'fa-solid fa-school' },
+            { label: 'Prestige Tech Forest', destination: 'Prestige Tech Forest, SH 35, Varthur, Bengaluru, Karnataka 560087', coordinates: { lat: 12.938000, lon: 77.749000 }, distance: '350 Meters', icon: 'fa-solid fa-laptop-code' },
+            { label: 'The Deens Academy', destination: 'The Deens Academy, ECC Road, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.969800, lon: 77.749900 }, distance: '5.9 Kms', icon: 'fa-solid fa-school' },
             { label: 'Manipal Hospital Varthur', destination: 'Manipal Hospital, Whitefield - Varthur Road, Bengaluru, Karnataka 560087', coordinates: { lat: 12.959200, lon: 77.747100 }, distance: '3.4 Kms', icon: 'fa-solid fa-hospital' },
-            { label: 'Nexus Whitefield Mall', destination: 'Nexus Whitefield Mall, Whitefield Main Road, Bengaluru, Karnataka 560066', coordinates: { lat: 12.958500, lon: 77.746000 }, distance: '2.8 Kms', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Nexus Whitefield Mall', destination: 'Nexus Whitefield Mall, Whitefield Main Road, Bengaluru, Karnataka 560066', coordinates: { lat: 12.958500, lon: 77.746000 }, distance: '3.8 Kms', icon: 'fa-solid fa-cart-shopping' },
             { label: 'Whitefield Railway Station', destination: 'Whitefield Railway Station, Kadugodi, Bengaluru, Karnataka 560067', coordinates: { lat: 12.996100, lon: 77.761000 }, distance: '8.7 Kms', icon: 'fa-solid fa-train' },
             { label: 'Hopefarm Metro Station', destination: 'Hopefarm Channasandra Metro Station (Purple Line), Whitefield, Bengaluru, Karnataka 560067', coordinates: { lat: 12.984200, lon: 77.756500 }, distance: '6.2 Kms', icon: 'fa-solid fa-train-subway' },
             { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '41.6 Kms', icon: 'fa-solid fa-plane' }
@@ -382,10 +381,10 @@ export const propertiesData = [
             { name: 'Visitor Parking', icon: 'fa-solid fa-square-parking' }
         ],
         connectivity: [
-            { label: 'ITPB (International Tech Park)', destination: 'International Tech Park Bangalore (ITPB), Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.986000, lon: 77.738000 }, distance: '4.7 Kms', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Nallurhalli Metro Station', destination: 'Nallurhalli Metro Station (Purple Line), Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.973400, lon: 77.728000 }, distance: '1.8 Kms', icon: 'fa-solid fa-train-subway' },
+            { label: 'ITPB (International Tech Park)', destination: 'International Tech Park Bangalore (ITPB), Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.986000, lon: 77.738000 }, distance: '2.9 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Nallurhalli Metro Station', destination: 'Nallurhalli Metro Station (Purple Line), Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.973400, lon: 77.728000 }, distance: '2.3 Kms', icon: 'fa-solid fa-train-subway' },
             { label: 'Whitefield Railway Station', destination: 'Whitefield Railway Station, Kadugodi, Bengaluru, Karnataka 560067', coordinates: { lat: 12.996100, lon: 77.761000 }, distance: '5.9 Kms', icon: 'fa-solid fa-train' },
-            { label: 'The Deens Academy', destination: 'The Deens Academy, ECC Road, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.969000, lon: 77.742000 }, distance: '200 Meters', icon: 'fa-solid fa-school' },
+            { label: 'The Deens Academy', destination: 'The Deens Academy, ECC Road, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.969000, lon: 77.742000 }, distance: '2.0 Kms', icon: 'fa-solid fa-school' },
             { label: 'Manipal Hospital Whitefield', destination: 'Manipal Hospital Whitefield, 143, EPIP Zone, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.959200, lon: 77.747100 }, distance: '3.2 Kms', icon: 'fa-solid fa-hospital' },
             { label: 'Nexus Shantiniketan Mall', destination: 'Nexus Shantiniketan Mall, Whitefield Main Road, Bengaluru, Karnataka 560066', coordinates: { lat: 12.989200, lon: 77.728100 }, distance: '4.3 Kms', icon: 'fa-solid fa-cart-shopping' },
             { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '38.7 Kms', icon: 'fa-solid fa-plane' }
@@ -438,13 +437,13 @@ export const propertiesData = [
             { name: '24/7 Manned Security & Surveillance', icon: 'fa-solid fa-shield-halved' }
         ],
         connectivity: [
-            { label: 'Upcoming Forum Retail Mall', destination: 'The Prestige City Forum Mall, Sarjapur Road, Bengaluru, Karnataka 562125', coordinates: { lat: 12.879500, lon: 77.761800 }, distance: '400 Meters', icon: 'fa-solid fa-cart-shopping' },
-            { label: 'Sarjapur Main Road (SH 35)', destination: 'Sarjapur Main Road (SH 35), Yamare, Bengaluru, Karnataka 562125', coordinates: { lat: 12.885000, lon: 77.765000 }, distance: '700 Meters', icon: 'fa-solid fa-road' },
-            { label: 'Wipro SEZ Sarjapur', destination: 'Wipro Technologies SEZ, Sarjapur Road, Doddakannelli, Bengaluru, Karnataka 560035', coordinates: { lat: 12.911000, lon: 77.692000 }, distance: '9.5 Kms', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Carmelaram Railway Station', destination: 'Carmelaram Railway Station, Carmelaram, Bengaluru, Karnataka 560035', coordinates: { lat: 12.912000, lon: 77.702000 }, distance: '9.4 Kms', icon: 'fa-solid fa-train' },
-            { label: 'RGA Tech Park', destination: 'RGA Tech Park, Sarjapur Road, Carmelaram, Bengaluru, Karnataka 560035', coordinates: { lat: 12.905000, lon: 77.708000 }, distance: '7.8 Kms', icon: 'fa-solid fa-building' },
-            { label: 'Outer Ring Road (ORR) Bellandur', destination: 'Outer Ring Road, Bellandur Junction, Bengaluru, Karnataka 560103', coordinates: { lat: 12.926000, lon: 77.676000 }, distance: '15.2 Kms', icon: 'fa-solid fa-road' },
-            { label: 'Electronic City', destination: 'Electronic City Phase 1, Hosur Road, Bengaluru, Karnataka 560100', coordinates: { lat: 12.845200, lon: 77.660200 }, distance: '16.0 Kms', icon: 'fa-solid fa-laptop-code' }
+            { label: 'Upcoming Forum Retail Mall', destination: 'The Prestige City Forum Mall, Sarjapur Road, Bengaluru, Karnataka 562125', coordinates: { lat: 12.879500, lon: 77.761800 }, distance: '3.2 Kms', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Sarjapur Main Road (SH 35)', destination: 'Sarjapur Main Road (SH 35), Yamare, Bengaluru, Karnataka 562125', coordinates: { lat: 12.885000, lon: 77.765000 }, distance: '3.6 Kms', icon: 'fa-solid fa-road' },
+            { label: 'Wipro SEZ Sarjapur', destination: 'Wipro Technologies SEZ, Sarjapur Road, Doddakannelli, Bengaluru, Karnataka 560035', coordinates: { lat: 12.911000, lon: 77.692000 }, distance: '15.0 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Carmelaram Railway Station', destination: 'Carmelaram Railway Station, Carmelaram, Bengaluru, Karnataka 560035', coordinates: { lat: 12.912000, lon: 77.702000 }, distance: '12.6 Kms', icon: 'fa-solid fa-train' },
+            { label: 'RGA Tech Park', destination: 'RGA Tech Park, Sarjapur Road, Carmelaram, Bengaluru, Karnataka 560035', coordinates: { lat: 12.905000, lon: 77.708000 }, distance: '12.5 Kms', icon: 'fa-solid fa-building' },
+            { label: 'Outer Ring Road (ORR) Bellandur', destination: 'Outer Ring Road, Bellandur Junction, Bengaluru, Karnataka 560103', coordinates: { lat: 12.926000, lon: 77.676000 }, distance: '18.1 Kms', icon: 'fa-solid fa-road' },
+            { label: 'Electronic City', destination: 'Electronic City Phase 1, Hosur Road, Bengaluru, Karnataka 560100', coordinates: { lat: 12.845200, lon: 77.660200 }, distance: '29.8 Kms', icon: 'fa-solid fa-laptop-code' }
         ]
     },
     {
@@ -496,10 +495,10 @@ export const propertiesData = [
         connectivity: [
             { label: 'Wipro SEZ Sarjapur', destination: 'Wipro Technologies SEZ, Sarjapur Road, Doddakannelli, Bengaluru, Karnataka 560035', coordinates: { lat: 12.911000, lon: 77.692000 }, distance: '10.0 Kms', icon: 'fa-solid fa-laptop-code' },
             { label: 'Carmelaram Railway Station', destination: 'Carmelaram Railway Station, Carmelaram, Bengaluru, Karnataka 560035', coordinates: { lat: 12.912000, lon: 77.702000 }, distance: '9.9 Kms', icon: 'fa-solid fa-train' },
-            { label: 'Harvest International School', destination: 'Harvest International School, Sarjapur - Mugalur Road, Bengaluru, Karnataka 562125', coordinates: { lat: 12.872000, lon: 77.755000 }, distance: '3.0 Kms', icon: 'fa-solid fa-school' },
-            { label: 'RGA Tech Park', destination: 'RGA Tech Park, Sarjapur Road, Carmelaram, Bengaluru, Karnataka 560035', coordinates: { lat: 12.905000, lon: 77.708000 }, distance: '8.2 Kms', icon: 'fa-solid fa-building' },
-            { label: 'Embassy TechVillage (ORR)', destination: 'Embassy TechVillage, Outer Ring Road, Devarabisanahalli, Bengaluru, Karnataka 560103', coordinates: { lat: 12.929000, lon: 77.692000 }, distance: '15.2 Kms', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Electronic City Phase 1', destination: 'Electronic City Phase 1, Hosur Road, Bengaluru, Karnataka 560100', coordinates: { lat: 12.845200, lon: 77.660200 }, distance: '16.5 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Harvest International School', destination: 'Harvest International School, Sarjapur - Mugalur Road, Bengaluru, Karnataka 562125', coordinates: { lat: 12.872000, lon: 77.755000 }, distance: '8.9 Kms', icon: 'fa-solid fa-school' },
+            { label: 'RGA Tech Park', destination: 'RGA Tech Park, Sarjapur Road, Carmelaram, Bengaluru, Karnataka 560035', coordinates: { lat: 12.905000, lon: 77.708000 }, distance: '9.2 Kms', icon: 'fa-solid fa-building' },
+            { label: 'Embassy TechVillage (ORR)', destination: 'Embassy TechVillage, Outer Ring Road, Devarabisanahalli, Bengaluru, Karnataka 560103', coordinates: { lat: 12.929000, lon: 77.692000 }, distance: '12.6 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Electronic City Phase 1', destination: 'Electronic City Phase 1, Hosur Road, Bengaluru, Karnataka 560100', coordinates: { lat: 12.845200, lon: 77.660200 }, distance: '26.5 Kms', icon: 'fa-solid fa-laptop-code' },
             { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '50.5 Kms', icon: 'fa-solid fa-plane' }
         ]
     },
@@ -553,12 +552,12 @@ export const propertiesData = [
             { name: 'Children\'s Play Area', icon: 'fa-solid fa-child-reaching' }
         ],
         connectivity: [
-            { label: 'Bellary Road (NH 44)', destination: 'Bellary Road, Chikkajala, Bengaluru, Karnataka 562157', coordinates: { lat: 13.205000, lon: 77.625000 }, distance: '7.3 Kms', icon: 'fa-solid fa-road' },
+            { label: 'Bellary Road (NH 44)', destination: 'Bellary Road, Chikkajala, Bengaluru, Karnataka 562157', coordinates: { lat: 13.205000, lon: 77.625000 }, distance: '12.1 Kms', icon: 'fa-solid fa-road' },
             { label: 'Yelahanka Junction Railway Station', destination: 'Yelahanka Junction Railway Station, Railway Station Road, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.105007, lon: 77.591894 }, distance: '21.0 Kms', icon: 'fa-solid fa-train' },
-            { label: 'RMZ Galleria Mall', destination: 'RMZ Galleria Mall, B.B. Road, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.102300, lon: 77.589400 }, distance: '20.3 Kms', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'RMZ Galleria Mall', destination: 'RMZ Galleria Mall, B.B. Road, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.102300, lon: 77.589400 }, distance: '16.7 Kms', icon: 'fa-solid fa-cart-shopping' },
             { label: 'Devanahalli Business Park', destination: 'Devanahalli Business Park, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.245000, lon: 77.712000 }, distance: '19.1 Kms', icon: 'fa-solid fa-briefcase' },
-            { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '19.0 Kms', icon: 'fa-solid fa-plane' },
-            { label: 'KIADB Aerospace Park', destination: 'KIADB Aerospace Park, Devanahalli, Bengaluru, Karnataka 562149', coordinates: { lat: 13.206000, lon: 77.698000 }, distance: '17.9 Kms', icon: 'fa-solid fa-industry' },
+            { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '16.5 Kms', icon: 'fa-solid fa-plane' },
+            { label: 'KIADB Aerospace Park', destination: 'KIADB Aerospace Park, Devanahalli, Bengaluru, Karnataka 562149', coordinates: { lat: 13.206000, lon: 77.698000 }, distance: '19.5 Kms', icon: 'fa-solid fa-industry' },
             { label: 'Manyata Tech Park', destination: 'Manyata Embassy Business Park, Outer Ring Road, Nagavara, Bengaluru, Karnataka 560045', coordinates: { lat: 13.045635, lon: 77.621195 }, distance: '29.9 Kms', icon: 'fa-solid fa-laptop-code' }
         ]
     },
@@ -609,12 +608,12 @@ export const propertiesData = [
             { name: 'Children\'s Play Area', icon: 'fa-solid fa-child-reaching' }
         ],
         connectivity: [
-            { label: 'Sarjapur Main Road (SH 35)', destination: 'Sarjapur Main Road (SH 35), Yamare, Bengaluru, Karnataka 562125', coordinates: { lat: 12.885000, lon: 77.765000 }, distance: '1.8 Kms', icon: 'fa-solid fa-road' },
-            { label: 'Wipro SEZ Sarjapur', destination: 'Wipro Technologies SEZ, Sarjapur Road, Doddakannelli, Bengaluru, Karnataka 560035', coordinates: { lat: 12.911000, lon: 77.692000 }, distance: '9.7 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Sarjapur Main Road (SH 35)', destination: 'Sarjapur Main Road (SH 35), Yamare, Bengaluru, Karnataka 562125', coordinates: { lat: 12.885000, lon: 77.765000 }, distance: '1.5 Kms', icon: 'fa-solid fa-road' },
+            { label: 'Wipro SEZ Sarjapur', destination: 'Wipro Technologies SEZ, Sarjapur Road, Doddakannelli, Bengaluru, Karnataka 560035', coordinates: { lat: 12.911000, lon: 77.692000 }, distance: '12.1 Kms', icon: 'fa-solid fa-laptop-code' },
             { label: 'Carmelaram Railway Station', destination: 'Carmelaram Railway Station, Carmelaram, Bengaluru, Karnataka 560035', coordinates: { lat: 12.912000, lon: 77.702000 }, distance: '9.6 Kms', icon: 'fa-solid fa-train' },
-            { label: 'RGA Tech Park', destination: 'RGA Tech Park, Sarjapur Road, Carmelaram, Bengaluru, Karnataka 560035', coordinates: { lat: 12.905000, lon: 77.708000 }, distance: '7.9 Kms', icon: 'fa-solid fa-building' },
-            { label: 'Outer Ring Road (ORR)', destination: 'Outer Ring Road, Bellandur, Bengaluru, Karnataka 560103', coordinates: { lat: 12.926000, lon: 77.676000 }, distance: '15.4 Kms', icon: 'fa-solid fa-road' },
-            { label: 'Hopefarm Metro Station', destination: 'Hopefarm Channasandra Metro Station (Purple Line), Whitefield, Bengaluru, Karnataka 560067', coordinates: { lat: 12.984200, lon: 77.756500 }, distance: '14.9 Kms', icon: 'fa-solid fa-train-subway' }
+            { label: 'RGA Tech Park', destination: 'RGA Tech Park, Sarjapur Road, Carmelaram, Bengaluru, Karnataka 560035', coordinates: { lat: 12.905000, lon: 77.708000 }, distance: '9.5 Kms', icon: 'fa-solid fa-building' },
+            { label: 'Outer Ring Road (ORR)', destination: 'Outer Ring Road, Bellandur, Bengaluru, Karnataka 560103', coordinates: { lat: 12.926000, lon: 77.676000 }, distance: '28.5 Kms', icon: 'fa-solid fa-road' },
+            { label: 'Hopefarm Metro Station', destination: 'Hopefarm Channasandra Metro Station (Purple Line), Whitefield, Bengaluru, Karnataka 560067', coordinates: { lat: 12.984200, lon: 77.756500 }, distance: '15.6 Kms', icon: 'fa-solid fa-train-subway' }
         ]
     },
     {
@@ -666,11 +665,11 @@ export const propertiesData = [
             { name: 'Children\'s Play Area & Gazebos', icon: 'fa-solid fa-child-reaching' }
         ],
         connectivity: [
-            { label: 'Bellary Road (NH 44)', destination: 'Bellary Road, Kundana Hobli, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.245000, lon: 77.665000 }, distance: '5.2 Kms', icon: 'fa-solid fa-road' },
-            { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '15.6 Kms', icon: 'fa-solid fa-plane' },
-            { label: 'Yelahanka Junction Railway Station', destination: 'Yelahanka Junction Railway Station, Railway Station Road, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.105007, lon: 77.591894 }, distance: '22.8 Kms', icon: 'fa-solid fa-train' },
-            { label: 'KIADB Aerospace Park', destination: 'KIADB Aerospace Park, Devanahalli, Bengaluru, Karnataka 562149', coordinates: { lat: 13.206000, lon: 77.698000 }, distance: '14.2 Kms', icon: 'fa-solid fa-industry' },
-            { label: 'Manyata Tech Park', destination: 'Manyata Embassy Business Park, Outer Ring Road, Nagavara, Bengaluru, Karnataka 560045', coordinates: { lat: 13.045635, lon: 77.621195 }, distance: '31.7 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Orchid Nirvana Co.', destination: 'Bellary Road, Kundana Hobli, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.245000, lon: 77.665000 }, distance: '1.9 Kms', icon: 'fa-solid fa-road' },
+            { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '14.5 Kms', icon: 'fa-solid fa-plane' },
+            { label: 'Yelahanka Junction Railway Station', destination: 'Yelahanka Junction Railway Station, Railway Station Road, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.105007, lon: 77.591894 }, distance: '19.6 Kms', icon: 'fa-solid fa-train' },
+            { label: 'KIADB Aerospace Park', destination: 'KIADB Aerospace Park, Devanahalli, Bengaluru, Karnataka 562149', coordinates: { lat: 13.206000, lon: 77.698000 }, distance: '21.1 Kms', icon: 'fa-solid fa-industry' },
+            { label: 'Manyata Tech Park', destination: 'Manyata Embassy Business Park, Outer Ring Road, Nagavara, Bengaluru, Karnataka 560045', coordinates: { lat: 13.045635, lon: 77.621195 }, distance: '29.1 Kms', icon: 'fa-solid fa-laptop-code' },
             { label: 'K.R. Puram Railway Station', destination: 'Krishnarajapuram Railway Station, Old Madras Road, Krishnarajapura, Bengaluru, Karnataka 560016', coordinates: { lat: 13.000546, lon: 77.675456 }, distance: '39.7 Kms', icon: 'fa-solid fa-train' }
         ]
     },
@@ -723,13 +722,13 @@ export const propertiesData = [
             { name: 'Children\'s Play Zone & Senior Citizen Seating', icon: 'fa-solid fa-child-reaching' }
         ],
         connectivity: [
-            { label: 'Bellary Road (NH 44)', destination: 'Bellary Road, Kundana, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.245000, lon: 77.665000 }, distance: '7.3 Kms', icon: 'fa-solid fa-road' },
-            { label: 'Satellite Town Ring Road (STRR)', destination: 'Satellite Town Ring Road (STRR), Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.245000, lon: 77.712000 }, distance: '17.4 Kms', icon: 'fa-solid fa-road' },
-            { label: 'Yelahanka Satellite Town', destination: 'Yelahanka Satellite Town, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.100000, lon: 77.590000 }, distance: '27.9 Kms', icon: 'fa-solid fa-city' },
-            { label: 'RMZ Galleria Mall', destination: 'RMZ Galleria Mall, B.B. Road, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.102300, lon: 77.589400 }, distance: '27.7 Kms', icon: 'fa-solid fa-cart-shopping' },
+            { label: 'Bellary Road (NH 44)', destination: 'Bellary Road, Kundana, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.245000, lon: 77.665000 }, distance: '15.0 Kms', icon: 'fa-solid fa-road' },
+            { label: 'Satellite Town Ring Road (STRR)', destination: 'Satellite Town Ring Road (STRR), Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.245000, lon: 77.712000 }, distance: '31.8 Kms', icon: 'fa-solid fa-road' },
+            { label: 'Yelahanka Satellite Town', destination: 'Yelahanka Satellite Town, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.100000, lon: 77.590000 }, distance: '19.9 Kms', icon: 'fa-solid fa-city' },
+            { label: 'RMZ Galleria Mall', destination: 'RMZ Galleria Mall, B.B. Road, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.102300, lon: 77.589400 }, distance: '20.3 Kms', icon: 'fa-solid fa-cart-shopping' },
             { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '17.7 Kms', icon: 'fa-solid fa-plane' },
             { label: 'KIADB Aerospace Park', destination: 'KIADB Aerospace Park, Devanahalli, Bengaluru, Karnataka 562149', coordinates: { lat: 13.206000, lon: 77.698000 }, distance: '16.3 Kms', icon: 'fa-solid fa-industry' },
-            { label: 'Foxconn Manufacturing Hub', destination: 'Foxconn Manufacturing Campus, ITIR Region, Doddaballapura, Karnataka 561203', coordinates: { lat: 13.220000, lon: 77.680000 }, distance: '14.3 Kms', icon: 'fa-solid fa-microchip' }
+            { label: 'Foxconn Manufacturing Hub', destination: 'Foxconn Manufacturing Campus, ITIR Region, Doddaballapura, Karnataka 561203', coordinates: { lat: 13.220000, lon: 77.680000 }, distance: '21.6 Kms', icon: 'fa-solid fa-microchip' }
         ]
     },
     {
@@ -783,12 +782,11 @@ export const propertiesData = [
             { name: 'RFID Boom Barrier Security & 24/7 CCTV', icon: 'fa-solid fa-shield-halved' }
         ],
         connectivity: [
-            { label: 'Vidyashilp University', destination: 'Vidyashilp University, Chapparkallu Road, Kundana Hobli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.238000, lon: 77.603000 }, distance: '1.8 Kms', icon: 'fa-solid fa-graduation-cap' },
-            { label: 'Bellary Road (NH 44)', destination: 'Bellary Road, Kundana Hobli, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.205000, lon: 77.625000 }, distance: '5.7 Kms', icon: 'fa-solid fa-road' },
-            { label: 'Devanahalli Town', destination: 'Devanahalli Town, Bengaluru Rural, Karnataka 562110', coordinates: { lat: 13.248000, lon: 77.712000 }, distance: '17.3 Kms', icon: 'fa-solid fa-city' },
-            { label: 'Doddajala Railway Station', destination: 'Doddajala Railway Station, Doddajala, Bengaluru, Karnataka 562157', coordinates: { lat: 13.185000, lon: 77.632000 }, distance: '14.1 Kms', icon: 'fa-solid fa-train' },
-            { label: 'Satellite Town Ring Road (STRR)', destination: 'Satellite Town Ring Road (STRR) Devanahalli Junction, Bengaluru, Karnataka 562110', coordinates: { lat: 13.245000, lon: 77.712000 }, distance: '18.3 Kms', icon: 'fa-solid fa-road' },
-            { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '18.2 Kms', icon: 'fa-solid fa-plane' },
+            { label: 'Vidyashilp University', destination: 'Vidyashilp University, Chapparkallu Road, Kundana Hobli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.238000, lon: 77.603000 }, distance: '1.2 Kms', icon: 'fa-solid fa-graduation-cap' },
+            { label: 'Bellary Road (NH 44)', destination: 'Bellary Road, Kundana Hobli, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.205000, lon: 77.625000 }, distance: '4.6 Kms', icon: 'fa-solid fa-road' },
+            { label: 'Devanahalli Town', destination: 'Devanahalli Town, Bengaluru Rural, Karnataka 562110', coordinates: { lat: 13.248000, lon: 77.712000 }, distance: '15.2 Kms', icon: 'fa-solid fa-city' },
+            { label: 'Doddajala Railway Station', destination: 'Doddajala Railway Station, Doddajala, Bengaluru, Karnataka 562157', coordinates: { lat: 13.185000, lon: 77.632000 }, distance: '7.0 Kms', icon: 'fa-solid fa-train' },
+            { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '11.9 Kms', icon: 'fa-solid fa-plane' },
             { label: 'KIADB Aerospace SEZ', destination: 'KIADB Aerospace SEZ, Devanahalli, Bengaluru, Karnataka 562149', coordinates: { lat: 13.206000, lon: 77.698000 }, distance: '17.1 Kms', icon: 'fa-solid fa-industry' }
         ]
     },
@@ -842,13 +840,12 @@ export const propertiesData = [
             { name: 'Children\'s Play Area & Indoor Games Room', icon: 'fa-solid fa-child-reaching' }
         ],
         connectivity: [
-            { label: 'Singasandra Metro Station (Yellow Line)', destination: 'Singasandra Metro Station (Yellow Line), Hosur Road, Singasandra, Bengaluru, Karnataka 560068', coordinates: { lat: 12.881000, lon: 77.648000 }, distance: '3.2 Kms', icon: 'fa-solid fa-train-subway' },
-            { label: 'NICE Ring Road Junction', destination: 'NICE Road Junction, Begur, Bengaluru, Karnataka 560068', coordinates: { lat: 12.860000, lon: 77.615000 }, distance: '2.3 Kms', icon: 'fa-solid fa-road' },
-            { label: 'Bannerghatta Main Road', destination: 'Bannerghatta Main Road, Hulimavu, Bengaluru, Karnataka 560076', coordinates: { lat: 12.890000, lon: 77.598000 }, distance: '3.9 Kms', icon: 'fa-solid fa-road' },
+            { label: 'Singasandra Metro Station (Yellow Line)', destination: 'Singasandra Metro Station (Yellow Line), Hosur Road, Singasandra, Bengaluru, Karnataka 560068', coordinates: { lat: 12.881000, lon: 77.648000 }, distance: '4.2 Kms', icon: 'fa-solid fa-train-subway' },
+            { label: 'Bannerghatta Main Road', destination: 'Bannerghatta Main Road, Hulimavu, Bengaluru, Karnataka 560076', coordinates: { lat: 12.890000, lon: 77.598000 }, distance: '11.4 Kms', icon: 'fa-solid fa-road' },
             { label: 'Vega City Mall', destination: 'Vega City Mall, Bannerghatta Main Road, Dollars Colony, Bengaluru, Karnataka 560076', coordinates: { lat: 12.909000, lon: 77.601000 }, distance: '5.6 Kms', icon: 'fa-solid fa-cart-shopping' },
-            { label: 'Electronic City Phase 1', destination: 'Electronic City Phase 1, Hosur Road, Bengaluru, Karnataka 560100', coordinates: { lat: 12.845200, lon: 77.660200 }, distance: '9.8 Kms', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Jayadeva Flyover / Hospital', destination: 'Sri Jayadeva Institute of Cardiovascular Sciences, Bannerghatta Road, Jayanagar, Bengaluru, Karnataka 560069', coordinates: { lat: 12.920000, lon: 77.599000 }, distance: '6.6 Kms', icon: 'fa-solid fa-hospital' },
-            { label: 'Outer Ring Road (ORR) Silk Board', destination: 'Central Silk Board Junction, Hosur Road, Outer Ring Road, Bengaluru, Karnataka 560068', coordinates: { lat: 12.917000, lon: 77.623000 }, distance: '7.7 Kms', icon: 'fa-solid fa-road' }
+            { label: 'Electronic City Phase 1', destination: 'Electronic City Phase 1, Hosur Road, Bengaluru, Karnataka 560100', coordinates: { lat: 12.845200, lon: 77.660200 }, distance: '14.1 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'Jayadeva Flyover / Hospital', destination: 'Sri Jayadeva Institute of Cardiovascular Sciences, Bannerghatta Road, Jayanagar, Bengaluru, Karnataka 560069', coordinates: { lat: 12.920000, lon: 77.599000 }, distance: '7.4 Kms', icon: 'fa-solid fa-hospital' },
+            { label: 'Outer Ring Road (ORR) Silk Board', destination: 'Central Silk Board Junction, Hosur Road, Outer Ring Road, Bengaluru, Karnataka 560068', coordinates: { lat: 12.917000, lon: 77.623000 }, distance: '6.0 Kms', icon: 'fa-solid fa-road' }
         ]
     },
     {
@@ -903,10 +900,9 @@ export const propertiesData = [
         connectivity: [
             { label: 'Kadugodi Tree Park Metro Station', destination: 'Kadugodi Tree Park Metro Station (Purple Line), Whitefield, Bengaluru, Karnataka 560067', coordinates: { lat: 12.986000, lon: 77.750000 }, distance: '2.4 Kms', icon: 'fa-solid fa-train-subway' },
             { label: 'ITPL (International Tech Park Bangalore)', destination: 'International Tech Park Bangalore (ITPB), Whitefield Main Road, Bengaluru, Karnataka 560066', coordinates: { lat: 12.986000, lon: 77.738000 }, distance: '2.2 Kms', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Whitefield Main Road', destination: 'Whitefield Main Road, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.975000, lon: 77.745000 }, distance: '950 Meters', icon: 'fa-solid fa-road' },
-            { label: 'EPIP Zone', destination: 'EPIP Zone, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.978000, lon: 77.725000 }, distance: '3.3 Kms', icon: 'fa-solid fa-industry' },
-            { label: 'Nexus Whitefield Mall', destination: 'Nexus Whitefield Mall, Whitefield Main Road, Bengaluru, Karnataka 560066', coordinates: { lat: 12.958500, lon: 77.746000 }, distance: '4.5 Kms', icon: 'fa-solid fa-cart-shopping' },
-            { label: 'Old Madras Road', destination: 'Old Madras Road, KR Puram, Bengaluru, Karnataka 560036', coordinates: { lat: 13.003000, lon: 77.702000 }, distance: '8.3 Kms', icon: 'fa-solid fa-road' },
+            { label: 'Whitefield Main Road', destination: 'Whitefield Main Road, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.975000, lon: 77.745000 }, distance: '1.3 Kms', icon: 'fa-solid fa-road' },
+            { label: 'EPIP Zone', destination: 'EPIP Zone, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.978000, lon: 77.725000 }, distance: '6.4 Kms', icon: 'fa-solid fa-industry' },
+            { label: 'Nexus Whitefield Mall', destination: 'Nexus Whitefield Mall, Whitefield Main Road, Bengaluru, Karnataka 560066', coordinates: { lat: 12.958500, lon: 77.746000 }, distance: '2.7 Kms', icon: 'fa-solid fa-cart-shopping' },
             { label: 'K.R. Puram Railway Station', destination: 'Krishnarajapuram Railway Station, Old Madras Road, Krishnarajapura, Bengaluru, Karnataka 560016', coordinates: { lat: 13.000546, lon: 77.675456 }, distance: '11.8 Kms', icon: 'fa-solid fa-train' }
         ]
     },
@@ -961,12 +957,12 @@ export const propertiesData = [
             { name: 'Children\'s Play Area & Dedicated Pet Park', icon: 'fa-solid fa-child-reaching' }
         ],
         connectivity: [
-            { label: 'ITPL (International Tech Park Bengaluru)', destination: 'International Tech Park Bangalore (ITPB), Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.986000, lon: 77.738000 }, distance: '7.4 Kms', icon: 'fa-solid fa-laptop-code' },
-            { label: 'EPIP Zone Whitefield', destination: 'EPIP Zone, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.978000, lon: 77.725000 }, distance: '7.9 Kms', icon: 'fa-solid fa-industry' },
-            { label: 'Kadugodi / Whitefield Metro Station', destination: 'Whitefield (Kadugodi) Metro Station (Purple Line), Kadugodi, Bengaluru, Karnataka 560067', coordinates: { lat: 12.996000, lon: 77.761000 }, distance: '8.6 Kms', icon: 'fa-solid fa-train-subway' },
-            { label: 'Marathahalli ORR Junction', destination: 'Marathahalli Bridge Junction, Outer Ring Road, Marathahalli, Bengaluru, Karnataka 560037', coordinates: { lat: 12.956000, lon: 77.701000 }, distance: '10.6 Kms', icon: 'fa-solid fa-road' },
-            { label: 'K.R. Puram Railway Station', destination: 'Krishnarajapuram Railway Station, Old Madras Road, Krishnarajapura, Bengaluru, Karnataka 560016', coordinates: { lat: 13.000546, lon: 77.675456 }, distance: '16.2 Kms', icon: 'fa-solid fa-train' },
-            { label: 'Electronic City Phase 1', destination: 'Electronic City Phase 1, Hosur Road, Bengaluru, Karnataka 560100', coordinates: { lat: 12.845200, lon: 77.660200 }, distance: '22.0 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'ITPL (International Tech Park Bengaluru)', destination: 'International Tech Park Bangalore (ITPB), Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.986000, lon: 77.738000 }, distance: '8.0 Kms', icon: 'fa-solid fa-laptop-code' },
+            { label: 'EPIP Zone Whitefield', destination: 'EPIP Zone, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.978000, lon: 77.725000 }, distance: '10.0 Kms', icon: 'fa-solid fa-industry' },
+            { label: 'Kadugodi / Whitefield Metro Station', destination: 'Whitefield (Kadugodi) Metro Station (Purple Line), Kadugodi, Bengaluru, Karnataka 560067', coordinates: { lat: 12.996000, lon: 77.761000 }, distance: '7.7 Kms', icon: 'fa-solid fa-train-subway' },
+            { label: 'Marathahalli ORR Junction', destination: 'Marathahalli Bridge Junction, Outer Ring Road, Marathahalli, Bengaluru, Karnataka 560037', coordinates: { lat: 12.956000, lon: 77.701000 }, distance: '14.8 Kms', icon: 'fa-solid fa-road' },
+            { label: 'K.R. Puram Railway Station', destination: 'Krishnarajapuram Railway Station, Old Madras Road, Krishnarajapura, Bengaluru, Karnataka 560016', coordinates: { lat: 13.000546, lon: 77.675456 }, distance: '17.4 Kms', icon: 'fa-solid fa-train' },
+            { label: 'Electronic City Phase 1', destination: 'Electronic City Phase 1, Hosur Road, Bengaluru, Karnataka 560100', coordinates: { lat: 12.845200, lon: 77.660200 }, distance: '25.2 Kms', icon: 'fa-solid fa-laptop-code' },
             { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '41.5 Kms', icon: 'fa-solid fa-plane' }
         ]
     },
@@ -1020,13 +1016,12 @@ export const propertiesData = [
             { name: 'Children\'s Play Area & Dedicated Pet Park', icon: 'fa-solid fa-child-reaching' }
         ],
         connectivity: [
-            { label: 'Treamis World School', destination: 'Treamis World School, Hulimangala Post, Near Electronic City, Bengaluru, Karnataka 560105', coordinates: { lat: 12.822000, lon: 77.636000 }, distance: '4.7 Kms', icon: 'fa-solid fa-school' },
+            { label: 'Treamis World School', destination: 'Treamis World School, Hulimangala Post, Near Electronic City, Bengaluru, Karnataka 560105', coordinates: { lat: 12.822000, lon: 77.636000 }, distance: '5.0 Kms', icon: 'fa-solid fa-school' },
             { label: 'Mazumdar Shaw Medical Center', destination: 'Mazumdar Shaw Medical Center, Narayana Health City, Bommasandra Industrial Area, Bengaluru, Karnataka 560099', coordinates: { lat: 12.821000, lon: 77.685000 }, distance: '5.4 Kms', icon: 'fa-solid fa-hospital' },
             { label: 'Bommasandra Metro Station (Yellow Line)', destination: 'Bommasandra Metro Station (Yellow Line), Hosur Road, Bommasandra, Bengaluru, Karnataka 560099', coordinates: { lat: 12.818000, lon: 77.691000 }, distance: '6.3 Kms', icon: 'fa-solid fa-train-subway' },
-            { label: 'NICE Ring Road Junction', destination: 'NICE Ring Road Junction, Electronic City, Bengaluru, Karnataka 560100', coordinates: { lat: 12.825000, lon: 77.628000 }, distance: '5.6 Kms', icon: 'fa-solid fa-road' },
+            { label: 'NICE Ring Road Junction', destination: 'NICE Ring Road Junction, Electronic City, Bengaluru, Karnataka 560100', coordinates: { lat: 12.825000, lon: 77.628000 }, distance: '7.9 Kms', icon: 'fa-solid fa-road' },
             { label: 'Heelalige Railway Station', destination: 'Heelalige Railway Station, Chandapura, Bengaluru, Karnataka 560099', coordinates: { lat: 12.809000, lon: 77.712000 }, distance: '9.7 Kms', icon: 'fa-solid fa-train' },
-            { label: 'Electronic City Phase 1', destination: 'Electronic City Phase 1, Hosur Road, Bengaluru, Karnataka 560100', coordinates: { lat: 12.845200, lon: 77.660200 }, distance: '6.3 Kms', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport, KIAL Road, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.197605, lon: 77.707486 }, distance: '57.3 Kms', icon: 'fa-solid fa-plane' }
+            { label: 'Electronic City Phase 1', destination: 'Electronic City Phase 1, Hosur Road, Bengaluru, Karnataka 560100', coordinates: { lat: 12.845200, lon: 77.660200 }, distance: '26.3 Kms', icon: 'fa-solid fa-laptop-code' },
         ]
     }
 ];

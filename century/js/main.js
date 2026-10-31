@@ -687,7 +687,8 @@ async function updateConnectivityRoute(item, place) {
 function getConnectivityDirectionsUrl(item, place) {
     const url = new URL('https://www.google.com/maps/dir/');
     url.searchParams.set('api', '1');
-    url.searchParams.set('origin', `${item.coordinates.lat},${item.coordinates.lon}`);
+    const origin = item.mapsQuery || `${item.coordinates.lat},${item.coordinates.lon}`;
+    url.searchParams.set('origin', origin);
     url.searchParams.set('destination', getConnectivityDestination(place));
     url.searchParams.set('travelmode', 'driving');
     return url.href;
@@ -776,7 +777,8 @@ function openConnectivityMap({ updateUrl = true } = {}) {
     initializeConnectivityMap(activeProperty);
     renderConnectivityMapPlaces(search.value);
     const directionsLink = document.getElementById('connectivity-map-directions-link');
-    directionsLink.href = `https://www.google.com/maps/search/?api=1&query=${activeProperty.coordinates.lat},${activeProperty.coordinates.lon}`;
+    const query = activeProperty.mapsQuery || `${activeProperty.coordinates.lat},${activeProperty.coordinates.lon}`;
+    directionsLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
     directionsLink.firstChild.textContent = 'Open property location in Google Maps ';
 
     const url = new URL(window.location.href);

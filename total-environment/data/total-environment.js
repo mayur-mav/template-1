@@ -45,6 +45,15 @@ export const faqData = [
   }
 ];
 
+const overviewSearchTerms = [
+  'Total Environment homes in Bangalore',
+  'Total Environment projects in Bangalore',
+  'Total Environment Bangalore',
+  'Total Environment builders',
+  'Total Environment group',
+  'Total Environment in Bangalore'
+];
+
 function formatOverviewList(values) {
   if (values.length < 2) return values[0] || '';
   return `${values.slice(0, -1).join(', ')} and ${values[values.length - 1]}`;
@@ -52,334 +61,451 @@ function formatOverviewList(values) {
 
 export function createPropertyOverview(property) {
   const projectLocation = property.shortAddress || property.location;
-  const keywordLocation = ['Hennur', 'Whitefield', 'JP Nagar', 'Sarjapur'].find((location) => projectLocation.toLowerCase().includes(location.toLowerCase()));
-  const searchTerm = keywordLocation
-      ? `Total Environment ${keywordLocation}`
-      : 'Total Environment projects in Bangalore';
+  const projectIndex = propertiesData.findIndex(({ id }) => id === property.id);
+  const locLower = projectLocation.toLowerCase();
+  
+  let searchTerm;
+  if (locLower.includes('hennur') || locLower.includes('bileshivale')) {
+    searchTerm = 'Total Environment Hennur';
+  } else if (locLower.includes('whitefield') || locLower.includes('hoodi')) {
+    searchTerm = 'Total Environment Whitefield';
+  } else if (locLower.includes('thalaghattapura') || locLower.includes('kanakapura') || locLower.includes('jp nagar')) {
+    searchTerm = 'Total Environment JP Nagar';
+  } else {
+    searchTerm = overviewSearchTerms[(projectIndex >= 0 ? projectIndex : 0) % overviewSearchTerms.length];
+  }
+
   const floorPlans = formatOverviewList((property.floorPlans || []).slice(0, 3).map(({ bhk }) => bhk));
   const amenities = formatOverviewList((property.amenities || []).slice(0, 4).map(({ name }) => name));
   const nearbyPlaces = formatOverviewList((property.connectivity || []).slice(0, 3).map(({ label, distance }) => `${label} (${distance})`));
 
   return [
       `${property.description} Homebuyers researching ${searchTerm} can explore this Total Environment residence in ${projectLocation}, with project location, status, and listed configurations to compare.`,
-      `${property.name} is listed with ${property.bhk} across ${property.area}, with ${property.statusText.toLowerCase()} status and possession shown as ${property.possession}. Listed floor plan options include ${floorPlans || property.bhk}. Residents can explore amenities such as ${amenities || 'the community’s listed lifestyle facilities'}, with nearby destinations including ${nearbyPlaces || projectLocation}. Review Total Environment floor plans, amenities, and connectivity when comparing homes in Bengaluru.${property.rera ? ` RERA registration number: ${property.rera.replace(/\.$/, '')}.` : ''}`
+      `${property.name} is listed with ${property.bhk} across ${property.area}, with ${property.statusText.toLowerCase()} status and possession shown as ${property.possession}. Listed floor plan options include ${floorPlans || property.bhk}. Residents can explore amenities such as ${amenities || "the community's listed lifestyle facilities"}, with nearby destinations including ${nearbyPlaces || projectLocation}. Review Total Environment floor plans, amenities, and connectivity when comparing homes in Bengaluru.${property.rera ? ` RERA registration number: ${property.rera.replace(/\.$/, '')}.` : ''}`
   ];
 }
 
+export function createPropertyHighlights(property) {
+  const list = [];
+  if (property.area) list.push(`Expansive ${property.area} development with landscaped open spaces`);
+  if (property.bhk) list.push(`Thoughtfully planned ${property.bhk} layouts designed for optimal ventilation`);
+  if (property.possession) list.push(`${property.statusText || 'Possession'} timeline: ${property.possession}`);
+  if (property.amenities && property.amenities.length > 0) {
+      const topAmenities = property.amenities.slice(0, 3).map(a => a.name).join(', ');
+      list.push(`Premium lifestyle amenities including ${topAmenities}`);
+  }
+  if (property.connectivity && property.connectivity.length > 0) {
+      const topPlace = property.connectivity[0];
+      list.push(`Prime connectivity: close to ${topPlace.label || topPlace.destination || 'key hubs'}`);
+  }
+  if (property.rera) list.push(`RERA Registered: ${property.rera}`);
+  return list;
+}
+
 export const propertiesData = [
-    {
-        id: 'total-environment-down-by-the-water',
-        name: 'Total Environment Down by the Water',
-        shortAddress: 'Jakkur, Bengaluru',
-        location: 'Agrahara, Jakkur, Yelahanka, Bengaluru, Karnataka 560064',
-        category: 'ONGOING',
-        statusText: 'Ongoing',
-        badgeClass: 'badge-ongoing',
-        price: '₹5.62 Crore Onwards',
-        bhk: '3 & 4 BHK Apartments',
-        area: '17.5 Acres',
-        possession: 'June 2029',
-        rera: 'PRM/KA/RERA/1251/472/PR/090824/006967',
-        description: 'Down by the Water is a 17.5-acre lakeside community by Total Environment, located adjacent to Jakkur Lake in North Bengaluru. The project offers luxury 3 and 4-bedroom apartments with private terrace gardens, custom cabinetry, and natural landscaping designed for calm lakeside living.',
-        thumbnail: totalEnvironmentImage('total-environment/total-environment-down-by-the-water/thumbnail.webp'),
-        images: [
-            totalEnvironmentImage('total-environment/total-environment-down-by-the-water/gallery/exterior-view.webp'),
-            totalEnvironmentImage('total-environment/total-environment-down-by-the-water/gallery/interior-view.webp'),
-            totalEnvironmentImage('total-environment/total-environment-down-by-the-water/gallery/amenities.webp')
-        ],
-        floorPlans: [
-            { bhk: '3 BHK + Study (I20)', sqft: '2,490 sq. ft.', price: '₹5.62 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-down-by-the-water/floor-plans/3bhk(I20)-floor-plan.webp') },
-            { bhk: '3 BHK + Home Office (L21)', sqft: '2,628 sq. ft.', price: '₹5.91 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-down-by-the-water/floor-plans/3bhk(L21)-floor-plan.webp') },
-            { bhk: '3 BHK + Home Office + Study (I25)', sqft: '3,240 sq. ft.', price: '₹7.27 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-down-by-the-water/floor-plans/3bhk(I25)-floor-plan.webp') },
-            { bhk: '4 BHK + Home Office + Study (I40)', sqft: '4,980 sq. ft.', price: '₹11.24 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-down-by-the-water/floor-plans/4bhk(I40)-floor-plan.webp') },
-            { bhk: '4 BHK + Home Office + Study (I50)', sqft: '6,480 sq. ft.', price: '₹14.60 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-down-by-the-water/floor-plans/4bhk(I50)-floor-plan.webp') }
-        ],
-        amenities: [
-            { name: 'Lakeside Boardwalk', icon: 'fa-solid fa-water' },
-            { name: 'Clubhouse with Green Roof', icon: 'fa-solid fa-building' },
-            { name: 'Open-to-Sky Swimming Pool', icon: 'fa-solid fa-water-ladder' },
-            { name: 'Indoor Heated Pool', icon: 'fa-solid fa-temperature-arrow-up' },
-            { name: 'Gymnasium', icon: 'fa-solid fa-dumbbell' },
-            { name: 'Amphitheatre', icon: 'fa-solid fa-masks-theater' },
-            { name: 'Jogging / Pedestrian Track', icon: 'fa-solid fa-person-running' },
-            { name: 'Cycling Track', icon: 'fa-solid fa-bicycle' },
-            { name: 'Children\'s Play Area', icon: 'fa-solid fa-child-reaching' }
-        ],
-        connectivity: [
-            { label: 'Airport', distance: 'Kempegowda International Airport Bengaluru (~21.6 km / ~30 min)', icon: 'fa-solid fa-plane' },
-            { label: 'Business Hubs & Tech Parks', distance: 'Manyata Tech Park (5.9 km)', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Schools', distance: 'Mallya Aditi International School (6.5 km) | Legacy School (7.5 km) | Bangalore International School (8.5 km)', icon: 'fa-solid fa-school' },
-            { label: 'Hospitals', distance: 'Manipal Hospital Hebbal (8.5 km) | Aster CMI Hospital (9.6 km)', icon: 'fa-solid fa-hospital' },
-            { label: 'Shopping & Malls', distance: 'Bhartiya Mall of Bengaluru (5.3 km) | Mall of Asia (8.2 km)', icon: 'fa-solid fa-cart-shopping' },
-            { label: 'Metro Station', distance: 'Upcoming Yelahanka / Jakkur Cross Metro Station (5.0 km)', icon: 'fa-solid fa-train' }
-        ]
-    },
-    {
-        id: 'total-environment-after-the-rain',
-        name: 'Total Environment After the Rain',
-        shortAddress: 'Yelahanka, Bengaluru',
-        location: 'Sir MVIT College Road, Betthadasanapura, Yelahanka, Bengaluru, Karnataka 560097',
-        category: 'ONGOING',
-        statusText: 'Ongoing',
-        badgeClass: 'badge-ongoing',
-        price: '₹15.99 Crore Onwards',
-        bhk: '3 Bedroom Earth-Sheltered Villas',
-        area: '45 Acres',
-        possession: 'Phased Delivery (Phase 3 Onwards)',
-        rera: 'PRM/KA/RERA/1251/309/PR/160825/008002',
-        description: 'After the Rain by Total Environment is an exclusive community of earth-sheltered, green-roof villas located off Sir MVIT College Road in Yelahanka, North Bengaluru. Designed with native plants and natural earth-sheltered roofs, these homes maintain naturally cool interior temperatures and blend seamlessly into the surrounding greenery.',
-        thumbnail: totalEnvironmentImage('total-environment/total-environment-after-the-rain/thumbnail.webp'),
-        images: [
-            totalEnvironmentImage('total-environment/total-environment-after-the-rain/gallery/exterior-view.webp'),
-            totalEnvironmentImage('total-environment/total-environment-after-the-rain/gallery/interior-view.webp'),
-            totalEnvironmentImage('total-environment/total-environment-after-the-rain/gallery/amenities.webp')
-        ],
-        floorPlans: [
-            { bhk: 'V45 Duplex Villa (3 BHK)', sqft: '4,824 sq. ft.', price: '₹15.99 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-after-the-rain/floor-plans/3bhk-duplex-villa-floor-plan.webp') }
-        ],
-        amenities: [
-            { name: 'Clubhouse', icon: 'fa-solid fa-building' },
-            { name: 'Vanishing Edge Swimming Pool', icon: 'fa-solid fa-water-ladder' },
-            { name: 'Heated Indoor Pool', icon: 'fa-solid fa-temperature-arrow-up' },
-            { name: 'Gymnasium', icon: 'fa-solid fa-dumbbell' },
-            { name: 'Interactive Kids Play Area', icon: 'fa-solid fa-child-reaching' },
-            { name: 'Multipurpose Court & Tennis Court', icon: 'fa-solid fa-table-tennis-paddle-ball' },
-            { name: 'Pedestrian Path / Jogging Track', icon: 'fa-solid fa-person-running' },
-            { name: 'Landscape Composting Area', icon: 'fa-solid fa-seedling' },
-            { name: 'Canine Club', icon: 'fa-solid fa-dog' }
-        ],
-        connectivity: [
-            { label: 'Airport', distance: 'Kempegowda International Airport (16.0 km / ~20 min)', icon: 'fa-solid fa-plane' },
-            { label: 'Schools', distance: 'Stonehill International School (2.2 km) | Sadhu Vaswani International School (1.0 km)', icon: 'fa-solid fa-school' },
-            { label: 'Colleges', distance: 'Sir M. Visvesvaraya Institute of Technology (2.0 km) | Krishnadevaraya College of Dental Sciences (1.8 km)', icon: 'fa-solid fa-graduation-cap' },
-            { label: 'Sports Complex', distance: 'Padukone-Dravid Centre for Sports Excellence (2.0 km)', icon: 'fa-solid fa-dumbbell' },
-            { label: 'Hospitals', distance: 'Life Care Hospital (4.0 km)', icon: 'fa-solid fa-hospital' },
-            { label: 'Business Hubs & Tech Parks', distance: 'Embassy Manyata Business Park (19.0 km)', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Shopping & Malls', distance: 'RMZ Galleria Mall (12.0 km)', icon: 'fa-solid fa-cart-shopping' }
-        ]
-    },
-    {
-        id: 'total-environment-pursuit-of-a-radical-rhapsody',
-        name: 'Total Environment Pursuit of a Radical Rhapsody',
-        shortAddress: 'Whitefield, Bengaluru',
-        location: 'ITPL Main Road, Hoodi, Whitefield, Bengaluru, Karnataka 560048',
-        category: 'ONGOING',
-        statusText: 'Ongoing',
-        badgeClass: 'badge-ongoing',
-        price: '₹6.18 Crore Onwards',
-        bhk: '3 & 4 BHK Apartments, Duplexes & Earth-Sheltered Villas',
-        area: '34.5 Acres',
-        possession: 'December 2026',
-        rera: 'PRM/KA/RERA/1251/446/PR/171014/000433',
-        description: 'Pursuit of a Radical Rhapsody is a 34.5-acre lakefront development by Total Environment on ITPL Main Road in Whitefield, Bengaluru. The project features terrace gardens on every home up to the 27th floor, earth-sheltered villas with green roofs, custom cabinetry, natural finishes, and direct views of the adjacent Hoodi Lake.',
-        thumbnail: totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/thumbnail.webp'),
-        images: [
-            totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/gallery/exterior-view.webp'),
-            totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/gallery/interior-view.webp'),
-            totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/gallery/amenities.webp')
-        ],
-        floorPlans: [
-            { bhk: '3 BHK Apartment (C20)', sqft: '2,753 sq. ft.', price: '₹6.18 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/floor-plans/3bhk(C20)-floor-plan.webp') },
-            { bhk: '3 BHK Apartment (R22)', sqft: '2,804 sq. ft.', price: '₹6.19 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/floor-plans/3bhk(R22)-floor-plan.webp') },
-            { bhk: '3 BHK Apartment (R25)', sqft: '3,434 sq. ft.', price: '₹7.59 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/floor-plans/3bhk(R25)-floor-plan.webp') },
-            { bhk: '3 BHK Duplex (D35)', sqft: '4,596 sq. ft.', price: '₹11.07 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/floor-plans/3bhk(D35)-duplex-floor-plan.webp')},
-            { bhk: '4 BHK Duplex Villa (V40)', sqft: '4,686 sq. ft.', price: '₹16.36 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/floor-plans/4bhk-duplex-villa-floor-plan.webp') }
-        ],
-        amenities: [
-            { name: 'Boardwalk by Lake', icon: 'fa-solid fa-water' },
-            { name: 'Terrace Gardens', icon: 'fa-solid fa-seedling' },
-            { name: 'Clubhouse', icon: 'fa-solid fa-building' },
-            { name: 'Main Outdoor Swimming Pool', icon: 'fa-solid fa-water-ladder' },
-            { name: 'Toddler\'s Pool', icon: 'fa-solid fa-child-reaching' },
-            { name: 'Gymnasium', icon: 'fa-solid fa-dumbbell' },
-            { name: 'Amphitheatre', icon: 'fa-solid fa-masks-theater' },
-            { name: 'Pedestrian Path / Jogging Track', icon: 'fa-solid fa-person-running' },
-            { name: 'Pet Park', icon: 'fa-solid fa-dog' },
-            { name: 'Tree Museum', icon: 'fa-solid fa-tree' },
-            { name: 'Spa & Sauna', icon: 'fa-solid fa-spa' }
-        ],
-        connectivity: [
-            { label: 'Airport', distance: 'Kempegowda International Airport (38.0 km / ~50 min)', icon: 'fa-solid fa-plane' },
-            { label: 'Business Hubs & Tech Parks', distance: 'International Tech Park Bangalore (ITPB) (3.2 km) | EPIP Zone (4.5 km) | Bagmane Constellation Business Park (6.8 km)', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Metro Station', distance: 'Hoodi Metro Station (1.2 km) | Pattandur Agrahara Metro Station (3.0 km)', icon: 'fa-solid fa-train' },
-            { label: 'Schools', distance: 'Gopalan National School (2.5 km) | The Ryan International School (6.2 km)', icon: 'fa-solid fa-school' },
-            { label: 'Hospitals', distance: 'Manipal Hospital Whitefield (3.8 km) | Sri Sathya Sai Super Speciality Hospital (3.5 km)', icon: 'fa-solid fa-hospital' },
-            { label: 'Shopping & Malls', distance: 'Nexus Shantiniketan Mall (2.8 km) | VR Bengaluru (3.1 km) | Phoenix Marketcity (3.3 km)', icon: 'fa-solid fa-cart-shopping' }
-        ]
-    },
-    {
-        id: 'total-environment-in-that-quiet-earth',
-        name: 'Total Environment In That Quiet Earth',
-        shortAddress: 'Bileshivale, Bengaluru',
-        location: 'Off Hennur Main Road, Bileshivale, Bengaluru, Karnataka 560077',
-        category: 'ONGOING',
-        statusText: 'Ongoing',
-        badgeClass: 'badge-ongoing',
-        price: '₹4.48 Crore Onwards',
-        bhk: '3 BHK Apartments',
-        area: '14.5 Acres',
-        possession: 'June 2026',
-        rera: 'PRM/KA/RERA/1251/446/PR/180519/001745',
-        description: 'In That Quiet Earth is a 14.5-acre exclusive residential community by Total Environment off Hennur Main Road in North Bengaluru. Designed around human-centered principles and traditional courtyard concepts, the homes feature exposed brick masonry, natural stone floors, custom cabinetry, and private terrace gardens.',
-        thumbnail: totalEnvironmentImage('total-environment/total-environment-in-that-quiet-earth/thumbnail.webp'),
-        images: [
-            totalEnvironmentImage('total-environment/total-environment-in-that-quiet-earth/gallery/exterior-view.webp'),
-            totalEnvironmentImage('total-environment/total-environment-in-that-quiet-earth/gallery/interior-view.webp'),
-            totalEnvironmentImage('total-environment/total-environment-in-that-quiet-earth/gallery/amenities.webp')
-        ],
-        floorPlans: [
-            { bhk: '3 BHK + Home Office (L21)', sqft: '2,628 sq. ft.', price: '₹4.48 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-in-that-quiet-earth/floor-plans/3bhk-floor-plan.webp') }
-        ],
-        amenities: [
-            { name: '50,000+ sq.ft. Clubhouse', icon: 'fa-solid fa-building' },
-            { name: 'Outdoor Main Swimming Pool', icon: 'fa-solid fa-water-ladder' },
-            { name: 'Outdoor Toddler\'s Pool', icon: 'fa-solid fa-child-reaching' },
-            { name: 'Gymnasium', icon: 'fa-solid fa-dumbbell' },
-            { name: 'Steam Room & Sauna', icon: 'fa-solid fa-spa' },
-            { name: 'Amphitheatre', icon: 'fa-solid fa-masks-theater' },
-            { name: 'Pedestrian Path / Jogging Track', icon: 'fa-solid fa-person-running' },
-            { name: 'Pet Park', icon: 'fa-solid fa-dog' },
-            { name: 'Tree Museum', icon: 'fa-solid fa-tree' },
-            { name: 'Guest Suites', icon: 'fa-solid fa-hotel' }
-        ],
-        connectivity: [
-            { label: 'Airport', distance: 'Kempegowda International Airport (29.0 km)', icon: 'fa-solid fa-plane' },
-            { label: 'Business Hubs & Tech Parks', distance: 'Manyata Tech Park (5.9 km) | ITPL Whitefield (9.7 km)', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Railway Station', distance: 'KR Puram Railway Station (5.8 km)', icon: 'fa-solid fa-train' },
-            { label: 'Schools', distance: 'Srees Carnatic School (0.5 km) | Vani Public School (1.1 km)', icon: 'fa-solid fa-school' },
-            { label: 'Colleges', distance: 'Presidency College of Nursing (1.1 km) | Alpha College of Engineering (2.5 km)', icon: 'fa-solid fa-graduation-cap' }
-        ]
-    },
-    {
-        id: 'total-environment-over-the-rainbow',
-        name: 'Total Environment Over the Rainbow',
-        shortAddress: 'Nandi Hills, Devanahalli',
-        location: 'Kuduvathi, (Nandi Hills), Devanahalli / Chikkaballapur, Karnataka 562103',
-        category: 'ONGOING',
-        statusText: 'Ongoing',
-        badgeClass: 'badge-ongoing',
-        price: '₹7.14 Crore Onwards',
-        bhk: '3 BHK Villa',
-        area: '8.8 Acres',
-        possession: 'September 2026',
-        rera: 'PRM/KA/RERA/1254/460/PR/240424/006832',
-        description: 'Total Environment Over the Rainbow is an ultra-luxury low-density villa development by Total Environment, located in Kuduvathi, Karnataka, at the foothills of Nandi Hills in North Bengaluru. Spread across 8.8 acres, the project comprises 33 single-storied villas, offering an exclusive and private residential environment. The project offers 3-bedroom villas with a spacious area of 3,000 sq. ft. priced at ₹7.14 crore onwards. Each villa is designed to provide a strong connection with nature, complemented by landscaped surroundings and thoughtfully planned outdoor spaces.',
-        thumbnail: totalEnvironmentImage('total-environment/total-environment-over-the-rainbow/thumbnail.webp'),
-        images: [
-            totalEnvironmentImage('total-environment/total-environment-over-the-rainbow/gallery/exterior-view.webp'),
-            totalEnvironmentImage('total-environment/total-environment-over-the-rainbow/gallery/interior-view.webp'),
-            totalEnvironmentImage('total-environment/total-environment-over-the-rainbow/gallery/amenities.webp')
-        ],
-        floorPlans: [
-            { bhk: '3 BHK Villa', sqft: '3,000 sq. ft.', price: '₹7.14 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-over-the-rainbow/floor-plans/3bhk-villa-floor-plan.webp') }
-        ],
-        amenities: [
-            { name: 'Jogging Track', icon: 'fa-solid fa-person-running' },
-            { name: 'Pedestrian Path', icon: 'fa-solid fa-person-walking' },
-            { name: 'Children\'s Playing Area', icon: 'fa-solid fa-child-reaching' },
-            { name: 'Home Office', icon: 'fa-solid fa-laptop-house' },
-            { name: 'Gardens', icon: 'fa-solid fa-leaf' },
-            { name: 'Green Roof', icon: 'fa-solid fa-seedling' },
-            { name: 'Dense Planting Area', icon: 'fa-solid fa-tree' }
-        ],
-        connectivity: [
-            { label: 'Airport', distance: '35 min / 25.7 km (Kempegowda International Airport Bengaluru)', icon: 'fa-solid fa-plane' },
-            { label: 'Railway Station', distance: 'Nandi Halt Railway Station (5.4 km) | Chikkaballapur Railway Station (10.8 km)', icon: 'fa-solid fa-train' },
-            { label: 'Schools', distance: '3.7 km (Gitanjali International School Bangalore)', icon: 'fa-solid fa-school' },
-            { label: 'Colleges', distance: 'Shaanthiniketans PU College (10.3 km) | SJCIT Institute of Technology (9.5 km)', icon: 'fa-solid fa-graduation-cap' },
-            { label: 'Hospitals', distance: 'Sri Sathya Sai Sarala Memorial Hospital (5.7 km) | Jain Mission Hospital (0.4 km) | Sri Sathya Sai Lok Seva Health Care (2.7 km)', icon: 'fa-solid fa-hospital' },
-            { label: 'Business Hubs & Tech Parks', distance: 'Nagarjuna Tech Solutions (9.5 km)', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Shopping & Malls', distance: 'MNR Vegetable shop (1.5 km) | Manvitha General Stores', icon: 'fa-solid fa-cart-shopping' }
-        ]
-    },
-    {
-        id: 'total-environment-tangled-up-in-green',
-        name: 'Total Environment Tangled Up in Green',
-        shortAddress: 'Devanahalli, Bengaluru',
-        location: 'Doddaballapur Main Road, Next to STRR, Settarahally, Devanahalli, Bengaluru, Karnataka 562110',
-        category: 'ONGOING',
-        statusText: 'Ongoing',
-        badgeClass: 'badge-ongoing',
-        price: '₹1.86 Crore Onwards',
-        bhk: 'Luxury Villa Plots',
-        area: '115 Acres',
-        possession: 'December 2028',
-        rera: 'PRM/KA/RERA/1250/303/PR/080124/006538',
-        description: 'Tangled Up in Green is a massive 115-acre sustainable plotted development by Total Environment located on Doddaballapur Main Road near the Satellite Town Ring Road (STRR) in Devanahalli, North Bengaluru. The project is designed around natural elements, featuring a central green boulevard, an 8-acre natural eucalyptus forest, curated tree museums, pedestrian pathways, and custom-build options for independent luxury homes.',
-        thumbnail: totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/thumbnail.webp'),
-        images: [
-            totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/gallery/exterior-view.webp'),
-            totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/gallery/interior-view.webp'),
-            totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/gallery/amenities.webp')
-        ],
-        floorPlans: [
-            { bhk: '30 x 60 Plot', sqft: '1,800 sq. ft.', price: '₹1.86 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/floor-plans/30x60-plot-layout.webp') },
-            { bhk: '40 x 60 Plot', sqft: '2,400 sq. ft.', price: '₹2.47 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/floor-plans/40x60-plot-layout.webp')  },
-            { bhk: '45 x 60 Plot', sqft: '2,700 sq. ft.', price: '₹2.78 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/floor-plans/45x60-plot-layout.webp')  },
-            { bhk: '40 x 80 Plot', sqft: '3,200 sq. ft.', price: '₹3.29 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/floor-plans/40x80-plot-layout.webp')  },
-            { bhk: '50 x 100 Plot', sqft: '5,000 sq. ft.', price: '₹5.12 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/floor-plans/50x100-plot-layout.webp')  }
-        ],
-        amenities: [
-            { name: 'Clubhouse', icon: 'fa-solid fa-building' },
-            { name: 'Swimming Pool & Kids Pool', icon: 'fa-solid fa-water-ladder' },
-            { name: 'World-Class Gymnasium', icon: 'fa-solid fa-dumbbell' },
-            { name: 'Natural Eucalyptus Forest', icon: 'fa-solid fa-tree' },
-            { name: 'Central Boulevard & Retention Ponds', icon: 'fa-solid fa-road' },
-            { name: 'Jogging & Cycling Track', icon: 'fa-solid fa-person-running' },
-            { name: 'Yoga Deck & Lawn', icon: 'fa-solid fa-spa' },
-            { name: 'Sports Courts & Indoor Games', icon: 'fa-solid fa-table-tennis-paddle-ball' },
-            { name: 'Children\'s Play Area & Pet Park', icon: 'fa-solid fa-child-reaching' }
-        ],
-        connectivity: [
-            { label: 'Airport', distance: 'Kempegowda International Airport (~18.0 km / ~25 min)', icon: 'fa-solid fa-plane' },
-            { label: 'Business Hubs & Tech Parks', distance: 'Devanahalli Business Park (~12.6 km) | KIADB Aerospace SEZ (~17.0 km) | Foxconn Complex (~11.7 km)', icon: 'fa-solid fa-laptop-code' },
-            { label: 'Railway Station', distance: 'Devanahalli Railway Station (~7.0 km) | KR Puram Railway Station (~29.2 km)', icon: 'fa-solid fa-train' },
-            { label: 'Metro Station', distance: 'Upcoming Airport Metro Line Station (~7.6 km)', icon: 'fa-solid fa-train' },
-            { label: 'Schools', distance: 'Akash International School | Stonehill International School', icon: 'fa-solid fa-school' },
-            { label: 'Hospitals', distance: 'New Manasa Hospital | Akash Hospital', icon: 'fa-solid fa-hospital' },
-            { label: 'Hotels & Resorts', distance: 'JW Marriott Bengaluru Prestige Golfshire Resort & Spa', icon: 'fa-solid fa-hotel' }
-        ]
-    },
-    {
-        id: 'total-environment-the-magic-faraway-tree',
-        name: 'Total Environment The Magic Faraway Tree',
-        shortAddress: 'Thalaghattapura, Bengaluru',
-        location: 'Sy. No. 32/1, 33/1, Thalaghattapura, Kanakapura Road, Bengaluru, Karnataka 560062',
-        category: 'READY',
-        statusText: 'Ready to Move',
-        badgeClass: 'badge-ready',
-        price: '₹5.56 Crore Onwards',
-        bhk: '3 BHK Simplex & Duplex Apartments',
-        area: '12 Acres',
-        possession: 'Ready to Move',
-        rera: 'PRM/KA/RERA/1251/310/PR/171015/000424',
-        description: 'The Magic Faraway Tree by Total Environment is a 12-acre residential community located on Kanakapura Road, Bengaluru. Named after a beautiful old tree on the site, the project features handcrafted homes with exposed brick masonry, natural stone floors, custom cabinetry, and private terrace gardens for every apartment.',
-        thumbnail: totalEnvironmentImage('total-environment/total-environment-the-magic-faraway-tree/thumbnail.webp'),
-        images: [
-            totalEnvironmentImage('total-environment/total-environment-the-magic-faraway-tree/gallery/exterior-view.webp'),
-            totalEnvironmentImage('total-environment/total-environment-the-magic-faraway-tree/gallery/interior-view.webp'),
-            totalEnvironmentImage('total-environment/total-environment-the-magic-faraway-tree/gallery/amenities.webp')
-        ],
-        floorPlans: [
-            { bhk: '3 BHK Simplex (C20)', sqft: '2,753 sq. ft.', price: '₹5.56 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-the-magic-faraway-tree/floor-plans/3bhk-floor-plan.webp') },
-            { bhk: '3 BHK Duplex (D35)', sqft: '4,498 sq. ft.', price: '₹9.11 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-the-magic-faraway-tree/floor-plans/3bhk-duplex-floor-plan.webp') }
-        ],
-        amenities: [
-            { name: 'Terrace Garden with Water Body', icon: 'fa-solid fa-leaf' },
-            { name: 'Swimming Pool', icon: 'fa-solid fa-water-ladder' },
-            { name: 'Gymnasium', icon: 'fa-solid fa-dumbbell' },
-            { name: 'Billiards / Snooker', icon: 'fa-solid fa-circle-dot' },
-            { name: 'Table Tennis & Board Games', icon: 'fa-solid fa-table-tennis-paddle-ball' },
-            { name: 'Multipurpose Hall', icon: 'fa-solid fa-building' },
-            { name: 'Children\'s Play Area', icon: 'fa-solid fa-child-reaching' },
-            { name: 'Central Greens', icon: 'fa-solid fa-tree' }
-        ],
-        connectivity: [
-            { label: 'Metro Station', distance: 'Adjacent to Silk Institute Metro Station', icon: 'fa-solid fa-train' },
-            { label: 'Highways & Expressways', distance: '200 metres from NICE Road Corridor', icon: 'fa-solid fa-road' },
-            { label: 'Schools', distance: '10-minute drive to major local & international schools', icon: 'fa-solid fa-school' },
-            { label: 'Hospitals', distance: '10-minute drive to major hospitals', icon: 'fa-solid fa-hospital' },
-            { label: 'Shopping & Malls', distance: '10-minute drive to shopping centers and malls', icon: 'fa-solid fa-cart-shopping' }
-        ]
-    }
+  {
+    id: 'total-environment-down-by-the-water',
+    name: 'Total Environment Down by the Water',
+    shortAddress: 'Jakkur, Bengaluru',
+    location: 'Agrahara, Jakkur, Yelahanka, Bengaluru, Karnataka 560064',
+    coordinates: { lat: 13.076800, lon: 77.607400 },
+    mapsQuery: 'Total Environment Down by the Water, Jakkur, Bengaluru',
+    category: 'ONGOING',
+    statusText: 'Ongoing',
+    badgeClass: 'badge-ongoing',
+    price: '₹5.62 Crore Onwards',
+    bhk: '3 & 4 BHK Apartments',
+    area: '17.5 Acres',
+    possession: 'June 2029',
+    rera: 'PRM/KA/RERA/1251/472/PR/090824/006967',
+    description: 'Total Environment Down by the Water is a premium waterfront residential development located in Jakkur, North Bengaluru. Spread across 17.5 acres next to the serene Jakkur Lake, the project features thoughtfully crafted 3 & 4 BHK apartments and penthouses with expansive private terrace gardens, handcrafted natural stone finishes, wire-cut brick architecture, and world-class resort amenities.',
+    thumbnail: totalEnvironmentImage('total-environment/down-by-the-water/thumbnail.webp'),
+    highlights: [
+        'Serene 17.5-Acre Lakeside Enclave at Jakkur Lake',
+        'Signature Earth-Sheltered Green Terrace Gardens',
+        'Wire-Cut Brick Exterior & Natural Stone Finishes',
+        'Lakeside Boardwalk & Nature Trails',
+        'Heated Swimming Pool & Comprehensive Club',
+        '10 mins to Manyata Tech Park & Hebbal Flyover'
+    ],
+    images: [
+        totalEnvironmentImage('total-environment/down-by-the-water/gallery/exterior-view.webp'),
+        totalEnvironmentImage('total-environment/down-by-the-water/gallery/interior-view.webp'),
+        totalEnvironmentImage('total-environment/down-by-the-water/gallery/amenities.webp')
+    ],
+    floorPlans: [
+        { bhk: '3 BHK (H20)', sqft: '2,700 sq.ft.', price: '₹5.62 Crore Onwards', image: totalEnvironmentImage('total-environment/down-by-the-water/floor-plans/h20-3bhk-floor-plan.webp') },
+        { bhk: '3 BHK (H20 Suite)', sqft: '3,100 sq.ft.', price: '₹6.45 Crore Onwards', image: totalEnvironmentImage('total-environment/down-by-the-water/floor-plans/h20-3bhk-suite-floor-plan.webp') },
+        { bhk: '4 BHK (H30)', sqft: '4,000 sq.ft.', price: '₹8.32 Crore Onwards', image: totalEnvironmentImage('total-environment/down-by-the-water/floor-plans/h30-4bhk-floor-plan.webp') },
+        { bhk: '4 BHK (H30 Suite)', sqft: '4,400 sq.ft.', price: '₹9.15 Crore Onwards', image: totalEnvironmentImage('total-environment/down-by-the-water/floor-plans/h30-4bhk-suite-floor-plan.webp') },
+        { bhk: 'Penthouse (H40)', sqft: '6,500 sq.ft.', price: '₹13.52 Crore Onwards', image: totalEnvironmentImage('total-environment/down-by-the-water/floor-plans/h40-penthouse-floor-plan.webp') }
+    ],
+    amenities: [
+        { name: 'Clubhouse', icon: 'fa-solid fa-building' },
+        { name: 'Heated Swimming Pool', icon: 'fa-solid fa-person-swimming' },
+        { name: 'Gymnasium', icon: 'fa-solid fa-dumbbell' },
+        { name: 'Private Terrace Gardens', icon: 'fa-solid fa-seedling' },
+        { name: 'Lakeside Boardwalk', icon: 'fa-solid fa-water' },
+        { name: 'Tennis & Squash Courts', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+        { name: 'Yoga & Aerobics Deck', icon: 'fa-solid fa-spa' },
+        { name: 'Children\'s Play Area', icon: 'fa-solid fa-children' },
+        { name: '24/7 Security & CCTV', icon: 'fa-solid fa-shield-halved' }
+    ],
+    connectivity: [
+        { label: 'Bhartiya Mall of Bengaluru', destination: 'Bhartiya Mall of Bengaluru, Kannuru, Thanisandra Main Road, Bengaluru, Karnataka 560064', coordinates: { lat: 13.085500, lon: 77.638500 }, distance: '5.3 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'Manyata Tech Park', destination: 'Manyata Tech Park, Outer Ring Road, Nagavara, Bengaluru, Karnataka 560045', coordinates: { lat: 13.045000, lon: 77.625000 }, distance: '5.9 Kms', icon: 'fa-solid fa-laptop-code' },
+        { label: 'Mallya Aditi International School', destination: 'Mallya Aditi International School, Behind Yelahanka New Town, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.098500, lon: 77.593500 }, distance: '6.5 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Legacy School Bangalore', destination: 'Legacy School, Kothanur, Bengaluru, Karnataka 560077', coordinates: { lat: 13.064500, lon: 77.652500 }, distance: '7.5 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Phoenix Mall of Asia', destination: 'Phoenix Mall of Asia, Bellary Road, Byatarayanapura, Yelahanka, Bengaluru, Karnataka 560092', coordinates: { lat: 13.058500, lon: 77.591000 }, distance: '8.2 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'Manipal Hospital Hebbal', destination: 'Manipal Hospital Hebbal, Bellary Road, Bengaluru, Karnataka 560092', coordinates: { lat: 13.048500, lon: 77.592500 }, distance: '8.5 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'Aster CMI Hospital', destination: 'Aster CMI Hospital, Bellary Road, New Airport Road, Sahakar Nagar, Bengaluru, Karnataka 560092', coordinates: { lat: 13.054500, lon: 77.591500 }, distance: '9.6 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport Bengaluru, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.198600, lon: 77.706600 }, distance: '21.6 Kms', icon: 'fa-solid fa-plane' }
+    ]
+  },
+  {
+    id: 'total-environment-after-the-rain',
+    name: 'Total Environment After the Rain',
+    shortAddress: 'Yelahanka, Bengaluru',
+    location: 'Sir MVIT College Road, Betthadasanapura, Yelahanka, Bengaluru, Karnataka 560097',
+    coordinates: { lat: 13.167500, lon: 77.618000 },
+    mapsQuery: 'Total Environment After the Rain, Yelahanka, Bengaluru',
+    category: 'ONGOING',
+    statusText: 'Ongoing',
+    badgeClass: 'badge-ongoing',
+    price: '₹15.99 Crore Onwards',
+    bhk: '3 Bedroom Earth-Sheltered Villas',
+    area: '45 Acres',
+    possession: 'Phased Delivery (Phase 3 Onwards)',
+    rera: 'PRM/KA/RERA/1251/309/PR/160825/008002',
+    description: 'Total Environment After the Rain is an extraordinary 45-acre community of earth-sheltered, single-level luxury villas located off Bellary Road in Yelahanka, North Bengaluru. Designed to blend seamlessly with the natural landscape, each villa features a turf-covered green roof, private garden courtyards, heated swimming pool, hand-crafted timber woodwork, and high-end thermal performance.',
+    thumbnail: totalEnvironmentImage('total-environment/after-the-rain/thumbnail.webp'),
+    highlights: [
+        '45-Acre Enclave of Earth-Sheltered Luxury Villas',
+        'Private Landscaped Green Roof on Every Home',
+        'High Privacy Layouts with Internal Courtyards',
+        'Close to Padukone-Dravid Centre for Sports Excellence',
+        'Stonehill & MVIT International Education Hub',
+        '20 mins to Kempegowda International Airport'
+    ],
+    images: [
+        totalEnvironmentImage('total-environment/after-the-rain/gallery/exterior-view.webp'),
+        totalEnvironmentImage('total-environment/after-the-rain/gallery/interior-view.webp'),
+        totalEnvironmentImage('total-environment/after-the-rain/gallery/amenities.webp')
+    ],
+    floorPlans: [
+        { bhk: 'V30 3 Bedroom Earth-Sheltered Villa', sqft: '3,200 sq.ft.', price: '₹15.99 Crore Onwards', image: totalEnvironmentImage('total-environment/after-the-rain/floor-plans/v30-3bhk-villa-floor-plan.webp') }
+    ],
+    amenities: [
+        { name: 'Clubhouse', icon: 'fa-solid fa-building' },
+        { name: 'Swimming Pool', icon: 'fa-solid fa-person-swimming' },
+        { name: 'Gymnasium & Spa', icon: 'fa-solid fa-dumbbell' },
+        { name: 'Earth-Sheltered Living', icon: 'fa-solid fa-leaf' },
+        { name: 'Private Courtyards & Green Roof', icon: 'fa-solid fa-tree' },
+        { name: 'Tennis & Badminton Courts', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+        { name: 'Jogging & Walking Track', icon: 'fa-solid fa-person-running' },
+        { name: 'Bespoke Handcrafted Finishes', icon: 'fa-solid fa-couch' },
+        { name: '24/7 Gated Security', icon: 'fa-solid fa-shield-halved' }
+    ],
+    connectivity: [
+        { label: 'Sadhu Vaswani International School', destination: 'Sadhu Vaswani International School, Bettenahalli, Bengaluru, Karnataka 562157', coordinates: { lat: 13.161500, lon: 77.614500 }, distance: '1.0 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Krishnadevaraya College of Dental Sciences', destination: 'Krishnadevaraya College of Dental Sciences, Hunasamaranahalli, Bengaluru, Karnataka 562157', coordinates: { lat: 13.149500, lon: 77.625500 }, distance: '1.8 Kms', icon: 'fa-solid fa-graduation-cap' },
+        { label: 'Sir M. Visvesvaraya Institute of Technology', destination: 'Sir M. Visvesvaraya Institute of Technology, Krishnadeveraya Nagar, Hunasamaranahalli, Bengaluru, Karnataka 562157', coordinates: { lat: 13.151500, lon: 77.621500 }, distance: '2.0 Kms', icon: 'fa-solid fa-graduation-cap' },
+        { label: 'Padukone-Dravid Centre for Sports Excellence', destination: 'Padukone - Dravid Centre for Sports Excellence, Survey No. 336, Bettahalasuru, Bengaluru, Karnataka 562157', coordinates: { lat: 13.175500, lon: 77.632500 }, distance: '2.0 Kms', icon: 'fa-solid fa-medal' },
+        { label: 'Stonehill International School', destination: 'Stonehill International School, Tarahunise Post, Jala Hobli, Bengaluru, Karnataka 562157', coordinates: { lat: 13.181500, lon: 77.628500 }, distance: '2.2 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Life Care Hospital', destination: 'Life Care Hospital, Bagalur Cross, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.136500, lon: 77.621500 }, distance: '4.0 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'RMZ Galleria Mall', destination: 'RMZ Galleria Mall, B.B. Road, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.102300, lon: 77.589400 }, distance: '12.0 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport Bengaluru, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.198600, lon: 77.706600 }, distance: '16.0 Kms', icon: 'fa-solid fa-plane' }
+    ]
+  },
+  {
+    id: 'total-environment-pursuit-of-a-radical-rhapsody',
+    name: 'Total Environment Pursuit of a Radical Rhapsody',
+    shortAddress: 'Whitefield, Bengaluru',
+    location: 'ITPL Main Road, Hoodi, Whitefield, Bengaluru, Karnataka 560048',
+    coordinates: { lat: 12.991200, lon: 77.718500 },
+    mapsQuery: 'Total Environment Pursuit of a Radical Rhapsody, ITPL Main Road, Whitefield, Bengaluru',
+    category: 'ONGOING',
+    statusText: 'Ongoing',
+    badgeClass: 'badge-ongoing',
+    price: '₹6.18 Crore Onwards',
+    bhk: '3 & 4 BHK Apartments, Duplexes & Earth-Sheltered Villas',
+    area: '34.5 Acres',
+    possession: 'December 2026',
+    rera: 'PRM/KA/RERA/1251/446/PR/171014/000433',
+    description: 'Total Environment Pursuit of a Radical Rhapsody is an iconic 34.5-acre lakeside residential masterpiece located on ITPL Main Road, Hoodi, Whitefield. Built around a natural lake, the development features luxury apartments, duplex homes, and signature earth-sheltered villas. Units are crafted with open-to-sky terrace gardens, micro-climate cooling features, custom Italian stone flooring, and expansive timber deck terraces.',
+    thumbnail: totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/thumbnail.webp'),
+    highlights: [
+        '34.5 Acres Flagship Lakeside Community in Whitefield',
+        'Boardwalk along Natural Hoodi Lake',
+        'Signature C-Type & L-Type Garden Apartments & Earth Villas',
+        'Central Community Park & Infinity Edge Pool',
+        '1.2 km to Hoodi Metro Station (Purple Line)',
+        'Close to ITPB, EPIP Zone & Nexus Shantiniketan'
+    ],
+    images: [
+        totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/gallery/exterior-view.webp'),
+        totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/gallery/interior-view.webp'),
+        totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/gallery/amenities.webp')
+    ],
+    floorPlans: [
+        { bhk: 'C20 (3 BHK)', sqft: '2,753 sq.ft.', price: '₹6.18 Crore Onwards', image: totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/floor-plans/c20-3bhk-floor-plan.webp') },
+        { bhk: 'L30 (3 BHK + Study)', sqft: '3,847 sq.ft.', price: '₹8.65 Crore Onwards', image: totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/floor-plans/l30-3bhk-study-floor-plan.webp') },
+        { bhk: 'L45 (4 BHK Duplex)', sqft: '4,800 sq.ft.', price: '₹10.79 Crore Onwards', image: totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/floor-plans/l45-4bhk-duplex-floor-plan.webp') },
+        { bhk: 'V35 (3 BHK Villa)', sqft: '4,100 sq.ft.', price: '₹14.50 Crore Onwards', image: totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/floor-plans/v35-3bhk-villa-floor-plan.webp') },
+        { bhk: 'V50 (4 BHK Villa)', sqft: '5,129 sq.ft.', price: '₹18.00 Crore Onwards', image: totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/floor-plans/v50-4bhk-villa-floor-plan.webp') }
+    ],
+    amenities: [
+        { name: 'Clubhouse', icon: 'fa-solid fa-building' },
+        { name: 'Infinity Swimming Pool', icon: 'fa-solid fa-person-swimming' },
+        { name: 'Gymnasium & Aerobics Studio', icon: 'fa-solid fa-dumbbell' },
+        { name: 'Lake Boardwalk & Promenade', icon: 'fa-solid fa-water' },
+        { name: 'Private Landscaped Terrace Gardens', icon: 'fa-solid fa-leaf' },
+        { name: 'Squash & Tennis Courts', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+        { name: 'Billiards & Games Lounge', icon: 'fa-solid fa-chess' },
+        { name: 'Children\'s Play Area', icon: 'fa-solid fa-children' },
+        { name: 'Cafe & Library Lounge', icon: 'fa-solid fa-book-open' },
+        { name: 'Multipurpose Community Hall', icon: 'fa-solid fa-hotel' },
+        { name: '24/7 Security & CCTV', icon: 'fa-solid fa-shield-halved' }
+    ],
+    connectivity: [
+        { label: 'Hoodi Metro Station', destination: 'Hoodi Metro Station (Purple Line), Whitefield Main Road, Bengaluru, Karnataka', coordinates: { lat: 12.991500, lon: 77.716200 }, distance: '1.2 Kms', icon: 'fa-solid fa-train-subway' },
+        { label: 'Gopalan National School', destination: 'Gopalan National School, Seetharampalya, Hoodi, Bengaluru, Karnataka 560048', coordinates: { lat: 12.986500, lon: 77.712500 }, distance: '2.5 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Nexus Shantiniketan Mall', destination: 'Nexus Shantiniketan Mall, Whitefield Main Road, Bengaluru, Karnataka 560048', coordinates: { lat: 12.989200, lon: 77.728500 }, distance: '2.8 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'VR Bengaluru', destination: 'VR Bengaluru Mall, Whitefield Main Road, Mahadevapura, Bengaluru, Karnataka 560048', coordinates: { lat: 12.996500, lon: 77.697500 }, distance: '3.1 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'Phoenix Marketcity', destination: 'Phoenix Marketcity, Whitefield Main Road, Mahadevapura, Bengaluru, Karnataka 560048', coordinates: { lat: 12.995800, lon: 77.696500 }, distance: '3.3 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'ITPB Whitefield', destination: 'International Tech Park Bangalore (ITPB), Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.986500, lon: 77.737500 }, distance: '3.2 Kms', icon: 'fa-solid fa-building' },
+        { label: 'Sri Sathya Sai Super Speciality Hospital', destination: 'Sri Sathya Sai Super Speciality Hospital, EPIP Zone, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.982500, lon: 77.733500 }, distance: '3.5 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'Manipal Hospital Whitefield', destination: 'Manipal Hospital Whitefield, 143, EPIP Zone, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.979000, lon: 77.728000 }, distance: '3.8 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'EPIP Zone Whitefield', destination: 'Export Promotion Industrial Park (EPIP Zone), Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.978500, lon: 77.724500 }, distance: '4.5 Kms', icon: 'fa-solid fa-industry' }
+    ]
+  },
+  {
+    id: 'total-environment-in-that-quiet-earth',
+    name: 'Total Environment In That Quiet Earth',
+    shortAddress: 'Bileshivale, Bengaluru',
+    location: 'Off Hennur Main Road, Bileshivale, Bengaluru, Karnataka 560077',
+    coordinates: { lat: 13.063200, lon: 77.662000 },
+    mapsQuery: 'Total Environment In That Quiet Earth, Hennur Main Road, Bengaluru',
+    category: 'ONGOING',
+    statusText: 'Ongoing',
+    badgeClass: 'badge-ongoing',
+    price: '₹4.48 Crore Onwards',
+    bhk: '3 BHK Apartments',
+    area: '14.5 Acres',
+    possession: 'June 2026',
+    rera: 'PRM/KA/RERA/1251/446/PR/180519/001745',
+    description: 'Total Environment In That Quiet Earth is a beautifully planned 14.5-acre residential community located off Hennur Main Road in North Bengaluru. Offering distinctive L-shaped garden apartments and signature duplexes, every home is designed around a private, cantilevered garden terrace. Features include exposed wire-cut red brick walls, custom crafted furniture and cabinetry, and an expansive central park with multi-tier amenities.',
+    thumbnail: totalEnvironmentImage('total-environment/in-that-quiet-earth/thumbnail.webp'),
+    highlights: [
+        '14.5-Acre Thoughtfully Designed Community in Hennur',
+        'Cantilevered L-Shaped Living Spaces & Gardens',
+        'Custom Woodwork & Handcrafted Finishes',
+        'Over 20 Sports & Leisure Amenities',
+        'Fast Connectivity to Outer Ring Road & Manyata Tech Park',
+        'Convenient Access to Kempegowda International Airport'
+    ],
+    images: [
+        totalEnvironmentImage('total-environment/in-that-quiet-earth/gallery/exterior-view.webp'),
+        totalEnvironmentImage('total-environment/in-that-quiet-earth/gallery/interior-view.webp'),
+        totalEnvironmentImage('total-environment/in-that-quiet-earth/gallery/amenities.webp')
+    ],
+    floorPlans: [
+        { bhk: 'U20 (3 BHK)', sqft: '2,890 sq.ft.', price: '₹4.48 Crore Onwards', image: totalEnvironmentImage('total-environment/in-that-quiet-earth/floor-plans/u20-3bhk-floor-plan.webp') }
+    ],
+    amenities: [
+        { name: 'Clubhouse', icon: 'fa-solid fa-building' },
+        { name: 'Swimming Pool', icon: 'fa-solid fa-person-swimming' },
+        { name: 'Gymnasium & Yoga Deck', icon: 'fa-solid fa-dumbbell' },
+        { name: 'Private Terrace Gardens', icon: 'fa-solid fa-leaf' },
+        { name: 'Badminton & Tennis Courts', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+        { name: 'Children\'s Play Area', icon: 'fa-solid fa-children' },
+        { name: 'Jogging Track', icon: 'fa-solid fa-person-running' },
+        { name: 'Library & Reading Room', icon: 'fa-solid fa-book-open' },
+        { name: 'Multipurpose Hall', icon: 'fa-solid fa-hotel' },
+        { name: '24/7 Security & CCTV', icon: 'fa-solid fa-shield-halved' }
+    ],
+    connectivity: [
+        { label: 'Srees Carnatic School', destination: 'Srees Carnatic Music and Dance School, Bileshivale, Bengaluru, Karnataka 560077', coordinates: { lat: 13.061500, lon: 77.660500 }, distance: '500 Meters', icon: 'fa-solid fa-music' },
+        { label: 'Vani Public School', destination: 'Vani Public School, Hennur Bagalur Main Road, Bileshivale, Bengaluru, Karnataka 560077', coordinates: { lat: 13.064500, lon: 77.664500 }, distance: '1.1 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Presidency College of Nursing', destination: 'Presidency College of Nursing, Hennur Main Road, Bengaluru, Karnataka 560077', coordinates: { lat: 13.065500, lon: 77.659500 }, distance: '1.1 Kms', icon: 'fa-solid fa-graduation-cap' },
+        { label: 'Alpha College of Engineering', destination: 'Alpha College of Engineering, Kannuru, Bengaluru, Karnataka 562149', coordinates: { lat: 13.078500, lon: 77.658500 }, distance: '2.5 Kms', icon: 'fa-solid fa-graduation-cap' },
+        { label: 'KR Puram Railway Station', destination: 'Krishnarajapuram Railway Station (KJM), KR Puram, Bengaluru, Karnataka 560036', coordinates: { lat: 13.001500, lon: 77.676500 }, distance: '5.8 Kms', icon: 'fa-solid fa-train' },
+        { label: 'Manyata Tech Park', destination: 'Manyata Tech Park, Outer Ring Road, Nagavara, Bengaluru, Karnataka 560045', coordinates: { lat: 13.045000, lon: 77.625000 }, distance: '5.9 Kms', icon: 'fa-solid fa-laptop-code' },
+        { label: 'ITPL Whitefield', destination: 'International Tech Park Bangalore (ITPB), Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.986500, lon: 77.737500 }, distance: '9.7 Kms', icon: 'fa-solid fa-building' },
+        { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport Bengaluru, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.198600, lon: 77.706600 }, distance: '29.0 Kms', icon: 'fa-solid fa-plane' }
+    ]
+  },
+  {
+    id: 'total-environment-over-the-rainbow',
+    name: 'Total Environment Over the Rainbow',
+    shortAddress: 'Nandi Hills, Devanahalli',
+    location: 'Kuduvathi, (Nandi Hills), Devanahalli / Chikkaballapur, Karnataka 562103',
+    coordinates: { lat: 13.310000, lon: 77.685000 },
+    mapsQuery: 'Total Environment Over the Rainbow, Nandi Hills, Devanahalli, Bengaluru',
+    category: 'ONGOING',
+    statusText: 'Ongoing',
+    badgeClass: 'badge-ongoing',
+    price: '₹7.14 Crore Onwards',
+    bhk: '3 BHK Villa',
+    area: '8.8 Acres',
+    possession: 'September 2026',
+    rera: 'PRM/KA/RERA/1254/460/PR/240424/006832',
+    description: 'Total Environment Over the Rainbow is a serene 8.8-acre boutique sanctuary of luxury villas nestled at the foothills of scenic Nandi Hills. Thoughtfully integrated into the natural contours of the land, each villa is oriented toward uninterrupted panoramic hill views, with private landscaped gardens, earth-sheltered living areas, sustainable water management, and a retreat-style clubhouse.',
+    thumbnail: totalEnvironmentImage('total-environment/over-the-rainbow/thumbnail.webp'),
+    highlights: [
+        'Boutique 8.8-Acre Villa Retreat near Nandi Hills',
+        'Panoramic Mountain & Valley Vistas',
+        'Earth-Sheltered Architecture Integrated with Terrain',
+        'Private Dip Pools & Landscaped Sunken Decks',
+        'Organic Orchards, Herbal Gardens & Nature Walk',
+        'Quiet Scenic Sanctuary 25 mins from Bengaluru Airport'
+    ],
+    images: [
+        totalEnvironmentImage('total-environment/over-the-rainbow/gallery/exterior-view.webp'),
+        totalEnvironmentImage('total-environment/over-the-rainbow/gallery/interior-view.webp'),
+        totalEnvironmentImage('total-environment/over-the-rainbow/gallery/amenities.webp')
+    ],
+    floorPlans: [
+        { bhk: '3 BHK Luxury Villa', sqft: '4,500 sq.ft.', price: '₹7.14 Crore Onwards', image: totalEnvironmentImage('total-environment/over-the-rainbow/floor-plans/3bhk-villa-floor-plan.webp') }
+    ],
+    amenities: [
+        { name: 'Clubhouse', icon: 'fa-solid fa-building' },
+        { name: 'Infinity Swimming Pool', icon: 'fa-solid fa-person-swimming' },
+        { name: 'Gymnasium & Wellness Spa', icon: 'fa-solid fa-dumbbell' },
+        { name: 'Hill View Observation Deck', icon: 'fa-solid fa-mountain' },
+        { name: 'Private Landscaped Lawns', icon: 'fa-solid fa-leaf' },
+        { name: 'Nature Trails & Orchards', icon: 'fa-solid fa-tree' },
+        { name: '24/7 Security & CCTV', icon: 'fa-solid fa-shield-halved' }
+    ],
+    connectivity: [
+        { label: 'Jain Mission Hospital', destination: 'Jain Mission Hospital, Nandi Hills Road, Karnataka 562103', coordinates: { lat: 13.308500, lon: 77.683500 }, distance: '400 Meters', icon: 'fa-solid fa-hospital' },
+        { label: 'MNR Market', destination: 'MNR Market, Nandi Hills Cross, Chikkaballapur, Karnataka 562101', coordinates: { lat: 13.314500, lon: 77.691500 }, distance: '1.5 Kms', icon: 'fa-solid fa-store' },
+        { label: 'Sri Sathya Sai Lok Seva Health Care', destination: 'Sri Sathya Sai Lok Seva Hospital, Muddenahalli, Karnataka 562101', coordinates: { lat: 13.328500, lon: 77.701500 }, distance: '2.7 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'Gitanjali International School', destination: 'Gitanjali International School, NH 44, Bengaluru, Karnataka 562101', coordinates: { lat: 13.321500, lon: 77.718500 }, distance: '3.7 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Nandi Halt Railway Station', destination: 'Nandi Railway Station (NDY), Nandi, Karnataka 562103', coordinates: { lat: 13.351500, lon: 77.695500 }, distance: '5.4 Kms', icon: 'fa-solid fa-train' },
+        { label: 'Sri Sathya Sai Sarala Memorial Hospital', destination: 'Sri Sathya Sai Sarala Memorial Hospital, Muddenahalli, Karnataka 562101', coordinates: { lat: 13.332500, lon: 77.712500 }, distance: '5.7 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'SJCIT Engineering College', destination: 'SJC Institute of Technology, Chikkaballapur, Karnataka 562101', coordinates: { lat: 13.432500, lon: 77.728500 }, distance: '9.5 Kms', icon: 'fa-solid fa-graduation-cap' },
+        { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport Bengaluru, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.198600, lon: 77.706600 }, distance: '25.7 Kms', icon: 'fa-solid fa-plane' }
+    ]
+  },
+  {
+    id: 'total-environment-tangled-up-in-green',
+    name: 'Total Environment Tangled Up in Green',
+    shortAddress: 'Devanahalli, Bengaluru',
+    location: 'Doddaballapur Main Road, Next to STRR, Settarahally, Devanahalli, Bengaluru, Karnataka 562110',
+    coordinates: { lat: 13.253000, lon: 77.712000 },
+    mapsQuery: 'Total Environment Tangled Up in Green, Devanahalli, Bengaluru',
+    category: 'ONGOING',
+    statusText: 'Ongoing',
+    badgeClass: 'badge-ongoing',
+    price: '₹1.86 Crore Onwards',
+    bhk: 'Luxury Villa Plots',
+    area: '115 Acres',
+    possession: 'December 2028',
+    rera: 'PRM/KA/RERA/1250/303/PR/080124/006538',
+    description: 'Total Environment Tangled Up in Green is an expansive 115-acre vision of sustainable living located off Doddaballapur Road in Devanahalli, North Bengaluru. Bordering the upcoming Satellite Town Ring Road (STRR), the master-planned plotted enclave features thousands of indigenous shade trees, underground modern utility networks, quiet tree-lined lanes, and a multi-level recreational clubhouse.',
+    thumbnail: totalEnvironmentImage('total-environment/tangled-up-in-green/thumbnail.webp'),
+    highlights: [
+        'Sprawling 115-Acre Plotted Enclave in Devanahalli',
+        'Integrated Living with Indigenous Trees & Biodiversity',
+        'Underground Utilities & Eco-Conscious Infrastructure',
+        'Clubhouse with Olympic-Length Pool & Wellness Center',
+        'Located Next to Proposed Satellite Town Ring Road (STRR)',
+        '15 mins to Kempegowda International Airport & Aerospace Park'
+    ],
+    images: [
+        totalEnvironmentImage('total-environment/tangled-up-in-green/gallery/exterior-view.webp'),
+        totalEnvironmentImage('total-environment/tangled-up-in-green/gallery/interior-view.webp'),
+        totalEnvironmentImage('total-environment/tangled-up-in-green/gallery/amenities.webp')
+    ],
+    floorPlans: [
+        { bhk: '30 x 60 Villa Plot', sqft: '1,800 sq.ft.', price: '₹1.86 Crore Onwards', image: totalEnvironmentImage('total-environment/tangled-up-in-green/floor-plans/30x60-plot-floor-plan.webp') },
+        { bhk: '40 x 60 Villa Plot', sqft: '2,400 sq.ft.', price: '₹2.48 Crore Onwards', image: totalEnvironmentImage('total-environment/tangled-up-in-green/floor-plans/40x60-plot-floor-plan.webp') },
+        { bhk: '50 x 70 Villa Plot', sqft: '3,500 sq.ft.', price: '₹3.62 Crore Onwards', image: totalEnvironmentImage('total-environment/tangled-up-in-green/floor-plans/50x70-plot-floor-plan.webp') },
+        { bhk: '50 x 80 Villa Plot', sqft: '4,000 sq.ft.', price: '₹4.14 Crore Onwards', image: totalEnvironmentImage('total-environment/tangled-up-in-green/floor-plans/50x80-plot-floor-plan.webp') },
+        { bhk: '60 x 90 Villa Plot', sqft: '5,400 sq.ft.', price: '₹5.58 Crore Onwards', image: totalEnvironmentImage('total-environment/tangled-up-in-green/floor-plans/60x90-plot-floor-plan.webp') }
+    ],
+    amenities: [
+        { name: 'Clubhouse', icon: 'fa-solid fa-building' },
+        { name: 'Swimming Pool', icon: 'fa-solid fa-person-swimming' },
+        { name: 'Gymnasium & Wellness Centre', icon: 'fa-solid fa-dumbbell' },
+        { name: 'Indigenous Tree Canopies & Parks', icon: 'fa-solid fa-tree' },
+        { name: 'Tennis & Basketball Courts', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+        { name: 'Jogging & Cycling Tracks', icon: 'fa-solid fa-person-running' },
+        { name: 'Children\'s Play Parks', icon: 'fa-solid fa-children' },
+        { name: 'Organic Farming & Orchard Zone', icon: 'fa-solid fa-seedling' },
+        { name: '24/7 Gated Security & Surveillance', icon: 'fa-solid fa-shield-halved' }
+    ],
+    connectivity: [
+        { label: 'Devanahalli Railway Station', destination: 'Devanahalli Railway Station (DHL), Devanahalli, Karnataka 562110', coordinates: { lat: 13.245500, lon: 77.708500 }, distance: '7.0 Kms', icon: 'fa-solid fa-train' },
+        { label: 'Airport Metro Line Station', destination: 'Devanahalli Metro Station (Upcoming Airport Line), NH 44, Bengaluru, Karnataka', coordinates: { lat: 13.238500, lon: 77.715500 }, distance: '7.6 Kms', icon: 'fa-solid fa-train-subway' },
+        { label: 'Akash International School', destination: 'Akash International School, Prasannahalli Main Road, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.241500, lon: 77.721500 }, distance: '9.5 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Foxconn Industrial Complex', destination: 'Foxconn India Electronics, ITIR Zone, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.275500, lon: 77.685500 }, distance: '11.7 Kms', icon: 'fa-solid fa-industry' },
+        { label: 'Devanahalli Business Park', destination: 'Devanahalli Business Park, KIADB IT Park, Bengaluru, Karnataka 562149', coordinates: { lat: 13.228500, lon: 77.695500 }, distance: '12.6 Kms', icon: 'fa-solid fa-briefcase' },
+        { label: 'JW Marriott Prestige Golfshire', destination: 'JW Marriott Bengaluru Prestige Golfshire Resort & Spa, Nandi Hills Road, Devanahalli, Karnataka 562164', coordinates: { lat: 13.315500, lon: 77.728500 }, distance: '14.0 Kms', icon: 'fa-solid fa-hotel' },
+        { label: 'KIADB Aerospace SEZ', destination: 'KIADB Aerospace SEZ, Huvinayakanahalli, Bengaluru, Karnataka 562149', coordinates: { lat: 13.185500, lon: 77.718500 }, distance: '17.0 Kms', icon: 'fa-solid fa-industry' },
+        { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport Bengaluru, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.198600, lon: 77.706600 }, distance: '18.0 Kms', icon: 'fa-solid fa-plane' }
+    ]
+  },
+  {
+    id: 'total-environment-the-magic-faraway-tree',
+    name: 'Total Environment The Magic Faraway Tree',
+    shortAddress: 'Thalaghattapura, Bengaluru',
+    location: 'Sy. No. 32/1, 33/1, Thalaghattapura, Kanakapura Road, Bengaluru, Karnataka 560062',
+    coordinates: { lat: 12.871500, lon: 77.538500 },
+    mapsQuery: 'Total Environment The Magic Faraway Tree, Kanakapura Road, Bengaluru',
+    category: 'READY',
+    statusText: 'Ready to Move',
+    badgeClass: 'badge-ready',
+    price: '₹5.56 Crore Onwards',
+    bhk: '3 BHK Simplex & Duplex Apartments',
+    area: '12 Acres',
+    possession: 'Ready to Move',
+    rera: 'PRM/KA/RERA/1251/310/PR/171015/000424',
+    description: 'Total Environment The Magic Faraway Tree is a ready-to-move 12-acre elevated residential community on Kanakapura Road in South Bengaluru. Overlooking scenic green tree canopies, the development offers simplex and duplex apartments with double-height garden terraces, exposed handmade brickwork, wire-cut terracotta jalis, and exceptional connectivity via the adjacent Silk Institute Metro Station and NICE Road interchange.',
+    thumbnail: totalEnvironmentImage('total-environment/the-magic-faraway-tree/thumbnail.webp'),
+    highlights: [
+        '12-Acre Elevated Living on Kanakapura Road',
+        'Simplex & Duplex Residences with Private Hanging Gardens',
+        'Seamless Green Views of Surrounding Tree Canopies',
+        'Clubhouse, Swimming Pool & Multi-Sport Arena',
+        'Adjacent to Silk Institute Metro Station',
+        '200 Metres from NICE Road Expressway Interchange'
+    ],
+    images: [
+        totalEnvironmentImage('total-environment/the-magic-faraway-tree/gallery/exterior-view.webp'),
+        totalEnvironmentImage('total-environment/the-magic-faraway-tree/gallery/interior-view.webp'),
+        totalEnvironmentImage('total-environment/the-magic-faraway-tree/gallery/amenities.webp')
+    ],
+    floorPlans: [
+        { bhk: 'C20 (3 BHK Simplex)', sqft: '2,753 sq.ft.', price: '₹5.56 Crore Onwards', image: totalEnvironmentImage('total-environment/the-magic-faraway-tree/floor-plans/c20-3bhk-simplex-floor-plan.webp') },
+        { bhk: 'D35 (3 BHK Duplex)', sqft: '3,550 sq.ft.', price: '₹7.17 Crore Onwards', image: totalEnvironmentImage('total-environment/the-magic-faraway-tree/floor-plans/d35-3bhk-duplex-floor-plan.webp') }
+    ],
+    amenities: [
+        { name: 'Clubhouse', icon: 'fa-solid fa-building' },
+        { name: 'Swimming Pool & Kids Pool', icon: 'fa-solid fa-person-swimming' },
+        { name: 'Fitness Centre / Gym', icon: 'fa-solid fa-dumbbell' },
+        { name: 'Private Double-Height Gardens', icon: 'fa-solid fa-seedling' },
+        { name: 'Tennis & Squash Courts', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+        { name: 'Children\'s Play Area', icon: 'fa-solid fa-children' },
+        { name: 'Indoor Games Room', icon: 'fa-solid fa-chess' },
+        { name: '24/7 Security & CCTV', icon: 'fa-solid fa-shield-halved' }
+    ],
+    connectivity: [
+        { label: 'Silk Institute Metro Station', destination: 'Silk Institute Metro Station (Green Line), Kanakapura Road, Thalaghattapura, Bengaluru, Karnataka 560062', coordinates: { lat: 12.871200, lon: 77.537800 }, distance: '250 Meters', icon: 'fa-solid fa-train-subway' },
+        { label: 'NICE Road Expressway Junction', destination: 'NICE Ring Road Toll Plaza, Kanakapura Road, Bengaluru, Karnataka 560062', coordinates: { lat: 12.869500, lon: 77.539500 }, distance: '200 Meters', icon: 'fa-solid fa-highway' },
+        { label: 'Astra Super Speciality Hospital', destination: 'Astra Hospital, Kanakapura Main Road, Konanakunte Cross, Bengaluru, Karnataka 560062', coordinates: { lat: 12.885500, lon: 77.551500 }, distance: '4.0 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'Metro Cash & Carry', destination: 'METRO Wholesale Kanakapura Road, Doddakallasandra, Bengaluru, Karnataka 560062', coordinates: { lat: 12.889500, lon: 77.552500 }, distance: '4.5 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'Delhi Public School Bangalore South', destination: 'Delhi Public School Bangalore South, Kanakapura Road, Bengaluru, Karnataka 560062', coordinates: { lat: 12.876500, lon: 77.555500 }, distance: '4.8 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Sri Sri Ravishankar Vidya Mandir', destination: 'Sri Sri Ravishankar Vidya Mandir, Art of Living International Center, Kanakapura Road, Bengaluru, Karnataka 560082', coordinates: { lat: 12.842500, lon: 77.502500 }, distance: '5.5 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Forum South Bangalore Mall', destination: 'Forum South Bangalore Mall, Konanakunte Cross, Kanakapura Road, Bengaluru, Karnataka 560062', coordinates: { lat: 12.886500, lon: 77.554500 }, distance: '6.2 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'JP Nagar 6th Phase', destination: 'JP Nagar 6th Phase, Sarakki Lake, Bengaluru, Karnataka 560078', coordinates: { lat: 12.905500, lon: 77.581500 }, distance: '8.5 Kms', icon: 'fa-solid fa-location-dot' }
+    ]
+  }
 ];
+
+propertiesData.forEach(property => {
+    property.overview = property.overview || createPropertyOverview(property);
+    property.highlights = property.highlights || createPropertyHighlights(property);
+});
+

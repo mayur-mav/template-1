@@ -46,10 +46,12 @@ export const faqData = [
 ];
 
 const overviewSearchTerms = [
-  'Pride developers in Bangalore',
-  'Pride construction in Bangalore',
-  'Pride Group builders',
-  'Pride property developers'
+  'Pride developers Bangalore',
+  'Pride construction Bangalore',
+  'Pride group builders',
+  'Pride builders and developers',
+  'Pride property developers',
+  'Pride developers'
 ];
 
 function formatOverviewList(values) {
@@ -60,15 +62,34 @@ function formatOverviewList(values) {
 export function createPropertyOverview(property) {
   const projectIndex = propertiesData.findIndex(({ id }) => id === property.id);
   const isPlotDevelopment = /plot/i.test(property.bhk);
-  const searchTerm = isPlotDevelopment ? 'Pride Group plots in Bangalore' : overviewSearchTerms[projectIndex % overviewSearchTerms.length];
+  const searchTerm = isPlotDevelopment
+    ? 'Pride group plots in Bangalore'
+    : overviewSearchTerms[(projectIndex >= 0 ? projectIndex : 0) % overviewSearchTerms.length];
   const floorPlans = formatOverviewList((property.floorPlans || []).slice(0, 3).map(({ bhk }) => bhk));
   const amenities = formatOverviewList((property.amenities || []).slice(0, 4).map(({ name }) => name));
   const nearbyPlaces = formatOverviewList((property.connectivity || []).slice(0, 3).map(({ label, distance }) => `${label} (${distance})`));
 
   return [
-      `${property.description} Buyers looking at ${searchTerm} can explore ${property.name} in ${property.shortAddress}, including the project’s location, status, and listed home or plot configurations.`,
-      `${property.name} is listed with ${property.bhk} across ${property.area}, with ${property.statusText.toLowerCase()} status and possession shown as ${property.possession}. Listed layout options include ${floorPlans || property.bhk}. Community features include ${amenities || 'the listed project amenities'}, with nearby destinations including ${nearbyPlaces || property.shortAddress}. Review Pride project layouts, amenities, and connectivity when comparing properties in Bengaluru.${property.rera ? ` RERA registration number: ${property.rera.replace(/\.$/, '')}.` : ''}`
+      `${property.description} Buyers researching ${searchTerm} can explore Pride Group developments in ${property.shortAddress}, with project status, location, and configuration details available to compare.`,
+      `${property.name} is listed with ${property.bhk} across ${property.area}, with ${property.statusText.toLowerCase()} status and possession shown as ${property.possession}. Listed layout options include ${floorPlans || property.bhk}. Residents can explore amenities such as ${amenities || "the community's listed lifestyle facilities"}, with nearby destinations including ${nearbyPlaces || property.shortAddress}. Review Pride Group floor plans, amenities, and connectivity when comparing homes and plots in Bengaluru.${property.rera ? ` RERA registration number: ${property.rera.replace(/\.$/, '')}.` : ''}`
   ];
+}
+
+export function createPropertyHighlights(property) {
+  const list = [];
+  if (property.area) list.push(`Expansive ${property.area} development with landscaped open spaces`);
+  if (property.bhk) list.push(`Thoughtfully planned ${property.bhk} layouts designed for optimal ventilation`);
+  if (property.possession) list.push(`${property.statusText || 'Possession'} timeline: ${property.possession}`);
+  if (property.amenities && property.amenities.length > 0) {
+      const topAmenities = property.amenities.slice(0, 3).map(a => a.name).join(', ');
+      list.push(`Premium lifestyle amenities including ${topAmenities}`);
+  }
+  if (property.connectivity && property.connectivity.length > 0) {
+      const topPlace = property.connectivity[0];
+      list.push(`Prime connectivity: close to ${topPlace.label || topPlace.destination || 'key hubs'}`);
+  }
+  if (property.rera) list.push(`RERA Registered: ${property.rera}`);
+  return list;
 }
 
 export const propertiesData = [
@@ -77,6 +98,8 @@ export const propertiesData = [
     name: 'Pride Green Avenue',
     shortAddress: 'Jigani, Bengaluru',
     location: 'Jigani, off Bannerghatta Road, South Bengaluru, Anekal Taluk, Bengaluru, Karnataka 560105',
+    coordinates: { lat: 12.784500, lon: 77.639000 },
+    mapsQuery: 'Pride Green Avenue, Jigani, Bengaluru',
     category: 'NEW',
     statusText: 'New Launch',
     badgeClass: 'badge-new',
@@ -87,6 +110,14 @@ export const propertiesData = [
     rera: 'PRM/KA/RERA/1251/308/PR/250725/007951',
     description: 'Pride Green Avenue (also known as Pride Green Avenues) is a premium 15-acre BMRDA and RERA-approved plotted development by Pride Group. Located in Jigani, off Bannerghatta Road in South Bengaluru, the community comprises 266 Vastu-compliant plots with tree-lined avenues, 5 landscaped parks, wide internal concrete roads, and a luxury clubhouse.',
     thumbnail: prideImage('pride-group/pride-green-avenue/thumbnail.webp'),
+    highlights: [
+        '15 Acres BMRDA & RERA Approved Enclave',
+        '266 Vastu-Compliant Villa Plots',
+        '5 Themed Landscaped Parks & Tree-Lined Avenues',
+        'Luxury Clubhouse with Modern Gymnasium',
+        '5 mins from Bannerghatta Main Road',
+        'Quick 20-min Drive to Electronic City'
+    ],
     images: [
         prideImage('pride-group/pride-green-avenue/gallery/exterior-view.webp'),
         prideImage('pride-group/pride-green-avenue/gallery/interior-view.webp'),
@@ -109,11 +140,14 @@ export const propertiesData = [
         { name: '24/7 Security & CCTV', icon: 'fa-solid fa-shield-halved' }
     ],
     connectivity: [
-        { label: 'Highways & Corridors', distance: 'Bannerghatta Main Road (~5 mins / 2.0 km) | NICE Road (~15 mins)', icon: 'fa-solid fa-road' },
-        { label: 'Business Hubs & Tech Parks', distance: 'Jigani Industrial Area (~10 mins) | Electronic City (~20 mins / 9.8 km) | Bommasandra Industrial Area (~15 mins)', icon: 'fa-solid fa-laptop-code' },
-        { label: 'Railway & Metro Station', distance: 'Bommasandra / Electronic City Metro Station (~12.0 km) | City Railway Station (22.1 km)', icon: 'fa-solid fa-train' },
-        { label: 'Parks & Attractions', distance: 'Bannerghatta National Park (~15 mins / 5.0 km)', icon: 'fa-solid fa-tree' },
-        { label: 'Shopping & Malls', distance: 'Royal Meenakshi Mall (~20 mins)', icon: 'fa-solid fa-cart-shopping' }
+        { label: 'Bannerghatta Main Road', destination: 'Bannerghatta Main Road, Jigani, Bengaluru, Karnataka', coordinates: { lat: 12.793200, lon: 77.632100 }, distance: '2.0 Kms', icon: 'fa-solid fa-road' },
+        { label: 'Jigani Industrial Area', destination: 'Jigani Industrial Area, Bengaluru, Karnataka 560105', coordinates: { lat: 12.784500, lon: 77.643200 }, distance: '3.0 Kms', icon: 'fa-solid fa-industry' },
+        { label: 'Bannerghatta National Park', destination: 'Bannerghatta Biological Park, Bannerghatta Main Road, Bengaluru, Karnataka 560083', coordinates: { lat: 12.800500, lon: 77.577200 }, distance: '5.0 Kms', icon: 'fa-solid fa-tree' },
+        { label: 'NICE Road Expressway', destination: 'NICE Ring Road Junction, Bannerghatta Road, Bengaluru, Karnataka', coordinates: { lat: 12.836400, lon: 77.588600 }, distance: '7.5 Kms', icon: 'fa-solid fa-highway' },
+        { label: 'Bommasandra Industrial Area', destination: 'Bommasandra Industrial Area, Hosur Road, Bengaluru, Karnataka', coordinates: { lat: 12.816500, lon: 77.685200 }, distance: '8.5 Kms', icon: 'fa-solid fa-industry' },
+        { label: 'Electronic City Phase 1', destination: 'Electronic City Phase 1, Hosur Road, Bengaluru, Karnataka', coordinates: { lat: 12.845200, lon: 77.660200 }, distance: '9.8 Kms', icon: 'fa-solid fa-laptop-code' },
+        { label: 'Bommasandra Metro Station', destination: 'Bommasandra Metro Station (Yellow Line), Hosur Road, Bengaluru, Karnataka', coordinates: { lat: 12.818200, lon: 77.689500 }, distance: '12.0 Kms', icon: 'fa-solid fa-train-subway' },
+        { label: 'Royal Meenakshi Mall', destination: 'Royal Meenakshi Mall, Bannerghatta Main Road, Hulimavu, Bengaluru, Karnataka 560076', coordinates: { lat: 12.875500, lon: 77.595800 }, distance: '14.5 Kms', icon: 'fa-solid fa-cart-shopping' }
     ]
   },
   {
@@ -121,6 +155,8 @@ export const propertiesData = [
     name: 'Pride Euphora',
     shortAddress: 'KR Puram, Bengaluru',
     location: 'Old Madras Road, Bhattarahalli Signal, Hosabasavanapura, KR Puram, Bengaluru, Karnataka 560049',
+    coordinates: { lat: 13.011800, lon: 77.712500 },
+    mapsQuery: 'Pride Euphora, Old Madras Road, KR Puram, Bengaluru',
     category: 'ONGOING',
     statusText: 'Ongoing',
     badgeClass: 'badge-ongoing',
@@ -131,6 +167,14 @@ export const propertiesData = [
     rera: 'PRM/KA/RERA/1251/446/PR/080824/006965',
     description: 'Pride Euphora is a luxury high-rise residential development by the Pride Group, strategically located right on Old Madras Road in KR Puram, East Bengaluru. Spread across 2.5 acres with 80% green open space, the project features 3 towers rising up to 18 floors, offering meticulously designed 3 & 4 BHK residences with modern architectural design, custom finishes, and over 30 lifestyle amenities.',
     thumbnail: prideImage('pride-group/pride-euphora/thumbnail.webp'),
+    highlights: [
+        'Luxury 18-Storey High-Rise on Old Madras Road',
+        '80% Open Green Landscaped Spaces',
+        'Over 30 Curated Lifestyle Amenities',
+        'Double-Height Grand Entrance Lobby',
+        'Close to KR Puram & Hoodi Metro Stations',
+        '15 mins to ITPL Whitefield & RMZ Infinity'
+    ],
     images: [
         prideImage('pride-group/pride-euphora/gallery/exterior.webp'),
         prideImage('pride-group/pride-euphora/gallery/interior-view.webp'),
@@ -138,26 +182,28 @@ export const propertiesData = [
     ],
     floorPlans: [
         { bhk: '3 BHK', sqft: '1,131 sq.ft.', price: '₹1.99 Crore Onwards', image: prideImage('pride-group/pride-euphora/floor-plans/3bhk-floor-plan.webp') },
-        { bhk: '4 BHK', sqft: '2,982 sq.ft.', price: '₹3.75 Crore Onwards', image: prideImage('pride-group/pride-euphora/floor-plans/4bhk-floor-plan.webp') }
+        { bhk: '4 BHK', sqft: '1,862 sq.ft.', price: '₹3.27 Crore Onwards', image: prideImage('pride-group/pride-euphora/floor-plans/4bhk-floor-plan.webp') }
     ],
     amenities: [
-        { name: 'Grand Clubhouse', icon: 'fa-solid fa-building' },
-        { name: 'Swimming Pool', icon: 'fa-solid fa-water-ladder' },
-        { name: 'Gymnasium', icon: 'fa-solid fa-dumbbell' },
-        { name: 'Yoga & Meditation Area', icon: 'fa-solid fa-spa' },
-        { name: 'Amphitheatre', icon: 'fa-solid fa-masks-theater' },
-        { name: 'Cricket Pitch', icon: 'fa-solid fa-cricket-bat-ball' },
-        { name: 'Children\'s Play Area / Tot Lot', icon: 'fa-solid fa-child-reaching' },
-        { name: 'Pet Park', icon: 'fa-solid fa-dog' },
-        { name: 'Barbecue Area', icon: 'fa-solid fa-fire' }
+        { name: 'Swimming Pool', icon: 'fa-solid fa-person-swimming' },
+        { name: 'Clubhouse', icon: 'fa-solid fa-building' },
+        { name: 'Fitness Centre / Gym', icon: 'fa-solid fa-dumbbell' },
+        { name: 'Children\'s Play Area', icon: 'fa-solid fa-children' },
+        { name: 'Jogging Track', icon: 'fa-solid fa-person-running' },
+        { name: 'Landscaped Gardens', icon: 'fa-solid fa-leaf' },
+        { name: 'Multipurpose Court', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+        { name: 'Yoga & Aerobics Deck', icon: 'fa-solid fa-spa' }
     ],
     connectivity: [
-        { label: 'Hospitals', distance: 'Sathya Sai Orthopaedic Hospital (0.5 km) | Vital Hospital (0.8 km) | Hope Hospital (1.8 km) | Vydehi Hospital (8.3 km)', icon: 'fa-solid fa-hospital' },
-        { label: 'Schools', distance: 'Shastry Memorial School (1.0 km) | Cambridge International School (1.8 km) | SEA International School (2.4 km)', icon: 'fa-solid fa-school' },
-        { label: 'Colleges', distance: 'Cambridge PU College (1.4 km) | Garden City University (2.0 km) | Kristu Jayanti College (2.7 km)', icon: 'fa-solid fa-graduation-cap' },
-        { label: 'Business Hubs & Tech Parks', distance: 'Prestige Shantiniketan (5.9 km) | RMZ Infinity (6.5 km) | International Tech Park (ITPB) (7.2 km) | Bagmane Tech Park (10.3 km)', icon: 'fa-solid fa-laptop-code' },
-        { label: 'Metro & Railway Station', distance: 'KR Puram Metro Station (4.7 km) | Hoodi Metro Station (5.3 km) | KR Puram Railway Station (7.4 km)', icon: 'fa-solid fa-train' },
-        { label: 'Shopping & Malls', distance: 'Phoenix Marketcity (7.2 km) | Park Square Mall (6.3 km) | Gopalan Signature Mall (6.3 km)', icon: 'fa-solid fa-cart-shopping' }
+        { label: 'Sathya Sai Orthopaedic Hospital', destination: 'Sri Sathya Sai Orthopaedic Hospital, Old Madras Road, KR Puram, Bengaluru, Karnataka 560049', coordinates: { lat: 13.012500, lon: 77.708500 }, distance: '500 Meters', icon: 'fa-solid fa-hospital' },
+        { label: 'Cambridge International School', destination: 'Cambridge International School, KR Puram, Bengaluru, Karnataka 560036', coordinates: { lat: 13.008500, lon: 77.701500 }, distance: '1.8 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Garden City University', destination: 'Garden City University, Old Madras Road, Bengaluru, Karnataka 560049', coordinates: { lat: 13.015500, lon: 77.726500 }, distance: '2.0 Kms', icon: 'fa-solid fa-graduation-cap' },
+        { label: 'KR Puram Metro Station', destination: 'KR Puram Metro Station (Blue & Purple Line), Old Madras Road, Bengaluru, Karnataka', coordinates: { lat: 12.998200, lon: 77.676500 }, distance: '4.7 Kms', icon: 'fa-solid fa-train-subway' },
+        { label: 'Hoodi Metro Station', destination: 'Hoodi Metro Station (Purple Line), Whitefield Main Road, Bengaluru, Karnataka', coordinates: { lat: 12.991500, lon: 77.716200 }, distance: '5.3 Kms', icon: 'fa-solid fa-train-subway' },
+        { label: 'Prestige Shantiniketan', destination: 'Prestige Shantiniketan, Whitefield Main Road, Bengaluru, Karnataka 560048', coordinates: { lat: 12.989200, lon: 77.728500 }, distance: '5.9 Kms', icon: 'fa-solid fa-building' },
+        { label: 'RMZ Infinity', destination: 'RMZ Infinity, Old Madras Road, Bennigana Halli, Bengaluru, Karnataka 560016', coordinates: { lat: 12.992500, lon: 77.662000 }, distance: '6.5 Kms', icon: 'fa-solid fa-laptop-code' },
+        { label: 'ITPB Whitefield', destination: 'International Tech Park Bangalore (ITPB), Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.986500, lon: 77.737500 }, distance: '7.2 Kms', icon: 'fa-solid fa-building-columns' },
+        { label: 'Phoenix Marketcity', destination: 'Phoenix Marketcity, Whitefield Main Road, Mahadevapura, Bengaluru, Karnataka 560048', coordinates: { lat: 12.995800, lon: 77.696500 }, distance: '7.2 Kms', icon: 'fa-solid fa-cart-shopping' }
     ]
   },
   {
@@ -165,6 +211,8 @@ export const propertiesData = [
     name: 'Pride Crosswinds Villas',
     shortAddress: 'Bukkasagara, Bengaluru',
     location: 'Pride Vatika Main Road, Bukkasagara Village, Jigani Hobli, Bannerghatta Road, Bengaluru, Karnataka 560083',
+    coordinates: { lat: 12.788500, lon: 77.585500 },
+    mapsQuery: 'Pride Crosswinds Villas, Bannerghatta Road, Bengaluru',
     category: 'READY',
     statusText: 'Ready to Move',
     badgeClass: 'badge-ready',
@@ -173,33 +221,45 @@ export const propertiesData = [
     area: '25 Acres',
     possession: 'Ready to Move',
     rera: 'PRM/KA/RERA/1251/308/PR/020622/004954',
-    description: 'Pride Crosswinds is a 25-acre luxury villa and plotted development by Pride Group, located off Bannerghatta Road in Bukkasagara Village, Jigani. Set against an amphitheatre-style natural terrain with valley views, the project offers spacious 3 & 4 BHK independent villas designed with modern architectural styles, private gardens, and high-end security.',
-    thumbnail: prideImage('pride-group/pride-crosswind-villas/thumbnail.webp'),
+    description: 'Pride Crosswinds Villas is an exclusive 25-acre gated villa community nestled adjacent to the lush greenery of the Bannerghatta National Park in South Bengaluru. The enclave features independent luxury villas set within pristine natural landscapes, designed with private gardens, expansive living rooms with double-height ceilings, premium imported fittings, and a sprawling clubhouse with sports and wellness facilities.',
+    thumbnail: prideImage('pride-group/pride-crosswinds-villas/thumbnail.webp'),
+    highlights: [
+        'Expansive 25-Acre Gated Villa Community',
+        'Exclusive 3 & 4 BHK Independent Luxury Villas',
+        'Private Landscaped Gardens & Scenic Open Views',
+        'World-Class Clubhouse & Infinity Swimming Pool',
+        'Adjacent to Bannerghatta National Park Greens',
+        '15 mins via NICE Road Expressway'
+    ],
     images: [
-        prideImage('pride-group/pride-crosswind-villas/gallery/exterior-view.webp'),
-        prideImage('pride-group/pride-crosswind-villas/gallery/interior-view.webp'),
-        prideImage('pride-group/pride-crosswind-villas/gallery/amenities.webp')
+        prideImage('pride-group/pride-crosswinds-villas/gallery/exterior-view.webp'),
+        prideImage('pride-group/pride-crosswinds-villas/gallery/interior-view.webp'),
+        prideImage('pride-group/pride-crosswinds-villas/gallery/amenities.webp')
     ],
     floorPlans: [
-        { bhk: '4 BHK Radiant Villa', sqft: '3,750 sq.ft.', price: '₹3.07 Crore Onwards', image: prideImage('pride-group/pride-crosswind-villas/floor-plans/4bhk-floor-plan.webp') }
+        { bhk: '3 BHK Villa', sqft: '2,912 sq.ft.', price: '₹3.06 Crore Onwards', image: prideImage('pride-group/pride-crosswinds-villas/floor-plans/3bhk-villa-floor-plan.webp') },
+        { bhk: '4 BHK Villa', sqft: '4,460 sq.ft.', price: '₹4.68 Crore Onwards', image: prideImage('pride-group/pride-crosswinds-villas/floor-plans/4bhk-villa-floor-plan.webp') }
     ],
     amenities: [
-        { name: 'Grand Clubhouse', icon: 'fa-solid fa-building' },
-        { name: 'Swimming Pool', icon: 'fa-solid fa-water-ladder' },
+        { name: 'Clubhouse', icon: 'fa-solid fa-building' },
+        { name: 'Swimming Pool', icon: 'fa-solid fa-person-swimming' },
         { name: 'Gymnasium', icon: 'fa-solid fa-dumbbell' },
-        { name: 'Golf Greens Area', icon: 'fa-solid fa-golf-ball-tee' },
-        { name: 'Barbecue Area', icon: 'fa-solid fa-fire' },
-        { name: 'Amphitheatre', icon: 'fa-solid fa-masks-theater' },
-        { name: 'Tennis Court & Sports Courts', icon: 'fa-solid fa-table-tennis-paddle-ball' },
-        { name: 'Children\'s Play Area', icon: 'fa-solid fa-child-reaching' },
-        { name: 'Sensory & Reflexology Garden', icon: 'fa-solid fa-leaf' }
+        { name: 'Tennis Court', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+        { name: 'Landscaped Courtyards', icon: 'fa-solid fa-leaf' },
+        { name: 'Squash Court', icon: 'fa-solid fa-baseball-bat-ball' },
+        { name: 'Spa & Steam Room', icon: 'fa-solid fa-spa' },
+        { name: '24/7 Gated Security', icon: 'fa-solid fa-shield-halved' }
     ],
     connectivity: [
-        { label: 'Highways & Corridors', distance: 'Bannerghatta Main Road (~2.0 km) | NICE Road Expressway (~15 mins)', icon: 'fa-solid fa-road' },
-        { label: 'Business Hubs & Tech Parks', distance: 'Jigani Industrial Area (~3.0 km) | Electronic City (~12.0 km) | Bommasandra Industrial Area (~10.0 km)', icon: 'fa-solid fa-laptop-code' },
-        { label: 'Parks & Attractions', distance: 'Bannerghatta National Park (~6.0 km) | Shrutiram Gurukulam (0.9 km)', icon: 'fa-solid fa-tree' },
-        { label: 'Hospitals', distance: 'Narayana Health City (~11.0 km) | Vijayashree Hospital (8.0 km)', icon: 'fa-solid fa-hospital' },
-        { label: 'Shopping & Malls', distance: 'Royal Meenakshi Mall (~16.0 km) | Vega City Mall (~18.0 km)', icon: 'fa-solid fa-cart-shopping' }
+        { label: 'Shrutiram Gurukulam', destination: 'Shrutiram Gurukulam, Bannerghatta Road, Bukkasagara, Bengaluru, Karnataka 560083', coordinates: { lat: 12.791500, lon: 77.587500 }, distance: '900 Meters', icon: 'fa-solid fa-school' },
+        { label: 'Bannerghatta Main Road', destination: 'Bannerghatta Main Road, Koppa Gate, Bengaluru, Karnataka 560083', coordinates: { lat: 12.801500, lon: 77.592500 }, distance: '2.0 Kms', icon: 'fa-solid fa-road' },
+        { label: 'Jigani Industrial Area', destination: 'Jigani Industrial Area, Bengaluru, Karnataka 560105', coordinates: { lat: 12.784500, lon: 77.643200 }, distance: '3.0 Kms', icon: 'fa-solid fa-industry' },
+        { label: 'Bannerghatta National Park', destination: 'Bannerghatta Biological Park, Bannerghatta Road, Bengaluru, Karnataka 560083', coordinates: { lat: 12.800500, lon: 77.577200 }, distance: '6.0 Kms', icon: 'fa-solid fa-tree' },
+        { label: 'NICE Road Expressway', destination: 'NICE Ring Road Toll Plaza, Bannerghatta Road, Bengaluru, Karnataka', coordinates: { lat: 12.836400, lon: 77.588600 }, distance: '7.0 Kms', icon: 'fa-solid fa-highway' },
+        { label: 'Vijayashree Hospital', destination: 'Vijayashree Multispeciality Hospital, Jigani, Bengaluru, Karnataka 560105', coordinates: { lat: 12.781500, lon: 77.641500 }, distance: '8.0 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'Bommasandra Industrial Area', destination: 'Bommasandra Industrial Area, Hosur Road, Bengaluru, Karnataka', coordinates: { lat: 12.816500, lon: 77.685200 }, distance: '10.0 Kms', icon: 'fa-solid fa-industry' },
+        { label: 'Narayana Health City', destination: 'Narayana Health City, Bommasandra Industrial Area, Hosur Road, Bengaluru, Karnataka 560099', coordinates: { lat: 12.821500, lon: 77.692500 }, distance: '11.0 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'Electronic City Phase 1', destination: 'Electronic City Phase 1, Hosur Road, Bengaluru, Karnataka 560100', coordinates: { lat: 12.845200, lon: 77.660200 }, distance: '12.0 Kms', icon: 'fa-solid fa-laptop-code' }
     ]
   },
   {
@@ -207,6 +267,8 @@ export const propertiesData = [
     name: 'Pride Vatika Phase 2',
     shortAddress: 'Koppa Gate, Bengaluru',
     location: 'Off Bannerghatta - Jigani Road, Bukkasagara / Koppa Gate, Bengaluru, Karnataka 560083',
+    coordinates: { lat: 12.802000, lon: 77.601500 },
+    mapsQuery: 'Pride Vatika Phase 2, Koppa Gate, Bengaluru',
     category: 'READY',
     statusText: 'Ready to Move',
     badgeClass: 'badge-ready',
@@ -215,31 +277,45 @@ export const propertiesData = [
     area: '21 Acres',
     possession: 'Ready to Move',
     rera: 'PRM/KA/RERA/1251/308/PR/020822/005119',
-    description: 'Pride Vatika Phase 2 is an exclusive BMRDA-approved 21-acre residential plotted development by Pride Group located off Bannerghatta - Jigani Road in South Bengaluru. Set within a thriving 200+ acre township, the project offers 293 villa plots designed with wide concrete roads, landscaped gardens, underground utilities, and full membership access to The Pride Club.',
+    description: 'Pride Vatika Phase 2 is an expansive 21-acre gated villa plotted development located strategically off the Bannerghatta-Jigani Road near Koppa Gate in South Bengaluru. The enclave provides ready-to-construct plots with underground utilities, paved wide tree-lined avenues, children’s play parks, and a modern lifestyle clubhouse.',
     thumbnail: prideImage('pride-group/pride-vatika-phase-2/thumbnail.webp'),
+    highlights: [
+        '21 Acres Master-Planned Plotted Development',
+        'Ready to Move BDA / BMRDA Approved Plots',
+        'Underground Cabling, Wide Roads & Streetlights',
+        'Children Play Zones & Sports Courts',
+        'Convenient Access to Toyota & Jigani Industrial Hub',
+        'Close to Narayana Health City & Reputed Schools'
+    ],
     images: [
         prideImage('pride-group/pride-vatika-phase-2/gallery/exterior-view.webp'),
         prideImage('pride-group/pride-vatika-phase-2/gallery/interior-view.webp'),
         prideImage('pride-group/pride-vatika-phase-2/gallery/amenities.webp')
     ],
     floorPlans: [
-        { bhk: '30 x 50 Plot', sqft: '1,200 sq.ft.', price: '₹82.5 Lakhs Onwards', image: prideImage('pride-group/pride-vatika-phase-2/floor-plans/30x50-plot-layout.webp') },
-        { bhk: '40 x 60 Plot', sqft: '1,500 sq.ft.', price: '₹1.32 Crore Onwards', image: prideImage('pride-group/pride-vatika-phase-2/floor-plans/40x60-plot-layout.webp') }
+        { bhk: '30 x 40 Plot', sqft: '1,200 sq.ft.', price: '₹82.5 Lakhs Onwards', image: prideImage('pride-group/pride-vatika-phase-2/floor-plans/30x40-plot-floor-plan.webp') },
+        { bhk: '30 x 50 Plot', sqft: '1,500 sq.ft.', price: '₹1.03 Crore Onwards', image: prideImage('pride-group/pride-vatika-phase-2/floor-plans/30x50-plot-floor-plan.webp') },
+        { bhk: '40 x 60 Plot', sqft: '2,400 sq.ft.', price: '₹1.65 Crore Onwards', image: prideImage('pride-group/pride-vatika-phase-2/floor-plans/40x60-plot-floor-plan.webp') }
     ],
     amenities: [
-        { name: 'The Pride Club Access', icon: 'fa-solid fa-building' },
-        { name: 'Landscaped Gardens & Open Green Spaces', icon: 'fa-solid fa-leaf' },
-        { name: 'Avenue Tree Plantation', icon: 'fa-solid fa-tree' },
-        { name: 'Pedestrian Pathways with Paver Blocks', icon: 'fa-solid fa-person-walking' },
-        { name: 'Wide Concrete Roads', icon: 'fa-solid fa-road' },
-        { name: 'Underground Drainage & Water Lines', icon: 'fa-solid fa-faucet-drip' },
-        { name: '24/7 Security & Designer Compound Wall', icon: 'fa-solid fa-shield-halved' }
+        { name: 'Clubhouse', icon: 'fa-solid fa-building' },
+        { name: 'Swimming Pool', icon: 'fa-solid fa-person-swimming' },
+        { name: 'Gymnasium', icon: 'fa-solid fa-dumbbell' },
+        { name: 'Landscaped Parks', icon: 'fa-solid fa-leaf' },
+        { name: 'Jogging Track', icon: 'fa-solid fa-person-running' },
+        { name: 'Kids Play Area', icon: 'fa-solid fa-children' },
+        { name: 'Tennis & Badminton Court', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+        { name: '24/7 Security & CCTV', icon: 'fa-solid fa-shield-halved' }
     ],
     connectivity: [
-        { label: 'Corporate Hubs & Tech Parks', distance: 'Toyota Industries (4.9 km) | Otis Elevator (5.0 km) | Schneider Electric (5.7 km) | HCL Technologies (8.1 km) | Biocon (10.8 km) | Electronic City (12.4 km)', icon: 'fa-solid fa-laptop-code' },
-        { label: 'Schools', distance: 'Redbridge International Academy (4.5 km) | School of India (5.5 km) | Candor International School (6.3 km) | Ryan International School (6.6 km) | Christ Academy (6.8 km)', icon: 'fa-solid fa-school' },
-        { label: 'Hospitals', distance: 'Narayana Hrudayalaya Hospital (7.6 km) | Vijayashree Multi Speciality Hospital (11.1 km) | Apollo Hospital (15.4 km) | Fortis Hospital (15.6 km)', icon: 'fa-solid fa-hospital' },
-        { label: 'Shopping & Malls', distance: 'DMart Bannerghatta Road (10.6 km) | Royal Meenakshi Mall (13.1 km) | Vega City Mall (16.9 km)', icon: 'fa-solid fa-cart-shopping' }
+        { label: 'Redbridge International Academy', destination: 'Redbridge International Academy, S Bingipura, Hulimangala Post, Bengaluru, Karnataka 560105', coordinates: { lat: 12.812500, lon: 77.621500 }, distance: '4.5 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Toyota Industries Engine India', destination: 'Toyota Industries Engine India, Jigani Industrial Area, Bengaluru, Karnataka 560105', coordinates: { lat: 12.791500, lon: 77.638500 }, distance: '4.9 Kms', icon: 'fa-solid fa-industry' },
+        { label: 'Otis Elevator India', destination: 'Otis Elevator Company, Jigani Industrial Area, Bengaluru, Karnataka 560105', coordinates: { lat: 12.788500, lon: 77.645500 }, distance: '5.0 Kms', icon: 'fa-solid fa-industry' },
+        { label: 'Schneider Electric', destination: 'Schneider Electric, Jigani Industrial Area, Bengaluru, Karnataka 560105', coordinates: { lat: 12.784500, lon: 77.649500 }, distance: '5.7 Kms', icon: 'fa-solid fa-laptop-code' },
+        { label: 'Narayana Hrudayalaya Hospital', destination: 'Narayana Institute of Cardiac Sciences, Bommasandra, Bengaluru, Karnataka 560099', coordinates: { lat: 12.821500, lon: 77.692500 }, distance: '7.6 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'DMart Bannerghatta Road', destination: 'DMart Bannerghatta Road, Gottigere, Bengaluru, Karnataka 560083', coordinates: { lat: 12.859500, lon: 77.591500 }, distance: '10.6 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'Electronic City Phase 1', destination: 'Electronic City Phase 1, Hosur Road, Bengaluru, Karnataka 560100', coordinates: { lat: 12.845200, lon: 77.660200 }, distance: '12.4 Kms', icon: 'fa-solid fa-laptop-code' },
+        { label: 'Royal Meenakshi Mall', destination: 'Royal Meenakshi Mall, Bannerghatta Main Road, Hulimavu, Bengaluru, Karnataka 560076', coordinates: { lat: 12.875500, lon: 77.595800 }, distance: '13.1 Kms', icon: 'fa-solid fa-cart-shopping' }
     ]
   },
   {
@@ -247,6 +323,8 @@ export const propertiesData = [
     name: 'Pride Crosswinds Phase 2 (Villa Plots)',
     shortAddress: 'Bukkasagara, Bengaluru',
     location: 'Off Bannerghatta - Jigani Road, Near Koppa Gate, Bukkasagara Village, Anekal Taluk, Bengaluru, Karnataka 560083',
+    coordinates: { lat: 12.788500, lon: 77.585500 },
+    mapsQuery: 'Pride Crosswinds Phase 2, Bannerghatta Road, Bengaluru',
     category: 'READY',
     statusText: 'Ready to Move',
     badgeClass: 'badge-ready',
@@ -255,33 +333,44 @@ export const propertiesData = [
     area: '25.43 Acres',
     possession: 'Ready to Move',
     rera: 'PRM/KA/RERA/1251/308/PR/020622/004954',
-    description: 'Pride Crosswinds Phase 2 is an exclusive 25-acre amphitheatre-styled terraced plotted development by Pride Group located off Bannerghatta - Jigani Road in South Bengaluru. The project features 387 premium villa plots contoured across natural slopes to provide scenic valley views, complemented by wide concrete roads, underground utilities, and over 30 world-class amenities.',
-    thumbnail: prideImage('pride-group/pride-crosswinds-phase-2/thumbnail.webp'),
+    description: 'Pride Crosswinds Phase 2 (Villa Plots) is a premier 25.43-acre gated enclave of luxury villa plots situated right off Bannerghatta Road in South Bengaluru. Set against the serene backdrop of the Bannerghatta National Park, the project is planned with extensive landscaped parks, underground power cabling, a grand clubhouse, and sports recreation facilities.',
+    thumbnail: prideImage('pride-group/pride-crosswinds-villa-plots-phase-2/thumbnail.webp'),
+    highlights: [
+        '25.43 Acres Phase 2 Villa Plotted Enclave',
+        'Vastu-Compliant Ready-to-Construct Plots',
+        'Clubhouse with Swimming Pool & Sports Courts',
+        'Direct Access to Bannerghatta - Jigani Main Road',
+        'Proximity to NICE Expressway & Koppa Gate',
+        'Surrounded by Serene Greenery & Fresh Air'
+    ],
     images: [
-        prideImage('pride-group/pride-crosswinds-phase-2/gallery/exterior-view.webp'),
-        prideImage('pride-group/pride-crosswinds-phase-2/gallery/interior-view.webp'),
-        prideImage('pride-group/pride-crosswinds-phase-2/gallery/amenities.webp')
+        prideImage('pride-group/pride-crosswinds-villa-plots-phase-2/gallery/exterior-view.webp'),
+        prideImage('pride-group/pride-crosswinds-villa-plots-phase-2/gallery/interior-view.webp'),
+        prideImage('pride-group/pride-crosswinds-villa-plots-phase-2/gallery/amenities.webp')
     ],
     floorPlans: [
-        { bhk: '40 x 60 Plot', sqft: '2,400 sq.ft.', price: '₹1.32 Crore Onwards', image: prideImage('pride-group/pride-crosswinds-phase-2/floor-plans/40 x 60-plot-layout.webp') }
+        { bhk: '40 x 60 Plot', sqft: '2,400 sq.ft.', price: '₹1.32 Crore Onwards', image: prideImage('pride-group/pride-crosswinds-villa-plots-phase-2/floor-plans/40x60-plot-floor-plan.webp') },
+        { bhk: '50 x 80 Plot', sqft: '4,000 sq.ft.', price: '₹2.20 Crore Onwards', image: prideImage('pride-group/pride-crosswinds-villa-plots-phase-2/floor-plans/50x80-plot-floor-plan.webp') }
     ],
     amenities: [
-        { name: 'Grand Clubhouse', icon: 'fa-solid fa-building' },
-        { name: 'Swimming Pool & Steam Room', icon: 'fa-solid fa-water-ladder' },
-        { name: 'Gymnasium & Squash Court', icon: 'fa-solid fa-dumbbell' },
+        { name: 'Clubhouse', icon: 'fa-solid fa-building' },
+        { name: 'Swimming Pool', icon: 'fa-solid fa-person-swimming' },
+        { name: 'Gymnasium', icon: 'fa-solid fa-dumbbell' },
         { name: 'Tennis Court', icon: 'fa-solid fa-table-tennis-paddle-ball' },
-        { name: 'Cricket Practice Pitch', icon: 'fa-solid fa-cricket-bat-ball' },
-        { name: 'Amphitheatre', icon: 'fa-solid fa-masks-theater' },
-        { name: 'Sensory & Reflexology Garden', icon: 'fa-solid fa-leaf' },
-        { name: 'Children\'s Play Area', icon: 'fa-solid fa-child-reaching' },
-        { name: 'Wide Concrete Roads & Paver Pathways', icon: 'fa-solid fa-road' }
+        { name: 'Squash Court', icon: 'fa-solid fa-baseball-bat-ball' },
+        { name: 'Landscaped Parks', icon: 'fa-solid fa-leaf' },
+        { name: 'Jogging Track', icon: 'fa-solid fa-person-running' },
+        { name: '24/7 Security & CCTV', icon: 'fa-solid fa-shield-halved' }
     ],
     connectivity: [
-        { label: 'Highways & Corridors', distance: 'Bannerghatta Main Road (~2.0 km / 5 mins) | Koppa Gate (~2.0 km) | NICE Road Expressway (~15 mins)', icon: 'fa-solid fa-road' },
-        { label: 'Business Hubs & Tech Parks', distance: 'Jigani Industrial Area (~3.0 km) | Toyota Jigani | Electronic City (~12.0 km)', icon: 'fa-solid fa-laptop-code' },
-        { label: 'Schools', distance: 'Shrutiram Gurukulam (0.9 km) | Sarala Birla Academy | Candor International School', icon: 'fa-solid fa-school' },
-        { label: 'Hospitals', distance: 'S-VYASA Arogyadhama (2.7 km) | Vijayashree Hospital | Narayana Health City (~11.0 km)', icon: 'fa-solid fa-hospital' },
-        { label: 'Metro & Travel', distance: 'Silk Institute Metro Station | Electronic City Metro Station | Proposed Hosur Airport', icon: 'fa-solid fa-train' }
+        { label: 'Shrutiram Gurukulam', destination: 'Shrutiram Gurukulam, Bannerghatta Road, Bukkasagara, Bengaluru, Karnataka 560083', coordinates: { lat: 12.791500, lon: 77.587500 }, distance: '900 Meters', icon: 'fa-solid fa-school' },
+        { label: 'Bannerghatta Main Road', destination: 'Bannerghatta Main Road, Koppa Gate, Bengaluru, Karnataka 560083', coordinates: { lat: 12.801500, lon: 77.592500 }, distance: '2.0 Kms', icon: 'fa-solid fa-road' },
+        { label: 'S-VYASA Arogyadhama', destination: 'S-VYASA University & Arogyadhama, Prashanti Kuteeram, Bengaluru, Karnataka 560105', coordinates: { lat: 12.798500, lon: 77.612500 }, distance: '2.7 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'Jigani Industrial Area', destination: 'Jigani Industrial Area, Bengaluru, Karnataka 560105', coordinates: { lat: 12.784500, lon: 77.643200 }, distance: '3.0 Kms', icon: 'fa-solid fa-industry' },
+        { label: 'NICE Road Expressway', destination: 'NICE Ring Road Toll Plaza, Bannerghatta Road, Bengaluru, Karnataka', coordinates: { lat: 12.836400, lon: 77.588600 }, distance: '7.0 Kms', icon: 'fa-solid fa-highway' },
+        { label: 'Sarala Birla Academy', destination: 'Sarala Birla Academy, Bannerghatta Road, Bengaluru, Karnataka 560083', coordinates: { lat: 12.825500, lon: 77.581500 }, distance: '8.5 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Narayana Health City', destination: 'Narayana Health City, Bommasandra Industrial Area, Hosur Road, Bengaluru, Karnataka 560099', coordinates: { lat: 12.821500, lon: 77.692500 }, distance: '11.0 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'Electronic City Phase 1', destination: 'Electronic City Phase 1, Hosur Road, Bengaluru, Karnataka 560100', coordinates: { lat: 12.845200, lon: 77.660200 }, distance: '12.0 Kms', icon: 'fa-solid fa-laptop-code' }
     ]
   },
   {
@@ -289,6 +378,8 @@ export const propertiesData = [
     name: 'Pride Altius',
     shortAddress: 'Bagalakunte, Bengaluru',
     location: 'Tumkur Main Road, Bagalakunte, Near IKEA, West Bengaluru, Karnataka 560073',
+    coordinates: { lat: 13.047800, lon: 77.499500 },
+    mapsQuery: 'Pride Altius, Nagasandra, Bengaluru',
     category: 'READY',
     statusText: 'Ready to Move',
     badgeClass: 'badge-ready',
@@ -297,35 +388,52 @@ export const propertiesData = [
     area: '1.29 Acres',
     possession: 'June 2026',
     rera: 'PRM/KA/RERA/1251/309/PR/050723/006035',
-    description: 'Pride Altius is a high-rise luxury residential development by Pride Group located right on Tumkur Main Road in West Bengaluru. Spread across 1.29 acres, the project comprises 152 exclusive homes in a 2B+G+19 floor structure. Designed for modern urban living, the project offers well-ventilated 2, 2.5, and 3 BHK apartments with state-of-the-art amenities and prime connectivity to metro stations and commercial hubs.',
+    description: 'Pride Altius is a premium high-rise residential enclave developed by the Pride Group, located right on Tumkur Main Road in West Bengaluru. Positioned opposite IKEA and just 500 meters from the Nagasandra Metro Station, the tower offers stylish 2, 2.5 & 3 BHK residences with elevated sunset views, rooftop recreational facilities, and seamless access to Peenya, Yeshwanthpur, and the Outer Ring Road.',
     thumbnail: prideImage('pride-group/pride-altius/thumbnail.webp'),
+    highlights: [
+        'Contemporary High-Rise Tower on Tumkur Road',
+        '500m Walk to Nagasandra Metro Station',
+        'Directly Opposite IKEA Nagasandra',
+        'Rooftop Lifestyle Amenities & Sky Lounge',
+        'Quick Connectivity to Peenya Industrial Hub & WTC',
+        'Spacious 2, 2.5 & 3 BHK Layouts'
+    ],
     images: [
         prideImage('pride-group/pride-altius/gallery/exterior-view.webp'),
         prideImage('pride-group/pride-altius/gallery/interior-view.webp'),
         prideImage('pride-group/pride-altius/gallery/amenities.webp')
     ],
     floorPlans: [
-        { bhk: '2 BHK Apartment', sqft: '1,034 sq.ft.', price: '₹1.29 Crore Onwards', image: prideImage('pride-group/pride-altius/floor-plans/2bhk-apartment-floor-plans.webp') },
-        { bhk: '3 BHK Compact (3 BHK + 2T)', sqft: '1,414 - 1,445 sq.ft.', price: '₹1.74 Crore Onwards', image: prideImage('pride-group/pride-altius/floor-plans/3bhk-compact-floor-plans.webp') },
-        { bhk: '3 BHK Large (3 BHK + 3T)', sqft: '1,544 - 1,691 sq.ft.', price: '₹2.00 Crore Onwards', image: prideImage('pride-group/pride-altius/floor-plans/3bhk-large-floor-plans.webp') }
+        { bhk: '2 BHK', sqft: '1,014 sq.ft.', price: '₹1.74 Crore Onwards', image: prideImage('pride-group/pride-altius/floor-plans/2bhk-floor-plan.webp') },
+        { bhk: '2.5 BHK', sqft: '1,328 sq.ft.', price: '₹2.28 Crore Onwards', image: prideImage('pride-group/pride-altius/floor-plans/2.5bhk-floor-plan.webp') },
+        { bhk: '3 BHK', sqft: '1,607 sq.ft.', price: '₹2.76 Crore Onwards', image: prideImage('pride-group/pride-altius/floor-plans/3bhk-floor-plan.webp') }
     ],
     amenities: [
-        { name: 'Clubhouse', icon: 'fa-solid fa-building' },
-        { name: 'Swimming Pool', icon: 'fa-solid fa-water-ladder' },
+        { name: 'Sky Lounge & Rooftop Deck', icon: 'fa-solid fa-cloud' },
+        { name: 'Swimming Pool', icon: 'fa-solid fa-person-swimming' },
         { name: 'Gymnasium', icon: 'fa-solid fa-dumbbell' },
-        { name: 'Jogging Track', icon: 'fa-solid fa-person-running' },
-        { name: 'Children\'s Play Area', icon: 'fa-solid fa-child-reaching' },
-        { name: 'Workstations & Co-working Space', icon: 'fa-solid fa-laptop' },
-        { name: 'Meditation & Senior Citizen Park', icon: 'fa-solid fa-spa' },
-        { name: 'Multi Sports Court', icon: 'fa-solid fa-table-tennis-paddle-ball' },
-        { name: 'Party Lawn', icon: 'fa-solid fa-champagne-glasses' }
+        { name: 'Clubhouse', icon: 'fa-solid fa-building' },
+        { name: 'Children\'s Play Area', icon: 'fa-solid fa-children' },
+        { name: 'Indoor Games Room', icon: 'fa-solid fa-chess' },
+        { name: 'Multipurpose Hall', icon: 'fa-solid fa-hotel' },
+        { name: '24/7 Security & CCTV', icon: 'fa-solid fa-shield-halved' }
     ],
     connectivity: [
-        { label: 'Metro Station', distance: 'Nagasandra Metro Station (0.5 km) | Jindal Metro Station', icon: 'fa-solid fa-train' },
-        { label: 'Shopping & Malls', distance: 'IKEA Nagasandra (0.45 km) | Rockline Mall (3.0 km) | Vaishnavi Sapphire Mall (6.6 km) | Orion Mall (8.2 km)', icon: 'fa-solid fa-cart-shopping' },
-        { label: 'Hospitals', distance: 'Jindal NatureCure Institute (2.0 km) | Sapthagiri Hospital (3.5 km) | Sparsh Hospital (6.0 km) | People Tree Hospitals (6.0 km)', icon: 'fa-solid fa-hospital' },
-        { label: 'Schools & Colleges', distance: 'Vijayashree Public School (3.0 km) | Delhi Public School West (3.0 km) | National Institute of Design (5.0 km) | Indian Institute of Science (9.5 km)', icon: 'fa-solid fa-school' },
-        { label: 'Business Hubs & Tech Parks', distance: 'Peenya Industrial Area (6.0 km) | World Trade Center (8.5 km)', icon: 'fa-solid fa-laptop-code' }
+        { label: 'IKEA Nagasandra', destination: 'IKEA Nagasandra, Tumkur Road, Bengaluru, Karnataka 560073', coordinates: { lat: 13.046500, lon: 77.498500 }, distance: '450 Meters', icon: 'fa-solid fa-store' },
+        { label: 'Nagasandra Metro Station', destination: 'Nagasandra Metro Station (Green Line), Tumkur Road, Bengaluru, Karnataka 560073', coordinates: { lat: 13.048200, lon: 77.499800 }, distance: '500 Meters', icon: 'fa-solid fa-train-subway' },
+        { label: 'Jindal NatureCure Institute', destination: 'Jindal Naturecure Institute, Tumkur Road, Bengaluru, Karnataka 560073', coordinates: { lat: 13.041500, lon: 77.491500 }, distance: '2.0 Kms', icon: 'fa-solid fa-spa' },
+        { label: 'Rockline Mall', destination: 'Rockline Mall, Prashanth Nagar, Jalahalli West, Bengaluru, Karnataka 560057', coordinates: { lat: 13.042500, lon: 77.518500 }, distance: '3.0 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'Sapthagiri Hospital', destination: 'Sapthagiri Super Speciality Hospital, Hesaraghatta Main Road, Bengaluru, Karnataka 560090', coordinates: { lat: 13.062500, lon: 77.508500 }, distance: '3.5 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'Peenya Industrial Area', destination: 'Peenya Industrial Area, Bengaluru, Karnataka 560058', coordinates: { lat: 13.031500, lon: 77.521500 }, distance: '6.0 Kms', icon: 'fa-solid fa-industry' },
+        { label: 'Vaishnavi Sapphire Mall', destination: 'Vaishnavi Sapphire Centre, Tumkur Road, Yeshwanthpur, Bengaluru, Karnataka 560022', coordinates: { lat: 13.024500, lon: 77.545500 }, distance: '6.6 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'World Trade Center Bengaluru', destination: 'World Trade Center Bangalore, Brigade Gateway, Malleshwaram West, Bengaluru, Karnataka 560055', coordinates: { lat: 13.011500, lon: 77.555200 }, distance: '8.5 Kms', icon: 'fa-solid fa-building' },
+        { label: 'Orion Mall', destination: 'Orion Mall at Brigade Gateway, Dr Rajkumar Road, Rajajinagar, Bengaluru, Karnataka 560055', coordinates: { lat: 13.011200, lon: 77.555000 }, distance: '8.2 Kms', icon: 'fa-solid fa-cart-shopping' }
     ]
-  } 
+  }
 ];
+
+propertiesData.forEach(property => {
+    property.overview = property.overview || createPropertyOverview(property);
+    property.highlights = property.highlights || createPropertyHighlights(property);
+});
+

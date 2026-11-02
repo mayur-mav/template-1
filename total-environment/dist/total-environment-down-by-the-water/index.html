@@ -5,45 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Total Environment Down by the Water | Total Environment Bengaluru</title>
-
-    <!-- Meta Description, Canonical and Meta Keywords-->
     <meta name="description" content="Explore Total Environment Down by the Water by Total Environment. View location, configurations, prices, floor plans, amenities, and possession details.">
-    <link rel="preconnect" href="https://media.justflip.in">
-    <link rel="preload" as="image" href="https://media.justflip.in/builder-brand-pages/total-environment/banner.webp" fetchpriority="high">
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"></noscript>
-    <!-- Font Awesome Icons -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <meta property="og:title" content="Total Environment Down by the Water | Total Environment Bengaluru">
     <meta property="og:description" content="Explore Total Environment Down by the Water by Total Environment. View location, configurations, prices, floor plans, amenities, and possession details.">
     <meta property="og:type" content="website">
     <link rel="preload" as="image" href="https://media.justflip.in/builder-brand-pages/total-environment/banner.webp" fetchpriority="high">
 </head>
-<body data-property-route-loading="true" data-home-title="Total Environment Builders in Bangalore | Homes &amp; Projects" data-home-description="Explore Total Environment homes and projects in Bangalore, including residences in Hennur, Whitefield, Yelahanka, Jakkur and Devanahalli. View project details and plans." data-home-builder="Total Environment" data-builder="total-environment">
+<body data-property-route-loading="true" data-home-title="Total Environment Builders Bangalore | Homes, Villas &amp; Projects" data-home-description="Explore Total Environment homes, earth-sheltered villas, and luxury apartments in Bangalore. Compare projects, locations, floor plans, prices, and amenities." data-home-builder="Total Environment" data-builder="total-environment" data-home-builder="Total Environment">
 
-    <!-- 1. TOP CONTACT STRIP -->
-    <div class="top-ticker">
-        <div class="top-ticker-left">
-            <span class="rera-badge">RERA CERTIFIED</span>
-            <span>Total Environment</span>
-        </div>
-        <div class="top-ticker-right">
-            <a href="tel:+919876543210" class="top-ticker-link">
-                <i class="fa-solid fa-phone-volume"></i> +91 98765 43210
-            </a>
-            <a href="https://wa.me/919876543210" target="_blank" class="top-ticker-link top-whatsapp-link">
-                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-            </a>
-        </div>
-    </div>
-
-    <!-- 2. MAIN HEADER -->
+    <!-- MAIN HEADER -->
     <header class="main-header">
         <div class="logo-container" onclick="goToOverview()">
             <div class="logo-mark">TE</div>
@@ -52,25 +34,45 @@
                 <span class="brand-tagline">Homes shaped around how you live</span>
             </div>
         </div>
-        <ul class="nav-menu" id="primaryNavigation">
-            <li><a href="/" class="nav-link active" onclick="goToOverview(); return false;">Overview</a></li>
-            <li><a href="/residences" class="nav-link" onclick="goToResidences(); return false;">Residences</a></li>
-            <li><a href="/about" class="nav-link" onclick="goToAbout(); return false;">About Total Environment</a></li>
-            <li><a href="/faq" class="nav-link" onclick="goToFaq(); return false;">FAQ</a></li>
-            <li><a href="/contact" class="nav-link" onclick="goToContact(); return false;">Contact</a></li>
-            <li class="nav-visit-item">
-                <button class="btn-header-cta" onclick="goToSiteVisitForm()">
-                    <i class="fa-regular fa-calendar-check"></i> Schedule Visit
-                </button>
-            </li>
-        </ul>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <ul class="nav-menu" id="primaryNavigation">
+                <li><a href="/" class="nav-link active" onclick="goToOverview(); return false;">Overview</a></li>
+                <li><a href="/residences" class="nav-link" onclick="goToResidences(); return false;">Residences</a></li>
+                <li><a href="/about" class="nav-link" onclick="goToAbout(); return false;">About Total Environment</a></li>
+                <li><a href="/faq" class="nav-link" onclick="goToFaq(); return false;">FAQ</a></li>
+                <li><a href="/contact" class="nav-link" onclick="goToContact(); return false;">Contact</a></li>
+                <li class="mobile-menu-actions">
+                    <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="btn-header-wa" aria-label="Chat on WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                    <button class="btn-header-cta" onclick="goToSiteVisitForm()">
+                        <i class="fa-regular fa-calendar-check"></i> Schedule Visit
+                    </button>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="btn-header-wa" aria-label="Chat on WhatsApp">
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                <span>Chat on WhatsApp</span>
+            </a>
+            <button class="btn-header-cta" onclick="goToSiteVisitForm()">
+                <i class="fa-regular fa-calendar-check" aria-hidden="true"></i>
+                <span>Schedule Visit</span>
+            </button>
+        </div>
+
         <button class="mobile-menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="primaryNavigation" aria-expanded="false" onclick="toggleMobileMenu()">
             <i class="fa-solid fa-bars" aria-hidden="true"></i>
         </button>
     </header>
 
-    <!-- MAIN SPA CATALOG CONTAINER -->
-    <main id="catalog-view">
+    <!-- MAIN CONTENT LANDMARK (Wraps Catalog and Property Detail SPA Views) -->
+    <main id="main-content">
+        <!-- MAIN SPA CATALOG CONTAINER -->
+        <div id="catalog-view">
         <!-- 3. HERO & SIMPLE SEARCH SECTION -->
         <section class="hero-section" id="developer-hero">
             <img class="hero-banner-image" id="developer-hero-image" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async">
@@ -83,8 +85,8 @@
             <div class="search-container">
                 <div class="search-box-wrapper">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" id="searchInput" class="search-input" placeholder="Search by project name, location (e.g. Hinjewadi, NIBM), or BHK..." oninput="handleSearch()" onkeydown="if (event.key === 'Enter') { event.preventDefault(); submitSearch(); }">
-                    <button id="searchClearBtn" class="search-clear-btn" onclick="clearSearch()">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search by project name, location (e.g. Hinjewadi, NIBM), or BHK..." aria-label="Search by project name, location, or BHK" oninput="handleSearch()" onkeydown="if (event.key === 'Enter') { event.preventDefault(); submitSearch(); }">
+                    <button id="searchClearBtn" class="search-clear-btn" type="button" aria-label="Clear search" onclick="clearSearch()">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
@@ -177,13 +179,13 @@
                     <div>
                         <form onsubmit="handleFormSubmit(event)">
                             <div class="form-group">
-                                <input type="text" class="form-input" placeholder="Your Full Name" required>
+                                <input type="text" class="form-input" placeholder="Your Full Name" aria-label="Your Full Name" required>
                             </div>
                             <div class="form-group">
-                                <input type="tel" class="form-input" placeholder="Mobile Number (+91)" required>
+                                <input type="tel" class="form-input" placeholder="Mobile Number (+91)" aria-label="Mobile Number (+91)" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-input" placeholder="Email Address" required>
+                                <input type="email" class="form-input" placeholder="Email Address" aria-label="Email Address" required>
                             </div>
                             <div class="form-group">
                                 <div class="project-select" id="homeProjectSelect">
@@ -226,12 +228,12 @@
                 <span id="footer-builder-attribution"></span>
             </div>
         </footer>
-    </main>
+        </div>
 
-    <!-- 10. FULL PROPERTY DETAIL SPA VIEW (#FFFFFF Background) -->
-    <div id="property-detail-view" style="display:block">
-        <!-- Sticky Navigation Header for Details View -->
-        <div class="detail-sticky-bar">
+        <!-- 10. FULL PROPERTY DETAIL SPA VIEW (#FFFFFF Background) -->
+        <div id="property-detail-view" style="display:block">
+        <!-- Top Action Bar for Details View (Shown when scrolled to top) -->
+        <div class="detail-top-bar" id="detailTopBar">
             <button class="btn-back" onclick="showCatalogView()">
                 <i class="fa-solid fa-arrow-left"></i> Back to Residences
             </button>
@@ -240,15 +242,36 @@
             </button>
         </div>
 
+        <!-- Sticky Sub-Navigation Tabs Bar for Project Details -->
+        <nav class="detail-subnav-bar" id="detailSubnavBar" aria-label="Project sections navigation">
+            <div class="subnav-container">
+                <button type="button" class="subnav-arrow subnav-arrow-left" id="subnavArrowLeft" aria-label="Scroll tabs left">
+                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <div class="subnav-track" id="subnavTrack" role="tablist">
+                    <button type="button" class="subnav-tab active" role="tab" id="subnav-tab-overview" data-target="dt-overview-section" aria-selected="true" tabindex="0">About the Project</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-highlights" data-target="dt-project-highlights" aria-selected="false" tabindex="-1">Highlights</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-gallery" data-target="dt-project-gallery" aria-selected="false" tabindex="-1">Project Gallery</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-floorplans" data-target="dt-floorplans-section" aria-selected="false" tabindex="-1">Floor Plans</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-emi" data-target="dt-emi-calculator" aria-selected="false" tabindex="-1">Financial Estimator</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-amenities" data-target="dt-amenities-section" aria-selected="false" tabindex="-1">Amenities &amp; Specifications</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-connectivity" data-target="dt-connectivity-section" aria-selected="false" tabindex="-1">Location &amp; Connectivity</button>
+                    <button type="button" class="subnav-tab" role="tab" id="subnav-tab-comparison" data-target="dt-project-comparison" aria-selected="false" tabindex="-1">Compare Projects</button>
+                </div>
+                <button type="button" class="subnav-arrow subnav-arrow-right" id="subnavArrowRight" aria-label="Scroll tabs right">
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
+
         <div class="detail-hero-header">
             <div class="detail-title-wrap">
                 <div>
                     <div class="detail-name-line">
                         <h1 class="detail-title" id="dt-title">Total Environment Down by the Water</h1>
-                    <details class="rera-details" id="dt-rera-details" hidden>
-                        <summary><i class="fa-solid fa-circle-check" aria-hidden="true"></i> RERA Verified</summary>
-                        <div class="rera-number" id="dt-rera-value"></div>
-                    </details>
+                    <span class="rera-details" id="dt-rera-details" hidden>
+                        <i class="fa-solid fa-circle-check" aria-hidden="true"></i> RERA Verified
+                    </span>
                     </div>
                     <div class="detail-location-str" id="dt-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Agrahara, Jakkur, Yelahanka, Bengaluru, Karnataka 560064</div>
                 </div>
@@ -260,14 +283,14 @@
 
             <!-- 3 IMAGE SHOWCASE GRID -->
             <div class="image-gallery-grid">
-                <div class="gallery-item gallery-item-1" onclick="openLightbox(0)">
-                    <img id="dt-img-1" src="https://media.justflip.in/builder-brand-pages/total-environment/total-environment-down-by-the-water/gallery/exterior-view.webp" alt="Total Environment Down by the Water exterior in Bengaluru" loading="lazy" decoding="async">
+                <div class="gallery-item gallery-item-1">
+                    <img id="dt-img-1" src="https://media.justflip.in/builder-brand-pages/total-environment/down-by-the-water/gallery/exterior-view.webp" alt="Total Environment Down by the Water exterior in Bengaluru" loading="eager" fetchpriority="high" decoding="async">
                 </div>
-                <div class="gallery-item" onclick="openLightbox(1)">
-                    <img id="dt-img-2" src="https://media.justflip.in/builder-brand-pages/total-environment/total-environment-down-by-the-water/gallery/interior-view.webp" alt="Total Environment Down by the Water interior in Bengaluru" loading="lazy" decoding="async">
+                <div class="gallery-item">
+                    <img id="dt-img-2" src="https://media.justflip.in/builder-brand-pages/total-environment/down-by-the-water/gallery/interior-view.webp" alt="Total Environment Down by the Water interior in Bengaluru" loading="lazy" decoding="async">
                 </div>
-                <div class="gallery-item" onclick="openLightbox(2)">
-                    <img id="dt-img-3" src="https://media.justflip.in/builder-brand-pages/total-environment/total-environment-down-by-the-water/gallery/amenities.webp" alt="Total Environment Down by the Water amenities in Bengaluru" loading="lazy" decoding="async">
+                <div class="gallery-item">
+                    <img id="dt-img-3" src="https://media.justflip.in/builder-brand-pages/total-environment/down-by-the-water/gallery/amenities.webp" alt="Total Environment Down by the Water amenities in Bengaluru" loading="lazy" decoding="async">
                     <div class="gallery-overlay-btn"><i class="fa-solid fa-expand"></i> View Fullscreen</div>
                 </div>
             </div>
@@ -308,25 +331,71 @@
         <!-- DETAIL BODY LAYOUT WITH STICKY SIDEBAR -->
         <div class="detail-body-layout">
             <div class="detail-main-content">
-                <h3 class="section-block-title">Architectural Overview</h3>
-                <div id="dt-description"><p class="overview-text">Down by the Water is a 17.5-acre lakeside community by Total Environment, located adjacent to Jakkur Lake in North Bengaluru. The project offers luxury 3 and 4-bedroom apartments with private terrace gardens, custom cabinetry, and natural landscaping designed for calm lakeside living. Homebuyers researching Total Environment projects in Bangalore can explore this Total Environment residence in Jakkur, Bengaluru, with project location, status, and listed configurations to compare.</p>
-                    <p class="overview-text">Total Environment Down by the Water is listed with 3 &amp; 4 BHK Apartments across 17.5 Acres, with ongoing status and possession shown as June 2029. Listed floor plan options include 3 BHK + Study (I20), 3 BHK + Home Office (L21) and 3 BHK + Home Office + Study (I25). Residents can explore amenities such as Lakeside Boardwalk, Clubhouse with Green Roof, Open-to-Sky Swimming Pool and Indoor Heated Pool, with nearby destinations including Airport (Kempegowda International Airport Bengaluru (~21.6 km / ~30 min)), Business Hubs &amp; Tech Parks (Manyata Tech Park (5.9 km)) and Schools (Mallya Aditi International School (6.5 km) | Legacy School (7.5 km) | Bangalore International School (8.5 km)). Review Total Environment floor plans, amenities, and connectivity when comparing homes in Bengaluru. <span class="overview-rera"><strong>RERA Registration No.</strong> <span>PRM/KA/RERA/1251/472/PR/090824/006967</span></span></p></div>
+                <section class="detail-section-block" id="dt-overview-section" aria-labelledby="dt-overview-title">
+                    <h2 class="section-block-title" id="dt-overview-title">Architectural Overview</h2>
+                    <div id="dt-description"><p class="overview-text">Total Environment Down by the Water is a premium waterfront residential development located in Jakkur, North Bengaluru. Spread across 17.5 acres next to the serene Jakkur Lake, the project features thoughtfully crafted 3 &amp; 4 BHK apartments and penthouses with expansive private terrace gardens, handcrafted natural stone finishes, wire-cut brick architecture, and world-class resort amenities. Homebuyers researching Total Environment homes in Bangalore can explore this Total Environment residence in Jakkur, Bengaluru, with project location, status, and listed configurations to compare.</p>
+                    <p class="overview-text">Total Environment Down by the Water is listed with 3 &amp; 4 BHK Apartments across 17.5 Acres, with ongoing status and possession shown as June 2029. Listed floor plan options include 3 BHK (H20), 3 BHK (H20 Suite) and 4 BHK (H30). Residents can explore amenities such as Clubhouse, Heated Swimming Pool, Gymnasium and Private Terrace Gardens, with nearby destinations including Bhartiya Mall of Bengaluru (5.3 Kms), Manyata Tech Park (5.9 Kms) and Mallya Aditi International School (6.5 Kms). Review Total Environment floor plans, amenities, and connectivity when comparing homes in Bengaluru. <span class="overview-rera"><strong>RERA Registration No.</strong> <span>PRM/KA/RERA/1251/472/PR/090824/006967</span></span></p></div>
+                </section>
+
+                
+
+                <!-- PROJECT HIGHLIGHTS -->
+                <section class="project-highlights-section detail-section-block" id="dt-project-highlights" aria-labelledby="dt-highlights-title">
+                    <h2 class="section-block-title" id="dt-highlights-title">Project Highlights</h2>
+                    <div class="highlights-grid" id="dt-highlights">
+                        <div class="highlight-card">
+                        <div class="highlight-icon-wrap"><i class="fa-solid fa-tree" aria-hidden="true"></i></div>
+                        <div class="highlight-text-wrap"><span class="highlight-text">Serene 17.5-Acre Lakeside Enclave at Jakkur Lake</span></div>
+                    </div>
+                        <div class="highlight-card">
+                        <div class="highlight-icon-wrap"><i class="fa-solid fa-tree" aria-hidden="true"></i></div>
+                        <div class="highlight-text-wrap"><span class="highlight-text">Signature Earth-Sheltered Green Terrace Gardens</span></div>
+                    </div>
+                        <div class="highlight-card">
+                        <div class="highlight-icon-wrap"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></div>
+                        <div class="highlight-text-wrap"><span class="highlight-text">Wire-Cut Brick Exterior &amp; Natural Stone Finishes</span></div>
+                    </div>
+                        <div class="highlight-card">
+                        <div class="highlight-icon-wrap"><i class="fa-solid fa-water" aria-hidden="true"></i></div>
+                        <div class="highlight-text-wrap"><span class="highlight-text">Lakeside Boardwalk &amp; Nature Trails</span></div>
+                    </div>
+                        <div class="highlight-card">
+                        <div class="highlight-icon-wrap"><i class="fa-solid fa-person-swimming" aria-hidden="true"></i></div>
+                        <div class="highlight-text-wrap"><span class="highlight-text">Heated Swimming Pool &amp; Comprehensive Club</span></div>
+                    </div>
+                        <div class="highlight-card">
+                        <div class="highlight-icon-wrap"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></div>
+                        <div class="highlight-text-wrap"><span class="highlight-text">10 mins to Manyata Tech Park &amp; Hebbal Flyover</span></div>
+                    </div>
+                    </div>
+                </section>
+
+                <section class="project-gallery-section detail-section-block" id="dt-project-gallery" aria-labelledby="dt-project-gallery-title">
+                    <h2 class="section-block-title" id="dt-project-gallery-title">Project Gallery</h2>
+                    <p class="project-gallery-description">Browse project photos and available floor plans.</p>
+                    <button class="project-gallery-preview" id="projectGalleryPreview" type="button" aria-haspopup="dialog">
+                        <img id="projectGalleryPreviewImage" src="https://media.justflip.in/builder-brand-pages/total-environment/down-by-the-water/gallery/exterior-view.webp" alt="Total Environment Down by the Water gallery preview in Bengaluru" loading="lazy" decoding="async">
+                        <span class="project-gallery-preview-overlay">
+                            <span class="project-gallery-image-count" id="projectGalleryImageCount">8 images · Project photos and floor plans</span>
+                            <span class="project-gallery-preview-action"><i class="fa-solid fa-images" aria-hidden="true"></i> View gallery</span>
+                        </span>
+                    </button>
+                </section>
 
                 <!-- INTERACTIVE FLOOR PLAN SELECTOR -->
-                <h3 class="section-block-title">Floor Plans & Pricing</h3>
+                <section class="detail-section-block" id="dt-floorplans-section" aria-labelledby="dt-floorplans-title">
+                    <h2 class="section-block-title" id="dt-floorplans-title">Floor Plans &amp; Pricing</h2>
                 <div class="floorplan-container">
-                    <div class="floorplan-tabs" id="fp-tabs">
-                        <!-- Floor plan tab buttons generated dynamically -->
-                    </div>
+                    <div class="floorplan-tabs" id="fp-tabs"><button class="fp-tab-btn active">3 BHK (H20)</button><button class="fp-tab-btn ">3 BHK (H20 Suite)</button><button class="fp-tab-btn ">4 BHK (H30)</button><button class="fp-tab-btn ">4 BHK (H30 Suite)</button><button class="fp-tab-btn ">Penthouse (H40)</button></div>
                     <div class="floorplan-display" id="fp-display">
                         <div class="fp-details">
                             <div class="fp-data-row">
                                 <span style="color: var(--text-muted);">Typology</span>
-                                <strong id="fp-type">3 BHK + Study (I20)</strong>
+                                <strong id="fp-type">3 BHK (H20)</strong>
                             </div>
                             <div class="fp-data-row">
                                 <span style="color: var(--text-muted);">Carpet Area</span>
-                                <strong id="fp-sqft">2,490 sq. ft.</strong>
+                                <strong id="fp-sqft">2,700 sq.ft.</strong>
                             </div>
                             <div class="fp-data-row">
                                 <span style="color: var(--text-muted);">Starting Price</span>
@@ -339,35 +408,241 @@
                         </div>
                     </div>
                 </div>
+                </section>
+
+                <!-- HOME LOAN EMI CALCULATOR -->
+                <section class="emi-calculator-section detail-section-block" id="dt-emi-calculator" aria-labelledby="emi-calc-heading">
+                    <div class="emi-header-row">
+                        <div>
+                            <h2 class="section-block-title" id="emi-calc-heading">Home Loan EMI Calculator</h2>
+                            <p class="emi-section-intro">Estimate monthly loan installments with dynamic property pricing and customizable loan terms.</p>
+                        </div>
+                        <div class="emi-sync-badge" id="emi-sync-badge">
+                            <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
+                            <span>Synced with: <strong id="emi-sync-property">Total Environment Down by the Water</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="emi-calculator-container">
+                        <!-- Left Column: Controls & Sliders -->
+                        <div class="emi-controls-col">
+                            <!-- Property Value Slider -->
+                            <div class="emi-control-group">
+                                <div class="emi-label-row">
+                                    <label for="emi-prop-slider" class="emi-label">
+                                        <i class="fa-solid fa-indian-rupee-sign" aria-hidden="true"></i> Property Value
+                                    </label>
+                                    <div class="emi-val-wrap">
+                                        <span class="emi-val-display" id="emi-prop-display">₹5,62,00,000</span>
+                                        <span class="emi-val-sub" id="emi-prop-sub">(₹5.62 Cr)</span>
+                                    </div>
+                                </div>
+                                <div class="emi-slider-wrap">
+                                    <input type="range" class="emi-slider" id="emi-prop-slider" min="20000000" max="120000000" step="500000" value="56200000" aria-label="Property Value">
+                                </div>
+                                <div class="emi-range-limits">
+                                    <span id="emi-prop-min-lbl">₹2 Cr</span>
+                                    <button type="button" class="emi-reset-link" id="emi-reset-price-btn" title="Reset to project price">
+                                        <i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Reset to Project Price
+                                    </button>
+                                    <span id="emi-prop-max-lbl">₹12 Cr</span>
+                                </div>
+                            </div>
+
+                            <!-- Down Payment Slider -->
+                            <div class="emi-control-group">
+                                <div class="emi-label-row">
+                                    <label for="emi-down-slider" class="emi-label">
+                                        <i class="fa-solid fa-hand-holding-dollar" aria-hidden="true"></i> Down Payment
+                                    </label>
+                                    <div class="emi-val-wrap">
+                                        <span class="emi-val-pill" id="emi-down-pct-display">20%</span>
+                                        <span class="emi-val-display" id="emi-down-amount-display">₹1,12,40,000</span>
+                                    </div>
+                                </div>
+                                <div class="emi-slider-wrap">
+                                    <input type="range" class="emi-slider" id="emi-down-slider" min="10" max="80" step="1" value="20" aria-label="Down Payment Percentage">
+                                </div>
+                                <div class="emi-range-limits">
+                                    <span>10% (Min)</span>
+                                    <span class="emi-loan-caption">Loan Amount: <strong id="emi-loan-amount">₹4,49,60,000</strong></span>
+                                    <span>80%</span>
+                                </div>
+                            </div>
+
+                            <!-- Loan Tenure Slider & Quick Chips -->
+                            <div class="emi-control-group">
+                                <div class="emi-label-row">
+                                    <label for="emi-tenure-slider" class="emi-label">
+                                        <i class="fa-regular fa-clock" aria-hidden="true"></i> Loan Tenure
+                                    </label>
+                                    <div class="emi-val-wrap">
+                                        <span class="emi-val-display" id="emi-tenure-display">20 Years</span>
+                                        <span class="emi-val-sub" id="emi-tenure-months">(240 Months)</span>
+                                    </div>
+                                </div>
+                                <div class="emi-slider-wrap">
+                                    <input type="range" class="emi-slider" id="emi-tenure-slider" min="5" max="30" step="1" value="20" aria-label="Loan Tenure in Years">
+                                </div>
+                                <div class="emi-tenure-chips" role="radiogroup" aria-label="Quick Loan Tenure selection">
+                                    <button type="button" class="emi-chip" data-years="5">5 Yrs</button>
+                                    <button type="button" class="emi-chip" data-years="10">10 Yrs</button>
+                                    <button type="button" class="emi-chip" data-years="15">15 Yrs</button>
+                                    <button type="button" class="emi-chip active" data-years="20">20 Yrs</button>
+                                    <button type="button" class="emi-chip" data-years="25">25 Yrs</button>
+                                    <button type="button" class="emi-chip" data-years="30">30 Yrs</button>
+                                </div>
+                            </div>
+
+                            <!-- Interest Rate Slider -->
+                            <div class="emi-control-group">
+                                <div class="emi-label-row">
+                                    <label for="emi-rate-slider" class="emi-label">
+                                        <i class="fa-solid fa-percent" aria-hidden="true"></i> Interest Rate (% p.a.)
+                                    </label>
+                                    <div class="emi-val-wrap">
+                                        <span class="emi-val-display" id="emi-rate-display">8.50%</span>
+                                    </div>
+                                </div>
+                                <div class="emi-slider-wrap">
+                                    <input type="range" class="emi-slider" id="emi-rate-slider" min="6.5" max="15" step="0.05" value="8.5" aria-label="Interest Rate per annum">
+                                </div>
+                                <div class="emi-range-limits">
+                                    <span>6.5%</span>
+                                    <span class="emi-bank-note"><i class="fa-solid fa-building-columns"></i> Benchmark home loan rates</span>
+                                    <span>15.0%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Results & Interactive SVG Chart -->
+                        <div class="emi-results-col">
+                            <!-- Hero EMI Card -->
+                            <div class="emi-hero-card">
+                                <span class="emi-hero-label">Estimated Monthly EMI</span>
+                                <div class="emi-hero-amount" id="emi-monthly-output">₹3,90,173</div>
+                                <span class="emi-hero-footnote" id="emi-hero-footnote">*For ₹4.5 Cr loan at 8.50% for 20 yrs</span>
+                            </div>
+
+                            <!-- Visual Donut Chart + Legend -->
+                            <div class="emi-chart-box">
+                                <div class="emi-donut-wrapper">
+                                    <svg class="emi-donut-svg" viewBox="0 0 100 100" width="110" height="110" aria-label="Principal versus interest breakdown chart" role="img">
+                                        <circle class="emi-donut-meter" cx="50" cy="50" r="38" />
+                                        <circle class="emi-donut-segment emi-segment-principal" id="emi-donut-principal" cx="50" cy="50" r="38" style="stroke-dasharray: 114.61 238.761; stroke-dashoffset: 0;" />
+                                        <circle class="emi-donut-segment emi-segment-interest" id="emi-donut-interest" cx="50" cy="50" r="38" style="stroke-dasharray: 124.16 238.761; stroke-dashoffset: -114.61;" />
+                                    </svg>
+                                    <div class="emi-donut-center">
+                                        <span class="emi-donut-center-lbl">Total</span>
+                                        <span class="emi-donut-center-val" id="emi-donut-center-val">₹9.36 Cr</span>
+                                    </div>
+                                </div>
+                                <div class="emi-chart-legend">
+                                    <div class="emi-legend-item">
+                                        <span class="emi-legend-bullet bullet-principal"></span>
+                                        <div class="emi-legend-info">
+                                            <span class="emi-legend-title">Principal Loan</span>
+                                            <strong class="emi-legend-value" id="emi-legend-principal-val">₹4,49,60,000</strong>
+                                            <span class="emi-legend-pct" id="emi-legend-principal-pct">(48%)</span>
+                                        </div>
+                                    </div>
+                                    <div class="emi-legend-item">
+                                        <span class="emi-legend-bullet bullet-interest"></span>
+                                        <div class="emi-legend-info">
+                                            <span class="emi-legend-title">Total Interest</span>
+                                            <strong class="emi-legend-value" id="emi-legend-interest-val">₹4,86,81,520</strong>
+                                            <span class="emi-legend-pct" id="emi-legend-interest-pct">(52%)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Summary Details List -->
+                            <div class="emi-breakdown-table">
+                                <div class="emi-breakdown-row">
+                                    <span class="emi-row-title">Down Payment <span id="emi-table-down-pct" style="font-size: 0.78rem; color: var(--text-muted);">(20%)</span></span>
+                                    <strong class="emi-row-value" id="emi-table-down">₹1,12,40,000</strong>
+                                </div>
+                                <div class="emi-breakdown-row">
+                                    <span class="emi-row-title">Principal Loan Amount</span>
+                                    <strong class="emi-row-value" id="emi-table-principal">₹4,49,60,000</strong>
+                                </div>
+                                <div class="emi-breakdown-row">
+                                    <span class="emi-row-title">Total Interest Payable</span>
+                                    <strong class="emi-row-value" id="emi-table-interest">₹4,86,81,520</strong>
+                                </div>
+                                <div class="emi-breakdown-row emi-row-total">
+                                    <span class="emi-row-title">Total Amount Payable</span>
+                                    <strong class="emi-row-value" id="emi-table-total">₹9,36,41,520</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 <!-- AMENITIES GRID -->
-                <h3 class="section-block-title">World-Class Amenities</h3>
-                <div class="amenities-grid" id="dt-amenities">
-                    <!-- Dynamic Amenities -->
-                </div>
+                <section class="detail-section-block" id="dt-amenities-section" aria-labelledby="dt-amenities-title">
+                    <h2 class="section-block-title" id="dt-amenities-title">World-Class Amenities</h2>
+                    <div class="amenities-grid" id="dt-amenities">
+                        <div class="amenity-card"><i class="fa-solid fa-building"></i><span>Clubhouse</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-person-swimming"></i><span>Heated Swimming Pool</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-dumbbell"></i><span>Gymnasium</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-seedling"></i><span>Private Terrace Gardens</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-water"></i><span>Lakeside Boardwalk</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-table-tennis-paddle-ball"></i><span>Tennis &amp; Squash Courts</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-spa"></i><span>Yoga &amp; Aerobics Deck</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-children"></i><span>Children&#39;s Play Area</span></div>
+                        <div class="amenity-card"><i class="fa-solid fa-shield-halved"></i><span>24/7 Security &amp; CCTV</span></div>
+                    </div>
+                </section>
 
                 <!-- Project-specific connectivity is rendered from the selected project data -->
-                <div class="connectivity-section" id="dt-connectivity-section" hidden>
-                    <h3 class="section-block-title">Strategic Connectivity</h3>
-                    <div class="location-matrix" id="dt-connectivity"></div>
+                <div class="connectivity-section detail-section-block" id="dt-connectivity-section">
+                    <div class="connectivity-heading">
+                        <h2 class="section-block-title">Strategic Connectivity</h2>
+                    </div>
+                    <div class="connectivity-overview">
+                        <div class="connectivity-map-preview">
+                            <div id="connectivity-map-preview-canvas" class="connectivity-map-preview-canvas" role="img" aria-label="Map preview of the property location"></div>
+                            <button class="connectivity-map-trigger" id="connectivity-map-open" type="button">
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                                Show on Map
+                            </button>
+                        </div>
+                        <div class="connectivity-destinations">
+                            <h3>Nearby Destinations</h3>
+                            <div class="location-matrix" id="dt-connectivity">
+                                <div class="loc-item"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><div><strong>Bhartiya Mall of Bengaluru:</strong> 5.3 Kms</div></div>
+                                <div class="loc-item"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i><div><strong>Manyata Tech Park:</strong> 5.9 Kms</div></div>
+                                <div class="loc-item"><i class="fa-solid fa-school" aria-hidden="true"></i><div><strong>Mallya Aditi International School:</strong> 6.5 Kms</div></div>
+                                <div class="loc-item"><i class="fa-solid fa-school" aria-hidden="true"></i><div><strong>Legacy School Bangalore:</strong> 7.5 Kms</div></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <section class="project-comparison-section detail-section-block" id="dt-project-comparison" aria-labelledby="dt-project-comparison-title" hidden>
+                    <h2 class="section-block-title" id="dt-project-comparison-title">Compare Similar Projects</h2>
+                    <p class="project-comparison-intro">Compare this project with other Total Environment homes before you decide.</p>
+                    <div class="project-comparison-grid" id="dt-project-comparison-grid"></div>
+                </section>
             </div>
 
             <!-- STICKY SIDEBAR ENQUIRY FORM -->
             <div class="detail-sidebar">
                 <div class="enquiry-card" id="detail-site-visit">
-                    <h4 class="enquiry-title serif-font">Schedule a Site Visit</h4>
+                    <h2 class="enquiry-title serif-font">Schedule a Site Visit</h2>
                     <p class="enquiry-subtitle">Get private tour & official pricing breakdown</p>
                     
                     <form onsubmit="handleFormSubmit(event)">
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Your Full Name" required>
+                            <input type="text" class="form-input" placeholder="Your Full Name" aria-label="Your Full Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-input" placeholder="Phone Number" required>
+                            <input type="tel" class="form-input" placeholder="Phone Number" aria-label="Phone Number" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" placeholder="Email Address" required>
+                            <input type="email" class="form-input" placeholder="Email Address" aria-label="Email Address" required>
                         </div>
                         <div class="form-group">
                             <div class="bhk-select" id="preferredBhkSelect">
@@ -384,15 +659,21 @@
             </div>
         </div>
     </div>
+        </div>
+    
+        </div>
+    </main>
+
+    
 
     <!-- 11. QUICK VIEW MODAL OVERLAY -->
-    <!-- <div class="modal-overlay" id="quickViewModal">
+    <!-- <div class="modal-overlay" id="quickViewModal" role="dialog" aria-modal="true" aria-labelledby="qv-title">
         <div class="modal-box">
-            <button class="modal-close-btn" onclick="closeModal('quickViewModal')">&times;</button>
+            <button class="modal-close-btn" type="button" aria-label="Close property preview" onclick="closeModal('quickViewModal')">&times;</button>
             <div class="qv-header">
                 <img id="qv-img" src="" alt="" class="qv-img" loading="lazy" decoding="async">
                 <div>
-                    <h3 class="qv-title" id="qv-title">Property Title</h3>
+                    <h2 class="qv-title" id="qv-title">Property Title</h2>
                     <p style="font-size: 0.85rem; color: var(--text-secondary);" id="qv-location"></p>
                     <div class="qv-price" id="qv-price">Starting ₹ --</div>
                 </div>
@@ -412,18 +693,18 @@
     </div> -->
 
     <!-- 12. TIMED WHATSAPP POPUP MODAL (Triggers after 3.5 seconds) -->
-    <div class="modal-overlay" id="waPopModal">
+    <div class="modal-overlay" id="waPopModal" role="dialog" aria-modal="true" aria-labelledby="waPopModalTitle">
         <div class="modal-box wa-popup-box">
-            <button class="modal-close-btn" onclick="closeModal('waPopModal')">&times;</button>
+            <button class="modal-close-btn" type="button" aria-label="Close WhatsApp modal" onclick="closeModal('waPopModal')">&times;</button>
             <div class="wa-popup-icon">
                 <i class="fa-brands fa-whatsapp"></i>
             </div>
-            <h3 class="serif-font" style="font-size: 1.5rem; margin-bottom: 8px;">Get Instant E-Brochure</h3>
+            <h2 class="serif-font" id="waPopModalTitle" style="font-size: 1.5rem; margin-bottom: 8px;">Get Instant E-Brochure</h2>
             <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px;">
                 Receive instant floor plans, pricing sheets, and payment schedules directly on your WhatsApp.
             </p>
             <div class="form-group">
-                <input type="tel" id="waPhoneInput" class="form-input" placeholder="Enter Your WhatsApp Number">
+                <input type="tel" id="waPhoneInput" class="form-input" placeholder="Enter Your WhatsApp Number" aria-label="WhatsApp Number">
             </div>
             <button class="wa-btn" onclick="sendWhatsAppLead()">
                 <i class="fa-brands fa-whatsapp"></i> Get Info on WhatsApp
@@ -436,11 +717,82 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- FULLSCREEN LIGHTBOX MODAL -->
-    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
-        <img id="lightboxImg" src="" alt="Full View" class="lightbox-img" loading="lazy" decoding="async">
-    </div>
+    <dialog class="project-gallery-dialog" id="projectGalleryDialog" aria-labelledby="projectGalleryTitle">
+        <div class="project-gallery-dialog-content">
+            <div class="project-gallery-dialog-header">
+                <div>
+                    <span class="connectivity-map-eyebrow">PROJECT VISUALS</span>
+                    <h2 id="projectGalleryTitle">Project Gallery</h2>
+                </div>
+                <button class="project-gallery-close" id="projectGalleryClose" type="button" aria-label="Close gallery">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="project-gallery-tabs" role="tablist" aria-label="Gallery media categories">
+                <button class="project-gallery-tab" id="projectGalleryProjectTab" type="button" role="tab" aria-selected="true" data-gallery-category="photo">
+                    Project Photos
+                </button>
+                <button class="project-gallery-tab" id="projectGalleryFloorPlanTab" type="button" role="tab" aria-selected="false" data-gallery-category="floor-plan" tabindex="-1">
+                    Floor Plans
+                </button>
+            </div>
+            <div class="project-gallery-viewer" id="projectGalleryViewer" role="region" aria-roledescription="carousel" aria-label="Gallery viewer">
+                <div class="project-gallery-main">
+                    <button class="project-gallery-nav project-gallery-previous" id="projectGalleryPrevious" type="button" aria-label="Previous image">
+                        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                    </button>
+                    <img class="project-gallery-current-image" id="projectGalleryCurrentImage" src="" alt="" decoding="async" draggable="false">
+                    <button class="project-gallery-nav project-gallery-next" id="projectGalleryNext" type="button" aria-label="Next image">
+                        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                    </button>
+                    <span class="project-gallery-counter" id="projectGalleryCounter" aria-live="polite"></span>
+                </div>
+                <div class="project-gallery-thumbnails" id="projectGalleryThumbnails" aria-label="Gallery thumbnails"></div>
+            </div>
+        </div>
+    </dialog>
 
+    <section class="connectivity-map" id="connectivity-map" aria-labelledby="connectivity-map-title" aria-modal="true" role="dialog" hidden>
+        <header class="connectivity-map-header">
+            <div class="connectivity-map-heading">
+                <span class="connectivity-map-eyebrow">LOCATION &amp; CONNECTIVITY</span>
+                <h2 id="connectivity-map-title">Connectivity map</h2>
+                <p id="connectivity-map-project"></p>
+            </div>
+            <label class="connectivity-map-search">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <span class="sr-only">Search listed destinations</span>
+                <input id="connectivity-map-search-input" type="search" placeholder="Search listed destinations" autocomplete="off">
+            </label>
+            <button class="connectivity-map-close" id="connectivity-map-close" type="button" aria-label="Close map">
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                <span>Back to property</span>
+            </button>
+        </header>
+        <div class="connectivity-map-layout">
+            <aside class="connectivity-map-sidebar" aria-label="Property connectivity">
+                <div class="connectivity-map-sidebar-heading">
+                    <h3>Listed destinations</h3>
+                    <span id="connectivity-map-count"></span>
+                </div>
+                <p class="connectivity-map-hint">Choose a destination from this property's connectivity list to view its route.</p>
+                <div class="connectivity-map-list" id="connectivity-map-list"></div>
+                <div class="connectivity-map-directions">
+                    <a id="connectivity-map-directions-link" href="#" target="_blank" rel="noopener noreferrer">
+                        Open directions in Google Maps
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                    </a>
+                    <small>Destinations come from this property's connectivity data. The route line is provided by OSRM; open Google Maps for turn-by-turn directions.</small>
+                </div>
+            </aside>
+            <div class="connectivity-map-canvas">
+                <div id="connectivity-map-canvas" class="connectivity-leaflet-map" role="application" aria-label="Map showing the property and selected destination"></div>
+                <p id="connectivity-map-route-status" class="connectivity-map-route-status" role="status" aria-live="polite"></p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script type="module" src="js/main.js"></script>
 </body>
 </html>

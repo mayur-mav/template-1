@@ -222,7 +222,7 @@ export const propertiesData = [
     possession: 'Ready to Move',
     rera: 'PRM/KA/RERA/1251/308/PR/020622/004954',
     description: 'Pride Crosswinds Villas is an exclusive 25-acre gated villa community nestled adjacent to the lush greenery of the Bannerghatta National Park in South Bengaluru. The enclave features independent luxury villas set within pristine natural landscapes, designed with private gardens, expansive living rooms with double-height ceilings, premium imported fittings, and a sprawling clubhouse with sports and wellness facilities.',
-    thumbnail: prideImage('pride-group/pride-crosswinds-villas/thumbnail.webp'),
+    thumbnail: prideImage('pride-group/pride-crosswind-villas/thumbnail.webp'),
     highlights: [
         'Expansive 25-Acre Gated Villa Community',
         'Exclusive 3 & 4 BHK Independent Luxury Villas',
@@ -232,13 +232,13 @@ export const propertiesData = [
         '15 mins via NICE Road Expressway'
     ],
     images: [
-        prideImage('pride-group/pride-crosswinds-villas/gallery/exterior-view.webp'),
-        prideImage('pride-group/pride-crosswinds-villas/gallery/interior-view.webp'),
-        prideImage('pride-group/pride-crosswinds-villas/gallery/amenities.webp')
+        prideImage('pride-group/pride-crosswind-villas/gallery/exterior-view.webp'),
+        prideImage('pride-group/pride-crosswind-villas/gallery/interior-view.webp'),
+        prideImage('pride-group/pride-crosswind-villas/gallery/amenities.webp')
     ],
     floorPlans: [
-        { bhk: '3 BHK Villa', sqft: '2,912 sq.ft.', price: '₹3.06 Crore Onwards', image: prideImage('pride-group/pride-crosswinds-villas/floor-plans/3bhk-villa-floor-plan.webp') },
-        { bhk: '4 BHK Villa', sqft: '4,460 sq.ft.', price: '₹4.68 Crore Onwards', image: prideImage('pride-group/pride-crosswinds-villas/floor-plans/4bhk-villa-floor-plan.webp') }
+        { bhk: '3 BHK Villa', sqft: '2,912 sq.ft.', price: '₹3.06 Crore Onwards', image: prideImage('pride-group/pride-crosswind-villas/floor-plans/3bhk-floor-plan.webp') },
+        { bhk: '4 BHK Villa', sqft: '4,460 sq.ft.', price: '₹4.68 Crore Onwards', image: prideImage('pride-group/pride-crosswind-villas/floor-plans/4bhk-floor-plan.webp') }
     ],
     amenities: [
         { name: 'Clubhouse', icon: 'fa-solid fa-building' },
@@ -293,9 +293,9 @@ export const propertiesData = [
         prideImage('pride-group/pride-vatika-phase-2/gallery/amenities.webp')
     ],
     floorPlans: [
-        { bhk: '30 x 40 Plot', sqft: '1,200 sq.ft.', price: '₹82.5 Lakhs Onwards', image: prideImage('pride-group/pride-vatika-phase-2/floor-plans/30x40-plot-floor-plan.webp') },
-        { bhk: '30 x 50 Plot', sqft: '1,500 sq.ft.', price: '₹1.03 Crore Onwards', image: prideImage('pride-group/pride-vatika-phase-2/floor-plans/30x50-plot-floor-plan.webp') },
-        { bhk: '40 x 60 Plot', sqft: '2,400 sq.ft.', price: '₹1.65 Crore Onwards', image: prideImage('pride-group/pride-vatika-phase-2/floor-plans/40x60-plot-floor-plan.webp') }
+        { bhk: '30 x 40 Plot', sqft: '1,200 sq.ft.', price: '₹82.5 Lakhs Onwards', image: prideImage('pride-group/pride-vatika-phase-2/floor-plans/30x40-plot-layout.webp') },
+        { bhk: '30 x 50 Plot', sqft: '1,500 sq.ft.', price: '₹1.03 Crore Onwards', image: prideImage('pride-group/pride-vatika-phase-2/floor-plans/30x50-plot-layout.webp') },
+        { bhk: '40 x 60 Plot', sqft: '2,400 sq.ft.', price: '₹1.65 Crore Onwards', image: prideImage('pride-group/pride-vatika-phase-2/floor-plans/40x60-plot-layout.webp') }
     ],
     amenities: [
         { name: 'Clubhouse', icon: 'fa-solid fa-building' },
@@ -334,7 +334,7 @@ export const propertiesData = [
     possession: 'Ready to Move',
     rera: 'PRM/KA/RERA/1251/308/PR/020622/004954',
     description: 'Pride Crosswinds Phase 2 (Villa Plots) is a premier 25.43-acre gated enclave of luxury villa plots situated right off Bannerghatta Road in South Bengaluru. Set against the serene backdrop of the Bannerghatta National Park, the project is planned with extensive landscaped parks, underground power cabling, a grand clubhouse, and sports recreation facilities.',
-    thumbnail: prideImage('pride-group/pride-crosswinds-villa-plots-phase-2/thumbnail.webp'),
+    thumbnail: prideImage('pride-group/pride-crosswinds-phase-2/thumbnail.webp'),
     highlights: [
         '25.43 Acres Phase 2 Villa Plotted Enclave',
         'Vastu-Compliant Ready-to-Construct Plots',
@@ -344,13 +344,13 @@ export const propertiesData = [
         'Surrounded by Serene Greenery & Fresh Air'
     ],
     images: [
-        prideImage('pride-group/pride-crosswinds-villa-plots-phase-2/gallery/exterior-view.webp'),
-        prideImage('pride-group/pride-crosswinds-villa-plots-phase-2/gallery/interior-view.webp'),
-        prideImage('pride-group/pride-crosswinds-villa-plots-phase-2/gallery/amenities.webp')
+        prideImage('pride-group/pride-crosswinds-phase-2/gallery/exterior-view.webp'),
+        prideImage('pride-group/pride-crosswinds-phase-2/gallery/interior-view.webp'),
+        prideImage('pride-group/pride-crosswinds-phase-2/gallery/amenities.webp')
     ],
     floorPlans: [
-        { bhk: '40 x 60 Plot', sqft: '2,400 sq.ft.', price: '₹1.32 Crore Onwards', image: prideImage('pride-group/pride-crosswinds-villa-plots-phase-2/floor-plans/40x60-plot-floor-plan.webp') },
-        { bhk: '50 x 80 Plot', sqft: '4,000 sq.ft.', price: '₹2.20 Crore Onwards', image: prideImage('pride-group/pride-crosswinds-villa-plots-phase-2/floor-plans/50x80-plot-floor-plan.webp') }
+        { bhk: '40 x 60 Plot', sqft: '2,400 sq.ft.', price: '₹1.32 Crore Onwards', image: prideImage('pride-group/pride-crosswinds-phase-2/floor-plans/40x60-plot-floor-plan.webp') },
+        { bhk: '50 x 80 Plot', sqft: '4,000 sq.ft.', price: '₹2.20 Crore Onwards', image: prideImage('pride-group/pride-crosswinds-phase-2/floor-plans/50x80-plot-floor-plan.webp') }
     ],
     amenities: [
         { name: 'Clubhouse', icon: 'fa-solid fa-building' },
@@ -404,9 +404,9 @@ export const propertiesData = [
         prideImage('pride-group/pride-altius/gallery/amenities.webp')
     ],
     floorPlans: [
-        { bhk: '2 BHK', sqft: '1,014 sq.ft.', price: '₹1.74 Crore Onwards', image: prideImage('pride-group/pride-altius/floor-plans/2bhk-floor-plan.webp') },
-        { bhk: '2.5 BHK', sqft: '1,328 sq.ft.', price: '₹2.28 Crore Onwards', image: prideImage('pride-group/pride-altius/floor-plans/2.5bhk-floor-plan.webp') },
-        { bhk: '3 BHK', sqft: '1,607 sq.ft.', price: '₹2.76 Crore Onwards', image: prideImage('pride-group/pride-altius/floor-plans/3bhk-floor-plan.webp') }
+        { bhk: '2 BHK', sqft: '1,014 sq.ft.', price: '₹1.74 Crore Onwards', image: prideImage('pride-group/pride-altius/floor-plans/2bhk-apartment-floor-plans.webp') },
+        { bhk: '2.5 BHK', sqft: '1,328 sq.ft.', price: '₹2.28 Crore Onwards', image: prideImage('pride-group/pride-altius/floor-plans/2.5bhk-apartment-floor-plans.webp') },
+        { bhk: '3 BHK', sqft: '1,607 sq.ft.', price: '₹2.76 Crore Onwards', image: prideImage('pride-group/pride-altius/floor-plans/3bhk-apartment-floor-plans.webp') }
     ],
     amenities: [
         { name: 'Sky Lounge & Rooftop Deck', icon: 'fa-solid fa-cloud' },

@@ -119,7 +119,7 @@ export const propertiesData = [
     possession: 'June 2029',
     rera: 'PRM/KA/RERA/1251/472/PR/090824/006967',
     description: 'Total Environment Down by the Water is a premium waterfront residential development located in Jakkur, North Bengaluru. Spread across 17.5 acres next to the serene Jakkur Lake, the project features thoughtfully crafted 3 & 4 BHK apartments and penthouses with expansive private terrace gardens, handcrafted natural stone finishes, wire-cut brick architecture, and world-class resort amenities.',
-    thumbnail: totalEnvironmentImage('total-environment/down-by-the-water/thumbnail.webp'),
+    thumbnail: totalEnvironmentImage('total-environment/total-environment-down-by-the-water/thumbnail.webp'),
     highlights: [
         'Serene 17.5-Acre Lakeside Enclave at Jakkur Lake',
         'Signature Earth-Sheltered Green Terrace Gardens',
@@ -129,16 +129,16 @@ export const propertiesData = [
         '10 mins to Manyata Tech Park & Hebbal Flyover'
     ],
     images: [
-        totalEnvironmentImage('total-environment/down-by-the-water/gallery/exterior-view.webp'),
-        totalEnvironmentImage('total-environment/down-by-the-water/gallery/interior-view.webp'),
-        totalEnvironmentImage('total-environment/down-by-the-water/gallery/amenities.webp')
+        totalEnvironmentImage('total-environment/total-environment-down-by-the-water/gallery/exterior-view.webp'),
+        totalEnvironmentImage('total-environment/total-environment-down-by-the-water/gallery/interior-view.webp'),
+        totalEnvironmentImage('total-environment/total-environment-down-by-the-water/gallery/amenities.webp')
     ],
     floorPlans: [
-        { bhk: '3 BHK (H20)', sqft: '2,700 sq.ft.', price: '₹5.62 Crore Onwards', image: totalEnvironmentImage('total-environment/down-by-the-water/floor-plans/h20-3bhk-floor-plan.webp') },
-        { bhk: '3 BHK (H20 Suite)', sqft: '3,100 sq.ft.', price: '₹6.45 Crore Onwards', image: totalEnvironmentImage('total-environment/down-by-the-water/floor-plans/h20-3bhk-suite-floor-plan.webp') },
-        { bhk: '4 BHK (H30)', sqft: '4,000 sq.ft.', price: '₹8.32 Crore Onwards', image: totalEnvironmentImage('total-environment/down-by-the-water/floor-plans/h30-4bhk-floor-plan.webp') },
-        { bhk: '4 BHK (H30 Suite)', sqft: '4,400 sq.ft.', price: '₹9.15 Crore Onwards', image: totalEnvironmentImage('total-environment/down-by-the-water/floor-plans/h30-4bhk-suite-floor-plan.webp') },
-        { bhk: 'Penthouse (H40)', sqft: '6,500 sq.ft.', price: '₹13.52 Crore Onwards', image: totalEnvironmentImage('total-environment/down-by-the-water/floor-plans/h40-penthouse-floor-plan.webp') }
+        { bhk: '3 BHK (I20)', sqft: '2,490 sq.ft.', price: '₹5.62 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-down-by-the-water/floor-plans/3bhk(I20)-floor-plan.webp') },
+        { bhk: '3 BHK (L21)', sqft: '2,628 sq.ft.', price: '₹5.91 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-down-by-the-water/floor-plans/3bhk(L21)-floor-plan.webp') },
+        { bhk: '3 BHK (I25)', sqft: '3,240 sq.ft.', price: '₹7.27 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-down-by-the-water/floor-plans/3bhk(I25)-floor-plan.webp') },
+        { bhk: '4 BHK (I40)', sqft: '4,980 sq.ft.', price: '₹11.24 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-down-by-the-water/floor-plans/4bhk(I40)-floor-plan.webp') },
+        { bhk: '4 BHK (I50)', sqft: '6,480 sq.ft.', price: '₹14.60 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-down-by-the-water/floor-plans/4bhk(I50)-floor-plan.webp') }
     ],
     amenities: [
         { name: 'Clubhouse', icon: 'fa-solid fa-building' },
@@ -178,7 +178,7 @@ export const propertiesData = [
     possession: 'Phased Delivery (Phase 3 Onwards)',
     rera: 'PRM/KA/RERA/1251/309/PR/160825/008002',
     description: 'Total Environment After the Rain is an extraordinary 45-acre community of earth-sheltered, single-level luxury villas located off Bellary Road in Yelahanka, North Bengaluru. Designed to blend seamlessly with the natural landscape, each villa features a turf-covered green roof, private garden courtyards, heated swimming pool, hand-crafted timber woodwork, and high-end thermal performance.',
-    thumbnail: totalEnvironmentImage('total-environment/after-the-rain/thumbnail.webp'),
+    thumbnail: totalEnvironmentImage('total-environment/total-environment-after-the-rain/thumbnail.webp'),
     highlights: [
         '45-Acre Enclave of Earth-Sheltered Luxury Villas',
         'Private Landscaped Green Roof on Every Home',
@@ -188,12 +188,12 @@ export const propertiesData = [
         '20 mins to Kempegowda International Airport'
     ],
     images: [
-        totalEnvironmentImage('total-environment/after-the-rain/gallery/exterior-view.webp'),
-        totalEnvironmentImage('total-environment/after-the-rain/gallery/interior-view.webp'),
-        totalEnvironmentImage('total-environment/after-the-rain/gallery/amenities.webp')
+        totalEnvironmentImage('total-environment/total-environment-after-the-rain/gallery/exterior-view.webp'),
+        totalEnvironmentImage('total-environment/total-environment-after-the-rain/gallery/interior-view.webp'),
+        totalEnvironmentImage('total-environment/total-environment-after-the-rain/gallery/amenities.webp')
     ],
     floorPlans: [
-        { bhk: 'V30 3 Bedroom Earth-Sheltered Villa', sqft: '3,200 sq.ft.', price: '₹15.99 Crore Onwards', image: totalEnvironmentImage('total-environment/after-the-rain/floor-plans/v30-3bhk-villa-floor-plan.webp') }
+        { bhk: '3 BHK Duplex Villa', sqft: '3,200 sq.ft.', price: '₹15.99 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-after-the-rain/floor-plans/3bhk-duplex-villa-floor-plan.webp') }
     ],
     amenities: [
         { name: 'Clubhouse', icon: 'fa-solid fa-building' },
@@ -233,7 +233,7 @@ export const propertiesData = [
     possession: 'December 2026',
     rera: 'PRM/KA/RERA/1251/446/PR/171014/000433',
     description: 'Total Environment Pursuit of a Radical Rhapsody is an iconic 34.5-acre lakeside residential masterpiece located on ITPL Main Road, Hoodi, Whitefield. Built around a natural lake, the development features luxury apartments, duplex homes, and signature earth-sheltered villas. Units are crafted with open-to-sky terrace gardens, micro-climate cooling features, custom Italian stone flooring, and expansive timber deck terraces.',
-    thumbnail: totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/thumbnail.webp'),
+    thumbnail: totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/thumbnail.webp'),
     highlights: [
         '34.5 Acres Flagship Lakeside Community in Whitefield',
         'Boardwalk along Natural Hoodi Lake',
@@ -243,16 +243,16 @@ export const propertiesData = [
         'Close to ITPB, EPIP Zone & Nexus Shantiniketan'
     ],
     images: [
-        totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/gallery/exterior-view.webp'),
-        totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/gallery/interior-view.webp'),
-        totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/gallery/amenities.webp')
+        totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/gallery/exterior-view.webp'),
+        totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/gallery/interior-view.webp'),
+        totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/gallery/amenities.webp')
     ],
     floorPlans: [
-        { bhk: 'C20 (3 BHK)', sqft: '2,753 sq.ft.', price: '₹6.18 Crore Onwards', image: totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/floor-plans/c20-3bhk-floor-plan.webp') },
-        { bhk: 'L30 (3 BHK + Study)', sqft: '3,847 sq.ft.', price: '₹8.65 Crore Onwards', image: totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/floor-plans/l30-3bhk-study-floor-plan.webp') },
-        { bhk: 'L45 (4 BHK Duplex)', sqft: '4,800 sq.ft.', price: '₹10.79 Crore Onwards', image: totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/floor-plans/l45-4bhk-duplex-floor-plan.webp') },
-        { bhk: 'V35 (3 BHK Villa)', sqft: '4,100 sq.ft.', price: '₹14.50 Crore Onwards', image: totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/floor-plans/v35-3bhk-villa-floor-plan.webp') },
-        { bhk: 'V50 (4 BHK Villa)', sqft: '5,129 sq.ft.', price: '₹18.00 Crore Onwards', image: totalEnvironmentImage('total-environment/pursuit-of-a-radical-rhapsody/floor-plans/v50-4bhk-villa-floor-plan.webp') }
+        { bhk: 'C20 (3 BHK)', sqft: '2,753 sq.ft.', price: '₹6.18 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/floor-plans/3bhk(C20)-floor-plan.webp') },
+        { bhk: 'R22 (3 BHK + Study)', sqft: '3,847 sq.ft.', price: '₹8.65 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/floor-plans/3bhk(R22)-floor-plan.webp') },
+        { bhk: 'D35 (3 BHK Duplex)', sqft: '4,800 sq.ft.', price: '₹10.79 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/floor-plans/3bhk(D35)-duplex-floor-plan.webp') },
+        { bhk: 'R25 (3 BHK Villa)', sqft: '4,100 sq.ft.', price: '₹14.50 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/floor-plans/3bhk(R25)-floor-plan.webp') },
+        { bhk: '4 BHK Duplex Villa', sqft: '5,129 sq.ft.', price: '₹18.00 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/floor-plans/4bhk-duplex-villa-floor-plan.webp') }
     ],
     amenities: [
         { name: 'Clubhouse', icon: 'fa-solid fa-building' },
@@ -295,7 +295,7 @@ export const propertiesData = [
     possession: 'June 2026',
     rera: 'PRM/KA/RERA/1251/446/PR/180519/001745',
     description: 'Total Environment In That Quiet Earth is a beautifully planned 14.5-acre residential community located off Hennur Main Road in North Bengaluru. Offering distinctive L-shaped garden apartments and signature duplexes, every home is designed around a private, cantilevered garden terrace. Features include exposed wire-cut red brick walls, custom crafted furniture and cabinetry, and an expansive central park with multi-tier amenities.',
-    thumbnail: totalEnvironmentImage('total-environment/in-that-quiet-earth/thumbnail.webp'),
+    thumbnail: totalEnvironmentImage('total-environment/total-environment-in-that-quiet-earth/thumbnail.webp'),
     highlights: [
         '14.5-Acre Thoughtfully Designed Community in Hennur',
         'Cantilevered L-Shaped Living Spaces & Gardens',
@@ -305,12 +305,12 @@ export const propertiesData = [
         'Convenient Access to Kempegowda International Airport'
     ],
     images: [
-        totalEnvironmentImage('total-environment/in-that-quiet-earth/gallery/exterior-view.webp'),
-        totalEnvironmentImage('total-environment/in-that-quiet-earth/gallery/interior-view.webp'),
-        totalEnvironmentImage('total-environment/in-that-quiet-earth/gallery/amenities.webp')
+        totalEnvironmentImage('total-environment/total-environment-in-that-quiet-earth/gallery/exterior-view.webp'),
+        totalEnvironmentImage('total-environment/total-environment-in-that-quiet-earth/gallery/interior-view.webp'),
+        totalEnvironmentImage('total-environment/total-environment-in-that-quiet-earth/gallery/amenities.webp')
     ],
     floorPlans: [
-        { bhk: 'U20 (3 BHK)', sqft: '2,890 sq.ft.', price: '₹4.48 Crore Onwards', image: totalEnvironmentImage('total-environment/in-that-quiet-earth/floor-plans/u20-3bhk-floor-plan.webp') }
+        { bhk: '3 BHK', sqft: '2,890 sq.ft.', price: '₹4.48 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-in-that-quiet-earth/floor-plans/3bhk-floor-plan.webp') }
     ],
     amenities: [
         { name: 'Clubhouse', icon: 'fa-solid fa-building' },
@@ -351,7 +351,7 @@ export const propertiesData = [
     possession: 'September 2026',
     rera: 'PRM/KA/RERA/1254/460/PR/240424/006832',
     description: 'Total Environment Over the Rainbow is a serene 8.8-acre boutique sanctuary of luxury villas nestled at the foothills of scenic Nandi Hills. Thoughtfully integrated into the natural contours of the land, each villa is oriented toward uninterrupted panoramic hill views, with private landscaped gardens, earth-sheltered living areas, sustainable water management, and a retreat-style clubhouse.',
-    thumbnail: totalEnvironmentImage('total-environment/over-the-rainbow/thumbnail.webp'),
+    thumbnail: totalEnvironmentImage('total-environment/total-environment-over-the-rainbow/thumbnail.webp'),
     highlights: [
         'Boutique 8.8-Acre Villa Retreat near Nandi Hills',
         'Panoramic Mountain & Valley Vistas',
@@ -361,12 +361,12 @@ export const propertiesData = [
         'Quiet Scenic Sanctuary 25 mins from Bengaluru Airport'
     ],
     images: [
-        totalEnvironmentImage('total-environment/over-the-rainbow/gallery/exterior-view.webp'),
-        totalEnvironmentImage('total-environment/over-the-rainbow/gallery/interior-view.webp'),
-        totalEnvironmentImage('total-environment/over-the-rainbow/gallery/amenities.webp')
+        totalEnvironmentImage('total-environment/total-environment-over-the-rainbow/gallery/exterior-view.webp'),
+        totalEnvironmentImage('total-environment/total-environment-over-the-rainbow/gallery/interior-view.webp'),
+        totalEnvironmentImage('total-environment/total-environment-over-the-rainbow/gallery/amenities.webp')
     ],
     floorPlans: [
-        { bhk: '3 BHK Luxury Villa', sqft: '4,500 sq.ft.', price: '₹7.14 Crore Onwards', image: totalEnvironmentImage('total-environment/over-the-rainbow/floor-plans/3bhk-villa-floor-plan.webp') }
+        { bhk: '3 BHK Luxury Villa', sqft: '4,500 sq.ft.', price: '₹7.14 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-over-the-rainbow/floor-plans/3bhk-villa-floor-plan.webp') }
     ],
     amenities: [
         { name: 'Clubhouse', icon: 'fa-solid fa-building' },
@@ -404,7 +404,7 @@ export const propertiesData = [
     possession: 'December 2028',
     rera: 'PRM/KA/RERA/1250/303/PR/080124/006538',
     description: 'Total Environment Tangled Up in Green is an expansive 115-acre vision of sustainable living located off Doddaballapur Road in Devanahalli, North Bengaluru. Bordering the upcoming Satellite Town Ring Road (STRR), the master-planned plotted enclave features thousands of indigenous shade trees, underground modern utility networks, quiet tree-lined lanes, and a multi-level recreational clubhouse.',
-    thumbnail: totalEnvironmentImage('total-environment/tangled-up-in-green/thumbnail.webp'),
+    thumbnail: totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/thumbnail.webp'),
     highlights: [
         'Sprawling 115-Acre Plotted Enclave in Devanahalli',
         'Integrated Living with Indigenous Trees & Biodiversity',
@@ -414,16 +414,16 @@ export const propertiesData = [
         '15 mins to Kempegowda International Airport & Aerospace Park'
     ],
     images: [
-        totalEnvironmentImage('total-environment/tangled-up-in-green/gallery/exterior-view.webp'),
-        totalEnvironmentImage('total-environment/tangled-up-in-green/gallery/interior-view.webp'),
-        totalEnvironmentImage('total-environment/tangled-up-in-green/gallery/amenities.webp')
+        totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/gallery/exterior-view.webp'),
+        totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/gallery/interior-view.webp'),
+        totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/gallery/amenities.webp')
     ],
     floorPlans: [
-        { bhk: '30 x 60 Villa Plot', sqft: '1,800 sq.ft.', price: '₹1.86 Crore Onwards', image: totalEnvironmentImage('total-environment/tangled-up-in-green/floor-plans/30x60-plot-floor-plan.webp') },
-        { bhk: '40 x 60 Villa Plot', sqft: '2,400 sq.ft.', price: '₹2.48 Crore Onwards', image: totalEnvironmentImage('total-environment/tangled-up-in-green/floor-plans/40x60-plot-floor-plan.webp') },
-        { bhk: '50 x 70 Villa Plot', sqft: '3,500 sq.ft.', price: '₹3.62 Crore Onwards', image: totalEnvironmentImage('total-environment/tangled-up-in-green/floor-plans/50x70-plot-floor-plan.webp') },
-        { bhk: '50 x 80 Villa Plot', sqft: '4,000 sq.ft.', price: '₹4.14 Crore Onwards', image: totalEnvironmentImage('total-environment/tangled-up-in-green/floor-plans/50x80-plot-floor-plan.webp') },
-        { bhk: '60 x 90 Villa Plot', sqft: '5,400 sq.ft.', price: '₹5.58 Crore Onwards', image: totalEnvironmentImage('total-environment/tangled-up-in-green/floor-plans/60x90-plot-floor-plan.webp') }
+        { bhk: '30 x 60 Villa Plot', sqft: '1,800 sq.ft.', price: '₹1.86 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/floor-plans/30x60-plot-layout.webp') },
+        { bhk: '40 x 60 Villa Plot', sqft: '2,400 sq.ft.', price: '₹2.48 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/floor-plans/40x60-plot-layout.webp') },
+        { bhk: '50 x 70 Villa Plot', sqft: '3,500 sq.ft.', price: '₹3.62 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/floor-plans/50x70-plot-layout.webp') },
+        { bhk: '50 x 80 Villa Plot', sqft: '4,000 sq.ft.', price: '₹4.14 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/floor-plans/50x80-plot-layout.webp') },
+        { bhk: '60 x 90 Villa Plot', sqft: '5,400 sq.ft.', price: '₹5.58 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/floor-plans/60x90-plot-layout.webp') }
     ],
     amenities: [
         { name: 'Clubhouse', icon: 'fa-solid fa-building' },
@@ -463,7 +463,7 @@ export const propertiesData = [
     possession: 'Ready to Move',
     rera: 'PRM/KA/RERA/1251/310/PR/171015/000424',
     description: 'Total Environment The Magic Faraway Tree is a ready-to-move 12-acre elevated residential community on Kanakapura Road in South Bengaluru. Overlooking scenic green tree canopies, the development offers simplex and duplex apartments with double-height garden terraces, exposed handmade brickwork, wire-cut terracotta jalis, and exceptional connectivity via the adjacent Silk Institute Metro Station and NICE Road interchange.',
-    thumbnail: totalEnvironmentImage('total-environment/the-magic-faraway-tree/thumbnail.webp'),
+    thumbnail: totalEnvironmentImage('total-environment/total-environment-the-magic-faraway-tree/thumbnail.webp'),
     highlights: [
         '12-Acre Elevated Living on Kanakapura Road',
         'Simplex & Duplex Residences with Private Hanging Gardens',
@@ -473,13 +473,13 @@ export const propertiesData = [
         '200 Metres from NICE Road Expressway Interchange'
     ],
     images: [
-        totalEnvironmentImage('total-environment/the-magic-faraway-tree/gallery/exterior-view.webp'),
-        totalEnvironmentImage('total-environment/the-magic-faraway-tree/gallery/interior-view.webp'),
-        totalEnvironmentImage('total-environment/the-magic-faraway-tree/gallery/amenities.webp')
+        totalEnvironmentImage('total-environment/total-environment-the-magic-faraway-tree/gallery/exterior-view.webp'),
+        totalEnvironmentImage('total-environment/total-environment-the-magic-faraway-tree/gallery/interior-view.webp'),
+        totalEnvironmentImage('total-environment/total-environment-the-magic-faraway-tree/gallery/amenities.webp')
     ],
     floorPlans: [
-        { bhk: 'C20 (3 BHK Simplex)', sqft: '2,753 sq.ft.', price: '₹5.56 Crore Onwards', image: totalEnvironmentImage('total-environment/the-magic-faraway-tree/floor-plans/c20-3bhk-simplex-floor-plan.webp') },
-        { bhk: 'D35 (3 BHK Duplex)', sqft: '3,550 sq.ft.', price: '₹7.17 Crore Onwards', image: totalEnvironmentImage('total-environment/the-magic-faraway-tree/floor-plans/d35-3bhk-duplex-floor-plan.webp') }
+        { bhk: 'C20 (3 BHK Simplex)', sqft: '2,753 sq.ft.', price: '₹5.56 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-the-magic-faraway-tree/floor-plans/3bhk-floor-plan.webp') },
+        { bhk: 'D35 (3 BHK Duplex)', sqft: '3,550 sq.ft.', price: '₹7.17 Crore Onwards', image: totalEnvironmentImage('total-environment/total-environment-the-magic-faraway-tree/floor-plans/3bhk-duplex-floor-plan.webp') }
     ],
     amenities: [
         { name: 'Clubhouse', icon: 'fa-solid fa-building' },

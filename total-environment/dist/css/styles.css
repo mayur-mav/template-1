@@ -1797,7 +1797,7 @@ button {
     gap: 4px 7px;
     margin: 4px 0 4px 3px;
     padding: 4px 9px;
-    border: 1px solid var(--brand-gold-hover);
+    border: 1px solid var(--border-gold);
     border-radius: 6px;
     background: var(--brand-gold-light);
     color: var(--brand-primary);
@@ -1807,7 +1807,8 @@ button {
 }
 
 .overview-rera strong {
-    color: var(--brand-gold-hover);
+    color: var(--theme-accent-text, var(--brand-bronze));
+    font-weight: 700;
     font-size: 0.74rem;
     letter-spacing: 0.025em;
     text-transform: uppercase;
@@ -4145,6 +4146,12 @@ body[data-property-route-loading="true"] #catalog-view {
     background: var(--theme-accent-soft, #faf7ed);
 }
 
+.project-comparison-card.is-current .comparison-project-location,
+.project-comparison-card.is-current .comparison-project-spec-label {
+    color: var(--theme-text-secondary, var(--text-secondary));
+    font-weight: 500;
+}
+
 .comparison-project-card {
     position: relative;
     display: grid;
@@ -4199,7 +4206,7 @@ body[data-property-route-loading="true"] #catalog-view {
 }
 
 .comparison-project-location {
-    color: var(--text-muted);
+    color: var(--theme-text-secondary, var(--text-secondary));
     font-size: .82rem;
     font-weight: 400;
 }
@@ -4246,7 +4253,7 @@ body[data-property-route-loading="true"] #catalog-view {
 }
 
 .comparison-project-spec-label {
-    color: var(--text-muted);
+    color: var(--theme-text-secondary, var(--text-secondary));
     font-size: .78rem;
 }
 

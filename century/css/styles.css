@@ -4143,6 +4143,12 @@ body[data-property-route-loading="true"] #catalog-view {
     background: var(--theme-accent-soft, #faf7ed);
 }
 
+.project-comparison-card.is-current .comparison-project-location,
+.project-comparison-card.is-current .comparison-project-spec-label {
+    color: var(--theme-text-secondary, var(--text-secondary));
+    font-weight: 500;
+}
+
 .comparison-project-card {
     position: relative;
     display: grid;

@@ -1251,7 +1251,7 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
     renderProjectGallery(item);
 
     setImageSource(document.getElementById('dt-img-1'), item.images[0], { loading: 'eager', priority: 'high' });
-    setImageSource(document.getElementById('dt-img-2'), item.images[1], { loading: 'eager' });
+    setImageSource(document.getElementById('dt-img-2'), item.images[1], { loading: 'lazy' });
     setImageSource(document.getElementById('dt-img-3'), item.images[2], { loading: 'lazy' });
 
     const fpTabs = document.getElementById('fp-tabs');

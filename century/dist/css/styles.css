@@ -1805,7 +1805,7 @@ button {
     gap: 4px 7px;
     margin: 4px 0 4px 3px;
     padding: 4px 9px;
-    border: 1px solid var(--brand-gold-hover);
+    border: 1px solid var(--border-gold);
     border-radius: 6px;
     background: var(--brand-gold-light);
     color: var(--brand-primary);
@@ -1815,7 +1815,8 @@ button {
 }
 
 .overview-rera strong {
-    color: var(--brand-gold-hover);
+    color: var(--theme-accent-text, var(--brand-bronze));
+    font-weight: 700;
     font-size: 0.74rem;
     letter-spacing: 0.025em;
     text-transform: uppercase;

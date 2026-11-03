@@ -121,12 +121,13 @@ export const propertiesData = [
     description: 'Total Environment Down by the Water is a premium waterfront residential development located in Jakkur, North Bengaluru. Spread across 17.5 acres next to the serene Jakkur Lake, the project features thoughtfully crafted 3 & 4 BHK apartments and penthouses with expansive private terrace gardens, handcrafted natural stone finishes, wire-cut brick architecture, and world-class resort amenities.',
     thumbnail: totalEnvironmentImage('total-environment/total-environment-down-by-the-water/thumbnail.webp'),
     highlights: [
-        'Serene 17.5-Acre Lakeside Enclave at Jakkur Lake',
-        'Signature Earth-Sheltered Green Terrace Gardens',
-        'Wire-Cut Brick Exterior & Natural Stone Finishes',
-        'Lakeside Boardwalk & Nature Trails',
-        'Heated Swimming Pool & Comprehensive Club',
-        '10 mins to Manyata Tech Park & Hebbal Flyover'
+        "Double-height terrace garden and a deck at the homes",
+        "3+ acres of central green",
+        "Lakeside walkway",
+        "80% Green cover",
+        "Located just off the Airport main road",
+        "Quick access to multiple Business parks",
+        "Clubhouse with accessible Green roof"
     ],
     images: [
         totalEnvironmentImage('total-environment/total-environment-down-by-the-water/gallery/exterior-view.webp'),
@@ -152,14 +153,14 @@ export const propertiesData = [
         { name: '24/7 Security & CCTV', icon: 'fa-solid fa-shield-halved' }
     ],
     connectivity: [
-        { label: 'Bhartiya Mall of Bengaluru', destination: 'Bhartiya Mall of Bengaluru, Kannuru, Thanisandra Main Road, Bengaluru, Karnataka 560064', coordinates: { lat: 13.085500, lon: 77.638500 }, distance: '5.3 Kms', icon: 'fa-solid fa-cart-shopping' },
-        { label: 'Manyata Tech Park', destination: 'Manyata Tech Park, Outer Ring Road, Nagavara, Bengaluru, Karnataka 560045', coordinates: { lat: 13.045000, lon: 77.625000 }, distance: '5.9 Kms', icon: 'fa-solid fa-laptop-code' },
-        { label: 'Mallya Aditi International School', destination: 'Mallya Aditi International School, Behind Yelahanka New Town, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.098500, lon: 77.593500 }, distance: '6.5 Kms', icon: 'fa-solid fa-school' },
-        { label: 'Legacy School Bangalore', destination: 'Legacy School, Kothanur, Bengaluru, Karnataka 560077', coordinates: { lat: 13.064500, lon: 77.652500 }, distance: '7.5 Kms', icon: 'fa-solid fa-school' },
-        { label: 'Phoenix Mall of Asia', destination: 'Phoenix Mall of Asia, Bellary Road, Byatarayanapura, Yelahanka, Bengaluru, Karnataka 560092', coordinates: { lat: 13.058500, lon: 77.591000 }, distance: '8.2 Kms', icon: 'fa-solid fa-cart-shopping' },
-        { label: 'Manipal Hospital Hebbal', destination: 'Manipal Hospital Hebbal, Bellary Road, Bengaluru, Karnataka 560092', coordinates: { lat: 13.048500, lon: 77.592500 }, distance: '8.5 Kms', icon: 'fa-solid fa-hospital' },
-        { label: 'Aster CMI Hospital', destination: 'Aster CMI Hospital, Bellary Road, New Airport Road, Sahakar Nagar, Bengaluru, Karnataka 560092', coordinates: { lat: 13.054500, lon: 77.591500 }, distance: '9.6 Kms', icon: 'fa-solid fa-hospital' },
-        { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport Bengaluru, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.198600, lon: 77.706600 }, distance: '21.6 Kms', icon: 'fa-solid fa-plane' }
+        { label: 'Bhartiya Mall of Bengaluru', destination: 'Bhartiya Mall of Bengaluru, Kannuru, Thanisandra Main Road, Bengaluru, Karnataka 560064', coordinates: { lat: 13.085500, lon: 77.638500 }, distance: '6.0 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'Manyata Tech Park', destination: 'Manyata Tech Park, Level Six, N1 Block, Outer Ring Rd, MS Ramaiah North City, M anayata TechPark, Nagavara, Bengaluru, Karnataka 560045', coordinates: { lat: 13.045000, lon: 77.625000 }, distance: '2.9 Kms', icon: 'fa-solid fa-laptop-code' },
+        { label: 'Mallya Aditi International School', destination: 'Mallya Aditi International School, Behind Yelahanka New Town, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.098500, lon: 77.593500 }, distance: '8.3 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Legacy School Bangalore', destination: 'Legacy School, Kothanur, Bengaluru, Karnataka 560077', coordinates: { lat: 13.064500, lon: 77.652500 }, distance: '5.4 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Phoenix Mall of Asia', destination: 'Phoenix Mall of Asia, Bellary Road, Byatarayanapura, Yelahanka, Bengaluru, Karnataka 560092', coordinates: { lat: 13.058500, lon: 77.591000 }, distance: '4.3 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'Manipal Hospital Hebbal', destination: 'Manipal Hospital Hebbal, Bellary Road, Bengaluru, Karnataka 560092', coordinates: { lat: 13.048500, lon: 77.592500 }, distance: '5.2 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'Aster CMI Hospital', destination: 'Aster CMI Hospital, Bellary Road, New Airport Road, Sahakar Nagar, Bengaluru, Karnataka 560092', coordinates: { lat: 13.054500, lon: 77.591500 }, distance: '7.5 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport Bengaluru, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.198600, lon: 77.706600 }, distance: '25.6 Kms', icon: 'fa-solid fa-plane' }
     ]
   },
   {
@@ -180,12 +181,12 @@ export const propertiesData = [
     description: 'Total Environment After the Rain is an extraordinary 45-acre community of earth-sheltered, single-level luxury villas located off Bellary Road in Yelahanka, North Bengaluru. Designed to blend seamlessly with the natural landscape, each villa features a turf-covered green roof, private garden courtyards, heated swimming pool, hand-crafted timber woodwork, and high-end thermal performance.',
     thumbnail: totalEnvironmentImage('total-environment/total-environment-after-the-rain/thumbnail.webp'),
     highlights: [
-        '45-Acre Enclave of Earth-Sheltered Luxury Villas',
-        'Private Landscaped Green Roof on Every Home',
-        'High Privacy Layouts with Internal Courtyards',
-        'Close to Padukone-Dravid Centre for Sports Excellence',
-        'Stonehill & MVIT International Education Hub',
-        '20 mins to Kempegowda International Airport'
+        "Home automation system is available in every flat",
+        "Beautiful landscaped garden areas with in the project",
+        "Earth sheltered homes with green roofs replacing lost green cover",
+        "Curtain motor with remote control in double height living area",
+        "Hybrid central air-conditioning system in all bedroom units",
+        "Properties with 100% power backup available"
     ],
     images: [
         totalEnvironmentImage('total-environment/total-environment-after-the-rain/gallery/exterior-view.webp'),
@@ -207,14 +208,14 @@ export const propertiesData = [
         { name: '24/7 Gated Security', icon: 'fa-solid fa-shield-halved' }
     ],
     connectivity: [
-        { label: 'Sadhu Vaswani International School', destination: 'Sadhu Vaswani International School, Bettenahalli, Bengaluru, Karnataka 562157', coordinates: { lat: 13.161500, lon: 77.614500 }, distance: '1.0 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Sadhu Vaswani International School', destination: 'Sadhu Vaswani International School, Bettenahalli, Bengaluru, Karnataka 562157', coordinates: { lat: 13.161500, lon: 77.614500 }, distance: '3.1 Kms', icon: 'fa-solid fa-school' },
         { label: 'Krishnadevaraya College of Dental Sciences', destination: 'Krishnadevaraya College of Dental Sciences, Hunasamaranahalli, Bengaluru, Karnataka 562157', coordinates: { lat: 13.149500, lon: 77.625500 }, distance: '1.8 Kms', icon: 'fa-solid fa-graduation-cap' },
         { label: 'Sir M. Visvesvaraya Institute of Technology', destination: 'Sir M. Visvesvaraya Institute of Technology, Krishnadeveraya Nagar, Hunasamaranahalli, Bengaluru, Karnataka 562157', coordinates: { lat: 13.151500, lon: 77.621500 }, distance: '2.0 Kms', icon: 'fa-solid fa-graduation-cap' },
-        { label: 'Padukone-Dravid Centre for Sports Excellence', destination: 'Padukone - Dravid Centre for Sports Excellence, Survey No. 336, Bettahalasuru, Bengaluru, Karnataka 562157', coordinates: { lat: 13.175500, lon: 77.632500 }, distance: '2.0 Kms', icon: 'fa-solid fa-medal' },
-        { label: 'Stonehill International School', destination: 'Stonehill International School, Tarahunise Post, Jala Hobli, Bengaluru, Karnataka 562157', coordinates: { lat: 13.181500, lon: 77.628500 }, distance: '2.2 Kms', icon: 'fa-solid fa-school' },
-        { label: 'Life Care Hospital', destination: 'Life Care Hospital, Bagalur Cross, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.136500, lon: 77.621500 }, distance: '4.0 Kms', icon: 'fa-solid fa-hospital' },
-        { label: 'RMZ Galleria Mall', destination: 'RMZ Galleria Mall, B.B. Road, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.102300, lon: 77.589400 }, distance: '12.0 Kms', icon: 'fa-solid fa-cart-shopping' },
-        { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport Bengaluru, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.198600, lon: 77.706600 }, distance: '16.0 Kms', icon: 'fa-solid fa-plane' }
+        { label: 'Padukone-Dravid Centre for Sports Excellence', destination: 'Padukone - Dravid Centre for Sports Excellence, Survey No. 336, Bettahalasuru, Bengaluru, Karnataka 562157', coordinates: { lat: 13.175500, lon: 77.632500 }, distance: '3.4 Kms', icon: 'fa-solid fa-medal' },
+        { label: 'Stonehill International School', destination: 'Stonehill International School, Tarahunise Post, Jala Hobli, Bengaluru, Karnataka 562157', coordinates: { lat: 13.181500, lon: 77.628500 }, distance: '3.7 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Cyte Care Hospital', destination: 'Cyte Care Hospital, Bagalur Cross, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.136500, lon: 77.621500 }, distance: '8.9 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'RMZ Galleria Mall', destination: 'RMZ Galleria Mall, B.B. Road, Yelahanka, Bengaluru, Karnataka 560064', coordinates: { lat: 13.102300, lon: 77.589400 }, distance: '13.1 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport Bengaluru, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.198600, lon: 77.706600 }, distance: '14.3 Kms', icon: 'fa-solid fa-plane' }
     ]
   },
   {
@@ -235,12 +236,13 @@ export const propertiesData = [
     description: 'Total Environment Pursuit of a Radical Rhapsody is an iconic 34.5-acre lakeside residential masterpiece located on ITPL Main Road, Hoodi, Whitefield. Built around a natural lake, the development features luxury apartments, duplex homes, and signature earth-sheltered villas. Units are crafted with open-to-sky terrace gardens, micro-climate cooling features, custom Italian stone flooring, and expansive timber deck terraces.',
     thumbnail: totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/thumbnail.webp'),
     highlights: [
-        '34.5 Acres Flagship Lakeside Community in Whitefield',
-        'Boardwalk along Natural Hoodi Lake',
-        'Signature C-Type & L-Type Garden Apartments & Earth Villas',
-        'Central Community Park & Infinity Edge Pool',
-        '1.2 km to Hoodi Metro Station (Purple Line)',
-        'Close to ITPB, EPIP Zone & Nexus Shantiniketan'
+        "Giddanakere lake view abodes are available",
+        "Plush green project with 4 helipads",
+        "It is in vicinity to various connectives",
+        "Clubhouse has swimming pool, gym, and other amenities",
+        "It has premium apartments with various amenities",
+        "14.29% price appreciation in the last 1 year",
+        "Properties with 100% power backup available"
     ],
     images: [
         totalEnvironmentImage('total-environment/total-environment-pursuit-of-a-radical-rhapsody/gallery/exterior-view.webp'),
@@ -269,14 +271,14 @@ export const propertiesData = [
     ],
     connectivity: [
         { label: 'Hoodi Metro Station', destination: 'Hoodi Metro Station (Purple Line), Whitefield Main Road, Bengaluru, Karnataka', coordinates: { lat: 12.991500, lon: 77.716200 }, distance: '1.2 Kms', icon: 'fa-solid fa-train-subway' },
-        { label: 'Gopalan National School', destination: 'Gopalan National School, Seetharampalya, Hoodi, Bengaluru, Karnataka 560048', coordinates: { lat: 12.986500, lon: 77.712500 }, distance: '2.5 Kms', icon: 'fa-solid fa-school' },
-        { label: 'Nexus Shantiniketan Mall', destination: 'Nexus Shantiniketan Mall, Whitefield Main Road, Bengaluru, Karnataka 560048', coordinates: { lat: 12.989200, lon: 77.728500 }, distance: '2.8 Kms', icon: 'fa-solid fa-cart-shopping' },
-        { label: 'VR Bengaluru', destination: 'VR Bengaluru Mall, Whitefield Main Road, Mahadevapura, Bengaluru, Karnataka 560048', coordinates: { lat: 12.996500, lon: 77.697500 }, distance: '3.1 Kms', icon: 'fa-solid fa-cart-shopping' },
-        { label: 'Phoenix Marketcity', destination: 'Phoenix Marketcity, Whitefield Main Road, Mahadevapura, Bengaluru, Karnataka 560048', coordinates: { lat: 12.995800, lon: 77.696500 }, distance: '3.3 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'Gopalan National School', destination: 'Gopalan National School, Seetharampalya, Hoodi, Bengaluru, Karnataka 560048', coordinates: { lat: 12.986500, lon: 77.712500 }, distance: '1.2 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Nexus Shantiniketan Mall', destination: 'Nexus Shantiniketan Mall, Whitefield Main Road, Bengaluru, Karnataka 560048', coordinates: { lat: 12.989200, lon: 77.728500 }, distance: '1.3 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'VR Bengaluru', destination: 'VR Bengaluru Mall, Whitefield Main Road, Mahadevapura, Bengaluru, Karnataka 560048', coordinates: { lat: 12.996500, lon: 77.697500 }, distance: '3.4 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'Phoenix Marketcity', destination: 'Phoenix Marketcity, Whitefield Main Road, Mahadevapura, Bengaluru, Karnataka 560048', coordinates: { lat: 12.995800, lon: 77.696500 }, distance: '3.5 Kms', icon: 'fa-solid fa-cart-shopping' },
         { label: 'ITPB Whitefield', destination: 'International Tech Park Bangalore (ITPB), Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.986500, lon: 77.737500 }, distance: '3.2 Kms', icon: 'fa-solid fa-building' },
         { label: 'Sri Sathya Sai Super Speciality Hospital', destination: 'Sri Sathya Sai Super Speciality Hospital, EPIP Zone, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.982500, lon: 77.733500 }, distance: '3.5 Kms', icon: 'fa-solid fa-hospital' },
-        { label: 'Manipal Hospital Whitefield', destination: 'Manipal Hospital Whitefield, 143, EPIP Zone, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.979000, lon: 77.728000 }, distance: '3.8 Kms', icon: 'fa-solid fa-hospital' },
-        { label: 'EPIP Zone Whitefield', destination: 'Export Promotion Industrial Park (EPIP Zone), Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.978500, lon: 77.724500 }, distance: '4.5 Kms', icon: 'fa-solid fa-industry' }
+        { label: 'Manipal Hospital Whitefield', destination: 'Manipal Hospital Whitefield, 143, EPIP Zone, Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.979000, lon: 77.728000 }, distance: '1.6 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'EPIP Zone Whitefield', destination: 'Export Promotion Industrial Park (EPIP Zone), Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.978500, lon: 77.724500 }, distance: '4.2 Kms', icon: 'fa-solid fa-industry' }
     ]
   },
   {
@@ -297,12 +299,13 @@ export const propertiesData = [
     description: 'Total Environment In That Quiet Earth is a beautifully planned 14.5-acre residential community located off Hennur Main Road in North Bengaluru. Offering distinctive L-shaped garden apartments and signature duplexes, every home is designed around a private, cantilevered garden terrace. Features include exposed wire-cut red brick walls, custom crafted furniture and cabinetry, and an expansive central park with multi-tier amenities.',
     thumbnail: totalEnvironmentImage('total-environment/total-environment-in-that-quiet-earth/thumbnail.webp'),
     highlights: [
-        '14.5-Acre Thoughtfully Designed Community in Hennur',
-        'Cantilevered L-Shaped Living Spaces & Gardens',
-        'Custom Woodwork & Handcrafted Finishes',
-        'Over 20 Sports & Leisure Amenities',
-        'Fast Connectivity to Outer Ring Road & Manyata Tech Park',
-        'Convenient Access to Kempegowda International Airport'
+        "Low-density and pedestrian-friendly plan",
+        "3-bedroom home based on a traditional Indian courtyard design",
+        "Expansive 50,000 sq.ft. clubhouse features an open-to-sky swimming pool",
+        "Unique living experiences with curated amenities, including treetop walkway",
+        "Hybrid central air-conditioning with blower units in each bedroom",
+        "Homes customizable via proprietary edesign platform for layout changes",
+        "Unique home designs with living spaces opening to landscaped gardens"
     ],
     images: [
         totalEnvironmentImage('total-environment/total-environment-in-that-quiet-earth/gallery/exterior-view.webp'),
@@ -325,14 +328,14 @@ export const propertiesData = [
         { name: '24/7 Security & CCTV', icon: 'fa-solid fa-shield-halved' }
     ],
     connectivity: [
-        { label: 'Srees Carnatic School', destination: 'Srees Carnatic Music and Dance School, Bileshivale, Bengaluru, Karnataka 560077', coordinates: { lat: 13.061500, lon: 77.660500 }, distance: '500 Meters', icon: 'fa-solid fa-music' },
-        { label: 'Vani Public School', destination: 'Vani Public School, Hennur Bagalur Main Road, Bileshivale, Bengaluru, Karnataka 560077', coordinates: { lat: 13.064500, lon: 77.664500 }, distance: '1.1 Kms', icon: 'fa-solid fa-school' },
-        { label: 'Presidency College of Nursing', destination: 'Presidency College of Nursing, Hennur Main Road, Bengaluru, Karnataka 560077', coordinates: { lat: 13.065500, lon: 77.659500 }, distance: '1.1 Kms', icon: 'fa-solid fa-graduation-cap' },
-        { label: 'Alpha College of Engineering', destination: 'Alpha College of Engineering, Kannuru, Bengaluru, Karnataka 562149', coordinates: { lat: 13.078500, lon: 77.658500 }, distance: '2.5 Kms', icon: 'fa-solid fa-graduation-cap' },
-        { label: 'KR Puram Railway Station', destination: 'Krishnarajapuram Railway Station (KJM), KR Puram, Bengaluru, Karnataka 560036', coordinates: { lat: 13.001500, lon: 77.676500 }, distance: '5.8 Kms', icon: 'fa-solid fa-train' },
-        { label: 'Manyata Tech Park', destination: 'Manyata Tech Park, Outer Ring Road, Nagavara, Bengaluru, Karnataka 560045', coordinates: { lat: 13.045000, lon: 77.625000 }, distance: '5.9 Kms', icon: 'fa-solid fa-laptop-code' },
-        { label: 'ITPL Whitefield', destination: 'International Tech Park Bangalore (ITPB), Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.986500, lon: 77.737500 }, distance: '9.7 Kms', icon: 'fa-solid fa-building' },
-        { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport Bengaluru, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.198600, lon: 77.706600 }, distance: '29.0 Kms', icon: 'fa-solid fa-plane' }
+        { label: 'Srees Carnatic School', destination: 'Srees Carnatic Music and Dance School, Bileshivale, Bengaluru, Karnataka 560077', coordinates: { lat: 13.061500, lon: 77.660500 }, distance: '1.3 Kms', icon: 'fa-solid fa-music' },
+        { label: 'Vani Public School', destination: 'Vani Public School, Hennur Bagalur Main Road, Bileshivale, Bengaluru, Karnataka 560077', coordinates: { lat: 13.064500, lon: 77.664500 }, distance: '1.9 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Presidency College of Nursing', destination: 'Presidency College of Nursing, Hennur Main Road, Bengaluru, Karnataka 560077', coordinates: { lat: 13.065500, lon: 77.659500 }, distance: '1.9 Kms', icon: 'fa-solid fa-graduation-cap' },
+        { label: 'Alpha College of Engineering', destination: 'Alpha College of Engineering, Kannuru, Bengaluru, Karnataka 562149', coordinates: { lat: 13.078500, lon: 77.658500 }, distance: '6.5 Kms', icon: 'fa-solid fa-graduation-cap' },
+        { label: 'KR Puram Railway Station', destination: 'Krishnarajapuram Railway Station (KJM), KR Puram, Bengaluru, Karnataka 560036', coordinates: { lat: 13.001500, lon: 77.676500 }, distance: '7.6 Kms', icon: 'fa-solid fa-train' },
+        { label: 'Manyata Tech Park', destination: 'Manyata Tech Park, Level Six, N1 Block, Outer Ring Rd, MS Ramaiah North City, Manayata Tech Park, Nagavara, Bengaluru, Karnataka 560045', coordinates: { lat: 13.045000, lon: 77.625000 }, distance: '11.2 Kms', icon: 'fa-solid fa-laptop-code' },
+        { label: 'ITPL Whitefield', destination: 'International Tech Park Bangalore (ITPB), Whitefield, Bengaluru, Karnataka 560066', coordinates: { lat: 12.986500, lon: 77.737500 }, distance: '22.0 Kms', icon: 'fa-solid fa-building' },
+        { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport Bengaluru, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.198600, lon: 77.706600 }, distance: '24.8 Kms', icon: 'fa-solid fa-plane' }
     ]
   },
   {
@@ -353,12 +356,13 @@ export const propertiesData = [
     description: 'Total Environment Over the Rainbow is a serene 8.8-acre boutique sanctuary of luxury villas nestled at the foothills of scenic Nandi Hills. Thoughtfully integrated into the natural contours of the land, each villa is oriented toward uninterrupted panoramic hill views, with private landscaped gardens, earth-sheltered living areas, sustainable water management, and a retreat-style clubhouse.',
     thumbnail: totalEnvironmentImage('total-environment/total-environment-over-the-rainbow/thumbnail.webp'),
     highlights: [
-        'Boutique 8.8-Acre Villa Retreat near Nandi Hills',
-        'Panoramic Mountain & Valley Vistas',
-        'Earth-Sheltered Architecture Integrated with Terrain',
-        'Private Dip Pools & Landscaped Sunken Decks',
-        'Organic Orchards, Herbal Gardens & Nature Walk',
-        'Quiet Scenic Sanctuary 25 mins from Bengaluru Airport'
+        "Earth-sheltered villas nestled at the foothills of Nandi Hills",
+        "Ultra-low density community with only 33 villas across 8.8 acres",
+        "Stepped villa architecture ensures unobstructed panoramic hill views",
+        "Expansive 6,000 sq. ft. minimum plots with dual private gardens",
+        "Living areas designed with flanking gardens for natural ventilation",
+        "Grand 12-meter tree-lined driveways with dedicated pedestrian paths",
+        "Advanced Tertiary STP for eco-friendly water recycling and irrigation"
     ],
     images: [
         totalEnvironmentImage('total-environment/total-environment-over-the-rainbow/gallery/exterior-view.webp'),
@@ -378,10 +382,9 @@ export const propertiesData = [
         { name: '24/7 Security & CCTV', icon: 'fa-solid fa-shield-halved' }
     ],
     connectivity: [
-        { label: 'Jain Mission Hospital', destination: 'Jain Mission Hospital, Nandi Hills Road, Karnataka 562103', coordinates: { lat: 13.308500, lon: 77.683500 }, distance: '400 Meters', icon: 'fa-solid fa-hospital' },
-        { label: 'MNR Market', destination: 'MNR Market, Nandi Hills Cross, Chikkaballapur, Karnataka 562101', coordinates: { lat: 13.314500, lon: 77.691500 }, distance: '1.5 Kms', icon: 'fa-solid fa-store' },
-        { label: 'Sri Sathya Sai Lok Seva Health Care', destination: 'Sri Sathya Sai Lok Seva Hospital, Muddenahalli, Karnataka 562101', coordinates: { lat: 13.328500, lon: 77.701500 }, distance: '2.7 Kms', icon: 'fa-solid fa-hospital' },
-        { label: 'Gitanjali International School', destination: 'Gitanjali International School, NH 44, Bengaluru, Karnataka 562101', coordinates: { lat: 13.321500, lon: 77.718500 }, distance: '3.7 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Jain Mission Hospital', destination: 'Jain Mission Hospital, Nandi Hills Road, Karnataka 562103', coordinates: { lat: 13.308500, lon: 77.683500 }, distance: '9.4 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'Sri Sathya Sai Lok Seva Health Care', destination: 'Sri Sathya Sai Lok Seva Hospital, Muddenahalli, Karnataka 562101', coordinates: { lat: 13.328500, lon: 77.701500 }, distance: '7.7 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'Gitanjali International School', destination: 'Gitanjali International School, NH 44, Bengaluru, Karnataka 562101', coordinates: { lat: 13.321500, lon: 77.718500 }, distance: '39.1 Kms', icon: 'fa-solid fa-school' },
         { label: 'Nandi Halt Railway Station', destination: 'Nandi Railway Station (NDY), Nandi, Karnataka 562103', coordinates: { lat: 13.351500, lon: 77.695500 }, distance: '5.4 Kms', icon: 'fa-solid fa-train' },
         { label: 'Sri Sathya Sai Sarala Memorial Hospital', destination: 'Sri Sathya Sai Sarala Memorial Hospital, Muddenahalli, Karnataka 562101', coordinates: { lat: 13.332500, lon: 77.712500 }, distance: '5.7 Kms', icon: 'fa-solid fa-hospital' },
         { label: 'SJCIT Engineering College', destination: 'SJC Institute of Technology, Chikkaballapur, Karnataka 562101', coordinates: { lat: 13.432500, lon: 77.728500 }, distance: '9.5 Kms', icon: 'fa-solid fa-graduation-cap' },
@@ -406,12 +409,11 @@ export const propertiesData = [
     description: 'Total Environment Tangled Up in Green is an expansive 115-acre vision of sustainable living located off Doddaballapur Road in Devanahalli, North Bengaluru. Bordering the upcoming Satellite Town Ring Road (STRR), the master-planned plotted enclave features thousands of indigenous shade trees, underground modern utility networks, quiet tree-lined lanes, and a multi-level recreational clubhouse.',
     thumbnail: totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/thumbnail.webp'),
     highlights: [
-        'Sprawling 115-Acre Plotted Enclave in Devanahalli',
-        'Integrated Living with Indigenous Trees & Biodiversity',
-        'Underground Utilities & Eco-Conscious Infrastructure',
-        'Clubhouse with Olympic-Length Pool & Wellness Center',
-        'Located Next to Proposed Satellite Town Ring Road (STRR)',
-        '15 mins to Kempegowda International Airport & Aerospace Park'
+        "Eight acres of eucalyptus forest",
+        "Tree museum",
+        "Central boulevard with retention ponds",
+        "10-minute drive to schools, malls, hotels, and hospitals on both sides",
+        "Pet park and nature park"
     ],
     images: [
         totalEnvironmentImage('total-environment/total-environment-tangled-up-in-green/gallery/exterior-view.webp'),
@@ -437,14 +439,13 @@ export const propertiesData = [
         { name: '24/7 Gated Security & Surveillance', icon: 'fa-solid fa-shield-halved' }
     ],
     connectivity: [
-        { label: 'Devanahalli Railway Station', destination: 'Devanahalli Railway Station (DHL), Devanahalli, Karnataka 562110', coordinates: { lat: 13.245500, lon: 77.708500 }, distance: '7.0 Kms', icon: 'fa-solid fa-train' },
-        { label: 'Airport Metro Line Station', destination: 'Devanahalli Metro Station (Upcoming Airport Line), NH 44, Bengaluru, Karnataka', coordinates: { lat: 13.238500, lon: 77.715500 }, distance: '7.6 Kms', icon: 'fa-solid fa-train-subway' },
-        { label: 'Akash International School', destination: 'Akash International School, Prasannahalli Main Road, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.241500, lon: 77.721500 }, distance: '9.5 Kms', icon: 'fa-solid fa-school' },
-        { label: 'Foxconn Industrial Complex', destination: 'Foxconn India Electronics, ITIR Zone, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.275500, lon: 77.685500 }, distance: '11.7 Kms', icon: 'fa-solid fa-industry' },
-        { label: 'Devanahalli Business Park', destination: 'Devanahalli Business Park, KIADB IT Park, Bengaluru, Karnataka 562149', coordinates: { lat: 13.228500, lon: 77.695500 }, distance: '12.6 Kms', icon: 'fa-solid fa-briefcase' },
-        { label: 'JW Marriott Prestige Golfshire', destination: 'JW Marriott Bengaluru Prestige Golfshire Resort & Spa, Nandi Hills Road, Devanahalli, Karnataka 562164', coordinates: { lat: 13.315500, lon: 77.728500 }, distance: '14.0 Kms', icon: 'fa-solid fa-hotel' },
-        { label: 'KIADB Aerospace SEZ', destination: 'KIADB Aerospace SEZ, Huvinayakanahalli, Bengaluru, Karnataka 562149', coordinates: { lat: 13.185500, lon: 77.718500 }, distance: '17.0 Kms', icon: 'fa-solid fa-industry' },
-        { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport Bengaluru, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.198600, lon: 77.706600 }, distance: '18.0 Kms', icon: 'fa-solid fa-plane' }
+        { label: 'Devanahalli Railway Station', destination: 'Devanahalli Railway Station (DHL), Devanahalli, Karnataka 562110', coordinates: { lat: 13.245500, lon: 77.708500 }, distance: '4.9 Kms', icon: 'fa-solid fa-train' },
+        { label: 'Akash International School', destination: 'Akash International School, Prasannahalli Main Road, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.241500, lon: 77.721500 }, distance: '7.0 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Foxconn Industrial Complex', destination: 'Foxconn India Electronics, ITIR Zone, Devanahalli, Bengaluru, Karnataka 562110', coordinates: { lat: 13.275500, lon: 77.685500 }, distance: '10.9 Kms', icon: 'fa-solid fa-industry' },
+        { label: 'Devanahalli Business Park', destination: 'Devanahalli Business Park, Doddasanne, Karnataka', coordinates: { lat: 13.228500, lon: 77.695500 }, distance: '12.6 Kms', icon: 'fa-solid fa-briefcase' },
+        { label: 'JW Marriott Prestige Golfshire', destination: 'JW Marriott Bengaluru Prestige Golfshire Resort & Spa, Nandi Hills Road, Devanahalli, Karnataka 562164', coordinates: { lat: 13.315500, lon: 77.728500 }, distance: '11.9 Kms', icon: 'fa-solid fa-hotel' },
+        { label: 'KIADB Aerospace SEZ', destination: 'KIADB Aerospace SEZ, Huvinayakanahalli, Bengaluru, Karnataka 562149', coordinates: { lat: 13.185500, lon: 77.718500 }, distance: '17.5 Kms', icon: 'fa-solid fa-industry' },
+        { label: 'Kempegowda International Airport', destination: 'Kempegowda International Airport Bengaluru, Devanahalli, Bengaluru, Karnataka 560300', coordinates: { lat: 13.198600, lon: 77.706600 }, distance: '16.4 Kms', icon: 'fa-solid fa-plane' }
     ]
   },
   {
@@ -465,12 +466,12 @@ export const propertiesData = [
     description: 'Total Environment The Magic Faraway Tree is a ready-to-move 12-acre elevated residential community on Kanakapura Road in South Bengaluru. Overlooking scenic green tree canopies, the development offers simplex and duplex apartments with double-height garden terraces, exposed handmade brickwork, wire-cut terracotta jalis, and exceptional connectivity via the adjacent Silk Institute Metro Station and NICE Road interchange.',
     thumbnail: totalEnvironmentImage('total-environment/total-environment-the-magic-faraway-tree/thumbnail.webp'),
     highlights: [
-        '12-Acre Elevated Living on Kanakapura Road',
-        'Simplex & Duplex Residences with Private Hanging Gardens',
-        'Seamless Green Views of Surrounding Tree Canopies',
-        'Clubhouse, Swimming Pool & Multi-Sport Arena',
-        'Adjacent to Silk Institute Metro Station',
-        '200 Metres from NICE Road Expressway Interchange'
+        "Deck with water Feature",
+        "Living Room with Garden view",
+        "Unique panoramic view of scenic South Bangalore",
+        "The economic times real estate conclave and award",
+        "Winner, residential projects row housing",
+        "Properties with 100% power backup available"
     ],
     images: [
         totalEnvironmentImage('total-environment/total-environment-the-magic-faraway-tree/gallery/exterior-view.webp'),
@@ -492,12 +493,12 @@ export const propertiesData = [
         { name: '24/7 Security & CCTV', icon: 'fa-solid fa-shield-halved' }
     ],
     connectivity: [
-        { label: 'Silk Institute Metro Station', destination: 'Silk Institute Metro Station (Green Line), Kanakapura Road, Thalaghattapura, Bengaluru, Karnataka 560062', coordinates: { lat: 12.871200, lon: 77.537800 }, distance: '250 Meters', icon: 'fa-solid fa-train-subway' },
-        { label: 'NICE Road Expressway Junction', destination: 'NICE Ring Road Toll Plaza, Kanakapura Road, Bengaluru, Karnataka 560062', coordinates: { lat: 12.869500, lon: 77.539500 }, distance: '200 Meters', icon: 'fa-solid fa-highway' },
-        { label: 'Astra Super Speciality Hospital', destination: 'Astra Hospital, Kanakapura Main Road, Konanakunte Cross, Bengaluru, Karnataka 560062', coordinates: { lat: 12.885500, lon: 77.551500 }, distance: '4.0 Kms', icon: 'fa-solid fa-hospital' },
-        { label: 'Metro Cash & Carry', destination: 'METRO Wholesale Kanakapura Road, Doddakallasandra, Bengaluru, Karnataka 560062', coordinates: { lat: 12.889500, lon: 77.552500 }, distance: '4.5 Kms', icon: 'fa-solid fa-cart-shopping' },
-        { label: 'Delhi Public School Bangalore South', destination: 'Delhi Public School Bangalore South, Kanakapura Road, Bengaluru, Karnataka 560062', coordinates: { lat: 12.876500, lon: 77.555500 }, distance: '4.8 Kms', icon: 'fa-solid fa-school' },
-        { label: 'Sri Sri Ravishankar Vidya Mandir', destination: 'Sri Sri Ravishankar Vidya Mandir, Art of Living International Center, Kanakapura Road, Bengaluru, Karnataka 560082', coordinates: { lat: 12.842500, lon: 77.502500 }, distance: '5.5 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Silk Institute Metro Station', destination: 'Silk Institute Metro Station (Green Line), Kanakapura Road, Thalaghattapura, Bengaluru, Karnataka 560062', coordinates: { lat: 12.871200, lon: 77.537800 }, distance: '1.2 Kms', icon: 'fa-solid fa-train-subway' },
+        { label: 'NICE Road Expressway Junction', destination: 'NICE Ring Road Toll Plaza, Kanakapura Road, Bengaluru, Karnataka 560062', coordinates: { lat: 12.869500, lon: 77.539500 }, distance: '11.3 Kms', icon: 'fa-solid fa-highway' },
+        { label: 'Astra Super Speciality Hospital', destination: 'Astra Hospital, Kanakapura Main Road, Konanakunte Cross, Bengaluru, Karnataka 560062', coordinates: { lat: 12.885500, lon: 77.551500 }, distance: '6.5 Kms', icon: 'fa-solid fa-hospital' },
+        { label: 'Metro Cash & Carry', destination: 'METRO Wholesale Kanakapura Road, Doddakallasandra, Bengaluru, Karnataka 560062', coordinates: { lat: 12.889500, lon: 77.552500 }, distance: '6.7 Kms', icon: 'fa-solid fa-cart-shopping' },
+        { label: 'Delhi Public School Bangalore South', destination: 'Delhi Public School Bangalore South, Kanakapura Road, Bengaluru, Karnataka 560062', coordinates: { lat: 12.876500, lon: 77.555500 }, distance: '7.5 Kms', icon: 'fa-solid fa-school' },
+        { label: 'Sri Sri Ravishankar Vidya Mandir', destination: 'Sri Sri Ravishankar Vidya Mandir, Art of Living International Center, Kanakapura Road, Bengaluru, Karnataka 560082', coordinates: { lat: 12.842500, lon: 77.502500 }, distance: '4.5 Kms', icon: 'fa-solid fa-school' },
         { label: 'Forum South Bangalore Mall', destination: 'Forum South Bangalore Mall, Konanakunte Cross, Kanakapura Road, Bengaluru, Karnataka 560062', coordinates: { lat: 12.886500, lon: 77.554500 }, distance: '6.2 Kms', icon: 'fa-solid fa-cart-shopping' },
         { label: 'JP Nagar 6th Phase', destination: 'JP Nagar 6th Phase, Sarakki Lake, Bengaluru, Karnataka 560078', coordinates: { lat: 12.905500, lon: 77.581500 }, distance: '8.5 Kms', icon: 'fa-solid fa-location-dot' }
     ]

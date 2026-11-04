@@ -181,19 +181,19 @@
                         </div>
                     </div>
                     <div>
-                        <form onsubmit="handleFormSubmit(event)">
+                        <form onsubmit="handleFormSubmit(event)" novalidate>
                             <div class="form-group">
-                                <input type="text" class="form-input" placeholder="Your Full Name" aria-label="Your Full Name" required>
+                                <input type="text" class="form-input" placeholder="Your Full Name *" aria-label="Your Full Name" required>
                             </div>
                             <div class="form-group">
-                                <input type="tel" class="form-input" placeholder="Mobile Number (+91)" aria-label="Mobile Number (+91)" required>
+                                <input type="tel" class="form-input" placeholder="Mobile Number (+91) *" aria-label="Mobile Number (+91)" maxlength="10" inputmode="numeric" pattern="[0-9]{10}" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-input" placeholder="Email Address" aria-label="Email Address" required>
+                                <input type="email" class="form-input" placeholder="Email Address (Optional)" aria-label="Email Address (Optional)">
                             </div>
                             <div class="form-group">
                                 <div class="project-select" id="homeProjectSelect">
-                                    <button type="button" class="form-input project-select-trigger" aria-haspopup="listbox" aria-expanded="false"><span>Select a Project</span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                                    <button type="button" class="form-input project-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-required="true"><span>Select a Project <strong class="required-star">*</strong></span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
                                     <div class="project-select-options" role="listbox" aria-label="Project" hidden></div>
                                     <input type="hidden" name="project" value="">
                                 </div>
@@ -647,20 +647,20 @@
                     <h2 class="enquiry-title serif-font">Schedule a Site Visit</h2>
                     <p class="enquiry-subtitle">Get private tour & official pricing breakdown</p>
                     
-                    <form onsubmit="handleFormSubmit(event)">
+                    <form onsubmit="handleFormSubmit(event)" novalidate>
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Your Full Name" aria-label="Your Full Name" required>
+                            <input type="text" class="form-input" placeholder="Your Full Name *" aria-label="Your Full Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-input" placeholder="Phone Number" aria-label="Phone Number" required>
+                            <input type="tel" class="form-input" placeholder="Phone Number *" aria-label="Phone Number" maxlength="10" inputmode="numeric" pattern="[0-9]{10}" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" placeholder="Email Address" aria-label="Email Address" required>
+                            <input type="email" class="form-input" placeholder="Email Address (Optional)" aria-label="Email Address (Optional)">
                         </div>
                         <div class="form-group">
                             <div class="bhk-select" id="preferredBhkSelect">
                                 <button type="button" class="form-input bhk-select-trigger" aria-haspopup="listbox" aria-expanded="false">
-                                    <span>Select Preferred BHK</span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                                    <span>Select Preferred BHK <strong class="required-star">*</strong></span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                                 </button>
                                 <div class="bhk-select-options" role="listbox" aria-label="Preferred BHK" hidden></div>
                                 <input type="hidden" name="preferredBhk" id="preferredBhkValue" value="">
@@ -713,11 +713,19 @@
                 Receive instant floor plans, pricing sheets, and payment schedules directly on your WhatsApp.
             </p>
             <div class="form-group">
-                <input type="tel" id="waPhoneInput" class="form-input" placeholder="Enter Your WhatsApp Number" aria-label="WhatsApp Number">
+                <input type="tel" id="waPhoneInput" class="form-input" placeholder="Enter Your WhatsApp Number" aria-label="WhatsApp Number" maxlength="10" inputmode="numeric" pattern="[0-9]{10}">
             </div>
             <button class="wa-btn" onclick="sendWhatsAppLead()">
                 <i class="fa-brands fa-whatsapp"></i> Get Info on WhatsApp
             </button>
+        </div>
+    </div>
+
+    <!-- 13. ENQUIRY STATUS MODAL (SUCCESS & FAILURE POPUP) -->
+    <div class="modal-overlay" id="enquiryStatusModal" role="dialog" aria-modal="true" aria-labelledby="statusModalTitle">
+        <div class="modal-box status-modal-box">
+            <button class="modal-close-btn" type="button" aria-label="Close dialog" onclick="closeModal('enquiryStatusModal')">&times;</button>
+            <div id="statusModalContent"></div>
         </div>
     </div>
 

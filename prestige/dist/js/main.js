@@ -268,7 +268,12 @@ function populateHomeProjectDropdown(projects) {
     const select = document.getElementById('homeProjectSelect');
     if (!select) return;
     const listbox = select.querySelector('.project-select-options');
+    const trigger = select.querySelector('.project-select-trigger');
+    const valueInput = select.querySelector('input[type="hidden"]');
     listbox.replaceChildren();
+    if (!valueInput?.value && trigger) {
+        trigger.querySelector('span').innerHTML = 'Select a Project <strong class="required-star">*</strong>';
+    }
 
     projects.forEach(project => {
         const option = document.createElement('button');
@@ -292,8 +297,13 @@ function selectEnquiryProject(projectId) {
         .find(candidate => candidate.dataset.value === project.name);
     if (!option) return false;
 
-    select.querySelector('.project-select-trigger span').textContent = project.name;
+    const trigger = select.querySelector('.project-select-trigger');
+    trigger.querySelector('span').textContent = project.name;
     select.querySelector('input[type="hidden"]').value = project.name;
+    trigger.classList.remove('is-invalid');
+    trigger.classList.add('is-valid');
+    const err = select.closest('.form-group')?.querySelector('.field-error-msg');
+    if (err) err.remove();
     select.querySelectorAll('.project-select-option').forEach(candidate => {
         candidate.setAttribute('aria-selected', String(candidate === option));
     });
@@ -326,8 +336,13 @@ function handleProjectDropdownClick(event) {
     const option = event.target.closest('.project-select-option');
     if (option && select?.contains(option)) {
         const listbox = select.querySelector('.project-select-options');
-        select.querySelector('.project-select-trigger span').textContent = option.dataset.value;
+        const trigger = select.querySelector('.project-select-trigger');
+        trigger.querySelector('span').textContent = option.dataset.value;
         select.querySelector('input[type="hidden"]').value = option.dataset.value;
+        trigger.classList.remove('is-invalid');
+        trigger.classList.add('is-valid');
+        const err = select.closest('.form-group')?.querySelector('.field-error-msg');
+        if (err) err.remove();
         listbox.querySelectorAll('.project-select-option').forEach(candidate => {
             candidate.setAttribute('aria-selected', String(candidate === option));
         });
@@ -1210,6 +1225,9 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
 
     if (updateUrl) setPropertyRoute(item);
     activeProperty = item;
+
+    resetDetailEnquiryForm();
+
     setActiveNavigation(item.id);
     const builderName = document.body.dataset.homeBuilder || document.body.dataset.builder;
     const projectRegion = item.location.includes('Bengaluru') ? 'Bengaluru' : 'Karnataka';
@@ -1259,11 +1277,11 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
         const btn = document.createElement('button');
         btn.className = `fp-tab-btn ${index === 0 ? 'active' : ''}`;
         btn.textContent = fp.bhk;
-        btn.onclick = () => switchFloorplan(fp, btn);
+        btn.onclick = () => switchFloorplan(fp, btn, true);
         fpTabs.appendChild(btn);
     });
     populatePreferredBhk(item.floorPlans || []);
-    switchFloorplan(item.floorPlans[0], fpTabs.firstChild);
+    switchFloorplan(item.floorPlans[0], fpTabs.firstChild, false);
     syncEmiCalculatorWithProperty(item);
 
     const amenGrid = document.getElementById('dt-amenities');
@@ -1585,18 +1603,22 @@ function populatePreferredBhk(floorPlans) {
     const listbox = select.querySelector('.bhk-select-options');
     const trigger = select.querySelector('.bhk-select-trigger');
     const valueInput = select.querySelector('input[name="preferredBhk"]');
-    const label = trigger.querySelector('span');
+    const label = trigger ? trigger.querySelector('span') : null;
     listbox.replaceChildren();
-    valueInput.value = floorPlans[0]?.bhk || '';
-    label.textContent = valueInput.value || 'Select Preferred BHK';
+
+    // User must choose BHK: starts unselected
+    if (valueInput) valueInput.value = '';
+    if (label) label.innerHTML = 'Select Preferred BHK <strong class="required-star">*</strong>';
+    if (trigger) trigger.classList.remove('is-invalid', 'is-valid');
+    const err = select.closest('.form-group')?.querySelector('.field-error-msg');
+    if (err) err.remove();
 
     floorPlans.forEach((floorPlan, index) => {
         const option = document.createElement('button');
         option.type = 'button';
         option.className = 'bhk-select-option';
         option.setAttribute('role', 'option');
-        option.setAttribute('aria-selected', String(index === 0));
-        option.classList.toggle('active', index === 0);
+        option.setAttribute('aria-selected', 'false');
         option.dataset.value = floorPlan.bhk;
         option.textContent = floorPlan.bhk;
         option.id = `preferred-bhk-option-${index}`;
@@ -1832,7 +1854,7 @@ function toggleMobileMenu() {
     toggle.innerHTML = `<i class="fa-solid fa-${isOpen ? 'xmark' : 'bars'}" aria-hidden="true"></i>`;
 }
 
-function switchFloorplan(fp, btn) {
+function switchFloorplan(fp, btn, autoSelectBhk = false) {
     document.querySelectorAll('.fp-tab-btn').forEach(b => b.classList.remove('active'));
     if(btn) btn.classList.add('active');
     document.getElementById('fp-type').textContent = `${fp.bhk} Layout`;
@@ -1867,8 +1889,13 @@ function setPreferredBhk(bhk) {
         .find(candidate => candidate.dataset.value === bhk);
     if (!option) return;
 
-    select.querySelector('.bhk-select-trigger span').textContent = bhk;
+    const trigger = select.querySelector('.bhk-select-trigger');
+    trigger.querySelector('span').textContent = bhk;
     select.querySelector('input[name="preferredBhk"]').value = bhk;
+    trigger.classList.remove('is-invalid');
+    trigger.classList.add('is-valid');
+    const err = select.closest('.form-group')?.querySelector('.field-error-msg');
+    if (err) err.remove();
     select.querySelectorAll('.bhk-select-option').forEach(candidate => {
         const isSelected = candidate === option;
         candidate.setAttribute('aria-selected', String(isSelected));
@@ -1900,9 +1927,353 @@ function sendWhatsAppLead() {
     closeModal('waPopModal');
 }
 
-function handleFormSubmit(e) {
+// ==================== LEAD CAPTURE & CRM API CONFIGURATION ====================
+// When your backend API endpoint is ready, update API_CONFIG below:
+const API_CONFIG = {
+    // Set your live API or webhook endpoint URL here:
+    // e.g. 'https://api.yourdomain.com/v1/leads' or 'https://webhook.site/...'
+    endpoint: '',
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    },
+    // Partner identification (synced with website footer)
+    partner: {
+        name: 'M&A Ventures',
+        type: 'Authorised Channel Partner',
+        builder: 'Prestige Group',
+        contactPhone: '+91 98765 43210',
+        disclaimer: 'This page is published and maintained by M&A Ventures, an Authorised Channel Partner.'
+    }
+};
+
+/**
+ * Dispatches lead payload to the configured API.
+ * Gracefully falls back to local success state if endpoint is empty or offline.
+ */
+async function sendLeadToApi(leadData) {
+    // Exact schema matching backend DevTools network payload
+    const payload = {
+        name: leadData.name,
+        phone: leadData.phone,
+        email: leadData.email || '',
+        projectId: leadData.projectId,
+        ...(leadData.bhk ? { bhk: leadData.bhk } : {})
+    };
+
+    if (!API_CONFIG.endpoint) {
+        console.log('[Lead Capture - Local Mode]: API endpoint not set yet. Ready to send exact payload:', payload);
+        return { success: true, mode: 'local', payload };
+    }
+
+    try {
+        const response = await fetch(API_CONFIG.endpoint, {
+            method: API_CONFIG.method || 'POST',
+            headers: API_CONFIG.headers,
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            throw new Error(`API responded with HTTP ${response.status}`);
+        }
+
+        const data = await response.json().catch(() => ({}));
+        return { success: true, data };
+    } catch (error) {
+        console.error('[Lead Capture Error]: Failed to dispatch lead to API:', error);
+        return { success: false, error: error.message };
+    }
+}
+
+function escapeLeadHtml(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function showFieldError(targetElement, message) {
+    targetElement.classList.add('is-invalid');
+    targetElement.classList.remove('is-valid');
+    const container = targetElement.closest('.form-group') || targetElement.parentElement;
+    if (!container) return;
+    
+    let errorMsg = container.querySelector('.field-error-msg');
+    if (!errorMsg) {
+        errorMsg = document.createElement('div');
+        errorMsg.className = 'field-error-msg';
+        errorMsg.setAttribute('role', 'alert');
+        errorMsg.innerHTML = `<i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> <span>${message}</span>`;
+        container.appendChild(errorMsg);
+    } else {
+        errorMsg.querySelector('span').textContent = message;
+    }
+}
+
+function showEnquiryStatusModal(status, leadData, errorMsg) {
+    const modal = document.getElementById('enquiryStatusModal');
+    const content = document.getElementById('statusModalContent');
+    if (!modal || !content) return;
+
+    if (status === 'success') {
+        content.innerHTML = `
+            <div class="partner-verified-badge">
+                Authorised Channel Partner · M&amp;A Ventures
+            </div>
+            <h3 class="status-modal-title" id="statusModalTitle">Enquiry Successfully Submitted!</h3>
+            <p class="status-modal-greeting">Thank you, <strong>${escapeLeadHtml(leadData.fullName)}</strong>.</p>
+            
+            <div class="enquiry-summary-box">
+                <div class="summary-row">
+                    <span class="summary-label"><i class="fa-solid fa-building" aria-hidden="true"></i> Project:</span>
+                    <span class="summary-val"><strong>${escapeLeadHtml(leadData.project)}</strong></span>
+                </div>
+                ${leadData.preferredBhk ? `
+                <div class="summary-row">
+                    <span class="summary-label"><i class="fa-solid fa-bed" aria-hidden="true"></i> BHK Preference:</span>
+                    <span class="summary-val"><strong>${escapeLeadHtml(leadData.preferredBhk)}</strong></span>
+                </div>` : ''}
+                <div class="summary-row">
+                    <span class="summary-label"><i class="fa-solid fa-phone" aria-hidden="true"></i> Contact:</span>
+                    <span class="summary-val">${escapeLeadHtml(leadData.mobileNumber)}</span>
+                </div>
+            </div>
+
+            <p class="status-modal-desc">
+                Your enquiry has been received by <strong>M&amp;A Ventures</strong>, the Authorised Channel Partner for Prestige Group. Our dedicated property advisor will contact you within 15 minutes.
+            </p>
+
+            <div class="partner-quick-contact">
+                <span>Need immediate consultation?</span>
+                <a href="https://wa.me/919876543210?text=Hi%20M%26A%20Ventures,%20I%20just%20submitted%20an%20enquiry%20for%20${encodeURIComponent(leadData.project)}" target="_blank" rel="noopener noreferrer" class="btn-partner-wa">
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp Sales Desk
+                </a>
+            </div>
+        `;
+    } else {
+        content.innerHTML = `
+            <div class="status-fail-badge">
+                <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Submission Unsuccessful
+            </div>
+            <h3 class="status-modal-title" id="statusModalTitle">Unable to Submit Online</h3>
+            <p class="status-modal-desc">
+                We could not connect to the lead dispatch service (${escapeLeadHtml(errorMsg || 'Network or server issue')}). Please connect directly with our sales desk on WhatsApp for instant assistance.
+            </p>
+
+            <div class="partner-quick-contact">
+                <span>Instant Consultation:</span>
+                <a href="https://wa.me/919876543210?text=Hi%20M%26A%20Ventures,%20I%20tried%20to%20submit%20an%20enquiry%20for%20${encodeURIComponent(leadData.project)}%20(Name:%20${encodeURIComponent(leadData.fullName)})" target="_blank" rel="noopener noreferrer" class="btn-partner-wa">
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Connect via WhatsApp
+                </a>
+            </div>
+        `;
+    }
+
+    modal.classList.add('active');
+}
+
+function resetDetailEnquiryForm() {
+    const detailCard = document.getElementById('detail-site-visit');
+    if (!detailCard) return;
+    const banner = detailCard.querySelector('.form-success-banner');
+    if (banner) banner.remove();
+    const form = detailCard.querySelector('form');
+    if (form) {
+        form.reset();
+        form.querySelectorAll('.field-error-msg').forEach(el => el.remove());
+        form.querySelectorAll('.is-invalid, .is-valid').forEach(el => el.classList.remove('is-invalid', 'is-valid'));
+        const bhkInput = form.querySelector('input[name="preferredBhk"]');
+        if (bhkInput) bhkInput.value = '';
+        const bhkTrigger = form.querySelector('.bhk-select-trigger span');
+        if (bhkTrigger) bhkTrigger.innerHTML = 'Select Preferred BHK <strong class="required-star">*</strong>';
+        form.style.display = '';
+    }
+    const sidebar = document.querySelector('.detail-sidebar');
+    if (sidebar) sidebar.scrollTop = 0;
+}
+
+function resetEnquiryForm(button) {
+    const banner = button.closest('.form-success-banner');
+    if (!banner) return;
+    const parent = banner.parentElement;
+
+    // If resetting on detail card, clear saved submission for this specific property
+    if (parent?.id === 'detail-site-visit' && activeProperty?.id) {
+        try {
+            sessionStorage.removeItem('prestige_enquiry_' + activeProperty.id);
+        } catch (err) {}
+    }
+
+    const form = parent.querySelector('form');
+    if (form) {
+        form.reset();
+        form.querySelectorAll('.field-error-msg').forEach(el => el.remove());
+        form.querySelectorAll('.is-invalid, .is-valid').forEach(el => el.classList.remove('is-invalid', 'is-valid'));
+        const projectTrigger = form.querySelector('.project-select-trigger span');
+        if (projectTrigger) projectTrigger.innerHTML = 'Select a Project <strong class="required-star">*</strong>';
+        const bhkTrigger = form.querySelector('.bhk-select-trigger span');
+        if (bhkTrigger) bhkTrigger.innerHTML = 'Select Preferred BHK <strong class="required-star">*</strong>';
+        form.style.display = '';
+    }
+    banner.remove();
+}
+
+async function handleFormSubmit(e) {
     e.preventDefault();
-    alert('Your request has been registered. Our sales representative will contact you within 15 minutes.');
+    const form = e.target;
+    
+    // Clear old errors
+    form.querySelectorAll('.field-error-msg').forEach(el => el.remove());
+    form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+
+    const nameInput = form.querySelector('input[type="text"]');
+    const phoneInput = form.querySelector('input[type="tel"]');
+    const emailInput = form.querySelector('input[type="email"]');
+    const projectInput = form.querySelector('input[name="project"]');
+    const bhkInput = form.querySelector('input[name="preferredBhk"]');
+    const submitBtn = form.querySelector('.btn-submit-enquiry');
+
+    let isValid = true;
+    let firstInvalid = null;
+
+    // 1. Name is COMPULSORY
+    if (nameInput) {
+        const nameVal = nameInput.value.trim();
+        if (!nameVal) {
+            isValid = false;
+            showFieldError(nameInput, 'Please enter your full name');
+            if (!firstInvalid) firstInvalid = nameInput;
+        } else if (nameVal.length < 2) {
+            isValid = false;
+            showFieldError(nameInput, 'Please enter a valid name (at least 2 characters)');
+            if (!firstInvalid) firstInvalid = nameInput;
+        }
+    }
+
+    // 2. Phone is COMPULSORY
+    if (phoneInput) {
+        const phoneVal = phoneInput.value.trim().replace(/\D/g, '');
+        if (!phoneVal) {
+            isValid = false;
+            showFieldError(phoneInput, 'Please enter your mobile number');
+            if (!firstInvalid) firstInvalid = phoneInput;
+        } else if (phoneVal.length < 10) {
+            isValid = false;
+            showFieldError(phoneInput, 'Please enter a valid 10-digit mobile number');
+            if (!firstInvalid) firstInvalid = phoneInput;
+        }
+    }
+
+    // 3. Email is OPTIONAL: validate format only if user typed something
+    if (emailInput && emailInput.value.trim()) {
+        const emailVal = emailInput.value.trim();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailVal)) {
+            isValid = false;
+            showFieldError(emailInput, 'Please enter a valid email address or leave blank');
+            if (!firstInvalid) firstInvalid = emailInput;
+        }
+    }
+
+    // 4. Project Selection is COMPULSORY on Home/Contact Form
+    if (projectInput) {
+        const projectSelect = form.querySelector('.project-select');
+        const trigger = projectSelect?.querySelector('.project-select-trigger');
+        if (!projectInput.value.trim()) {
+            isValid = false;
+            if (trigger) {
+                showFieldError(trigger, 'Please select which project you are interested in');
+                if (!firstInvalid) firstInvalid = trigger;
+            }
+        }
+    }
+
+    // 5. Preferred BHK Selection is COMPULSORY on Detail Page Form
+    if (bhkInput) {
+        const bhkSelect = form.querySelector('.bhk-select');
+        const trigger = bhkSelect?.querySelector('.bhk-select-trigger');
+        if (!bhkInput.value.trim()) {
+            isValid = false;
+            if (trigger) {
+                showFieldError(trigger, 'Please select your preferred BHK configuration');
+                if (!firstInvalid) firstInvalid = trigger;
+            }
+        }
+    }
+
+    if (!isValid) {
+        if (firstInvalid) {
+            firstInvalid.focus();
+            if (typeof firstInvalid.scrollIntoView === 'function') {
+                firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        return false;
+    }
+
+    // Format phone with +91 if needed
+    const rawDigits = phoneInput ? phoneInput.value.trim().replace(/\D/g, '') : '';
+    const formattedPhone = rawDigits.length === 10 ? `+91${rawDigits}` : (phoneInput ? phoneInput.value.trim() : '');
+
+    // Resolve project and projectId
+    const selectedProjectName = projectInput && projectInput.value.trim() 
+        ? projectInput.value.trim() 
+        : (activeProperty?.name || 'Prestige Group Project');
+    const matchedProp = propertiesData.find(p => p.name === selectedProjectName || p.id === selectedProjectName) || activeProperty;
+    const selectedProjectId = matchedProp?.apiProjectId || matchedProp?.id || (activeProperty?.id || 'prestige-project');
+
+    // Prepare clean structured payload for API integration
+    const leadData = {
+        name: nameInput ? nameInput.value.trim() : '',
+        phone: formattedPhone,
+        email: emailInput && emailInput.value.trim() ? emailInput.value.trim() : '',
+        projectId: selectedProjectId,
+        bhk: bhkInput && bhkInput.value.trim() ? bhkInput.value.trim() : null,
+        // UI & backward-compatibility aliases:
+        fullName: nameInput ? nameInput.value.trim() : '',
+        mobileNumber: formattedPhone,
+        project: selectedProjectName,
+        preferredBhk: bhkInput && bhkInput.value.trim() ? bhkInput.value.trim() : null,
+        sourcePage: window.location.href,
+        submittedAt: new Date().toISOString(),
+        partner: API_CONFIG.partner
+    };
+
+    // Button loading state
+    const originalBtnText = submitBtn ? submitBtn.innerHTML : 'Submit';
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Submitting...';
+    }
+
+    // Dispatch to API (falls back cleanly if API endpoint is not yet provided)
+    const result = await sendLeadToApi(leadData);
+
+    if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+    }
+
+    if (result.success) {
+        showEnquiryStatusModal('success', leadData);
+        form.reset();
+        const projectTrigger = form.querySelector('.project-select-trigger span');
+        if (projectTrigger) projectTrigger.innerHTML = 'Select a Project <strong class="required-star">*</strong>';
+        const bhkTrigger = form.querySelector('.bhk-select-trigger span');
+        if (bhkTrigger) bhkTrigger.innerHTML = 'Select Preferred BHK <strong class="required-star">*</strong>';
+        const bhkInput = form.querySelector('input[name="preferredBhk"]');
+        if (bhkInput) bhkInput.value = '';
+        const projInput = form.querySelector('input[name="project"]');
+        if (projInput) projInput.value = '';
+    } else {
+        showEnquiryStatusModal('failure', leadData, result.error);
+    }
+
+    return false;
 }
 
 // ==================== HOME LOAN EMI CALCULATOR ====================
@@ -2246,5 +2617,81 @@ Object.assign(window, {
     openWhatsAppModal,
     sendWhatsAppLead,
     handleFormSubmit,
+    API_CONFIG,
+    sendLeadToApi,
+    resetEnquiryForm,
+    resetDetailEnquiryForm,
+    showEnquiryStatusModal,
     updateEmiCalculator
+});
+
+// Phone number enforcement: exactly digits only, strictly max 10 numbers
+document.addEventListener('keydown', (event) => {
+    const el = event.target;
+    if (el && el.type === 'tel') {
+        const allowedNavKeys = [
+            'Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 
+            'ArrowUp', 'ArrowDown', 'Enter', 'Escape', 'Home', 'End'
+        ];
+        if (allowedNavKeys.includes(event.key)) return;
+        if (event.ctrlKey || event.metaKey) return;
+
+        // Block any non-digit
+        if (!/^\d$/.test(event.key)) {
+            event.preventDefault();
+            return;
+        }
+
+        // If already 10 digits and user has not selected text to replace, do not take more entries
+        const selectedText = el.value.substring(el.selectionStart || 0, el.selectionEnd || 0);
+        const digitsOnly = el.value.replace(/\D/g, '');
+        if (digitsOnly.length >= 10 && selectedText.length === 0) {
+            event.preventDefault();
+        }
+    }
+});
+
+document.addEventListener('paste', (event) => {
+    const el = event.target;
+    if (el && el.type === 'tel') {
+        event.preventDefault();
+        const pasteData = (event.clipboardData || window.clipboardData)?.getData('text') || '';
+        const digits = pasteData.replace(/\D/g, '');
+        const currentVal = el.value;
+        const start = el.selectionStart || 0;
+        const end = el.selectionEnd || 0;
+        const newVal = (currentVal.slice(0, start) + digits + currentVal.slice(end)).replace(/\D/g, '').slice(0, 10);
+        el.value = newVal;
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+});
+
+// form-input-error-dismissal & real-time phone number sanitization
+document.addEventListener('input', (event) => {
+    const el = event.target;
+    if (el && el.type === 'tel') {
+        const digits = el.value.replace(/\D/g, '');
+        if (el.value !== digits || el.value.length > 10) {
+            el.value = digits.slice(0, 10);
+        }
+    }
+    if (el && el.classList.contains('is-invalid')) {
+        el.classList.remove('is-invalid');
+        const err = el.closest('.form-group')?.querySelector('.field-error-msg');
+        if (err) err.remove();
+    }
+});
+
+
+// Modal overlay backdrop click and Escape key dismissal
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('modal-overlay')) {
+        event.target.classList.remove('active');
+    }
+});
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        const activeModal = document.querySelector('.modal-overlay.active');
+        if (activeModal) activeModal.classList.remove('active');
+    }
 });

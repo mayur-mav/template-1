@@ -12,8 +12,8 @@ const propertyIds = propertiesData.map(({ id }) => id);
 const sectionRoutes = ['residences', 'about', 'faq', 'contact'];
 const allRoutes = [...sectionRoutes, ...propertyIds];
 const siteOrigin = process.env.SITE_ORIGIN?.replace(/\/$/, '');
-const homeTitle = 'Lodha Group Projects in Bangalore | Lodha Developers';
-const homeDescription = 'Explore Lodha Group projects in Bangalore, including new launches and ongoing projects in Thanisandra, HSR Extension, Bannerghatta Road, Sarjapur and Devanahalli.';
+const homeTitle = 'Lodha Group Bangalore | Lodha Builders & Developers Projects';
+const homeDescription = 'Explore Lodha Group Bangalore projects, luxury apartments, and lodha group upcoming projects by Lodha Developers Limited across Thanisandra, Bannerghatta, and Sarjapur.';
 const brandName = 'Lodha Developers';
 const apacheRouteRules = [
   'Options -MultiViews',

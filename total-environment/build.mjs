@@ -13,7 +13,7 @@ const sectionRoutes = ['residences', 'about', 'faq', 'contact'];
 const allRoutes = [...sectionRoutes, ...propertyIds];
 const siteOrigin = process.env.SITE_ORIGIN?.replace(/\/$/, '');
 const homeTitle = 'Total Environment Builders Bangalore | Homes, Villas & Projects';
-const homeDescription = 'Explore Total Environment homes, earth-sheltered villas, and luxury apartments in Bangalore. Compare projects, locations, floor plans, prices, and amenities.';
+const homeDescription = 'Explore Total Environment in Bangalore: find Total Environment homes in Bangalore, luxury villas across Whitefield, Hennur, Sarjapur, and JP Nagar by Total Environment builders.';
 const brandName = 'Total Environment';
 const apacheRouteRules = [
   'Options -MultiViews',

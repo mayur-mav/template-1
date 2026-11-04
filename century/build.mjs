@@ -12,8 +12,8 @@ const propertyIds = propertiesData.map(({ id }) => id);
 const sectionRoutes = ['residences', 'about', 'faq', 'contact'];
 const allRoutes = [...sectionRoutes, ...propertyIds];
 const siteOrigin = process.env.SITE_ORIGIN?.replace(/\/$/, '');
-const homeTitle = 'Century Real Estate in Bengaluru | Projects & Apartments';
-const homeDescription = 'Explore Century Real Estate apartments and homes in Bengaluru. Compare projects, locations, floor plans, prices, and amenities, and enquire about a site visit.';
+const homeTitle = 'Century Real Estate in Bangalore | Century Builders & Developers';
+const homeDescription = 'Explore Century Real Estate Company projects in Bangalore. Find luxury apartments for sale in Bangalore, ready to move flats in Bangalore, and century estates Bangalore.';
 const apacheRouteRules = [
   'Options -MultiViews',
   'RewriteEngine On',

@@ -51,7 +51,9 @@ const overviewSearchTerms = [
   'Total Environment Bangalore',
   'Total Environment builders',
   'Total Environment group',
-  'Total Environment in Bangalore'
+  'Total Environment in Bangalore',
+  'Total Environment Sarjapur',
+  'Total Environment Whitefield Bangalore'
 ];
 
 function formatOverviewList(values) {
@@ -68,9 +70,11 @@ export function createPropertyOverview(property) {
   if (locLower.includes('hennur') || locLower.includes('bileshivale')) {
     searchTerm = 'Total Environment Hennur';
   } else if (locLower.includes('whitefield') || locLower.includes('hoodi')) {
-    searchTerm = 'Total Environment Whitefield';
+    searchTerm = (projectIndex % 2 === 0) ? 'Total Environment Whitefield Bangalore' : 'Total Environment Whitefield';
   } else if (locLower.includes('thalaghattapura') || locLower.includes('kanakapura') || locLower.includes('jp nagar')) {
     searchTerm = 'Total Environment JP Nagar';
+  } else if (locLower.includes('sarjapur')) {
+    searchTerm = 'Total Environment Sarjapur';
   } else {
     searchTerm = overviewSearchTerms[(projectIndex >= 0 ? projectIndex : 0) % overviewSearchTerms.length];
   }

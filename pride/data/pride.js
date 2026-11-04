@@ -50,6 +50,7 @@ const overviewSearchTerms = [
   'Pride construction Bangalore',
   'Pride group builders',
   'Pride builders and developers',
+  'Pride builders & developers',
   'Pride property developers',
   'Pride developers'
 ];

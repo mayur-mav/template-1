@@ -12,8 +12,8 @@ const propertyIds = propertiesData.map(({ id }) => id);
 const sectionRoutes = ['residences', 'about', 'faq', 'contact'];
 const allRoutes = [...sectionRoutes, ...propertyIds];
 const siteOrigin = process.env.SITE_ORIGIN?.replace(/\/$/, '');
-const homeTitle = 'Prestige Builders Bangalore | Group Projects, Apartments & Plots';
-const homeDescription = 'Explore Prestige apartments and plotted developments in Bangalore, including new launches and ongoing projects in Devanahalli, Whitefield and Sarjapur.';
+const homeTitle = 'Prestige Builders Bangalore | Prestige Flats, Apartments & Villas';
+const homeDescription = 'Explore Prestige Group in Bangalore: find prestige flats for sale in Bangalore, prestige apartments Bangalore, prestige ongoing projects in Bangalore, and prestige new launch properties.';
 const brandName = 'Prestige Group';
 const apacheRouteRules = [
   'Options -MultiViews',

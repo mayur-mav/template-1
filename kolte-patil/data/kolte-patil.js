@@ -35,6 +35,7 @@ export const faqData = [
 
 const overviewSearchTerms = [
     'Kolte Patil developers in Bangalore',
+    'Kolte Patil developer',
     'Kolte Patil Bangalore Electronic City',
     'Kolte Patil builders in Bangalore',
     'Kolte Patil in Bangalore'

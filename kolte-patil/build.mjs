@@ -12,8 +12,8 @@ const propertyIds = propertiesData.map(({ id }) => id);
 const sectionRoutes = ['residences', 'about', 'faq', 'contact'];
 const allRoutes = [...sectionRoutes, ...propertyIds];
 const siteOrigin = process.env.SITE_ORIGIN?.replace(/\/$/, '');
-const homeTitle = 'Kolte Patil Developers Bangalore | Homes & Projects';
-const homeDescription = 'Explore Kolte Patil projects in Bangalore, including homes in Electronic City, Horamavu and North Bengaluru. View project locations, prices and floor plans.';
+const homeTitle = 'Kolte Patil Developers Bangalore | Kolte Patil Builders & Homes';
+const homeDescription = 'Explore Kolte Patil developers in Bangalore, including homes by premier Kolte Patil developer in Electronic City, Horamavu and North Bengaluru. View locations, prices and floor plans.';
 const brandName = 'Kolte-Patil Developers';
 const apacheRouteRules = [
   'Options -MultiViews',

@@ -3,9 +3,9 @@ const centuryImage = suffix => `${imageCdnPrefix}${suffix.replace(/^\/+/, '')}`;
 
 export const developerInfo = {
     hero: {
-        subtitle: 'Century Real Estate | Bengaluru',
-        title: 'Century Real Estate Projects in Bengaluru',
-        description: 'Explore Century Real Estate apartments and homes in Bengaluru. Compare ongoing and ready-to-move projects, locations, floor plans, prices, and amenities.',
+        subtitle: 'Century Real Estate Holdings Pvt Ltd | Century Real Estate Company',
+        title: 'Century Real Estate in Bangalore | Century Builders',
+        description: 'Explore Century Real Estate Company in Bangalore: find luxury apartments for sale in Bangalore, ready to move flats in Bangalore, flats for sale in Bangalore, and exclusive Century homes.',
         image: centuryImage('century/banner.webp')
     }
 };
@@ -59,9 +59,13 @@ export const faqData = [
 
 const overviewSearchTerms = [
   'Century Real Estate in Bangalore',
-  'Century builders in Bangalore',
-  'Century developers in Bangalore',
-  'Century estates in Bangalore'
+  'Century builders Bangalore',
+  'Century developers Bangalore',
+  'Century estates Bangalore',
+  'Century Real Estate Company',
+  'apartments for sale in Bangalore',
+  'flats for sale in Bangalore',
+  'ready to move flats in Bangalore'
 ];
 
 function formatOverviewList(values) {
@@ -71,7 +75,10 @@ function formatOverviewList(values) {
 
 export function createPropertyOverview(property) {
   const projectIndex = propertiesData.findIndex(({ id }) => id === property.id);
-  const searchTerm = overviewSearchTerms[projectIndex % overviewSearchTerms.length];
+  const isReady = /ready/i.test(property.statusText || '');
+  const searchTerm = isReady
+    ? 'ready to move flats in Bangalore'
+    : overviewSearchTerms[projectIndex % overviewSearchTerms.length];
   const floorPlans = formatOverviewList((property.floorPlans || []).slice(0, 3).map(({ bhk }) => bhk));
   const amenities = formatOverviewList((property.amenities || []).slice(0, 4).map(({ name }) => name));
   const nearbyPlaces = formatOverviewList((property.connectivity || []).slice(0, 3).map(({ label, distance }) => `${label} (${distance})`));

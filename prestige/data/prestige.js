@@ -1,11 +1,11 @@
-﻿const imageCdnPrefix = 'https://media.justflip.in/builder-brand-pages/';
+const imageCdnPrefix = 'https://media.justflip.in/builder-brand-pages/';
 const prestigeImage = suffix => `${imageCdnPrefix}${suffix.replace(/^\/+/, '')}`;
 
 export const developerInfo = {
     hero: {
-        subtitle: 'Prestige Group | Bengaluru',
+        subtitle: 'Prestige Group in Bangalore | Bengaluru',
         title: 'Prestige Builders & Group Projects in Bangalore',
-        description: 'Explore Prestige Group apartments and plotted developments in Bangalore. Compare new launches and ongoing projects by location, configuration, price, and plans.',
+        description: 'Explore Prestige Group in Bangalore: find luxury apartments for sale in Bangalore, prestige flats for sale in Bangalore, prestige ongoing projects in Bangalore, and exclusive prestige new launch residences.',
         image: prestigeImage('prestige/banner.webp')
     }
 };
@@ -158,11 +158,15 @@ export const faqData = [
 ];
 
 const overviewSearchTerms = [
-    'Prestige Group projects in Bangalore',
-    'Prestige apartments in Bangalore',
+    'Prestige Group in Bangalore',
+    'Prestige flats in Bangalore',
+    'Prestige apartments Bangalore',
+    'Prestige builders Bangalore',
     'Prestige flats for sale in Bangalore',
-    'Prestige new launch projects in Bangalore',
-    'Prestige homes in Bengaluru'
+    'Prestige ongoing projects in Bangalore',
+    'Prestige new launch',
+    'apartments for sale in Bangalore',
+    'flats for sale in Bangalore'
 ];
 
 function formatOverviewList(values) {
@@ -172,8 +176,13 @@ function formatOverviewList(values) {
 
 export function createPropertyOverview(property) {
     const projectIndex = propertiesData.findIndex(({ id }) => id === property.id);
+    const isVilla = /villa/i.test(property.bhk) || /villa/i.test(property.name);
     const isPlottedDevelopment = /plot/i.test(property.bhk);
-    const searchTerm = isPlottedDevelopment ? 'Prestige plotted developments in Bangalore' : overviewSearchTerms[projectIndex % overviewSearchTerms.length];
+    const searchTerm = isVilla
+        ? 'Prestige villas Bangalore'
+        : isPlottedDevelopment
+            ? 'Prestige plotted developments in Bangalore'
+            : overviewSearchTerms[projectIndex % overviewSearchTerms.length];
     const floorPlans = formatOverviewList((property.floorPlans || []).slice(0, 3).map(({ bhk }) => bhk));
     const amenities = formatOverviewList((property.amenities || []).slice(0, 4).map(({ name }) => name));
     const nearbyPlaces = formatOverviewList((property.connectivity || []).slice(0, 3).map(({ label, distance }) => `${label} (${distance})`));

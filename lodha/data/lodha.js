@@ -3,9 +3,9 @@ const builderImage = suffix => `${imageCdnPrefix}${suffix.replace(/^\/+/, '')}`;
 
 export const developerInfo = {
     hero: {
-        subtitle: 'Lodha Developers | Bengaluru',
-        title: 'Lodha Group Projects in Bangalore',
-        description: 'Explore Lodha Group projects in Bangalore, including new launches and ongoing projects in Thanisandra, HSR Extension, Bannerghatta Road, Sarjapur, and Devanahalli.',
+        subtitle: 'Lodha Group of Companies | Lodha Developers',
+        title: 'Lodha Group Bangalore | Lodha Builders & Developers Projects',
+        description: 'Explore Lodha Group in Bangalore: find luxury residences by Lodha developers limited (Lodha developers ltd), premier Lodha real estate developments, and lodha group construction projects.',
         image: builderImage('lodha-group/banner.webp')
     }
 };
@@ -42,11 +42,17 @@ export const faqData = [
 ];
 
 const overviewSearchTerms = [
+    'Lodha Group Bangalore',
     'Lodha Group projects in Bangalore',
+    'Lodha builders Bangalore',
+    'Lodha developers Bangalore',
     'Lodha projects in Bangalore',
-    'Lodha developers in Bangalore',
-    'Lodha properties in Bangalore',
-    'Lodha Group projects'
+    'Lodha real estate',
+    'Lodha developers',
+    'Lodha properties',
+    'Lodha Group projects',
+    'Lodha group upcoming projects',
+    'Lodha group construction'
 ];
 
 function formatOverviewList(values) {

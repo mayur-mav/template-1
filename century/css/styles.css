@@ -2155,8 +2155,8 @@ button {
     padding: 10px 16px 14px;
     border-top: 1px solid rgba(255, 255, 255, .12);
     overscroll-behavior-x: contain;
-    scrollbar-color: var(--theme-accent) #303135;
-    scrollbar-width: thin;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .project-gallery-thumbnail {
@@ -3943,9 +3943,20 @@ button {
 #dt-amenities, #dt-connectivity { margin-bottom: 0.5rem; }
 .feature-expansion-link { margin-top: .35rem; margin-bottom: 3rem; }
 
-/* Hide the browser scrollbar while keeping page scrolling enabled */
-html, body { -ms-overflow-style: none; scrollbar-width: none; }
-html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
+/* Hide all scrollbars globally across all elements while keeping scrolling enabled */
+*, *::before, *::after, html, body {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+}
+
+*::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+}
 
 /* Builder-specific styling driven by the theme controls above. */
 .top-ticker,

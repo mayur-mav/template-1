@@ -1913,18 +1913,142 @@ function closeModal(id) {
     document.getElementById(id).classList.remove('active');
 }
 
-function openWhatsAppModal() {
-    document.getElementById('waPopModal').classList.add('active');
+const WHATSAPP_CONFIG = {
+    phone: '917411662228',
+    displayPhone: '+91 74116 62228',
+    defaultProject: 'Prestige Group projects in Bangalore',
+    brandMessage: 'Hi, I am interested in Prestige Group projects in Bangalore. Please share brochures, pricing details, and ongoing/new launch offers.',
+    buildMessage(target = null, maybeBhk = null) {
+        let name = '';
+        let phone = '';
+        let email = '';
+        let project = '';
+        let bhk = '';
+
+        if (target && typeof target === 'object') {
+            name = (target.fullName || target.name || '').trim();
+            phone = (target.mobileNumber || target.phone || '').trim();
+            email = (target.email || '').trim();
+            project = (target.project || '').trim();
+            bhk = (target.preferredBhk || target.bhk || '').trim();
+        } else if (typeof target === 'string') {
+            project = target.trim();
+            if (typeof maybeBhk === 'string') {
+                bhk = maybeBhk.trim();
+            }
+        }
+
+        // 1. Pop-up WhatsApp Lead submission (Phone entered in timed / floating modal):
+        const isWaPopupLead = (!name || name.toLowerCase() === 'whatsapp lead') && Boolean(phone);
+        if (isWaPopupLead) {
+            return `${WHATSAPP_CONFIG.brandMessage}\n\nMobile Number: ${phone}`;
+        }
+
+        // 2. Full VIP enquiry form submission (User filled Name, Phone, Project, BHK):
+        const isRealName = name && name.toLowerCase() !== 'whatsapp lead';
+        if (isRealName) {
+            const targetProj = project || WHATSAPP_CONFIG.defaultProject;
+            const lines = [
+                `Hi, I am interested in ${targetProj}.`,
+                '',
+                '*Enquiry Details:*',
+                `• *Name:* ${name}`
+            ];
+            if (phone) lines.push(`• *Phone Number:* ${phone}`);
+            if (email) lines.push(`• *Email:* ${email}`);
+            if (targetProj) lines.push(`• *Interested Project:* ${targetProj}`);
+            if (bhk) lines.push(`• *BHK:* ${bhk}`);
+            lines.push('');
+            lines.push('Please share brochures, pricing details, and ongoing/new launch offers.');
+            return lines.join('\n');
+        }
+
+        // 3. Default "Chat on WhatsApp" brand message (Header, Contact section, direct CTAs):
+        if (!project || project === WHATSAPP_CONFIG.defaultProject || project === 'Prestige Properties') {
+            return WHATSAPP_CONFIG.brandMessage;
+        }
+
+        const bhkPart = bhk ? ` (${bhk})` : '';
+        return `Hi, I am interested in ${project}${bhkPart}. Please share brochures, pricing details, and ongoing/new launch offers.`;
+    },
+    buildUrl(target = null, maybeBhk = null) {
+        const text = WHATSAPP_CONFIG.buildMessage(target, maybeBhk);
+        return `https://api.whatsapp.com/send/?phone=${WHATSAPP_CONFIG.phone}&text=${encodeURIComponent(text)}`;
+    }
+};
+
+function openWhatsAppChat(target = null, maybeBhk = null) {
+    const url = WHATSAPP_CONFIG.buildUrl(target, maybeBhk);
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
 
-function sendWhatsAppLead() {
-    const phone = document.getElementById('waPhoneInput').value.trim();
-    if (!phone) {
-        alert('Please enter a valid phone number');
+function openWhatsAppModal() {
+    document.getElementById('waPopModal')?.classList.add('active');
+}
+
+function sanitizeIndianPhone(val) {
+    if (!val || typeof val !== 'string') return '';
+    let digits = val.replace(/\D/g, '');
+    // Handle international +91 prefix (12 digits e.g. 919876543210)
+    if (digits.length === 12 && digits.startsWith('91') && /^[6-9]/.test(digits.slice(2))) {
+        digits = digits.slice(2);
+    }
+    // Handle STD trunk 0 prefix (11 digits e.g. 09876543210)
+    if (digits.length === 11 && digits.startsWith('0') && /^[6-9]/.test(digits.slice(1))) {
+        digits = digits.slice(1);
+    }
+    // Indian mobile numbers must start with 6, 7, 8, or 9
+    if (digits.length > 0 && !/^[6-9]/.test(digits)) {
+        digits = '';
+    }
+    return digits.slice(0, 10);
+}
+
+function isValidIndianPhone(phone) {
+    return typeof phone === 'string' && /^[6-9]\d{9}$/.test(phone.trim().replace(/\D/g, ''));
+}
+
+async function sendWhatsAppLead() {
+    const input = document.getElementById('waPhoneInput');
+    const phoneVal = input ? sanitizeIndianPhone(input.value) : '';
+    if (!phoneVal || phoneVal.length !== 10 || !/^[6-9]\d{9}$/.test(phoneVal)) {
+        if (input) {
+            showFieldError(input, 'Please enter a valid 10-digit Indian mobile number (starts with 6, 7, 8, or 9)');
+            input.focus();
+        } else {
+            alert('Please enter a valid 10-digit Indian mobile number (starts with 6, 7, 8, or 9)');
+        }
         return;
     }
-    alert('Thank you! The E-Brochure and pricing sheet have been dispatched via WhatsApp.');
+
+    const formattedPhone = `+91 ${phoneVal}`;
+    const targetProject = 'Prestige Group projects in Bangalore';
+    const selectedProjectId = 'prestige-group';
+
+    // Send lead to backend API in background so inquiry is recorded
+    const leadPayload = {
+        name: 'WhatsApp Lead',
+        phone: formattedPhone,
+        email: '',
+        projectId: selectedProjectId,
+        bhk: null,
+        fullName: 'WhatsApp Lead',
+        mobileNumber: formattedPhone,
+        project: targetProject,
+        preferredBhk: null,
+        sourcePage: window.location.href,
+        submittedAt: new Date().toISOString(),
+        leadSource: 'WhatsApp E-Brochure Popup',
+        partner: API_CONFIG.partner
+    };
+
+    sendLeadToApi(leadPayload).catch(err => console.error('[WhatsApp Lead Error]:', err));
+
     closeModal('waPopModal');
+    if (input) input.value = '';
+
+    // Take user directly to WhatsApp chat with the mobile number they entered included in the message
+    openWhatsAppChat(leadPayload);
 }
 
 // ==================== LEAD CAPTURE & CRM API CONFIGURATION ====================
@@ -1943,7 +2067,8 @@ const API_CONFIG = {
         name: 'M&A Ventures',
         type: 'Authorised Channel Partner',
         builder: 'Prestige Group',
-        contactPhone: '+91 98765 43210',
+        contactPhone: '+91 74116 62228',
+        whatsappPhone: '917411662228',
         disclaimer: 'This page is published and maintained by M&A Ventures, an Authorised Channel Partner.'
     }
 };
@@ -2048,8 +2173,8 @@ function showEnquiryStatusModal(status, leadData, errorMsg) {
             </p>
 
             <div class="partner-quick-contact">
-                <span>Need immediate consultation?</span>
-                <a href="https://wa.me/919876543210?text=Hi%20M%26A%20Ventures,%20I%20just%20submitted%20an%20enquiry%20for%20${encodeURIComponent(leadData.project)}" target="_blank" rel="noopener noreferrer" class="btn-partner-wa">
+                <span>Need immediate consultation or brochure on WhatsApp?</span>
+                <a href="${WHATSAPP_CONFIG.buildUrl(leadData)}" target="_blank" rel="noopener noreferrer" class="btn-partner-wa">
                     <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp Sales Desk
                 </a>
             </div>
@@ -2066,7 +2191,7 @@ function showEnquiryStatusModal(status, leadData, errorMsg) {
 
             <div class="partner-quick-contact">
                 <span>Instant Consultation:</span>
-                <a href="https://wa.me/919876543210?text=Hi%20M%26A%20Ventures,%20I%20tried%20to%20submit%20an%20enquiry%20for%20${encodeURIComponent(leadData.project)}%20(Name:%20${encodeURIComponent(leadData.fullName)})" target="_blank" rel="noopener noreferrer" class="btn-partner-wa">
+                <a href="${WHATSAPP_CONFIG.buildUrl(leadData)}" target="_blank" rel="noopener noreferrer" class="btn-partner-wa">
                     <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Connect via WhatsApp
                 </a>
             </div>
@@ -2154,16 +2279,16 @@ async function handleFormSubmit(e) {
         }
     }
 
-    // 2. Phone is COMPULSORY
+    // 2. Phone is COMPULSORY (Must be standard 10-digit Indian mobile starting with 6, 7, 8, or 9)
     if (phoneInput) {
-        const phoneVal = phoneInput.value.trim().replace(/\D/g, '');
+        const phoneVal = sanitizeIndianPhone(phoneInput.value);
         if (!phoneVal) {
             isValid = false;
             showFieldError(phoneInput, 'Please enter your mobile number');
             if (!firstInvalid) firstInvalid = phoneInput;
-        } else if (phoneVal.length < 10) {
+        } else if (phoneVal.length !== 10 || !/^[6-9]\d{9}$/.test(phoneVal)) {
             isValid = false;
-            showFieldError(phoneInput, 'Please enter a valid 10-digit mobile number');
+            showFieldError(phoneInput, 'Please enter a valid 10-digit Indian mobile number (starts with 6, 7, 8, or 9)');
             if (!firstInvalid) firstInvalid = phoneInput;
         }
     }
@@ -2216,8 +2341,8 @@ async function handleFormSubmit(e) {
     }
 
     // Format phone with +91 if needed
-    const rawDigits = phoneInput ? phoneInput.value.trim().replace(/\D/g, '') : '';
-    const formattedPhone = rawDigits.length === 10 ? `+91${rawDigits}` : (phoneInput ? phoneInput.value.trim() : '');
+    const rawDigits = phoneInput ? sanitizeIndianPhone(phoneInput.value) : '';
+    const formattedPhone = rawDigits.length === 10 ? `+91 ${rawDigits}` : (phoneInput ? phoneInput.value.trim() : '');
 
     // Resolve project and projectId
     const selectedProjectName = projectInput && projectInput.value.trim() 
@@ -2615,7 +2740,9 @@ Object.assign(window, {
     toggleFaq,
     closeModal,
     openWhatsAppModal,
+    openWhatsAppChat,
     sendWhatsAppLead,
+    WHATSAPP_CONFIG,
     handleFormSubmit,
     API_CONFIG,
     sendLeadToApi,
@@ -2625,7 +2752,7 @@ Object.assign(window, {
     updateEmiCalculator
 });
 
-// Phone number enforcement: exactly digits only, strictly max 10 numbers
+// Phone number enforcement: Standard Indian mobile numbers (starts with 6-9, strictly max 10 digits)
 document.addEventListener('keydown', (event) => {
     const el = event.target;
     if (el && el.type === 'tel') {
@@ -2642,10 +2769,20 @@ document.addEventListener('keydown', (event) => {
             return;
         }
 
+        const start = el.selectionStart || 0;
+        const end = el.selectionEnd || 0;
+        const currentVal = el.value || '';
+        const digitsOnly = currentVal.replace(/\D/g, '');
+
+        // Standard Indian mobile number rule: first digit MUST be 6, 7, 8, or 9
+        if (start === 0 && !/^[6-9]$/.test(event.key)) {
+            event.preventDefault();
+            showFieldError(el, 'Indian mobile numbers must start with 6, 7, 8, or 9');
+            return;
+        }
+
         // If already 10 digits and user has not selected text to replace, do not take more entries
-        const selectedText = el.value.substring(el.selectionStart || 0, el.selectionEnd || 0);
-        const digitsOnly = el.value.replace(/\D/g, '');
-        if (digitsOnly.length >= 10 && selectedText.length === 0) {
+        if (digitsOnly.length >= 10 && start === end) {
             event.preventDefault();
         }
     }
@@ -2656,13 +2793,13 @@ document.addEventListener('paste', (event) => {
     if (el && el.type === 'tel') {
         event.preventDefault();
         const pasteData = (event.clipboardData || window.clipboardData)?.getData('text') || '';
-        const digits = pasteData.replace(/\D/g, '');
-        const currentVal = el.value;
-        const start = el.selectionStart || 0;
-        const end = el.selectionEnd || 0;
-        const newVal = (currentVal.slice(0, start) + digits + currentVal.slice(end)).replace(/\D/g, '').slice(0, 10);
-        el.value = newVal;
-        el.dispatchEvent(new Event('input', { bubbles: true }));
+        const cleaned = sanitizeIndianPhone(pasteData);
+        if (cleaned) {
+            el.value = cleaned;
+            el.dispatchEvent(new Event('input', { bubbles: true }));
+        } else {
+            showFieldError(el, 'Please paste a valid Indian mobile number starting with 6, 7, 8, or 9');
+        }
     }
 });
 
@@ -2670,9 +2807,9 @@ document.addEventListener('paste', (event) => {
 document.addEventListener('input', (event) => {
     const el = event.target;
     if (el && el.type === 'tel') {
-        const digits = el.value.replace(/\D/g, '');
-        if (el.value !== digits || el.value.length > 10) {
-            el.value = digits.slice(0, 10);
+        const sanitized = sanitizeIndianPhone(el.value);
+        if (el.value !== sanitized) {
+            el.value = sanitized;
         }
     }
     if (el && el.classList.contains('is-invalid')) {

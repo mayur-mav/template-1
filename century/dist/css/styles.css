@@ -4757,3 +4757,273 @@ body[data-property-route-loading="true"] #catalog-view {
         padding: 0;
     }
 }
+
+
+/* ==================== FORM VALIDATION & FEEDBACK STYLES ==================== */
+.form-input.is-invalid,
+.project-select-trigger.is-invalid,
+.bhk-select-trigger.is-invalid {
+    border-color: #ef4444 !important;
+    background-color: #fff8f8 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+    animation: fieldShake 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.form-input.is-valid,
+.project-select-trigger.is-valid,
+.bhk-select-trigger.is-valid {
+    border-color: #10b981;
+}
+
+@keyframes fieldShake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
+    40%, 60% { transform: translate3d(3px, 0, 0); }
+}
+
+.field-error-msg {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: #dc2626;
+    margin-top: 6px;
+    font-weight: 500;
+    line-height: 1.3;
+    animation: fadeInError 0.2s ease-out;
+}
+
+.field-error-msg i {
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+@keyframes fadeInError {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Success Banner with Authorised Channel Partner Details */
+.form-success-banner {
+    padding: 24px 20px;
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-sm, 8px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    animation: fadeInError 0.3s ease-out;
+}
+
+.form-success-banner .success-icon-wrap {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 10px;
+    background: rgba(16, 185, 129, 0.12);
+    color: #10b981;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.partner-verified-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #065f46;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.partner-verified-badge i {
+    color: #10b981;
+    font-size: 0.9em;
+}
+
+.form-success-banner .success-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary, #0f172a);
+    margin-bottom: 4px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.form-success-banner .success-greeting {
+    font-size: 0.95rem;
+    color: #334155;
+    margin-bottom: 14px;
+}
+
+.enquiry-summary-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    text-align: left;
+    font-size: 0.88rem;
+}
+
+.enquiry-summary-box .summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px dashed #e2e8f0;
+}
+
+.enquiry-summary-box .summary-row:last-child {
+    border-bottom: 0;
+}
+
+.enquiry-summary-box .summary-label {
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.enquiry-summary-box .summary-val {
+    color: #0f172a;
+}
+
+.form-success-banner .success-desc {
+    font-size: 0.88rem;
+    color: var(--text-secondary, #475569);
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.partner-quick-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.partner-quick-contact span {
+    font-size: 0.82rem;
+    color: #64748b;
+}
+
+.btn-partner-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25d366;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 9px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.btn-partner-wa:hover {
+    background: #1ebc59;
+    color: #ffffff;
+}
+
+.form-success-banner .btn-reset-form {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: #0b1320;
+    background: #f8fafc;
+    border: 1px solid var(--border-light, #cbd5e1);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition, all 0.2s ease);
+}
+
+.form-success-banner .btn-reset-form:hover {
+    background: var(--bg-champagne, #f1f5f9);
+    border-color: var(--brand-gold, #c5a059);
+}
+
+.btn-submit-enquiry:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* ==================== ENQUIRY STATUS MODAL ==================== */
+.status-modal-box {
+    max-width: 500px;
+    padding: 32px 26px;
+    text-align: center;
+    border: 1px solid var(--border-gold, #c5a059);
+    border-radius: var(--radius-md, 12px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+}
+
+.status-modal-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary, #0f172a);
+    margin: 8px 0 6px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.status-modal-greeting {
+    font-size: 0.96rem;
+    color: #475569;
+    margin-bottom: 16px;
+}
+
+.status-modal-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #475569);
+    line-height: 1.55;
+    margin-bottom: 18px;
+}
+
+.status-fail-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #dc2626;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.btn-status-modal-ok {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 20px;
+    background: var(--brand-dark, #0B1320);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 14px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-status-modal-ok:hover {
+    background: var(--brand-gold, #c5a059);
+    color: #0B1320;
+}

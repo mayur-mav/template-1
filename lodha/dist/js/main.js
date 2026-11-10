@@ -1210,6 +1210,9 @@ function openPropertyDetails(id, { updateUrl = true } = {}) {
 
     if (updateUrl) setPropertyRoute(item);
     activeProperty = item;
+
+    resetDetailEnquiryForm();
+
     setActiveNavigation(item.id);
     const builderName = document.body.dataset.homeBuilder || document.body.dataset.builder;
     const projectRegion = item.location.includes('Bengaluru') ? 'Bengaluru' : 'Karnataka';
@@ -1886,23 +1889,474 @@ function closeModal(id) {
     document.getElementById(id).classList.remove('active');
 }
 
-function openWhatsAppModal() {
-    document.getElementById('waPopModal').classList.add('active');
+const WHATSAPP_CONFIG = {
+    phone: '917411662228',
+    displayPhone: '+91 74116 62228',
+    defaultProject: 'Lodha Group projects in Bangalore',
+    brandMessage: 'Hi, I am interested in Lodha Group projects in Bangalore. Please share brochures, pricing details, and ongoing/new launch offers.',
+    buildMessage(target = null, maybeBhk = null) {
+        let name = '';
+        let phone = '';
+        let email = '';
+        let project = '';
+        let bhk = '';
+
+        if (target && typeof target === 'object') {
+            name = (target.fullName || target.name || '').trim();
+            phone = (target.mobileNumber || target.phone || '').trim();
+            email = (target.email || '').trim();
+            project = (target.project || '').trim();
+            bhk = (target.preferredBhk || target.bhk || '').trim();
+        } else if (typeof target === 'string') {
+            project = target.trim();
+            if (typeof maybeBhk === 'string') {
+                bhk = maybeBhk.trim();
+            }
+        }
+
+        // 1. Pop-up WhatsApp Lead submission (Phone entered in timed / floating modal):
+        const isWaPopupLead = (!name || name.toLowerCase() === 'whatsapp lead') && Boolean(phone);
+        if (isWaPopupLead) {
+            return `${WHATSAPP_CONFIG.brandMessage}\n\nMobile Number: ${phone}`;
+        }
+
+        // 2. Full VIP enquiry form submission (User filled Name, Phone, Project, BHK):
+        const isRealName = name && name.toLowerCase() !== 'whatsapp lead';
+        if (isRealName) {
+            const targetProj = project || WHATSAPP_CONFIG.defaultProject;
+            const lines = [
+                `Hi, I am interested in ${targetProj}.`,
+                '',
+                '*Enquiry Details:*',
+                `• *Name:* ${name}`
+            ];
+            if (phone) lines.push(`• *Phone Number:* ${phone}`);
+            if (email) lines.push(`• *Email:* ${email}`);
+            if (targetProj) lines.push(`• *Interested Project:* ${targetProj}`);
+            if (bhk) lines.push(`• *BHK:* ${bhk}`);
+            lines.push('');
+            lines.push('Please share brochures, pricing details, and ongoing/new launch offers.');
+            return lines.join('\n');
+        }
+
+        // 3. Default "Chat on WhatsApp" brand message (Header, Contact section, direct CTAs):
+        if (!project || project === WHATSAPP_CONFIG.defaultProject || project === 'Lodha Group' || project === 'Lodha Properties') {
+            return WHATSAPP_CONFIG.brandMessage;
+        }
+
+        const bhkPart = bhk ? ` (${bhk})` : '';
+        return `Hi, I am interested in ${project}${bhkPart}. Please share brochures, pricing details, and ongoing/new launch offers.`;
+    },
+    buildUrl(target = null, maybeBhk = null) {
+        const text = WHATSAPP_CONFIG.buildMessage(target, maybeBhk);
+        return `https://api.whatsapp.com/send/?phone=${WHATSAPP_CONFIG.phone}&text=${encodeURIComponent(text)}`;
+    }
+};
+
+function openWhatsAppChat(target = null, maybeBhk = null) {
+    const url = WHATSAPP_CONFIG.buildUrl(target, maybeBhk);
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
 
-function sendWhatsAppLead() {
-    const phone = document.getElementById('waPhoneInput').value.trim();
-    if (!phone) {
-        alert('Please enter a valid phone number');
+function openWhatsAppModal() {
+    document.getElementById('waPopModal')?.classList.add('active');
+}
+
+function sanitizeIndianPhone(val) {
+    if (!val || typeof val !== 'string') return '';
+    let digits = val.replace(/\D/g, '');
+    // Handle international +91 prefix (12 digits e.g. 919876543210)
+    if (digits.length === 12 && digits.startsWith('91') && /^[6-9]/.test(digits.slice(2))) {
+        digits = digits.slice(2);
+    }
+    // Handle STD trunk 0 prefix (11 digits e.g. 09876543210)
+    if (digits.length === 11 && digits.startsWith('0') && /^[6-9]/.test(digits.slice(1))) {
+        digits = digits.slice(1);
+    }
+    // Indian mobile numbers must start with 6, 7, 8, or 9
+    if (digits.length > 0 && !/^[6-9]/.test(digits)) {
+        digits = '';
+    }
+    return digits.slice(0, 10);
+}
+
+function isValidIndianPhone(phone) {
+    return typeof phone === 'string' && /^[6-9]\d{9}$/.test(phone.trim().replace(/\D/g, ''));
+}
+
+async function sendWhatsAppLead() {
+    const input = document.getElementById('waPhoneInput');
+    const phoneVal = input ? sanitizeIndianPhone(input.value) : '';
+    if (!phoneVal || phoneVal.length !== 10 || !/^[6-9]\d{9}$/.test(phoneVal)) {
+        if (input) {
+            showFieldError(input, 'Please enter a valid 10-digit Indian mobile number (starts with 6, 7, 8, or 9)');
+            input.focus();
+        } else {
+            alert('Please enter a valid 10-digit Indian mobile number (starts with 6, 7, 8, or 9)');
+        }
         return;
     }
-    alert('Thank you! The E-Brochure and pricing sheet have been dispatched via WhatsApp.');
+
+    const formattedPhone = `+91 ${phoneVal}`;
+    const leadPayload = {
+        name: 'WhatsApp Lead',
+        phone: formattedPhone,
+        projectId: activeProperty?.id || 'lodha-project',
+        bhk: null,
+        fullName: 'WhatsApp Lead',
+        mobileNumber: formattedPhone,
+        project: activeProperty?.name || WHATSAPP_CONFIG.defaultProject,
+        preferredBhk: null,
+        sourcePage: window.location.href,
+        submittedAt: new Date().toISOString(),
+        leadSource: 'WhatsApp E-Brochure Popup',
+        partner: API_CONFIG.partner
+    };
+
+    sendLeadToApi(leadPayload).catch(err => console.error('[WhatsApp Lead Error]:', err));
+
     closeModal('waPopModal');
+    if (input) input.value = '';
+
+    // Take user directly to WhatsApp chat with the mobile number they entered included in the message
+    openWhatsAppChat(leadPayload);
 }
 
-function handleFormSubmit(e) {
+// ==================== LEAD CAPTURE & CRM API CONFIGURATION ====================
+// When your backend API endpoint is ready, update API_CONFIG below:
+const API_CONFIG = {
+    // Set your live API or webhook endpoint URL here:
+    // e.g. 'https://api.yourdomain.com/v1/leads' or 'https://webhook.site/...'
+    endpoint: '',
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    },
+    // Partner identification (synced with website footer)
+    partner: {
+        name: 'M&A Ventures',
+        type: 'Authorised Channel Partner',
+        builder: 'Lodha Group',
+        contactPhone: '+91 74116 62228',
+        whatsappPhone: '917411662228',
+        brokerRera: ''
+    }
+};
+
+async function sendLeadToApi(payload) {
+    if (!API_CONFIG.endpoint) {
+        console.log('[Lead Capture - Local Mode]: API endpoint not set yet. Ready to send exact payload:', payload);
+        return { success: true, mode: 'local', payload };
+    }
+
+    try {
+        const response = await fetch(API_CONFIG.endpoint, {
+            method: API_CONFIG.method || 'POST',
+            headers: API_CONFIG.headers,
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            throw new Error(`API responded with HTTP ${response.status}`);
+        }
+
+        const data = await response.json().catch(() => ({}));
+        return { success: true, data };
+    } catch (error) {
+        console.error('[Lead Capture Error]: Failed to dispatch lead to API:', error);
+        return { success: false, error: error.message };
+    }
+}
+
+function escapeLeadHtml(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function showFieldError(targetElement, message) {
+    targetElement.classList.add('is-invalid');
+    targetElement.classList.remove('is-valid');
+    const container = targetElement.closest('.form-group') || targetElement.parentElement;
+    if (!container) return;
+    
+    let errorMsg = container.querySelector('.field-error-msg');
+    if (!errorMsg) {
+        errorMsg = document.createElement('div');
+        errorMsg.className = 'field-error-msg';
+        errorMsg.setAttribute('role', 'alert');
+        errorMsg.innerHTML = `<i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> <span>${message}</span>`;
+        container.appendChild(errorMsg);
+    } else {
+        errorMsg.querySelector('span').textContent = message;
+    }
+}
+
+function showEnquiryStatusModal(status, leadData, errorMsg) {
+    const modal = document.getElementById('enquiryStatusModal');
+    const content = document.getElementById('statusModalContent');
+    if (!modal || !content) return;
+
+    if (status === 'success') {
+        content.innerHTML = `
+            <div class="partner-verified-badge">
+                Authorised Channel Partner · M&amp;A Ventures
+            </div>
+            <h3 class="status-modal-title" id="statusModalTitle">Enquiry Successfully Submitted!</h3>
+            <p class="status-modal-greeting">Thank you, <strong>${escapeLeadHtml(leadData.fullName)}</strong>.</p>
+            
+            <div class="enquiry-summary-box">
+                <div class="summary-row">
+                    <span class="summary-label"><i class="fa-solid fa-building" aria-hidden="true"></i> Project:</span>
+                    <span class="summary-val"><strong>${escapeLeadHtml(leadData.project)}</strong></span>
+                </div>
+                ${leadData.preferredBhk ? `
+                <div class="summary-row">
+                    <span class="summary-label"><i class="fa-solid fa-bed" aria-hidden="true"></i> BHK Preference:</span>
+                    <span class="summary-val"><strong>${escapeLeadHtml(leadData.preferredBhk)}</strong></span>
+                </div>` : ''}
+                <div class="summary-row">
+                    <span class="summary-label"><i class="fa-solid fa-phone" aria-hidden="true"></i> Contact:</span>
+                    <span class="summary-val">${escapeLeadHtml(leadData.mobileNumber)}</span>
+                </div>
+            </div>
+
+            <p class="status-modal-desc">
+                Your enquiry has been received by <strong>M&amp;A Ventures</strong>, the Authorised Channel Partner for Lodha Group. Our dedicated property advisor will contact you within 15 minutes.
+            </p>
+
+            <div class="partner-quick-contact">
+                <span>Need immediate consultation or brochure on WhatsApp?</span>
+                <a href="${WHATSAPP_CONFIG.buildUrl(leadData)}" target="_blank" rel="noopener noreferrer" class="btn-partner-wa">
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp Sales Desk
+                </a>
+            </div>
+        `;
+    } else {
+        content.innerHTML = `
+            <div class="status-fail-badge">
+                <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Submission Unsuccessful
+            </div>
+            <h3 class="status-modal-title" id="statusModalTitle">Unable to Submit Online</h3>
+            <p class="status-modal-desc">
+                We could not connect to the lead dispatch service (${escapeLeadHtml(errorMsg || 'Network or server issue')}). Please connect directly with our sales desk on WhatsApp for instant assistance.
+            </p>
+
+            <div class="partner-quick-contact">
+                <span>Instant Consultation:</span>
+                <a href="${WHATSAPP_CONFIG.buildUrl(leadData)}" target="_blank" rel="noopener noreferrer" class="btn-partner-wa">
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Connect via WhatsApp
+                </a>
+            </div>
+        `;
+    }
+
+    modal.classList.add('active');
+}
+
+function resetDetailEnquiryForm() {
+    const detailCard = document.getElementById('detail-site-visit');
+    if (!detailCard) return;
+    const banner = detailCard.querySelector('.form-success-banner');
+    if (banner) banner.remove();
+    const form = detailCard.querySelector('form');
+    if (form) {
+        form.reset();
+        form.querySelectorAll('.field-error-msg').forEach(el => el.remove());
+        form.querySelectorAll('.is-invalid, .is-valid').forEach(el => el.classList.remove('is-invalid', 'is-valid'));
+        const bhkInput = form.querySelector('input[name="preferredBhk"]');
+        if (bhkInput) bhkInput.value = '';
+        const bhkTrigger = form.querySelector('.bhk-select-trigger span');
+        if (bhkTrigger) bhkTrigger.innerHTML = 'Select Preferred BHK <strong class="required-star">*</strong>';
+        form.style.display = '';
+    }
+    const sidebar = document.querySelector('.detail-sidebar');
+    if (sidebar) sidebar.scrollTop = 0;
+}
+
+function resetEnquiryForm(button) {
+    const banner = button.closest('.form-success-banner');
+    if (!banner) return;
+    const parent = banner.parentElement;
+
+    // If resetting on detail card, clear saved submission for this specific property
+    if (parent?.id === 'detail-site-visit' && activeProperty?.id) {
+        try {
+            sessionStorage.removeItem('lodha_enquiry_' + activeProperty.id);
+        } catch (err) {}
+    }
+
+    const form = parent.querySelector('form');
+    if (form) {
+        form.reset();
+        form.querySelectorAll('.field-error-msg').forEach(el => el.remove());
+        form.querySelectorAll('.is-invalid, .is-valid').forEach(el => el.classList.remove('is-invalid', 'is-valid'));
+        const projectTrigger = form.querySelector('.project-select-trigger span');
+        if (projectTrigger) projectTrigger.innerHTML = 'Select a Project <strong class="required-star">*</strong>';
+        const bhkTrigger = form.querySelector('.bhk-select-trigger span');
+        if (bhkTrigger) bhkTrigger.innerHTML = 'Select Preferred BHK <strong class="required-star">*</strong>';
+        form.style.display = '';
+    }
+    banner.remove();
+}
+
+async function handleFormSubmit(e) {
     e.preventDefault();
-    alert('Your request has been registered. Our sales representative will contact you within 15 minutes.');
+    const form = e.target;
+    
+    // Clear old errors
+    form.querySelectorAll('.field-error-msg').forEach(el => el.remove());
+    form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+
+    const nameInput = form.querySelector('input[type="text"]');
+    const phoneInput = form.querySelector('input[type="tel"]');
+    const emailInput = form.querySelector('input[type="email"]');
+    const projectInput = form.querySelector('input[name="project"]');
+    const bhkInput = form.querySelector('input[name="preferredBhk"]');
+    const submitBtn = form.querySelector('.btn-submit-enquiry');
+
+    let isValid = true;
+    let firstInvalid = null;
+
+    // 1. Name is COMPULSORY
+    if (nameInput) {
+        const nameVal = nameInput.value.trim();
+        if (!nameVal) {
+            isValid = false;
+            showFieldError(nameInput, 'Please enter your full name');
+            if (!firstInvalid) firstInvalid = nameInput;
+        } else if (nameVal.length < 2) {
+            isValid = false;
+            showFieldError(nameInput, 'Please enter a valid name (at least 2 characters)');
+            if (!firstInvalid) firstInvalid = nameInput;
+        }
+    }
+
+    // 2. Phone is COMPULSORY (Must be standard 10-digit Indian mobile starting with 6, 7, 8, or 9)
+    if (phoneInput) {
+        const phoneVal = sanitizeIndianPhone(phoneInput.value);
+        if (!phoneVal) {
+            isValid = false;
+            showFieldError(phoneInput, 'Please enter your mobile number');
+            if (!firstInvalid) firstInvalid = phoneInput;
+        } else if (phoneVal.length !== 10 || !/^[6-9]\d{9}$/.test(phoneVal)) {
+            isValid = false;
+            showFieldError(phoneInput, 'Please enter a valid 10-digit Indian mobile number (starts with 6, 7, 8, or 9)');
+            if (!firstInvalid) firstInvalid = phoneInput;
+        }
+    }
+
+    // 3. Email is OPTIONAL: validate format only if user typed something
+    if (emailInput && emailInput.value.trim()) {
+        const emailVal = emailInput.value.trim();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailVal)) {
+            isValid = false;
+            showFieldError(emailInput, 'Please enter a valid email address or leave blank');
+            if (!firstInvalid) firstInvalid = emailInput;
+        }
+    }
+
+    // 4. Project Selection is COMPULSORY on Home/Contact Form
+    if (projectInput) {
+        const projectSelect = form.querySelector('.project-select');
+        const trigger = projectSelect?.querySelector('.project-select-trigger');
+        if (!projectInput.value.trim()) {
+            isValid = false;
+            if (trigger) {
+                showFieldError(trigger, 'Please select which project you are interested in');
+                if (!firstInvalid) firstInvalid = trigger;
+            }
+        }
+    }
+
+    // 5. Preferred BHK Selection is COMPULSORY on Detail Page Form
+    if (bhkInput) {
+        const bhkSelect = form.querySelector('.bhk-select');
+        const trigger = bhkSelect?.querySelector('.bhk-select-trigger');
+        if (!bhkInput.value.trim()) {
+            isValid = false;
+            if (trigger) {
+                showFieldError(trigger, 'Please select your preferred BHK configuration');
+                if (!firstInvalid) firstInvalid = trigger;
+            }
+        }
+    }
+
+    if (!isValid) {
+        if (firstInvalid) {
+            firstInvalid.focus();
+            if (typeof firstInvalid.scrollIntoView === 'function') {
+                firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        return false;
+    }
+
+    // Format phone with +91 if needed
+    const rawDigits = phoneInput ? sanitizeIndianPhone(phoneInput.value) : '';
+    const formattedPhone = rawDigits.length === 10 ? `+91 ${rawDigits}` : (phoneInput ? phoneInput.value.trim() : '');
+
+    // Resolve project and projectId
+    const selectedProjectName = projectInput && projectInput.value.trim() 
+        ? projectInput.value.trim() 
+        : (activeProperty?.name || 'Lodha Group Project');
+    const matchedProp = propertiesData.find(p => p.name === selectedProjectName || p.id === selectedProjectName) || activeProperty;
+    const selectedProjectId = matchedProp?.apiProjectId || matchedProp?.id || (activeProperty?.id || 'lodha-project');
+
+    // Prepare clean structured payload for API integration
+    const leadData = {
+        name: nameInput ? nameInput.value.trim() : '',
+        phone: formattedPhone,
+        email: emailInput && emailInput.value.trim() ? emailInput.value.trim() : '',
+        projectId: selectedProjectId,
+        bhk: bhkInput && bhkInput.value.trim() ? bhkInput.value.trim() : null,
+        // UI & backward-compatibility aliases:
+        fullName: nameInput ? nameInput.value.trim() : '',
+        mobileNumber: formattedPhone,
+        project: selectedProjectName,
+        preferredBhk: bhkInput && bhkInput.value.trim() ? bhkInput.value.trim() : null,
+        sourcePage: window.location.href,
+        submittedAt: new Date().toISOString(),
+        partner: API_CONFIG.partner
+    };
+
+    // Button loading state
+    const originalBtnText = submitBtn ? submitBtn.innerHTML : 'Submit';
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Submitting...';
+    }
+
+    // Dispatch to API (falls back cleanly if API endpoint is not yet provided)
+    const result = await sendLeadToApi(leadData);
+
+    if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+    }
+
+    if (result.success) {
+        showEnquiryStatusModal('success', leadData);
+        form.reset();
+        const projectTrigger = form.querySelector('.project-select-trigger span');
+        if (projectTrigger) projectTrigger.innerHTML = 'Select a Project <strong class="required-star">*</strong>';
+        const bhkTrigger = form.querySelector('.bhk-select-trigger span');
+        if (bhkTrigger) bhkTrigger.innerHTML = 'Select Preferred BHK <strong class="required-star">*</strong>';
+        const bhkInput = form.querySelector('input[name="preferredBhk"]');
+        if (bhkInput) bhkInput.value = '';
+        const projInput = form.querySelector('input[name="project"]');
+        if (projInput) projInput.value = '';
+    } else {
+        showEnquiryStatusModal('failure', leadData, result.error);
+    }
+
+    return false;
 }
 
 // ==================== HOME LOAN EMI CALCULATOR ====================
@@ -2244,7 +2698,95 @@ Object.assign(window, {
     toggleFaq,
     closeModal,
     openWhatsAppModal,
+    openWhatsAppChat,
     sendWhatsAppLead,
+    WHATSAPP_CONFIG,
     handleFormSubmit,
+    API_CONFIG,
+    sendLeadToApi,
+    resetEnquiryForm,
+    resetDetailEnquiryForm,
+    showEnquiryStatusModal,
     updateEmiCalculator
+});
+
+// Phone number enforcement: Standard Indian mobile numbers (starts with 6-9, strictly max 10 digits)
+document.addEventListener('keydown', (event) => {
+    const el = event.target;
+    if (el && el.type === 'tel') {
+        const allowedNavKeys = [
+            'Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 
+            'ArrowUp', 'ArrowDown', 'Enter', 'Escape', 'Home', 'End'
+        ];
+        if (allowedNavKeys.includes(event.key)) return;
+        if (event.ctrlKey || event.metaKey) return;
+
+        // Block any non-digit
+        if (!/^\d$/.test(event.key)) {
+            event.preventDefault();
+            return;
+        }
+
+        const start = el.selectionStart || 0;
+        const end = el.selectionEnd || 0;
+        const currentVal = el.value || '';
+        const digitsOnly = currentVal.replace(/\D/g, '');
+
+        // Standard Indian mobile number rule: first digit MUST be 6, 7, 8, or 9
+        if (start === 0 && !/^[6-9]$/.test(event.key)) {
+            event.preventDefault();
+            showFieldError(el, 'Indian mobile numbers must start with 6, 7, 8, or 9');
+            return;
+        }
+
+        // If already 10 digits and user has not selected text to replace, do not take more entries
+        if (digitsOnly.length >= 10 && start === end) {
+            event.preventDefault();
+        }
+    }
+});
+
+document.addEventListener('paste', (event) => {
+    const el = event.target;
+    if (el && el.type === 'tel') {
+        event.preventDefault();
+        const pasteData = (event.clipboardData || window.clipboardData)?.getData('text') || '';
+        const cleaned = sanitizeIndianPhone(pasteData);
+        if (cleaned) {
+            el.value = cleaned;
+            el.dispatchEvent(new Event('input', { bubbles: true }));
+        } else {
+            showFieldError(el, 'Please paste a valid Indian mobile number starting with 6, 7, 8, or 9');
+        }
+    }
+});
+
+// form-input-error-dismissal & real-time phone number sanitization
+document.addEventListener('input', (event) => {
+    const el = event.target;
+    if (el && el.type === 'tel') {
+        const sanitized = sanitizeIndianPhone(el.value);
+        if (el.value !== sanitized) {
+            el.value = sanitized;
+        }
+    }
+    if (el && el.classList.contains('is-invalid')) {
+        el.classList.remove('is-invalid');
+        const err = el.closest('.form-group')?.querySelector('.field-error-msg');
+        if (err) err.remove();
+    }
+});
+
+
+// Modal overlay backdrop click and Escape key dismissal
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('modal-overlay')) {
+        event.target.classList.remove('active');
+    }
+});
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        const activeModal = document.querySelector('.modal-overlay.active');
+        if (activeModal) activeModal.classList.remove('active');
+    }
 });

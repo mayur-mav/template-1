@@ -3336,6 +3336,156 @@ button {
     outline: none;
 }
 
+/* Phone Input Group with Custom Country Selector */
+.phone-input-group {
+    display: flex;
+    align-items: stretch;
+    position: relative;
+    width: 100%;
+    border-radius: var(--radius-sm);
+    background: #FFFFFF;
+}
+
+.country-select {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.country-select-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 100%;
+    min-height: 46px;
+    padding: 12px 14px;
+    background: #F5F5F3;
+    border: 1px solid var(--border-light);
+    border-right: 1px solid #E2E2DF;
+    border-top-left-radius: var(--radius-sm);
+    border-bottom-left-radius: var(--radius-sm);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: background 0.18s ease, border-color 0.18s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    white-space: nowrap;
+}
+
+.country-select-trigger:hover {
+    background: #ECECE9;
+}
+
+.country-select-trigger i {
+    font-size: 0.72rem;
+    color: #666666;
+    transition: transform 0.2s ease;
+}
+
+.country-select-trigger[aria-expanded="true"] i {
+    transform: rotate(180deg);
+}
+
+.phone-input-group .phone-number-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: none;
+}
+
+/* Cohesive Focus Highlight */
+.phone-input-group:focus-within .country-select-trigger {
+    border-color: var(--brand-gold);
+    border-right-color: #E2E2DF;
+}
+
+.phone-input-group:focus-within .phone-number-input {
+    border-color: var(--brand-gold);
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
+}
+
+/* Country Dropdown Options Popup (Image 2 style) */
+.country-select-options {
+    position: absolute;
+    z-index: 1000;
+    top: calc(100% + 4px);
+    left: 0;
+    min-width: 110px;
+    max-height: 230px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    background: #FAF9F6;
+    border: 1px solid #D6D4CD;
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.14), 0 2px 6px rgba(0, 0, 0, 0.06);
+    padding: 4px;
+    list-style: none;
+    margin: 0;
+}
+
+.country-select-options[hidden] {
+    display: none;
+}
+
+.country-select-options.opens-up {
+    top: auto;
+    bottom: calc(100% + 4px);
+}
+
+.country-select-option {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 7px 12px;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: #222222;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.12s ease, color 0.12s ease;
+    white-space: nowrap;
+}
+
+.country-select-option:hover,
+.country-select-option:focus-visible {
+    background: #ECEAE3;
+    color: #111111;
+    outline: none;
+}
+
+/* Active Highlight Matching Image 2 */
+.country-select-option[aria-selected="true"] {
+    background: #2563EB;
+    color: #FFFFFF;
+}
+
+.country-select-option[aria-selected="true"]:hover {
+    background: #1D4ED8;
+    color: #FFFFFF;
+}
+
+.country-select-options::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.wa-popup-box .phone-input-group {
+    text-align: left;
+}
+
 .btn-submit-enquiry {
     width: 100%;
     background: #0B1320;
@@ -3654,6 +3804,7 @@ button {
 /* WhatsApp Timed Pop-up */
 .wa-popup-box {
     text-align: center;
+    overflow: visible;
 }
 
 .wa-popup-icon {

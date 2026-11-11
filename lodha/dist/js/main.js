@@ -175,7 +175,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Dynamically import data based on HTML data-builder attribute
         const module = await import(`../data/${builder}.js`);
         propertiesData = module.propertiesData;
-        activeProperty = propertiesData[0];
+        window.propertiesData = propertiesData;
+        activeProperty = null;
         renderDeveloperHero(module.developerInfo?.hero);
         renderBuilderFaqs(module.faqData || []);
         populateHomeProjectDropdown(propertiesData);
@@ -2307,26 +2308,60 @@ function closeModal(id) {
     document.getElementById(id).classList.remove('active');
 }
 
+function resolveProjectName(input) {
+    if (!input || typeof input !== 'string') return '';
+    const clean = input.trim();
+    if (!clean) return '';
+
+    // Directly query propertiesData from data file: match id, apiProjectId, or name
+    const dataList = (Array.isArray(propertiesData) && propertiesData.length > 0)
+        ? propertiesData
+        : (typeof window !== 'undefined' && Array.isArray(window.propertiesData) && window.propertiesData.length > 0 ? window.propertiesData : []);
+
+    if (dataList.length > 0) {
+        const found = dataList.find(p => 
+            (p.id && p.id.toLowerCase() === clean.toLowerCase()) || 
+            (p.apiProjectId && p.apiProjectId.toLowerCase() === clean.toLowerCase()) || 
+            (p.name && p.name.toLowerCase() === clean.toLowerCase())
+        );
+        if (found && found.name) return found.name;
+    }
+
+    if (typeof activeProperty !== 'undefined' && activeProperty) {
+        if ((activeProperty.id && activeProperty.id.toLowerCase() === clean.toLowerCase()) ||
+            (activeProperty.apiProjectId && activeProperty.apiProjectId.toLowerCase() === clean.toLowerCase())) {
+            return activeProperty.name;
+        }
+    }
+
+    return clean;
+}
+
 const WHATSAPP_CONFIG = {
     phone: '917411662228',
     displayPhone: '+91 74116 62228',
     defaultProject: 'Lodha Group projects in Bangalore',
     brandMessage: 'Hi, I am interested in Lodha Group projects in Bangalore. Please share brochures, pricing details, and ongoing/new launch offers.',
     buildMessage(target = null, maybeBhk = null) {
+        if (!target) {
+            return WHATSAPP_CONFIG.brandMessage;
+        }
+
         let name = '';
         let phone = '';
         let email = '';
         let project = '';
         let bhk = '';
 
-        if (target && typeof target === 'object') {
+        if (typeof target === 'object') {
             name = (target.fullName || target.name || '').trim();
             phone = (target.mobileNumber || target.phone || '').trim();
             email = (target.email || '').trim();
-            project = (target.project || '').trim();
+            const rawProject = (target.project || target.projectId || '').trim();
+            project = resolveProjectName(rawProject);
             bhk = (target.preferredBhk || target.bhk || '').trim();
         } else if (typeof target === 'string') {
-            project = target.trim();
+            project = resolveProjectName(target.trim());
             if (typeof maybeBhk === 'string') {
                 bhk = maybeBhk.trim();
             }
@@ -2554,27 +2589,39 @@ function showEnquiryStatusModal(status, leadData, errorMsg) {
     const content = document.getElementById('statusModalContent');
     if (!modal || !content) return;
 
+    const normalizedLead = (leadData && typeof leadData === 'object') ? { ...leadData } : {};
+    normalizedLead.fullName = (normalizedLead.fullName || normalizedLead.name || '').trim();
+    normalizedLead.name = normalizedLead.fullName;
+    normalizedLead.mobileNumber = (normalizedLead.mobileNumber || normalizedLead.phone || '').trim();
+    normalizedLead.phone = normalizedLead.mobileNumber;
+    normalizedLead.email = (normalizedLead.email || '').trim();
+    normalizedLead.preferredBhk = (normalizedLead.preferredBhk || normalizedLead.bhk || '').trim();
+    normalizedLead.bhk = normalizedLead.preferredBhk;
+
+    const rawProject = (normalizedLead.project || normalizedLead.projectId || '').trim();
+    normalizedLead.project = resolveProjectName(rawProject) || (typeof activeProperty !== 'undefined' && activeProperty?.name ? activeProperty.name : '');
+
     if (status === 'success') {
         content.innerHTML = `
             <div class="partner-verified-badge">
                 Authorised Channel Partner · M&amp;A Ventures
             </div>
             <h3 class="status-modal-title" id="statusModalTitle">Enquiry Successfully Submitted!</h3>
-            <p class="status-modal-greeting">Thank you, <strong>${escapeLeadHtml(leadData.fullName)}</strong>.</p>
+            <p class="status-modal-greeting">Thank you, <strong>${escapeLeadHtml(normalizedLead.fullName || 'Valued Customer')}</strong>.</p>
             
             <div class="enquiry-summary-box">
                 <div class="summary-row">
                     <span class="summary-label"><i class="fa-solid fa-building" aria-hidden="true"></i> Project:</span>
-                    <span class="summary-val"><strong>${escapeLeadHtml(leadData.project)}</strong></span>
+                    <span class="summary-val"><strong>${escapeLeadHtml(normalizedLead.project || WHATSAPP_CONFIG.defaultProject)}</strong></span>
                 </div>
-                ${leadData.preferredBhk ? `
+                ${normalizedLead.preferredBhk ? `
                 <div class="summary-row">
                     <span class="summary-label"><i class="fa-solid fa-bed" aria-hidden="true"></i> BHK Preference:</span>
-                    <span class="summary-val"><strong>${escapeLeadHtml(leadData.preferredBhk)}</strong></span>
+                    <span class="summary-val"><strong>${escapeLeadHtml(normalizedLead.preferredBhk)}</strong></span>
                 </div>` : ''}
                 <div class="summary-row">
                     <span class="summary-label"><i class="fa-solid fa-phone" aria-hidden="true"></i> Contact:</span>
-                    <span class="summary-val">${escapeLeadHtml(leadData.mobileNumber)}</span>
+                    <span class="summary-val">${escapeLeadHtml(normalizedLead.mobileNumber || 'Provided')}</span>
                 </div>
             </div>
 
@@ -2584,7 +2631,7 @@ function showEnquiryStatusModal(status, leadData, errorMsg) {
 
             <div class="partner-quick-contact">
                 <span>Need immediate consultation or brochure on WhatsApp?</span>
-                <a href="${WHATSAPP_CONFIG.buildUrl(leadData)}" target="_blank" rel="noopener noreferrer" class="btn-partner-wa">
+                <a href="${WHATSAPP_CONFIG.buildUrl(normalizedLead)}" target="_blank" rel="noopener noreferrer" class="btn-partner-wa">
                     <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp Sales Desk
                 </a>
             </div>
@@ -2601,7 +2648,7 @@ function showEnquiryStatusModal(status, leadData, errorMsg) {
 
             <div class="partner-quick-contact">
                 <span>Instant Consultation:</span>
-                <a href="${WHATSAPP_CONFIG.buildUrl(leadData)}" target="_blank" rel="noopener noreferrer" class="btn-partner-wa">
+                <a href="${WHATSAPP_CONFIG.buildUrl(normalizedLead)}" target="_blank" rel="noopener noreferrer" class="btn-partner-wa">
                     <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Connect via WhatsApp
                 </a>
             </div>
@@ -3177,6 +3224,7 @@ Object.assign(window, {
     resetEnquiryForm,
     resetDetailEnquiryForm,
     showEnquiryStatusModal,
+    resolveProjectName,
     updateEmiCalculator,
     COUNTRY_CODES,
     initCountrySelectors,

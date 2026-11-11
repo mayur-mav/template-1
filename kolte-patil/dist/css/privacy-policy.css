@@ -8,74 +8,31 @@
 .privacy-header {
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 999;
     display: flex;
     width: 100%;
-    min-height: 76px;
     margin: 0;
-    padding: 14px 5%;
+    padding: 12px 4.5%;
     align-items: center;
     justify-content: space-between;
     gap: 18px;
     border-bottom: 1px solid var(--border-light);
     background: var(--bg-white);
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
 }
 
-.privacy-brand {
-    min-width: 0;
-    display: flex;
+.privacy-header .logo-container {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.privacy-header .privacy-back.btn-header-cta {
+    text-decoration: none;
+    display: inline-flex;
     align-items: center;
-    gap: 12px;
-    color: var(--text-primary);
-    text-decoration: none;
+    gap: 8px;
 }
-
-.privacy-logo-mark {
-    width: 42px;
-    height: 42px;
-    display: grid;
-    flex: 0 0 auto;
-    place-items: center;
-    border: 2px solid var(--brand-gold);
-    border-radius: 8px;
-    background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-light) 100%);
-    color: var(--brand-gold);
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    box-shadow: var(--shadow-sm);
-}
-
-.privacy-logo-text { display: flex; min-width: 0; flex-direction: column; }
-.privacy-brand-name {
-    color: var(--text-primary);
-    font-size: 1.35rem;
-    font-weight: 700;
-    letter-spacing: .5px;
-    line-height: 1.1;
-}
-.privacy-brand small {
-    color: var(--brand-bronze);
-    font-size: .7rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.privacy-back {
-    flex: 0 0 auto;
-    padding: 10px 22px;
-    border-radius: 30px;
-    background: var(--brand-bronze);
-    color: var(--bg-white);
-    font-size: .9rem;
-    font-weight: 600;
-    box-shadow: var(--shadow-gold);
-    text-decoration: none;
-}
-
-.privacy-back:hover { transform: translateY(-2px); box-shadow: 0 12px 28px var(--theme-accent-wash); }
 
 .privacy-content {
     width: min(1104px, calc(100% - 48px));
@@ -127,15 +84,32 @@
 .privacy-contact { margin: 54px 0 0; padding-top: 28px; border-top: 1px solid #e2e6ec; }
 .privacy-footer { padding: 25px 24px; border-top: 1px solid #e2e6ec; color: #667085; text-align: center; font-size: .9rem; }
 
+@media (max-width: 768px) {
+    .privacy-header .privacy-back.btn-header-cta {
+        width: auto;
+        height: 38px;
+        padding: 0 14px;
+        font-size: 0.82rem;
+        gap: 6px;
+    }
+}
+
 @media (max-width: 600px) {
-    .privacy-header { min-height: 68px; padding: 12px 4%; }
-    .privacy-brand-name { font-size: 1.05rem; }
-    .privacy-brand small { font-size: .58rem; letter-spacing: 1.2px; }
-    .privacy-logo-mark { width: 38px; height: 38px; font-size: 1.2rem; }
-    .privacy-back { padding: 10px 13px; font-size: .76rem; }
+    .privacy-header { padding: 12px 4%; }
     .privacy-content { width: calc(100% - 40px); margin: 20px auto 64px; }
     .privacy-content h1 { font-size: 2.4rem; }
     .privacy-eyebrow { margin-bottom: 34px; font-size: .76rem; }
     .privacy-intro, .privacy-content section p, .privacy-content li, .privacy-contact { font-size: 1.05rem; }
     .privacy-content h2 { font-size: 1.7rem; }
+}
+
+@media (max-width: 480px) {
+    .privacy-header {
+        padding: 10px 4%;
+    }
+    .privacy-header .privacy-back.btn-header-cta {
+        height: 34px;
+        padding: 0 10px;
+        font-size: 0.76rem;
+    }
 }

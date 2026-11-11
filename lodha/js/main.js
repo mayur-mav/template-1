@@ -2483,7 +2483,20 @@ const API_CONFIG = {
     }
 };
 
-async function sendLeadToApi(payload) {
+/**
+ * Dispatches lead payload to the configured API.
+ * Gracefully falls back to local success state if endpoint is empty or offline.
+ */
+async function sendLeadToApi(leadData) {
+    // Exact schema matching backend DevTools network payload
+    const payload = {
+        name: leadData.name,
+        phone: leadData.phone,
+        email: leadData.email || '',
+        projectId: leadData.projectId,
+        ...(leadData.bhk ? { bhk: leadData.bhk } : {})
+    };
+
     if (!API_CONFIG.endpoint) {
         console.log('[Lead Capture - Local Mode]: API endpoint not set yet. Ready to send exact payload:', payload);
         return { success: true, mode: 'local', payload };

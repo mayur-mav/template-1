@@ -44,7 +44,7 @@
                 <li><a href="/faq" class="nav-link" onclick="goToFaq(); return false;">FAQ</a></li>
                 <li><a href="/contact" class="nav-link" onclick="goToContact(); return false;">Contact</a></li>
                 <li class="mobile-menu-actions">
-                    <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="btn-header-wa" aria-label="Chat on WhatsApp">
+                    <a href="https://api.whatsapp.com/send/?phone=917411662228&text=Hi%2C+I+am+interested+in+Pride+Group+projects+in+Bangalore.+Please+share+brochures%2C+pricing+details%2C+and+ongoing%2Fnew+launch+offers." target="_blank" rel="noopener noreferrer" class="btn-header-wa" aria-label="Chat on WhatsApp" onclick="openWhatsAppChat(); return false;">
                         <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
                     </a>
                     <button class="btn-header-cta" onclick="goToSiteVisitForm()">
@@ -55,7 +55,7 @@
         </nav>
 
         <div class="header-actions">
-            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="btn-header-wa" aria-label="Chat on WhatsApp">
+            <a href="https://api.whatsapp.com/send/?phone=917411662228&text=Hi%2C+I+am+interested+in+Pride+Group+projects+in+Bangalore.+Please+share+brochures%2C+pricing+details%2C+and+ongoing%2Fnew+launch+offers." target="_blank" rel="noopener noreferrer" class="btn-header-wa" aria-label="Chat on WhatsApp" onclick="openWhatsAppChat(); return false;">
                 <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
                 <span>Chat on WhatsApp</span>
             </a>
@@ -169,28 +169,56 @@
                         <div style="display: flex; flex-direction: column; gap: 15px;">
                             <div style="display: flex; align-items: center; gap: 12px;">
                                 <div class="pill-icon"><i class="fa-solid fa-phone"></i></div>
-                                <div><strong>Call Sales Desk:</strong> +91 98765 43210</div>
+                                <div><strong>Call Sales Desk:</strong> +91 74116 62228</div>
                             </div>
                             <div style="display: flex; align-items: center; gap: 12px;">
                                 <div class="pill-icon"><i class="fa-brands fa-whatsapp"></i></div>
-                                <div><strong>Instant WhatsApp:</strong> +91 98765 43210</div>
+                                <div><strong>Instant WhatsApp:</strong> <a href="https://api.whatsapp.com/send/?phone=917411662228&text=Hi%2C+I+am+interested+in+Pride+Group+projects+in+Bangalore.+Please+share+brochures%2C+pricing+details%2C+and+ongoing%2Fnew+launch+offers." target="_blank" rel="noopener noreferrer" onclick="openWhatsAppChat(); return false;" style="color: inherit; text-decoration: none;">+91 74116 62228</a></div>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <form onsubmit="handleFormSubmit(event)">
+                        <form onsubmit="handleFormSubmit(event)" novalidate>
                             <div class="form-group">
-                                <input type="text" class="form-input" placeholder="Your Full Name" aria-label="Your Full Name" required>
+                                <input type="text" class="form-input" placeholder="Your Full Name *" aria-label="Your Full Name" required>
                             </div>
                             <div class="form-group">
-                                <input type="tel" class="form-input" placeholder="Mobile Number (+91)" aria-label="Mobile Number (+91)" required>
+
+                                <div class="phone-input-group">
+                                    <div class="country-select" id="contactCountrySelect">
+                                        <button type="button" class="country-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country Dial Code">
+                                            <span class="country-select-current">IN +91</span>
+                                            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                                        </button>
+                                        <div class="country-select-options" role="listbox" aria-label="Country Code List" hidden>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="true" data-code="IN" data-dial="+91">IN +91</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="AE" data-dial="+971">AE +971</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="US" data-dial="+1">US +1</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="UK" data-dial="+44">UK +44</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="SG" data-dial="+65">SG +65</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="AU" data-dial="+61">AU +61</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="SA" data-dial="+966">SA +966</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="QA" data-dial="+974">QA +974</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="OM" data-dial="+968">OM +968</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="KW" data-dial="+965">KW +965</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="BH" data-dial="+973">BH +973</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="NZ" data-dial="+64">NZ +64</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="DE" data-dial="+49">DE +49</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="HK" data-dial="+852">HK +852</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="MY" data-dial="+60">MY +60</button>
+                                        </div>
+                                        <input type="hidden" name="countryCode" value="IN">
+                                        <input type="hidden" name="dialCode" value="+91">
+                                    </div>
+                                    <input type="tel" class="form-input phone-number-input" placeholder="10-digit mobile number" aria-label="Mobile Number" maxlength="10" inputmode="numeric" required>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-input" placeholder="Email Address" aria-label="Email Address" required>
+                                <input type="email" class="form-input" placeholder="Email Address (Optional)" aria-label="Email Address (Optional)">
                             </div>
                             <div class="form-group">
                                 <div class="project-select" id="homeProjectSelect">
-                                    <button type="button" class="form-input project-select-trigger" aria-haspopup="listbox" aria-expanded="false"><span>Select a Project</span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                                    <button type="button" class="form-input project-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-required="true"><span>Select a Project <strong class="required-star">*</strong></span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
                                     <div class="project-select-options" role="listbox" aria-label="Project" hidden></div>
                                     <input type="hidden" name="project" value="">
                                 </div>
@@ -603,20 +631,48 @@
                     <h2 class="enquiry-title serif-font">Schedule a Site Visit</h2>
                     <p class="enquiry-subtitle">Get private tour & official pricing breakdown</p>
                     
-                    <form onsubmit="handleFormSubmit(event)">
+                    <form onsubmit="handleFormSubmit(event)" novalidate>
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Your Full Name" aria-label="Your Full Name" required>
+                            <input type="text" class="form-input" placeholder="Your Full Name *" aria-label="Your Full Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-input" placeholder="Phone Number" aria-label="Phone Number" required>
+
+                                <div class="phone-input-group">
+                                    <div class="country-select" id="detailCountrySelect">
+                                        <button type="button" class="country-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country Dial Code">
+                                            <span class="country-select-current">IN +91</span>
+                                            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                                        </button>
+                                        <div class="country-select-options" role="listbox" aria-label="Country Code List" hidden>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="true" data-code="IN" data-dial="+91">IN +91</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="AE" data-dial="+971">AE +971</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="US" data-dial="+1">US +1</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="UK" data-dial="+44">UK +44</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="SG" data-dial="+65">SG +65</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="AU" data-dial="+61">AU +61</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="SA" data-dial="+966">SA +966</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="QA" data-dial="+974">QA +974</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="OM" data-dial="+968">OM +968</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="KW" data-dial="+965">KW +965</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="BH" data-dial="+973">BH +973</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="NZ" data-dial="+64">NZ +64</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="DE" data-dial="+49">DE +49</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="HK" data-dial="+852">HK +852</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="MY" data-dial="+60">MY +60</button>
+                                        </div>
+                                        <input type="hidden" name="countryCode" value="IN">
+                                        <input type="hidden" name="dialCode" value="+91">
+                                    </div>
+                                    <input type="tel" class="form-input phone-number-input" placeholder="10-digit mobile number" aria-label="Phone Number" maxlength="10" inputmode="numeric" required>
+                                </div>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" placeholder="Email Address" aria-label="Email Address" required>
+                            <input type="email" class="form-input" placeholder="Email Address (Optional)" aria-label="Email Address (Optional)">
                         </div>
                         <div class="form-group">
                             <div class="bhk-select" id="preferredBhkSelect">
                                 <button type="button" class="form-input bhk-select-trigger" aria-haspopup="listbox" aria-expanded="false">
-                                    <span>Select Preferred BHK</span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                                    <span>Select Preferred BHK <strong class="required-star">*</strong></span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                                 </button>
                                 <div class="bhk-select-options" role="listbox" aria-label="Preferred BHK" hidden></div>
                                 <input type="hidden" name="preferredBhk" id="preferredBhkValue" value="">
@@ -673,11 +729,47 @@
                 Receive instant floor plans, pricing sheets, and payment schedules directly on your WhatsApp.
             </p>
             <div class="form-group">
-                <input type="tel" id="waPhoneInput" class="form-input" placeholder="Enter Your WhatsApp Number" aria-label="WhatsApp Number">
+
+                                <div class="phone-input-group">
+                                    <div class="country-select" id="waCountrySelect">
+                                        <button type="button" class="country-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country Dial Code">
+                                            <span class="country-select-current">IN +91</span>
+                                            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                                        </button>
+                                        <div class="country-select-options" role="listbox" aria-label="Country Code List" hidden>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="true" data-code="IN" data-dial="+91">IN +91</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="AE" data-dial="+971">AE +971</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="US" data-dial="+1">US +1</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="UK" data-dial="+44">UK +44</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="SG" data-dial="+65">SG +65</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="AU" data-dial="+61">AU +61</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="SA" data-dial="+966">SA +966</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="QA" data-dial="+974">QA +974</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="OM" data-dial="+968">OM +968</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="KW" data-dial="+965">KW +965</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="BH" data-dial="+973">BH +973</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="NZ" data-dial="+64">NZ +64</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="DE" data-dial="+49">DE +49</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="HK" data-dial="+852">HK +852</button>
+                                            <button type="button" class="country-select-option" role="option" aria-selected="false" data-code="MY" data-dial="+60">MY +60</button>
+                                        </div>
+                                        <input type="hidden" name="countryCode" value="IN">
+                                        <input type="hidden" name="dialCode" value="+91">
+                                    </div>
+                                    <input type="tel" id="waPhoneInput" class="form-input phone-number-input" placeholder="10-digit mobile number" aria-label="WhatsApp Number" maxlength="10" inputmode="numeric" required>
+                                </div>
             </div>
             <button class="wa-btn" onclick="sendWhatsAppLead()">
                 <i class="fa-brands fa-whatsapp"></i> Get Info on WhatsApp
             </button>
+        </div>
+    </div>
+
+    <!-- 13. ENQUIRY STATUS MODAL (SUCCESS & FAILURE POPUP) -->
+    <div class="modal-overlay" id="enquiryStatusModal" role="dialog" aria-modal="true" aria-labelledby="statusModalTitle">
+        <div class="modal-box status-modal-box">
+            <button class="modal-close-btn" type="button" aria-label="Close dialog" onclick="closeModal('enquiryStatusModal')">&times;</button>
+            <div id="statusModalContent"></div>
         </div>
     </div>
 
